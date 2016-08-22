@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
 
 	has_many :comments
-	has_many :categoriesgit 
+	belongs_to :category
 
 end
