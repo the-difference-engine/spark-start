@@ -1,23 +1,36 @@
-Edit Profile
+<h1>Edit Profile</h1>
 
-<%= form_tag '/profile/#{@profile.id}', method: :patch do %>
-  <p><%= label_tag :experience %>
-  <%= text_field_tag :experience %></p>
+<%= form_tag "/profile/#{@profile.id}", method: :patch do %>
 
-  <p><%= label_tag :bio %>
-  <%= text_field_tag :bio %></p>
+  <p><%= label_tag :first_name %>
+  <%= text_field_tag :first_name, @profile.first_name %></p>
 
-  <p><%= label_tag :phone %>
-  <%= text_field_tag :phone %></p>
-
-  <p><%= label_tag :career %>
-  <%= text_field_tag :career %></p>
-
-  <p><%= label_tag :image %>
-  <%= text_field_tag :image %></p>
+  <p><%= label_tag :last_name %>
+  <%= text_field_tag :last_name, @profile.last_name %></p>
 
   <p><%= label_tag :user_id %>
-  <%= text_field_tag :user_id %></p>
+  <%= text_field_tag :user_id, @profile.user_id %></p>
+  
+  <p><%= label_tag :experience %>
+  <%= text_field_tag :experience, @profile.experience %></p>
+
+  <p><%= label_tag 'career/major' %>
+  <%= text_field_tag :career, @profile.career %></p>
+
+  <p><%= label_tag :bio %>
+  <%= text_field_tag :bio, @profile.bio %></p>
+
+  <p><%= label_tag :city %>
+  <%= text_field_tag :city, @profile.city %></p>
+
+  <p><%= label_tag :state %>
+  <%= text_field_tag :state, @profile.state %></p>
+
+  <p><%= label_tag :phone %>
+  <%= text_field_tag :phone, @profile.phone %></p>
+
+  <p><%= label_tag :image %>
+  <%= text_field_tag :image, @profile.image %></p>
 
   <%= submit_tag "Submit" %>
 
