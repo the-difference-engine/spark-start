@@ -9,6 +9,12 @@ class Auth0Controller < ApplicationController
     redirect_to '/blogs'
   end
 
+  def logout
+    session[:userinfo] = nil
+    redirect_to "https://sparkstart.auth0.com/v2/logout?returnTo=http://localhost:3000"
+  end
+
+
   def failure
     # show a failure page or redirect to an error page
     @error_msg = request.params['message']

@@ -18,6 +18,8 @@ get '/comment/:id' => 'comments#show'
 get '/books' => 'books#index'
 get '/book/:id' => 'books#show'
 
+get '/logout' => 'auth0#logout'
+
 
 
 end
