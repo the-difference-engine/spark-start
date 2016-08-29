@@ -9,6 +9,10 @@ class Auth0Controller < ApplicationController
     redirect_to '/blogs'
   end
 
+  def user
+    @user = session[:userinfo]
+  end
+
   def logout
     session[:userinfo] = nil
     redirect_to "https://sparkstart.auth0.com/v2/logout?returnTo=http://localhost:3000"
