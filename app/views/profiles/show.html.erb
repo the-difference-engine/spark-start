@@ -1,1 +1,17 @@
-Profile will display here.
+<h1>User Profile</h1>
+
+<p>Image: <%= image_tag @profile.image %></p>
+
+<p>User id: <%= @profile.user_id %></p>
+
+<p>Name: <%= @profile.first_name %> <%= @profile.last_name %></p>
+
+<p>City, State: <%= @profile.city %>, <%= @profile.state %></p>
+
+<p>Experience: <%= @profile.experience %></p>
+
+<p>Bio: <%= @profile.bio %></p>
+
+<p>Phone: <%= @profile.phone %></p>
+
+<p>Career/Major: <%= @profile.career %></p>
