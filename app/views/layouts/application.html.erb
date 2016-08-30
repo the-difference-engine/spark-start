@@ -8,6 +8,7 @@
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
       </head>
 
+
     <body>
           <nav class="navbar navbar-inverse">
            <div class="container-fluid">
@@ -63,5 +64,19 @@
           </div><!-- /.container-fluid -->
         </nav>
       <%= yield %>
+
+      <script src="https://cdn.auth0.com/js/lock/10.0/lock.min.js"></script>
+      <script type="text/javascript">
+        var lock = new Auth0Lock('120SH91pK3Jo2SIUNxPW3PU688IcVu83', 'sparkstart.auth0.com', {
+          auth: {
+            redirectUrl: 'http://localhost:3000/auth/auth0/callback',
+            responseType: 'code',
+            params: {
+              scope: 'openid email' // Learn about scopes: https://auth0.com/docs/scopes
+            }
+          }
+        });
+      </script>
+
     </body>
   </html>
