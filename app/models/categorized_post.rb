@@ -1,0 +1,2 @@
+class CategorizedPost < ApplicationRecord
+end
