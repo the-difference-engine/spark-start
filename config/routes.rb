@@ -19,7 +19,12 @@ patch '/profile/:id' => 'profiles#update'
 delete '/profile/:id' => 'profiles#destroy'
 
 get '/blogs' => 'posts#index'
-get '/blogs/:id' => 'posts#show'
+get '/blog/new' => 'posts#new'
+post '/blog/' => 'posts#create'
+get '/blog/:id' => 'posts#show'
+get '/blog/:id/edit' => 'posts#edit'
+patch '/blog/:id' => 'posts#update'
+delete '/blog/:id' => 'posts#destroy'
 
 get '/comments' => 'comments#index'
 get '/comment/:id' => 'comments#show'
