@@ -2,11 +2,11 @@ require 'rails_helper'
 
 RSpec.describe ProfilesController, type: :controller do
 
-  # describe 'this is a fake test' do
-  #   xit 'expect test to fail' do
-  #     expect(true).to eq(false)
-  #   end
-  # end  
+  describe 'this is a fake test' do
+    xit 'expect test to fail' do
+      expect(true).to eq(false)
+    end
+  end  
 
   # describe 'GET #show' do
   #   it 'assigns the requested profile to @profile' do
