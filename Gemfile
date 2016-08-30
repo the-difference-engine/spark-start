@@ -36,6 +36,7 @@ gem 'omniauth-auth0', '~> 1.4.1'
 
 group :development, :test do
   gem "rspec-rails", "~> 3.5.1"
+  gem 'rails-controller-testing'
   gem "factory_girl_rails", "~> 4.7.0"
   gem 'shoulda-matchers', '~> 3.1'
 end
