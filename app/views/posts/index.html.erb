@@ -6,7 +6,12 @@ Posts Index Page
 
 Hello <%= @user["info"]["email"] %>,
 
-<%= @user["uid"] %>
+<% @posts.each do |post| %>
+  <p><%= post.title %></p>
+  <p><%= post.author %></p>
+  <p><%= post.body %></p>
+  <p><%= post.tags %></p>
+<% end %>
 
 <br><br>
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultrices, felis sit amet rutrum placerat, nisl tellus egestas quam, et efficitur magna neque ac ex. Mauris bibendum turpis sit amet vehicula maximus. Sed dapibus gravida lectus ut ultrices. Ut in neque eget neque pellentesque mattis feugiat ac risus. Sed feugiat facilisis justo, eu posuere metus tincidunt in. Donec non dui in lacus placerat euismod. Nulla ac volutpat nulla. Duis semper erat et dictum pellentesque. Aliquam non velit sed turpis lacinia laoreet. Phasellus non arcu non dui iaculis ultrices non placerat arcu. Etiam orci lacus, efficitur vitae erat non, iaculis laoreet massa. Cras varius enim nulla, quis sollicitudin nunc blandit a. Quisque auctor, urna eget pulvinar efficitur, leo nisl elementum turpis, vitae dignissim eros orci vel lectus.

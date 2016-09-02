@@ -3,10 +3,11 @@ class PostsController < ApplicationController
 
   def index
     @user = session[:userinfo]
+    @posts = Post.all
   end
 
   def show
-
+    @post = Post.find(params[:id])
   end
 
   def new
@@ -14,28 +15,39 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(
+    @user = session[:userinfo]
+    @post = Post.create(
       title: params[:title],
       author: params[:author],
       body: params[:body],
       tags: params[:tags],
-      user_id: @user.uid
+      user_id: params[:user_id],
+      category_id: params[:category_id]
     )
+    redirect_to "/blog/#{@post.id}"
   end
 
   def edit
-
+    @post = Post.find(params[:id])
   end
 
   def update
-
+    @post = Post.find(params[:id])
+    @post.update(
+      title: params[:title],
+      author: params[:author],
+      body: params[:body],
+      tags: params[:tags],
+      user_id: @user[:user_id]
+    )
+    redirect_to "/blog/#{@post.id}"
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
 
-<<<<<<< 88615f42fa744b69ea989bf1b627626854fad9b5
-=======
+    redirect_to "/blog/"
   end
 
->>>>>>> Add new joint table CategorizedProducts
 end

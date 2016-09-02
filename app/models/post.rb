@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
 
 	has_many :comments
-	belongs_to :category
+	has_many :categorized_posts
+	has_many :categories, through: :categorized_posts
 
 end

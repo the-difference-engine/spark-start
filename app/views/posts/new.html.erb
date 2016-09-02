@@ -1,0 +1,15 @@
+<%= form_tag '/blog', method: :post do %>
+  <p><%= label_tag :title %>
+  <%= text_field_tag :title %></p>
+
+  <p><%= label_tag :author %>
+  <%= text_field_tag :author %></p>
+
+  <p><%= label_tag :body %>
+  <%= text_area_tag :body %></p>
+
+  <p><%= label_tag :tags %>
+  <%= text_field_tag :tags %></p>
+
+  <%= submit_tag "Submit" %>
+<% end %>
