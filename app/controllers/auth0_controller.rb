@@ -4,14 +4,22 @@ class Auth0Controller < ApplicationController
     # and the IdP
 
     session[:userinfo] = request.env['omniauth.auth']
+    @userinfo = session[:userinfo]
+
+    if @userinfo["logins_count"] == 1
+      self.new_user
+    else
+
+    end
+
 
     # Redirect to the URL you want after successfull auth
     redirect_to '/blogs'
   end
 
-  def user
-    @user = session[:userinfo]
-  end
+  # def user
+  #   @user = session[:userinfo]
+  # end
 
   def logout
     session[:userinfo] = nil
@@ -23,4 +31,14 @@ class Auth0Controller < ApplicationController
     # show a failure page or redirect to an error page
     @error_msg = request.params['message']
   end
+
+  Private
+
+    def new_user
+      @user = User.create(
+        token: params[:token],
+        user_id: params[:user_id]
+        )
+    end
+
 end
