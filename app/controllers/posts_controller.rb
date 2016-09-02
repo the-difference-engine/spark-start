@@ -11,6 +11,7 @@ class PostsController < ApplicationController
   end
 
   def new
+    @categories = Category.all
 
   end
 
@@ -21,9 +22,13 @@ class PostsController < ApplicationController
       author: params[:author],
       body: params[:body],
       tags: params[:tags],
-      user_id: params[:user_id],
+      user_id: params[:user_id]
+    )
+    @cat_posts = CategorizedPost.create(
+      post_id: @post.id,
       category_id: params[:category_id]
     )
+
     redirect_to "/blog/#{@post.id}"
   end
 
