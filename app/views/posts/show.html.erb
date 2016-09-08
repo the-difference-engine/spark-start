@@ -1,5 +1,13 @@
 <div class="container">
 
-Posts Show Page
+<h1>Blog Posts</h1>
+<br>
+<p>Title: <%= @post.title %></p>
+<p>Author: <%= @post.author %></p>
+<p>Body: <%= @post.body %></p>
+<p>Tags: <%= @post.tags %></p>
+<p>Categories: <% @post.categories.each do |cat_name| %>
+  <%= cat_name.name %>
+<% end %></p>
 
 </div>

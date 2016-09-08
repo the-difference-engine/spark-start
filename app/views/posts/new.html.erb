@@ -14,5 +14,7 @@
   <p><%= label_tag :category_id %>
   <%= text_field_tag :category_id %></p>
 
+  <%= select_tag(:category_id, options_for_select(@options) ) %>
+
   <%= submit_tag "Submit" %>
 <% end %>

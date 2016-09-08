@@ -8,11 +8,12 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+
   end
 
   def new
-    @categories = Category.all
-
+    # @categories = Category.all
+    @options = Category.all.map { |category| [category.name, category.id]}
   end
 
   def create
