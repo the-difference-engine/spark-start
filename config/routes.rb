@@ -28,6 +28,8 @@ delete '/blog/:id' => 'posts#destroy'
 
 post '/category' => 'categories#create'
 
+post '/tag' => 'tags#create'
+
 # get '/comments' => 'comments#index'
 # get '/comment/:id' => 'comments#show'
 post '/comment/' => 'comments#create'

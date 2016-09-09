@@ -14,6 +14,7 @@ class PostsController < ApplicationController
   def new
     # @categories = Category.all
     @options = Category.all.map { |category| [category.name, category.id]}
+    @tag_options = Tag.all.map { |tag| [tag.tag_name, tag.id]}
   end
 
   def create
@@ -22,7 +23,6 @@ class PostsController < ApplicationController
       title: params[:title],
       author: params[:author],
       body: params[:body],
-      tags: params[:tags],
       user_id: params[:user_id]
     )
     @cat_posts = CategorizedPost.create(
@@ -32,6 +32,15 @@ class PostsController < ApplicationController
 
     @category = Category.find_or_create_by(
       name: params[:name]
+    )
+
+    @tag_posts = TaggedPost.create(
+      post_id: @post.id,
+      tag_id: params[:tag_id]
+    )
+
+    @tag = Tag.find_or_create_by(
+      tag_name: params[:tag_name]
     )
 
     redirect_to "/blog/#{@post.id}"

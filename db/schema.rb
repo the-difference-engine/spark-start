@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160830015757) do
+ActiveRecord::Schema.define(version: 20160909015532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,7 +54,6 @@ ActiveRecord::Schema.define(version: 20160830015757) do
     t.string   "title"
     t.string   "author"
     t.text     "body"
-    t.string   "tags"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -82,6 +81,19 @@ ActiveRecord::Schema.define(version: 20160830015757) do
     t.datetime "updated_at",                 null: false
     t.string   "email"
     t.boolean  "admin",      default: false
+
+  create_table "tagged_posts", force: :cascade do |t|
+    t.integer  "post_id"
+    t.integer  "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "tag_name"
+
   end
 
 end

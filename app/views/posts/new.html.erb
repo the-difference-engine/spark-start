@@ -8,13 +8,14 @@
   <p><%= label_tag :body %>
   <%= text_area_tag :body %></p>
 
-  <p><%= label_tag :tags %>
-  <%= text_field_tag :tags %></p>
+  <p><%= label_tag "Tags" %>
+  <%= select_tag(:tag_id, options_for_select(@tag_options)) %></p>
+  <p><strong>New Tag </strong><%= text_field_tag :tag_name %></p>
 
+  <%= label_tag "Category" %>
   <%= select_tag(:category_id, options_for_select(@options)) %>
 
-  <p><%= label_tag :name %>
-  <%= text_field_tag :name %></p>
+  <p><strong>New Category </strong><%= text_field_tag :name %></p>
 
   <%= submit_tag "Submit" %>
 <% end %>
