@@ -26,8 +26,11 @@ get '/blog/:id/edit' => 'posts#edit'
 patch '/blog/:id' => 'posts#update'
 delete '/blog/:id' => 'posts#destroy'
 
-get '/comments' => 'comments#index'
-get '/comment/:id' => 'comments#show'
+post '/category' => 'categories#create'
+
+# get '/comments' => 'comments#index'
+# get '/comment/:id' => 'comments#show'
+post '/comment/' => 'comments#create'
 
 get '/books' => 'books#index'
 get '/book/:id' => 'books#show'

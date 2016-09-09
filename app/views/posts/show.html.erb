@@ -10,4 +10,17 @@
   <%= cat_name.name %>
 <% end %></p>
 
+<% if @post.comments %>
+  <% @post.comments.each do |comment| %>
+    <p><%= comment.body %></p>
+  <% end %>
+<% end %>
+
+<%= form_tag '/comment', method: :post do %>
+  <p><%= label_tag "Comment" %>
+  <%= text_area_tag :body %></p>
+  <%= hidden_field_tag :post_id, @post.id %>
+  <%= submit_tag "Submit" %>
+<% end %>
+
 </div>

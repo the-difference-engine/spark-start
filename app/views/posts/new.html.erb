@@ -11,10 +11,10 @@
   <p><%= label_tag :tags %>
   <%= text_field_tag :tags %></p>
 
-  <p><%= label_tag :category_id %>
-  <%= text_field_tag :category_id %></p>
+  <%= select_tag(:category_id, options_for_select(@options)) %>
 
-  <%= select_tag(:category_id, options_for_select(@options) ) %>
+  <p><%= label_tag :name %>
+  <%= text_field_tag :name %></p>
 
   <%= submit_tag "Submit" %>
 <% end %>

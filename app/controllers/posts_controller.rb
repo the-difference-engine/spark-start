@@ -8,7 +8,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-
+    @comments = Comment.find_by(params[:post_id])
   end
 
   def new
@@ -28,6 +28,10 @@ class PostsController < ApplicationController
     @cat_posts = CategorizedPost.create(
       post_id: @post.id,
       category_id: params[:category_id]
+    )
+
+    @category = Category.find_or_create_by(
+      name: params[:name]
     )
 
     redirect_to "/blog/#{@post.id}"
