@@ -1,16 +1,16 @@
-<h2>Add Blog Post</h2>
+<h2>Edit Post</h2>
 
 <br>
 
 <%= form_tag '/blog', method: :post do %>
   <p><%= label_tag :title %>
-  <%= text_field_tag :title %></p>
+  <%= text_field_tag :title, @post.title %></p>
 
   <p><%= label_tag :author %>
-  <%= text_field_tag :author %></p>
+  <%= text_field_tag :author, @post.author %></p>
 
   <p><%= label_tag :body %>
-  <%= text_area_tag :body %></p>
+  <%= text_area_tag :body, @post.body %></p>
 
   <p><%= label_tag "Tags" %>
   <%= select_tag(:tag_id, options_for_select(@tag_options)) %></p>
@@ -21,5 +21,5 @@
 
   <p><b>New Category </b><%= text_field_tag :name %></p>
 
-  <%= submit_tag "Submit" %>
+  <%= submit_tag "Save" %>
 <% end %>

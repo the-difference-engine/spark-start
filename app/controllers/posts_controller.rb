@@ -12,7 +12,6 @@ class PostsController < ApplicationController
   end
 
   def new
-    # @categories = Category.all
     @options = Category.all.map { |category| [category.name, category.id]}
     @tag_options = Tag.all.map { |tag| [tag.tag_name, tag.id]}
   end
@@ -29,6 +28,7 @@ class PostsController < ApplicationController
       post_id: @post.id,
       category_id: params[:category_id]
     )
+    binding.pry
 
     @category = Category.find_or_create_by(
       name: params[:name]
@@ -48,6 +48,8 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @options = Category.all.map { |category| [category.name, category.id]}
+    @tag_options = Tag.all.map { |tag| [tag.tag_name, tag.id]}
   end
 
   def update
