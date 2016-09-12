@@ -10,17 +10,17 @@ class Auth0Controller < ApplicationController
     users = User.all
     if users.find_by_email(params[:email]).nil?
       new_user
-    end  
-
-    redirect_to '/profile/new'
+    else
+      redirect_to '/blogs'
+    end
     
   end
 
   def new_user
-      @user = User.new(pass_info)
+      @user = User.new(pass_info) 
       if @user.save
         flash[:success] = "Welcome To Spark Start"
-        redirect_to '/blogs'
+        redirect_to '/profile/new'
       else
         flash[:error] = "Try Again"
         render '/'
@@ -40,7 +40,6 @@ class Auth0Controller < ApplicationController
 
   private
 
-    # binding.pry
     def pass_info
       params.permit(:token, :email)
     end
