@@ -30,18 +30,14 @@ class PostsController < ApplicationController
       category_id: params[:category_id]
     )
 
-    @category = Category.find_or_create_by(
-      name: params[:name]
-    )
+    @category = Category.find_or_create_by(name: params[:name])
 
     @tag_post = TaggedPost.create(
       post_id: @post.id,
       tag_id: params[:tag_id]
     )
 
-    @tag = Tag.find_or_create_by(
-      tag_name: params[:tag_name]
-    )
+    @tag = Tag.find_or_create_by(tag_name: params[:tag_name])
 
     redirect_to "/blog/#{@post.id}"
   end
