@@ -22,7 +22,7 @@ class PostsController < ApplicationController
       title: params[:title],
       author: params[:author],
       body: params[:body],
-      user_id: @user["uid"]
+      user_id: @user["extra"]["raw_info"]["identities"][0]["user_id"]
     )
 
     @category_post = CategorizedPost.create(
@@ -49,31 +49,31 @@ class PostsController < ApplicationController
   end
 
   def update
-  
     @post = Post.find(params[:id])
     @user = session[:userinfo]
     @post.update(
       title: params[:title],
       author: params[:author],
-      body: params[:body],
-      user_id: @user["uid"]
+      body: params[:body]
     )
 
     @category_posts = @post.categories
+    @category_posts.update(name: params[:category])
 
     # @category_posts.each do |category|
     #   category.update(name: params[:category])
     # end
 
-    @category = Category.find_or_create_by(name: params[:name])
+    # @category = Category.find_or_create_by(name: params[:name])
 
     @tag_posts = @post.tags
+    @tag_posts.update(tag_name: params[:tag_name])
 
     # @tag_posts.each do |tag|
     #   tag.update(tag_name: params[:tag_name])
     # end
 
-    @tag = Tag.find_or_create_by(tag_name: params[:tag_name])
+    # @tag = Tag.find_or_create_by(tag_name: params[:tag_name])
 
     redirect_to "/blog/#{@post.id}"
   end

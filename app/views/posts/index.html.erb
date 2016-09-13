@@ -12,7 +12,7 @@ Posts Index Page
 
 <br><br>
 
-<%= @user["uid"] %>
+<p><%= @user["extra"]["raw_info"]["identities"][0]["user_id"] %></p>
 
 <% @posts.each do |post| %>
   <p><%= link_to post.title, "/blog/#{post.id}" %></p>

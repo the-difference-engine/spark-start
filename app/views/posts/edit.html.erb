@@ -12,17 +12,13 @@
   <p><%= label_tag :body %>
   <%= text_area_tag :body, @post.body %></p>
 
-  <p><%= label_tag "Tags" %>
-  <%= select_tag(:tag_id, options_for_select(@tag_options)) %></p>
-
-  <p><b>New Tag </b><%= text_field_tag :tag_name %></p>
-
-  <% @post.categories.each do |cat| %>
-    <%= label_tag "Category" %>
-    <%= text_field_tag :category, cat.name %>
+  <% @post.tags.each do |tag| %>
+    <p><b>Tag </b><%= text_field_tag :tag_name, tag.tag_name %></p>
   <% end %>
-
-  <p><b>New Category </b><%= text_field_tag :name %></p>
+  
+  <% @post.categories.each do |category| %>
+    <p><b>Category </b><%= text_field_tag :category, category.name %></p>
+  <% end %>
 
   <%= submit_tag "Save" %><br>
   <%= link_to "Delete Post", "/blog/#{@post.id}", method: :delete %>

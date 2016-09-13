@@ -13,12 +13,12 @@
   <%= text_area_tag :body %></p>
 
   <p><%= label_tag "Tags" %>
-  <%= select_tag(:tag_id, options_from_collection_for_select(Tag.all, "id", "tag_name"), multiple: true) %></p>
+  <%= select_tag(:tag_id, options_for_select(@tag_options)) %></p>
 
   <p><b>New Tag </b><%= text_field_tag :tag_name %></p>
 
   <p><%= label_tag "Category" %>
-  <%= select_tag(:category_id, options_for_select(@options), multiple: true) %></p>
+  <%= select_tag(:category_id, options_for_select(@options)) %></p>
 
   <p><b>New Category </b><%= text_field_tag :name %></p>
 
