@@ -2,28 +2,28 @@ class Auth0Controller < ApplicationController
   def callback
     
     session[:userinfo] = request.env['omniauth.auth']
-    @user_info = session[:userinfo]
+    user_info = session[:userinfo]
     
-    params[:token] = @user_info.credentials["token"]
-    params[:email] = @user_info.info["email"]
+    params[:token] = user_info.credentials["token"]
+    params[:email] = user_info.info["email"]
 
     users = User.all
     if users.find_by_email(params[:email]).nil?
       new_user
     else
-      redirect_to '/blogs'
+      redirect_to blogs_path
     end
     
   end
 
   def new_user
-      @user = User.new(pass_info) 
+      @user = User.new(user_params) 
       if @user.save
         flash[:success] = "Welcome To Spark Start"
-        redirect_to '/profile/new'
+        redirect_to profile_new_path
       else
         flash[:error] = "Try Again"
-        render '/'
+        render root
       end
   end
 
@@ -40,7 +40,7 @@ class Auth0Controller < ApplicationController
 
   private
 
-    def pass_info
+    def user_params
       params.permit(:token, :email)
     end
 
