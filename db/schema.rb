@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160909015532) do
+ActiveRecord::Schema.define(version: 20160912234156) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "books", force: :cascade do |t|
     t.string   "url"
-    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -36,10 +36,10 @@ ActiveRecord::Schema.define(version: 20160909015532) do
   end
 
   create_table "chats", force: :cascade do |t|
-    t.integer  "user_id"
     t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -54,9 +54,9 @@ ActiveRecord::Schema.define(version: 20160909015532) do
     t.string   "title"
     t.string   "author"
     t.text     "body"
-    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "user_id"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -65,13 +65,13 @@ ActiveRecord::Schema.define(version: 20160909015532) do
     t.string   "phone"
     t.string   "career"
     t.string   "image"
-    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "state"
     t.string   "city"
+    t.string   "user_id"
   end
 
   create_table "users", force: :cascade do |t|

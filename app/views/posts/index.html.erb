@@ -1,3 +1,4 @@
+<<<<<<< 9129d572cf8e749ac525cf9cb793f89d5f98116b
 <<<<<<< 3b15a68749c2a52b39a65bf812412d011a16bd20
 <div class="container">
 
@@ -5,16 +6,18 @@ Posts Index Page
 =======
 <h1><b><u>Blog</u></b></h1>
 >>>>>>> add update view
+=======
+<h1>Blog</h1>
+>>>>>>> add to update action
 
 <br><br>
 
-Hello <%= @user["info"]["email"] %>,
+<%= @user["uid"] %>
 
 <% @posts.each do |post| %>
-  <p><%= post.title %></p>
-  <p><%= post.author %></p>
+  <p><%= link_to post.title, "/blog/#{post.id}" %></p>
   <p><%= post.body %></p>
-  <p><%= post.tags %></p>
+  <p>By <%= post.author %></p><br>
 <% end %>
 <<<<<<< 3b15a68749c2a52b39a65bf812412d011a16bd20
 

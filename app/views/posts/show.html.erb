@@ -20,6 +20,8 @@
   <%= cat_name.name %>
 <% end %></p>
 
+<p><%= link_to "Edit Post", "/blog/#{@post.id}/edit" %>
+
 <br><br>
 
   <% @post.comments.each do |comment| %>

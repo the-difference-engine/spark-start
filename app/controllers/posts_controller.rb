@@ -22,19 +22,19 @@ class PostsController < ApplicationController
       title: params[:title],
       author: params[:author],
       body: params[:body],
-      user_id: params[:user_id]
+      user_id: @user["uid"]
     )
-    @cat_posts = CategorizedPost.create(
+
+    @category_post = CategorizedPost.create(
       post_id: @post.id,
       category_id: params[:category_id]
     )
-    binding.pry
 
     @category = Category.find_or_create_by(
       name: params[:name]
     )
 
-    @tag_posts = TaggedPost.create(
+    @tag_post = TaggedPost.create(
       post_id: @post.id,
       tag_id: params[:tag_id]
     )
@@ -53,14 +53,32 @@ class PostsController < ApplicationController
   end
 
   def update
+  
     @post = Post.find(params[:id])
+    @user = session[:userinfo]
     @post.update(
       title: params[:title],
       author: params[:author],
       body: params[:body],
-      tags: params[:tags],
-      user_id: @user[:user_id]
+      user_id: @user["uid"]
     )
+
+    @category_posts = @post.categories
+
+    # @category_posts.each do |category|
+    #   category.update(name: params[:category])
+    # end
+
+    @category = Category.find_or_create_by(name: params[:name])
+
+    @tag_posts = @post.tags
+
+    # @tag_posts.each do |tag|
+    #   tag.update(tag_name: params[:tag_name])
+    # end
+
+    @tag = Tag.find_or_create_by(tag_name: params[:tag_name])
+
     redirect_to "/blog/#{@post.id}"
   end
 

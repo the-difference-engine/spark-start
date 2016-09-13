@@ -27,8 +27,12 @@ patch '/blog/:id' => 'posts#update'
 delete '/blog/:id' => 'posts#destroy'
 
 post '/category' => 'categories#create'
+patch '/category/:id' => 'categories#update'
+delete '/category/:id' => 'category#destroy'
 
 post '/tag' => 'tags#create'
+patch '/tag' => 'tags#update'
+delete '/tag/:id' => 'tags#destroy'
 
 # get '/comments' => 'comments#index'
 # get '/comment/:id' => 'comments#show'
