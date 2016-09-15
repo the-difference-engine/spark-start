@@ -12,12 +12,11 @@ Posts Index Page
 
 <br><br>
 
-<p><%= @user["extra"]["raw_info"]["identities"][0]["user_id"] %></p>
-
 <% @posts.each do |post| %>
-  <p><%= link_to post.title, "/blog/#{post.id}" %></p>
+  <p><h4><%= link_to post.title, "/blog/#{post.id}" %></h4></p>
   <p><%= post.body %></p>
-  <p>By <%= post.author %></p><br>
+  <p>By <%= post.author %>, <%= post.created_at.strftime("%m-%e-%y %H:%M") %></p>
+  <br>
 <% end %>
 <<<<<<< 3b15a68749c2a52b39a65bf812412d011a16bd20
 

@@ -16,8 +16,8 @@
   <%= tag.tag_name %>
 <% end %></p>
 
-<p><b>Categories:</b> <% @post.categories.each do |cat_name| %>
-  <%= cat_name.name %>
+<p><b>Categories:</b> <% @post.categories.each do |category_name| %>
+  <%= category_name.name %>
 <% end %></p>
 
 <p><%= link_to "Edit Post", "/blog/#{@post.id}/edit" %>

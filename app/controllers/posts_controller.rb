@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   def index
     @user = session[:userinfo]
-    @posts = Post.all
+    @posts = Post.all.sort
   end
 
   def show
@@ -56,6 +56,7 @@ class PostsController < ApplicationController
       author: params[:author],
       body: params[:body]
     )
+    binding.pry
 
     @category_posts = @post.categories
     @category_posts.update(name: params[:category])
