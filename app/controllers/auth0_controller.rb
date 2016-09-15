@@ -20,6 +20,9 @@ class Auth0Controller < ApplicationController
       @user = User.new(user_params) 
       if @user.save
         flash[:success] = "Welcome To Spark Start"
+
+        UserNotifier.send_signup_email(@user).deliver
+        
         redirect_to profile_new_path
       else
         flash[:error] = "Try Again"
