@@ -8,6 +8,7 @@
 <p>Tags: <% @post.tags.each do |tag| %>
 
 <h2><%= @post.title %></h2>
+
 <p><b>Author:</b> <%= @post.author %></p><br>
 
 <p><%= @post.body %></p><br>
@@ -25,7 +26,7 @@
 <br><br>
 
   <% @post.comments.each do |comment| %>
-    <p><b>Comment:</b> <%= comment.body %></p>
+    <p><b>Comment:</b> <%= comment.body %> by <em><%= comment.user_id %></em></p>
   <% end %>
 
 <br><br>
@@ -34,6 +35,7 @@
   <p><%= label_tag "Add A Comment" %><br>
   <%= text_area_tag :body %></p>
   <%= hidden_field_tag :post_id, @post.id %>
+
   <%= submit_tag "Submit" %>
 <% end %>
 

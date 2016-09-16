@@ -17,10 +17,8 @@
 
   <p><b>New Tag </b><%= text_field_tag :tag_name %></p>
 
-  <p><%= label_tag "Category" %>
-  <%= select_tag(:category_id, options_for_select(@options)) %></p>
-
-  <p><b>New Category </b><%= text_field_tag :name %></p>
+  <p><%= label_tag "Category" %> Separate by commas:<br>
+  <%= text_field_tag :category_string %></p>
 
   <%= submit_tag "Submit" %>
 <% end %>
