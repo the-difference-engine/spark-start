@@ -17,9 +17,9 @@
   <%= tag.tag_name %>
 <% end %></p>
 
-<p><b>Categories:</b> <% @post.categories.each do |category_name| %>
-  <%= category_name.name %>
-<% end %></p>
+<p><b>Categories:</b> 
+  <%= @category_list.join(", ") %>
+</p>
 
 <p><%= link_to "Edit Post", "/blog/#{@post.id}/edit" %>
 

@@ -10,11 +10,12 @@ class PostsController < ApplicationController
     @user = session[:userinfo]
     @post = Post.find(params[:id])
     @comments = Comment.find_by(params[:post_id])
+    @category_list = @post.categories.collect { |category_name| category_name.name }
   end
 
   def new
-    @options = Category.all.map { |category| [category.name, category.id]}
-    @tag_options = Tag.all.map { |tag| [tag.tag_name, tag.id]}
+    @options = Category.all.map { |category| [category.name, category.id] }
+    @tag_options = Tag.all.map { |tag| [tag.tag_name, tag.id] }
   end
 
   def create
@@ -27,19 +28,20 @@ class PostsController < ApplicationController
     )
 
     @category_string = params[:category_string]
-    @category_string_split = @category_string.split(",")
+    @category_string_split = @category_string.split(", ")
     @category_string_split.each do |category|
       if !Category.find_by_name(category)
-        Category.create(name: category)
+        @new_category = Category.create(name: category)
         @category_post = CategorizedPost.create(
         post_id: @post.id,
-        category_id: params[:category_id]
+        category_id: @new_category.id
         )
-        else
-          @category_post = CategorizedPost.create(
-          post_id: @post.id,
-          category_id: params[:category_id]
-          )
+      else
+        @category_id = Category.find_by_name(category)
+        @category_post = CategorizedPost.create(
+        post_id: @post.id,
+        category_id: @category_id.id
+        )
       end
     end
 
