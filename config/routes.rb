@@ -27,4 +27,6 @@ get '/book/:id' => 'books#show'
 
 get '/logout' => 'auth0#logout'
 
+get '/users' => 'users#index'
+
 end
