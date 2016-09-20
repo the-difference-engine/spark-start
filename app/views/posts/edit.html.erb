@@ -12,13 +12,11 @@
   <p><%= label_tag :body %>
   <%= text_area_tag :body, @post.body %></p>
 
-  <% @post.tags.each do |tag| %>
-    <p><b>Tag </b><%= text_field_tag :tag_name, tag.tag_name %></p>
-  <% end %>
-  
-  <% @post.categories.each do |category| %>
-    <p><b>Category </b><%= text_field_tag :category, category.name %></p>
-  <% end %>
+  <p>Tags (Separate by commas): <br>
+  <%= text_field_tag :tag_string, @tag_string %>
+
+  <p>Categories (Separate by commas): <br>
+  <%= text_field_tag :category_string, @category_string %></p>
 
   <%= submit_tag "Save" %><br>
   <%= link_to "Delete Post", "/blog/#{@post.id}", method: :delete %>

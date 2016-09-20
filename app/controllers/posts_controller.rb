@@ -11,11 +11,12 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comments = Comment.find_by(params[:post_id])
     @category_list = @post.categories.collect { |category_name| category_name.name }
+    @tag_list = @post.tags.collect { |tag| tag.tag_name }
   end
 
   def new
-    @options = Category.all.map { |category| [category.name, category.id] }
-    @tag_options = Tag.all.map { |tag| [tag.tag_name, tag.id] }
+    # @options = Category.all.map { |category| [category.name, category.id] }
+    # @tag_options = Tag.all.map { |tag| [tag.tag_name, tag.id] }
   end
 
   def create
@@ -32,65 +33,102 @@ class PostsController < ApplicationController
     @category_string_split.each do |category|
       if !Category.find_by_name(category)
         @new_category = Category.create(name: category)
-        @category_post = CategorizedPost.create(
+        CategorizedPost.create(
         post_id: @post.id,
         category_id: @new_category.id
         )
       else
         @category_id = Category.find_by_name(category)
-        @category_post = CategorizedPost.create(
+        CategorizedPost.create(
         post_id: @post.id,
         category_id: @category_id.id
         )
       end
     end
 
-    @tag_post = TaggedPost.create(
-      post_id: @post.id,
-      tag_id: params[:tag_id]
-    )
-
-    @tag = Tag.find_or_create_by(tag_name: params[:tag_name])
+    @tag_string = params[:tag_string]
+    @tag_string_split = @tag_string.split(", ")
+    @tag_string_split.each do |tag|
+      if !Tag.find_by(tag_name: tag)
+        @new_tag = Tag.create(tag_name: tag)
+        TaggedPost.create(
+          post_id: @post.id,
+          tag_id: @new_tag.id
+          )
+      else
+        @tag_id = Tag.find_by(tag_name: tag)
+        TaggedPost.create(
+          post_id: @post.id,
+          tag_id: @tag_id.id
+          )
+      end
+    end
 
     redirect_to "/blog/#{@post.id}"
   end
 
   def edit
     @post = Post.find(params[:id])
-    @options = Category.all.map { |category| [category.name, category.id]}
-    @tag_options = Tag.all.map { |tag| [tag.tag_name, tag.id]}
+    @post_categories = @post.categories.collect { |category| category.name }
+    @category_string = @post_categories.join(", ")
+    @post_tags = @post.tags.collect { |tag| tag.tag_name }
+    @tag_string = @post_tags.join(", ")
+    # @options = Category.all.map { |category| [category.name, category.id] }
+    # @tag_options = Tag.all.map { |tag| [tag.tag_name, tag.id] }
   end
 
   def update
     @post = Post.find(params[:id])
     @user = session[:userinfo]
-    binding.pry
     @post.update(
       title: params[:title],
       author: params[:author],
       body: params[:body]
     )
 
-    @categorized_post = @post.categorized_posts.where("post_id = ? AND category_id = ?", @post.id, @post.category_id)
-    
-    @category = Category.find_or_create_by(name: params[:name])
-    
-    @categorized_post.update(@category)
+    @post.categorized_posts.each do |post|
+      post.delete
+    end
 
-    # @category_posts.update(name: params[:name])
+    @category_string = params[:category_string]
+    @category_string_split = @category_string.split(", ")
+    @category_string_split.each do |category|
+      if !Category.find_by_name(category)
+        @new_category = Category.create(name: category)
+        CategorizedPost.create(
+          post_id: @post.id,
+          category_id: @new_category.id
+        )
+      else
+        @category_id = Category.find_by_name(category)
+        CategorizedPost.create(
+          category_id: @category_id.id,
+          post_id: @post.id
+        )
+      end
+    end
 
-    # @category_posts.each do |category|
-    #   category.update(name: params[:category])
-    # end
+    @post.tagged_posts.each do |post|
+      post.delete
+    end
 
-    @tag_posts = @post.tags
-    @tag_posts.update(tag_name: params[:tag_name])
-
-    # @tag_posts.each do |tag|
-    #   tag.update(tag_name: params[:tag_name])
-    # end
-
-    # @tag = Tag.find_or_create_by(tag_name: params[:tag_name])
+    @tag_string = params[:tag_string]
+    @tag_string_split = @tag_string.split(", ")
+    @tag_string_split.each do |tag|
+      if !Tag.find_by(tag_name: tag)
+        @new_tag = Tag.create(tag_name: tag)
+        TaggedPost.create(
+          post_id: @post.id,
+          tag_id: @new_tag.id
+          )
+      else
+        @tag_id = Tag.find_by(tag_name: tag)
+        TaggedPost.create(
+          tag_id: @tag_id.id,
+          post_id: @post.id
+          )
+      end
+    end
 
     redirect_to "/blog/#{@post.id}"
   end

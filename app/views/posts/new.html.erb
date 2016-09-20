@@ -12,12 +12,10 @@
   <p><%= label_tag :body %>
   <%= text_area_tag :body %></p>
 
-  <p><%= label_tag "Tags" %>
-  <%= select_tag(:tag_id, options_for_select(@tag_options)) %></p>
+  <p><%= label_tag "Tags" %> (Separate by commas):
+  <%= text_field_tag :tag_string %></p>
 
-  <p><b>New Tag </b><%= text_field_tag :tag_name %></p>
-
-  <p><%= label_tag "Category" %> Separate by commas:<br>
+  <p><%= label_tag "Category" %> (Separate by commas):
   <%= text_field_tag :category_string %></p>
 
   <%= submit_tag "Submit" %>

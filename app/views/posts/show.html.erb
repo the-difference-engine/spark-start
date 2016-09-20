@@ -13,9 +13,9 @@
 
 <p><%= @post.body %></p><br>
 
-<p><b>Tags:</b> <% @post.tags.each do |tag| %>
-  <%= tag.tag_name %>
-<% end %></p>
+<p><b>Tags:</b>
+  <%= @tag_list.join(", ") %>
+</p>
 
 <p><b>Categories:</b> 
   <%= @category_list.join(", ") %>
