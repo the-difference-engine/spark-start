@@ -1,70 +1,222 @@
-<!-- <!DOCTYPE html>
-  <html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
-      <title>SparkStart</title>
-        <%= csrf_meta_tags %>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Spark Start</title>
 
-        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-      </head>
+        <!-- Bootstrap -->
 
+        <link href="/assets/bootstrap.min.css" rel="stylesheet">
+        <link href="/assets/custom_style.css" rel="stylesheet">
+        <link href="/assets/font-awesome.min.css" rel="stylesheet">
+        <link href="/assets/et-line.css" rel="stylesheet">
+        <link href="/assets/hover-min.css" rel="stylesheet">
+        <link href="/assets/animate.css" rel="stylesheet">
+        <link href="/assets/owl.carousel.css" rel="stylesheet">
+        <link href="/assets/owl.theme.css" rel="stylesheet">
+        <link href="/assets/owl.transitions.css" rel="stylesheet">
+        <link href="/assets/lightbox.css" rel="stylesheet">
+        <link href="/assets/flexslider.css" rel="stylesheet">
+        <!--master slider-->
+        <link rel="stylesheet" href="/assets/masterslider.css"/>
+        <link href="/assets/style.css" rel='stylesheet' type='text/css'>
+        <!--cube portfolio-->
+        <link href="/assets/cubeportfolio.min.css" rel="stylesheet" type="text/css">
 
-    <body>
-          <nav class="navbar navbar-inverse">
-           <div class="container-fluid"> -->
-            <!-- Brand and toggle get grouped for better mobile display -->
-             <!-- <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
-                  <a class="navbar-brand" href="#">SPARK START</a>
-             </div> -->
+        <!--main css file-->
+        <link href="/assets/cs.style.css" rel="stylesheet">
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav">
-                <li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">Link</a></li>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="/profile/:id">Profile Page</a></li>
-                    <li><a href="/books">Check out our books!</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#">One more separated link</a></li>
-                  </ul>
-                </li>
-              </ul>
-              <form class="navbar-form navbar-left">
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Search">
+    </head>
+    <body bgcolor="#ffffff">
+
+        <div id="preloader"></div>
+
+        <header class="top-header navbar-default navbar navbar-static-top sticky-header yamm">
+            <div class="container">
+                <div class="pull-right nav-header-right">
                 </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-              </form>
-              <ul class="nav navbar-nav navbar-right">
-                <li><button class="btn btn-primary" onclick="lock.show();">Login</button></li>
-                <li><a class="btn btn-danger" href="/logout">Logout</a></li>
-                <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                  <ul class="dropdown-menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
-                  </ul>
-                </li>
-              </ul> -->
-            <!-- </div><!-- /.navbar-collapse --> -->
-          <!-- </div><!-- /.container-fluid --> -->
-        <!-- </nav>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/"><h1>Spark Start</h1></a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown active">
+                            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About</a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-submenu">
+                                    <a tabindex="-1" href="#">Demos </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="demo-business.html"> Business</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">How It Works</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mission</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="/blogs" role="button">Blog</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#">Free Videos</a>
+                        </li>
+                        <li class="dropdown yamm-fw">
+                          <!-- <a href="#" class onclick="lock.show();">Login / Register</a> -->
+                          <% if session[:userinfo].present? %>
+                            <a href="/logout">Logout</a>
+                            <% else %>
+                            <a href="#" class onclick="lock.show();">Login / Register</a>
+                          <% end %>
+                        </li>
+
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div><!--/.container-fluid -->
+        </header>
+        <!-- header end -->
+
+
+
       <%= yield %>
+
+
+      <div class="space-30"></div>
+      <footer class="footer-v3">
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-2 margin-b-30">
+                      <h3>Quick Links</h3>
+                      <ul class="list-unstyled">
+                          <li><a href="#">Home</a></li>
+                          <li><a href="#">About  </a></li>
+                          <li><a href="#"> Press</a></li>
+                          <li><a href="#">Terms</a></li>
+                          <li><a href="#">Privacy</a></li>
+                          <li><a href="#">Contact</a></li>
+                      </ul>
+                  </div>
+
+                  <div class="col-md-3 margin-b-30">
+                      <h3>Latest post</h3>
+                      <ul class="list-unstyled latest-post-footer">
+                          <li class="clearfix">
+                              <img src="assets/team-1.jpg" width="90" class="img-circle img-responsive media-object" alt="">
+                              <div class="post-body">
+                                  <h4 class="post-heading">
+                                      Versa multipurpose
+                                  </h4>
+                                  <span>Posted on 21 Dec.</span>
+                                  <a href="#">Read more <i class="fa fa-arrow-circle-o-right"></i></a>
+                              </div>
+                          </li>
+                          <li class="clearfix">
+                              <img src="assets/team-2.jpg" width="60" class="img-circle img-responsive media-object" alt="">
+                              <div class="post-body">
+                                  <h4 class="post-heading">
+                                      Complete set
+                                  </h4>
+                                  <span>Posted on 21 Dec.</span>
+                                  <a href="#">Read more <i class="fa fa-arrow-circle-o-right"></i></a>
+                              </div>
+                          </li>
+                          <li class="clearfix">
+                              <img src="assets/team-3.jpg" width="60" class="img-circle img-responsive media-object" alt="">
+                              <div class="post-body">
+                                  <h4 class="post-heading">
+                                      Fully responsive
+                                  </h4>
+                                  <span>Posted on 21 Dec.</span>
+                                  <a href="#">Read more <i class="fa fa-arrow-circle-o-right"></i></a>
+                              </div>
+                          </li>
+                      </ul>
+                  </div>
+                  <div class="col-md-3 margin-b-30">
+                      <h3>Visit us</h3>
+                      <p>
+                        (312) 560-0982
+                        <a href="mailto:melissa@networlding.com">melissa@networlding.com</a>
+                        <br>
+                        101 N Wacker #614,
+                        Chicago, IL 60606
+                      </p>
+                      <div class="clearfix">
+                          <a class="social-icon social-dark social-sm  si-facebook" href="javascript:void(0)" data-toggle="tooltip" title="" data-original-title="Facebook"><i class="fa fa-facebook"></i></a>
+                          <a class="social-icon social-dark social-sm si-twitter" href="javascript:void(0)" data-toggle="tooltip" title="" data-original-title="Twitter"><i class="fa fa-twitter"></i></a>
+                          <a class="social-icon social-dark social-sm si-linkedin" href="javascript:void(0)" data-toggle="tooltip" title="" data-original-title="Linkedin"><i class="fa fa-linkedin"></i></a>
+                          <a class="social-icon social-dark social-sm si-g-plus" href="javascript:void(0)" data-toggle="tooltip" title="" data-original-title="Google+"><i class="fa fa-google-plus"></i></a>
+                          <a class="social-icon social-dark social-sm si-instagram" href="javascript:void(0)" data-toggle="tooltip" title="" data-original-title="instagram"><i class="fa fa-instagram"></i></a>
+                      </div>
+                  </div>
+                  <div class="col-md-4 margin-b-30">
+                      <h3>Gallery</h3>
+                      <div class="xs-gallery clearfix">
+                          <a href="assets/box/img-1.jpg" data-lightbox="gallery">
+                              <img src="assets/box/img-1.jpg" alt="" class="img-responsive" width="100">
+                          </a>
+                          <a href="assets/box/img-2.jpg" data-lightbox="gallery">
+                              <img src="assets/box/img-2.jpg" alt="" class="img-responsive" width="100">
+                          </a>
+                          <a href="assets/box/img-3.jpg" data-lightbox="gallery">
+                              <img src="assets/box/img-3.jpg" alt="" class="img-responsive" width="100">
+                          </a>
+                          <a href="assets/box/img-4.jpg" data-lightbox="gallery">
+                              <img src="assets/box/img-4.jpg" alt="" class="img-responsive" width="100">
+                          </a>
+                          <a href="assets/box/img-5.jpg" data-lightbox="gallery">
+                              <img src="assets/box/img-5.jpg" alt="" class="img-responsive" width="100">
+                          </a>
+                          <a href="assets/box/img-6.jpg" data-lightbox="gallery">
+                              <img src="assets/box/img-6.jpg" alt="" class="img-responsive" width="100">
+                          </a>
+                      </div>
+                  </div>
+              </div>
+              <div class="clearfix"></div>
+          </div>
+      </footer>
+      <!--back to top-->
+      <a href="#" class="scrollToTop"><span class="livicon " data-size="32" data-name="angle-double-up" data-duration="1000"></span></a>
+      <!--back to top end-->
+      <!-- jQuery plugins-->
+      <script src="/assets/jquery.min.js"></script>
+      <script src="/assets/jquery-migrate.min.js"></script>
+      <script src="/assets/jquery.easing.min.js"></script>
+      <script src="/assets/bootstrap.min.js"></script>
+      <script src="/assets/bootstrap-hover-dropdown.min.js"></script>
+      <script src="/assets/raphael-min.js"></script>
+      <script src="/assets/livicons-1.4.min.js"></script>
+      <script src="/assets/raphael-min.js"></script>
+      <script src="/assets/jquery.waypoints.min.js"></script>
+      <script src="/assets/jquery.counterup.min.js" type="text/javascript" ></script>
+      <script src="/assets/owl.carousel.min.js"></script>
+      <script src="/assets/jquery.flexslider-min.js"></script>
+      <script src="/assets/jquery.appear.js" type="text/javascript" ></script>
+      <script src="/assets/modernizr.custom.97074.js" type="text/javascript"></script>
+      <script src="/assets/jquery.stellar.min.js" type="text/javascript"></script>
+      <script src="/assets/jquery.BlackAndWhite.js"></script>
+      <script src="/assets/lightbox.min.js"></script>
+      <script src="/assets/jquery.hoverdir.js"></script>
+      <script src="/assets/jquery.sticky.js"></script>
+      <script src="/assets/wow.min.js"></script>
+      <script src="/assets/headroom.js"></script>
+      <script src="/assets/versa.js" type="text/javascript"></script>
+      <!--page template scripts-->
+      <script src="/assets/masterslider.min.js"></script>
+      <!--cube portfolio-->
+      <script src="/assets/jquery.cubeportfolio.min.js" type="text/javascript"></script>
 
       <script src="https://cdn.auth0.com/js/lock/10.0/lock.min.js"></script>
       <script type="text/javascript">
@@ -79,5 +231,127 @@
         });
       </script>
 
+      <script type="text/javascript">
+          (function ($) {
+              "use strict";
+              var slider = new MasterSlider();
+
+              // adds Arrows navigation control to the slider.
+              slider.control('arrows');
+              slider.control('timebar', {insertTo: '#masterslider'});
+              slider.control('bullets');
+
+              slider.setup('masterslider', {
+                  width: 1400, // slider standard width
+                  height: 600, // slider standard height
+                  space: 0,
+                  layout: 'fullwidth',
+                  loop: true,
+                  preload: 0,
+                  instantStartLayers: true,
+                  autoplay: true
+              });
+          })(jQuery);
+
+          //cube filter
+          (function ($, window, document, undefined) {
+              'use strict';
+
+              var gridContainer = jQuery('#grid-container'),
+                      filtersContainer = jQuery('#filters-container'),
+                      wrap, filtersCallback;
+
+
+              /*********************************
+               init cubeportfolio
+               *********************************/
+              gridContainer.cubeportfolio({
+                  layoutMode: 'grid',
+                  rewindNav: true,
+                  scrollByPage: false,
+                  defaultFilter: '*',
+                  animationType: 'slideLeft',
+                  gapHorizontal: 10,
+                  gapVertical: 10,
+                  gridAdjustment: 'responsive',
+                  mediaQueries: [{
+                          width: 800,
+                          cols: 4
+                      }, {
+                          width: 500,
+                          cols: 2
+                      }, {
+                          width: 320,
+                          cols: 1
+                      }],
+                  caption: 'zoom',
+                  displayType: 'lazyLoading',
+                  displayTypeSpeed: 100
+              });
+
+
+              /*********************************
+               add listener for filters
+               *********************************/
+              if (filtersContainer.hasClass('cbp-l-filters-dropdown')) {
+                  wrap = filtersContainer.find('.cbp-l-filters-dropdownWrap');
+
+                  wrap.on({
+                      'mouseover.cbp': function () {
+                          wrap.addClass('cbp-l-filters-dropdownWrap-open');
+                      },
+                      'mouseleave.cbp': function () {
+                          wrap.removeClass('cbp-l-filters-dropdownWrap-open');
+                      }
+                  });
+
+                  filtersCallback = function (me) {
+                      wrap.find('.cbp-filter-item').removeClass('cbp-filter-item-active');
+                      wrap.find('.cbp-l-filters-dropdownHeader').text(me.text());
+                      me.addClass('cbp-filter-item-active');
+                      wrap.trigger('mouseleave.cbp');
+                  };
+              } else {
+                  filtersCallback = function (me) {
+                      me.addClass('cbp-filter-item-active').siblings().removeClass('cbp-filter-item-active');
+                  };
+              }
+
+              filtersContainer.on('click.cbp', '.cbp-filter-item', function () {
+                  var me = $(this);
+
+                  if (me.hasClass('cbp-filter-item-active')) {
+                      return;
+                  }
+
+                  // get cubeportfolio data and check if is still animating (reposition) the items.
+                  if (!$.data(gridContainer[0], 'cubeportfolio').isAnimating) {
+                      filtersCallback.call(null, me);
+                  }
+
+                  // filter the items
+                  gridContainer.cubeportfolio('filter', me.data('filter'), function () {
+                  });
+              });
+
+
+              /*********************************
+               activate counter for filters
+               *********************************/
+              gridContainer.cubeportfolio('showCounter', filtersContainer.find('.cbp-filter-item'), function () {
+                  // read from url and change filter active
+                  var match = /#cbpf=(.*?)([#|?&]|$)/gi.exec(location.href),
+                          item;
+                  if (match !== null) {
+                      item = filtersContainer.find('.cbp-filter-item').filter('[data-filter="' + match[1] + '"]');
+                      if (item.length) {
+                          filtersCallback.call(null, item);
+                      }
+                  }
+              });
+
+          })(jQuery, window, document);
+
+      </script>
     </body>
-  </html> -->
+  </html>

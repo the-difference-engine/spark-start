@@ -24,6 +24,7 @@
  *= style
  *= cubeportfolio
  *= cs.style
+ *= custom_style
  *= require_tree .
  *= require_self
  */
