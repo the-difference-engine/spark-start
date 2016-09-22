@@ -11,7 +11,6 @@
  * It is generally better to create a new file per style scope.
  *
  *= bootstrap
- *= app
  *= font-awesome
  *= et-line
  *= hover-min
@@ -25,6 +24,7 @@
  *= style
  *= cubeportfolio
  *= cs.style
+ *= custom_style
  *= require_tree .
  *= require_self
  */
