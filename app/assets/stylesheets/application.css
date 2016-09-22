@@ -11,6 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= bootstrap
+ *= app
  *= font-awesome
  *= et-line
  *= hover-min
