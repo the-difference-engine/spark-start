@@ -12,6 +12,7 @@
 
 <% @categories.each do |category| %>
   <b><%= category.name %></b><br>
+  <%= category.name %><br>
   <% category.posts.each do |post| %>
     <%= link_to post.title, "/blog/#{post.id}" %><br><br>
   <% end %>
@@ -21,5 +22,8 @@
   <p><b><%= tag.tag_name %></b><br>
   <% tag.posts.each do |post| %>
     <%= link_to post.title, "/blog/#{post.id}" %><br></p>
+  <%= tag.name %><br>
+  <% tag.posts.each do |post| %>
+    <%= link_to post.title, "/blog/#{post.id}" %><br><br>
   <% end %>
 <% end %>

@@ -3,7 +3,13 @@ class PostsController < ApplicationController
 
   def index
     @user = session[:userinfo]
-    @posts = Post.all.sort
+    @posts = Post.all
+
+    @search_term = params[:search]
+
+    if @search_term.blank? == false
+      @searched = @posts.where("title ILIKE ? OR author ILIKE ? OR body ILIKE ?", "%#{@search_term}%", "%#{@search_term}%", "%#{@search_term}%")
+    end
   end
 
   def show
@@ -14,57 +20,69 @@ class PostsController < ApplicationController
     @tag_list = @post.tags.collect { |tag| tag.tag_name }
   end
 
+  def dashboard
+    @posts = Post.all.sort
+    @categories = Category.all.sort
+  end
+
   def new
     # @options = Category.all.map { |category| [category.name, category.id] }
     # @tag_options = Tag.all.map { |tag| [tag.tag_name, tag.id] }
+    @post = Post.new
   end
 
   def create
     @user = session[:userinfo]
-    @post = Post.create(
+    @post = Post.new(
       title: params[:title],
       author: params[:author],
       body: params[:body],
       user_id: @user["extra"]["raw_info"]["identities"][0]["user_id"]
     )
-
-    @category_string = params[:category_string]
-    @category_string_split = @category_string.split(", ")
-    @category_string_split.each do |category|
-      if !Category.find_by_name(category)
-        @new_category = Category.create(name: category)
-        CategorizedPost.create(
-        post_id: @post.id,
-        category_id: @new_category.id
-        )
-      else
-        @category_id = Category.find_by_name(category)
-        CategorizedPost.create(
-        post_id: @post.id,
-        category_id: @category_id.id
-        )
-      end
-    end
-
-    @tag_string = params[:tag_string]
-    @tag_string_split = @tag_string.split(", ")
-    @tag_string_split.each do |tag|
-      if !Tag.find_by(tag_name: tag)
-        @new_tag = Tag.create(tag_name: tag)
-        TaggedPost.create(
+    if @post.save
+      @category_string = params[:category_string]
+      @category_string_split = @category_string.split(", ")
+      @category_string_split.each do |category|
+        if !Category.find_by_name(category)
+          @new_category = Category.create(name: category)
+          CategorizedPost.create(
           post_id: @post.id,
-          tag_id: @new_tag.id
+          category_id: @new_category.id
           )
-      else
-        @tag_id = Tag.find_by(tag_name: tag)
-        TaggedPost.create(
+        else
+          @category_id = Category.find_by_name(category)
+          CategorizedPost.create(
           post_id: @post.id,
-          tag_id: @tag_id.id
+          category_id: @category_id.id
           )
+        end
       end
-    end
 
-    redirect_to "/blog/#{@post.id}"
+      @tag_string = params[:tag_string]
+      @tag_string_split = @tag_string.split(", ")
+      @tag_string_split.each do |tag|
+        if !Tag.find_by(tag_name: tag)
+          @new_tag = Tag.create(tag_name: tag)
+          TaggedPost.create(
+            post_id: @post.id,
+            tag_id: @new_tag.id
+            )
+        else
+          @tag_id = Tag.find_by(tag_name: tag)
+          TaggedPost.create(
+            post_id: @post.id,
+            tag_id: @tag_id.id
+            )
+        end
+      end
+
+      flash[:success] = "Post created."
+      redirect_to "/blog/#{@post.id}"
+      
+    else 
+      render :new
+    end
+    
   end
 
   def edit
