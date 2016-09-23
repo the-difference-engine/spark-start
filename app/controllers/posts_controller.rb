@@ -23,6 +23,7 @@ class PostsController < ApplicationController
   def dashboard
     @posts = Post.all.sort
     @categories = Category.all.sort
+    @tags = Tag.all.sort
   end
 
   def new
