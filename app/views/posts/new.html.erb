@@ -7,19 +7,19 @@
 <% end %>
 
 <%= form_tag '/blog', method: :post do %>
-  <p><%= label_tag :title %>
+  <p><%= label_tag :title %><br>
   <%= text_field_tag :title %></p>
 
-  <p><%= label_tag :author %>
+  <p><%= label_tag :author %><br>
   <%= text_field_tag :author %></p>
 
-  <p><%= label_tag :body %>
+  <p><%= label_tag :body %><br>
   <%= text_area_tag :body %></p>
 
-  <p><%= label_tag "Tags" %> (Separate by commas):
+  <p><%= label_tag "Tags" %> (Separate by commas):<br>
   <%= text_field_tag :tag_string %></p>
 
-  <p><%= label_tag "Category" %> (Separate by commas):
+  <p><%= label_tag "Categories" %> (Separate by commas):<br>
   <%= text_field_tag :category_string %></p>
 
   <%= submit_tag "Submit" %>

@@ -2,10 +2,9 @@
 
 <h1><b><u>Blog</u></b></h1>
 
-<br><br>
 <%= form_tag '/blogs', method: :get do %>
-  <%= text_field_tag :search, nil, placeholder: "Search posts" %>
-  <%= submit_tag "Search", class: 'button' %>
+  <%= text_field_tag :search, nil, placeholder: "Search blog" %>
+  <%= submit_tag "Submit", class: 'button' %>
 <% end %>
 
 <br><br>

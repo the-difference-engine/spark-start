@@ -21,12 +21,12 @@
   <%= @category_list.join(", ") %>
 </p>
 
-<p><%= link_to "Edit Post", "/blog/#{@post.id}/edit" %>
+<p><%= link_to "Edit Post", "/blog/#{@post.id}/edit" %></p>
 
 <br><br>
 
   <% @post.comments.each do |comment| %>
-    <p><b>Comment:</b> <%= comment.body %> by <em><%= comment.user_id %></em></p>
+    <p><b><%= comment.user_id %>:</b> <%= comment.body %></p>
   <% end %>
 
 <br><br>
