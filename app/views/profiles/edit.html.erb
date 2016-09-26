@@ -1,3 +1,5 @@
+<div class="container">
+
 <h1>Edit Profile</h1>
 
 <%= form_tag "/profile/#{@profile.id}", method: :patch do %>
@@ -10,7 +12,7 @@
 
   <p><%= label_tag :user_id %>
   <%= text_field_tag :user_id, @profile.user_id %></p>
-  
+
   <p><%= label_tag :experience %>
   <%= text_field_tag :experience, @profile.experience %></p>
 
@@ -35,3 +37,5 @@
   <%= submit_tag "Submit" %>
 
 <% end %>
+
+</div>

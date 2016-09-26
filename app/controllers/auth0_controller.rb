@@ -1,9 +1,9 @@
 class Auth0Controller < ApplicationController
   def callback
-    
+
     session[:userinfo] = request.env['omniauth.auth']
     user_info = session[:userinfo]
-    
+
     params[:token] = user_info.credentials["token"]
     params[:email] = user_info.info["email"]
 
@@ -13,11 +13,11 @@ class Auth0Controller < ApplicationController
     else
       redirect_to blogs_path
     end
-    
+
   end
 
   def new_user
-      @user = User.new(user_params) 
+      @user = User.new(user_params)
       if @user.save
         UserNotifierMailer.send_signup_email(@user).deliver
         flash[:success] = "Welcome To Spark Start"
@@ -31,7 +31,7 @@ class Auth0Controller < ApplicationController
 
   def logout
     session[:userinfo] = nil
-    redirect_to "https://sparkstart.auth0.com/v2/logout?returnTo=http://localhost:3000"
+    redirect_to "http://localhost:3000"
   end
 
 
