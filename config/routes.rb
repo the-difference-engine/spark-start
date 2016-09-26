@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 root to: 'homes#index'
 
-# get '/' => 'homes#index'
+get '/' => 'homes#index'
+get '/theme' => 'homes#theme'
+
 
 get '/profiles' => 'profiles#index'
 get '/profile/new' => 'profiles#new'
