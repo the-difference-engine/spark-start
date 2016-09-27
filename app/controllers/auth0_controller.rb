@@ -11,7 +11,7 @@ class Auth0Controller < ApplicationController
     if users.find_by_email(params[:email]).nil?
       new_user
     else
-      redirect_to blogs_path
+      redirect_to root_path
     end
 
   end
