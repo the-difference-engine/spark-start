@@ -13,9 +13,12 @@ class PostsController < ApplicationController
   end
 
   def show
-    @user = session[:userinfo]
+    # @comment_user = User.find_by_token()
+
     @post = Post.find(params[:id])
+
     @comments = Comment.find_by(params[:post_id])
+
     @category_list = @post.categories.collect { |category_name| category_name.name }
     @tag_list = @post.tags.collect { |tag| tag.tag_name }
   end

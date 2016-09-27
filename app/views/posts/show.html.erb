@@ -1,11 +1,7 @@
 <div class="container">
 
-<h1>Blog Posts</h1>
-<br>
-<p>Title: <%= @post.title %></p>
-<p>Author: <%= @post.author %></p>
-<p>Body: <%= @post.body %></p>
-<p>Tags: <% @post.tags.each do |tag| %>
+<br><br>
+<%= @user %>
 
 <h2><%= @post.title %></h2>
 
@@ -17,7 +13,7 @@
   <%= @tag_list.join(", ") %>
 </p>
 
-<p><b>Categories:</b> 
+<p><b>Categories:</b>
   <%= @category_list.join(", ") %>
 </p>
 
@@ -32,7 +28,7 @@
 <br><br>
 
 <%= form_tag '/comment', method: :post do %>
-  <p><%= label_tag "Add A Comment" %><br>
+  <p><%= label_tag "Post Comment:" %><br>
   <%= text_area_tag :body %></p>
   <%= hidden_field_tag :post_id, @post.id %>
 

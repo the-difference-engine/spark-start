@@ -1,3 +1,7 @@
+<div class="container">
+
+<br><br>
+
 <h2>Add Blog Post</h2>
 
 <br>
@@ -14,7 +18,7 @@
   <%= text_field_tag :author %></p>
 
   <p><%= label_tag :body %><br>
-  <%= text_area_tag :body %></p>
+  <%= text_area_tag :body, nil, cols: 100, rows: 6 %></p>
 
   <p><%= label_tag "Tags" %> (Separate by commas):<br>
   <%= text_field_tag :tag_string %></p>
@@ -24,3 +28,5 @@
 
   <%= submit_tag "Submit" %>
 <% end %>
+
+</div>

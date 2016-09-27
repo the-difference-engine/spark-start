@@ -1,3 +1,7 @@
+<div class="container">
+
+<br><br>
+
 <h2>Edit Post</h2>
 
 <br>
@@ -10,10 +14,10 @@
   <%= text_field_tag :author, @post.author %></p>
 
   <p><%= label_tag :body %><br>
-  <%= text_area_tag :body, @post.body %></p>
+  <%= text_area_tag :body, @post.body, cols: 100, rows: 6 %></p>
 
   <p>Tags (Separate by commas): <br>
-  <%= text_field_tag :tag_string, @tag_string %>
+  <%= text_field_tag :tag_string, @tag_string %></p>
 
   <p>Categories (Separate by commas): <br>
   <%= text_field_tag :category_string, @category_string %></p>
@@ -21,3 +25,5 @@
   <%= submit_tag "Save Edits" %><br>
   <%= link_to "Delete Post", "/blog/#{@post.id}", method: :delete %>
 <% end %>
+
+</div>

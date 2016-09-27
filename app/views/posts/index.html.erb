@@ -1,11 +1,15 @@
 <div class="container">
 
-<h1><b><u>Blog</u></b></h1>
+<br><br>
+
+<h2>Blog</h2>
 
 <%= form_tag '/blogs', method: :get do %>
   <%= text_field_tag :search, nil, placeholder: "Search blog" %>
   <%= submit_tag "Submit", class: 'button' %>
 <% end %>
+
+<%= link_to 'Add Post', '/blog/new' %>
 
 <br><br>
 
