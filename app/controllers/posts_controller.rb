@@ -15,7 +15,13 @@ class PostsController < ApplicationController
   end
 
   def show
+<<<<<<< e1f8c1d12567e7581b7e301a425438e5cc10b7a0
+=======
+    # @comment_user = User.find_by_token()
+
+>>>>>>> attempt to add commenter user name
     @post = Post.find(params[:id])
+
     @comments = Comment.find_by(params[:post_id])
 
     @category_list = @post.categories.collect { |category_name| category_name.name }

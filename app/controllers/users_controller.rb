@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 		@profiles = Profile.all
 	end
 
+<<<<<<< e1f8c1d12567e7581b7e301a425438e5cc10b7a0
 	private
 
 	def is_profile_created
@@ -17,4 +18,6 @@ class UsersController < ApplicationController
 	  end
 	end
 
+=======
+>>>>>>> attempt to add commenter user name
 end
