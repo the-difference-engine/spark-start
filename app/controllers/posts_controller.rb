@@ -7,6 +7,8 @@ class PostsController < ApplicationController
     @posts = Post.all
     @sorted_posts = Post.all.sort_by(&:created_at)
 
+    @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
+
     @search_term = params[:search]
 
     if @search_term.blank? == false

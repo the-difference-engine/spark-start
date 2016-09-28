@@ -15,7 +15,10 @@ end
 
 def new
   @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
+<<<<<<< f78bfed93a19636182eea51c73210ade2d3fac05
   @states = us_states
+=======
+>>>>>>> put in nil guards
 end
 
 def create
