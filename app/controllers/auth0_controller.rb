@@ -4,7 +4,7 @@ class Auth0Controller < ApplicationController
     session[:userinfo] = request.env['omniauth.auth']
     user_info = session[:userinfo]
 
-    params[:token] = user_info.credentials["token"]
+    params[:token] = session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"]
     params[:email] = user_info.info["email"]
 
     users = User.all
