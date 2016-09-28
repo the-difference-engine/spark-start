@@ -118,7 +118,7 @@
 <div class="container">
   <div class="heading-style-center">
     <h2>What Do We Do?</h2>
-    <p class="sub-title">Here at SparkStart we are all about creating BIG success through using GREAT books as tools to mentor young and new adults in one-on-one and small-group conversations, both face-to-face, and virtually. Your success is better guaranteed when "Sparks" create collaborative conversations with positive action as a result. We are committed to creating an environment for igniting wonderful, make-a-difference conversations and results that come through reading great books and then sharing the wisdom from those books.</p>
+    <p class="sub-title">Here at SparkStart we are all about creating BIG success through using GREAT books as tools to mentor young and new adults in one-on-one and small-group conversations, both face-to-face, and virtually. Your success is better guaranteed when "Sparks" create collaborative conversations with positive action as a result. We are committed to creating an environment for igniting wonderful, make-a-difference conversations and results that come through reading great books and then sharing the wisdom from those books.</p> <br>
     <div class="row">
       <div class="col-sm-4 text-center">
         <div class="box-style-1 border-style  margin-b-30">
@@ -203,23 +203,24 @@
     <h2>From the blog</h2>
   </div>
   <div class="row">
-    <div class="col-sm-4 margin-b-40">
-      <div class="grid-post">
-        <a href="#"><img src="assets/box/img-1.jpg" alt="" class="img-responsive full-img"></a>
-        <div class="grid-post-meta">
-          <h3><a href="#">Rice, The Great Wall of China and Philosophy</a></h3>
-          <ul class="list-inline">
-            <li>By <a href="#">Admin</a></li>
-            <li>22 Feb. 2016</li>
-            <li><a href="#">Startups</a></li>
-          </ul>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae ut ratione similique temporibus tempora dicta soluta? Qui hic, voluptatem nemo quo corporis dignissimos voluptatum debitis cumque fugiat mollitia quasi quod.
-          </p>
+    <% @posts.each do |post| %>
+      <div class="col-sm-4 margin-b-40">
+        <div class="grid-post">
+          <a href="#"><img src="assets/box/img-1.jpg" alt="" class="img-responsive full-img"></a>
+          <div class="grid-post-meta">
+            <h3><%= link_to post.title, "/blog/#{post.id}" %></h3>
+            <ul class="list-inline">
+              <li>By <%= post.author %></li>
+              <li><%= post.created_at.strftime("%m/%d/%Y") %></li>
+            </ul>
+            <p>
+              <%= post.body.first(40) %>
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-sm-4 margin-b-40">
+    <% end %>
+    <!-- <div class="col-sm-4 margin-b-40">
       <div class="grid-post">
         <a href="#"><img src="assets/box/img-2.jpg" alt="" class="img-responsive full-img"></a>
         <div class="grid-post-meta">
@@ -250,6 +251,6 @@
           </p>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
