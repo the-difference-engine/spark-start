@@ -2,29 +2,44 @@
 
 <br><br>
 
-<h2>Blog</h2>
+<div class="row">
+  <div class="col-sm-12 col-md-6 col-lg-6">
+    <h2>Blog</h2>
+  </div>
 
-<%= form_tag '/blogs', method: :get do %>
-  <%= text_field_tag :search, nil, placeholder: "Search blog" %>
-  <%= submit_tag "Submit", class: 'button' %>
-<% end %>
+  <div class="col-sm-12 col-md-6 col-lg-6">
+    <%= form_tag '/blogs', method: :get do %>
+      <%= text_field_tag :search, nil, placeholder: "Search blog" %>
+      <%= submit_tag "Submit", class: 'button' %>
+    <% end %>
+  </div>
+</div>
 
 <%= link_to 'Add Post', '/blog/new' %>
 
 <br><br>
 
-<% if !@searched %>
-  <% @posts.each do |post| %>
-    <p><h4><%= link_to post.title, "/blog/#{post.id}" %></h4></p>
-    <p><%= post.body %></p>
-    <p>By <%= post.author %>, <%= post.created_at.strftime("%m-%e-%y %H:%M") %></p>
-    <br>
-  <% end %>
+<div class="row">
 
-<% elsif @searched %>
-  <% @searched.each do |post| %>
-    <%= link_to post.title, "/blog/#{post.id}" %><br>
-  <% end %>
-<% end %>
+    <% if !@searched %>
+      <% @sorted_posts.each do |post| %>
+        <div class="col-sm-12 col-md-6 col-lg-6">
+          <p><h4><%= link_to post.title, "/blog/#{post.id}" %></h4></p>
+          <p><%= post.body.first(40) %></p>
+          <p>By <%= post.author %>, <%= post.created_at.strftime("%m/%d/%Y") %></p><br>
+        </div>
+      <% end %>
+
+    <% elsif @searched %>
+      <% @searched.each do |post| %>
+        <div class="col-sm-12 col-md-6 col-lg-6">
+          <p><h4><%= link_to post.title, "/blog/#{post.id}" %></h4></p>
+          <p><%= post.body.first(40) %></p>
+          <p>By <%= post.author %>, <%= post.created_at.strftime("%m/%d/%Y") %></p><br>
+        <% end %>
+      </div>
+    <% end %>
+
+</div>
 
 </div>

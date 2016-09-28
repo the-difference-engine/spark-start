@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   def index
     @user = session[:userinfo]
     @posts = Post.all
+    @sorted_posts = Post.all.sort_by(&:created_at)
 
     @search_term = params[:search]
 

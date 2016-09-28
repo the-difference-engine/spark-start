@@ -21,15 +21,19 @@
 
 <br><br>
 
+<% if @post.comments.count > 0 %>
+
   <% @post.comments.each do |comment| %>
     <p><b>Comment:</b> <%= comment.body %></p>
   <% end %>
 
-<br><br>
+  <br><br>
+
+<% end %>
 
 <%= form_tag '/comment', method: :post do %>
   <p><%= label_tag "Post Comment:" %><br>
-  <%= text_area_tag :body %></p>
+  <%= text_area_tag :body, nil, cols: 100, rows: 6 %></p>
   <%= hidden_field_tag :post_id, @post.id %>
 
   <%= submit_tag "Submit" %>
