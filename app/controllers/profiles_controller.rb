@@ -4,14 +4,17 @@ def index
 end
 
 def show
-
-  @profile = Profile.find(params[:id])
+  @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
+  @profile = Profile.find_by_user_id(params[:id])
 end
 
 def new
+  @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
 end
 
 def create
+  current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
+  params[:user_id] = current_user.id
   @profile = Profile.create(
     experience: params[:experience],
     bio: params[:bio],
@@ -24,7 +27,7 @@ def create
     city: params[:city],
     state: params[:state]
     )
-  redirect_to "/profile/#{@profile.id}"
+  redirect_to "/profile/#{current_user.id}"
 end
 
 def edit

@@ -4,9 +4,11 @@ Rails.application.routes.draw do
   get "/auth/failure" => "auth0#failure"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-root to: 'posts#landing_page'
+root to: 'homes#index'
 
 get '/' => 'homes#index'
+get '/theme' => 'homes#theme'
+
 
 get '/profiles' => 'profiles#index'
 get '/profile/new' => 'profiles#new'
@@ -17,7 +19,7 @@ patch '/profile/:id' => 'profiles#update'
 delete '/profile/:id' => 'profiles#destroy'
 
 get '/blogs' => 'posts#index'
-get '/blog/:id' => 'posts#show'
+get '/blogs/:id' => 'posts#show'
 
 get '/comments' => 'comments#index'
 get '/comment/:id' => 'comments#show'
@@ -26,5 +28,8 @@ get '/books' => 'books#index'
 get '/book/:id' => 'books#show'
 
 get '/logout' => 'auth0#logout'
+
+get '/users' => 'users#index'
+
 
 end
