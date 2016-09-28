@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
 
 def index
+
 end
 
 def show
@@ -36,7 +37,7 @@ end
 
 def update
   @profile = Profile.find(params[:id])
-  Profile.update(
+  @profile.update(
     experience: params[:experience],
     bio: params[:bio],
     phone: params[:phone],
@@ -57,4 +58,3 @@ def destroy
 end
 
 end
-

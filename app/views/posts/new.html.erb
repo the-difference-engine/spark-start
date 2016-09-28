@@ -1,0 +1,32 @@
+<div class="container">
+
+<br><br>
+
+<h2>Add Blog Post</h2>
+
+<br>
+
+<% @post.errors.full_messages.each do |error| %>
+  <%= error %><br>
+<% end %>
+
+<%= form_tag '/blog', method: :post do %>
+  <p><%= label_tag :title %><br>
+  <%= text_field_tag :title, nil, size: 50 %></p>
+
+  <p><%= label_tag :author %><br>
+  <%= text_field_tag :author, nil, size: 50 %></p>
+
+  <p><%= label_tag :body %><br>
+  <%= text_area_tag :body, nil, cols: 100, rows: 6 %></p>
+
+  <p><%= label_tag "Tags" %> (Separate by commas):<br>
+  <%= text_field_tag :tag_string, nil, size: 50 %></p>
+
+  <p><%= label_tag "Categories" %> (Separate by commas):<br>
+  <%= text_field_tag :category_string, nil, size: 50 %></p>
+
+  <%= submit_tag "Submit" %>
+<% end %>
+
+</div>

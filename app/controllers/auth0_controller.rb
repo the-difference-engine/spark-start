@@ -31,7 +31,7 @@ class Auth0Controller < ApplicationController
 
   def logout
     session[:userinfo] = nil
-    redirect_to "http://localhost:3000"
+    redirect_to "/"
   end
 
 

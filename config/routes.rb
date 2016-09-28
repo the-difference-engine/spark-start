@@ -19,10 +19,25 @@ patch '/profile/:id' => 'profiles#update'
 delete '/profile/:id' => 'profiles#destroy'
 
 get '/blogs' => 'posts#index'
-get '/blogs/:id' => 'posts#show'
+get '/blog/new' => 'posts#new'
+post '/blog/' => 'posts#create'
+get '/blog/dashboard' => 'posts#dashboard'
+get '/blog/:id' => 'posts#show'
+get '/blog/:id/edit' => 'posts#edit'
+patch '/blog/:id' => 'posts#update'
+delete '/blog/:id' => 'posts#destroy'
 
-get '/comments' => 'comments#index'
-get '/comment/:id' => 'comments#show'
+post '/category' => 'categories#create'
+patch '/category/:id' => 'categories#update'
+delete '/category/:id' => 'category#destroy'
+
+post '/tag' => 'tags#create'
+patch '/tag' => 'tags#update'
+delete '/tag/:id' => 'tags#destroy'
+
+# get '/comments' => 'comments#index'
+# get '/comment/:id' => 'comments#show'
+post '/comment/' => 'comments#create'
 
 get '/books' => 'books#index'
 get '/book/:id' => 'books#show'
