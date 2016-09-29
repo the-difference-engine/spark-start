@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20160927023056) do
     t.string   "last_name"
     t.string   "state"
     t.string   "city"
-    t.string   "user_id"
+    t.integer  "user_id"
   end
 
   create_table "tagged_posts", force: :cascade do |t|
