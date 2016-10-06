@@ -3,7 +3,7 @@ class ProfilesController < ApplicationController
   include ProfilesHelper
 
 def index
-
+  
 end
 
 def show

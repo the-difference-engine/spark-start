@@ -15,8 +15,8 @@
             <p><%= label_tag 'career/major' %>
             <%= text_field_tag :career %></p>
 
-            <p class="text_area"><%= label_tag :bio %>
-            <%= text_area_tag :bio, nil, cols: 50, rows: 6 %></p>
+            <div class="col-sm-12"><%= label_tag :bio %></div>
+            <div><%= text_area_tag :bio, nil, cols: 40, rows: 6 %></div>
 
             <p><%= label_tag :city %>
             <%= text_field_tag :city %></p>
