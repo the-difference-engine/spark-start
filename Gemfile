@@ -31,6 +31,8 @@ gem "figaro"
 gem 'omniauth', '~> 1.3.1'
 gem 'omniauth-auth0', '~> 1.4.1'
 
+gem 'vuejs-rails'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

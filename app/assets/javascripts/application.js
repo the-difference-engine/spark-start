@@ -13,7 +13,6 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
-//= require turbolinks
 //= require jquery.min
 //= require jquery-migrate.min
 //= require jquery.easing.min
@@ -38,4 +37,5 @@
 //= require versa
 //= require masterslider.min
 //= require jquery.cubeportfolio.min
+//= require vue
 //= require_tree .

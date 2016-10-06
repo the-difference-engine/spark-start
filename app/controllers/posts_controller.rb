@@ -15,6 +15,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
     @post = Post.find(params[:id])
     @comments = Comment.find_by(params[:post_id])
 
@@ -23,12 +24,14 @@ class PostsController < ApplicationController
   end
 
   def dashboard
+    @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
     @posts = Post.all.sort
     @categories = Category.all.sort
     @tags = Tag.all.sort
   end
 
   def new
+    @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
     # @options = Category.all.map { |category| [category.name, category.id] }
     # @tag_options = Tag.all.map { |tag| [tag.tag_name, tag.id] }
     @post = Post.new
@@ -89,6 +92,7 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
     @post = Post.find(params[:id])
     @post_categories = @post.categories.collect { |category| category.name }
     @category_string = @post_categories.join(", ")

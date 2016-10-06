@@ -31,6 +31,7 @@ post '/category' => 'categories#create'
 patch '/category/:id' => 'categories#update'
 delete '/category/:id' => 'category#destroy'
 
+get '/tags' => 'tags#index'
 post '/tag' => 'tags#create'
 patch '/tag' => 'tags#update'
 delete '/tag/:id' => 'tags#destroy'
