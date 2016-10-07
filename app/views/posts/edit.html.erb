@@ -22,8 +22,12 @@
   <p>Categories (Separate by commas): <br>
   <%= text_field_tag :category_string, @category_string %></p>
 
-  <%= submit_tag "Save Edits" %><br>
-  <%= link_to "Delete Post", "/blog/#{@post.id}", method: :delete %>
+  <%= submit_tag "Save Edits", class: 'btn btn-primary' %>
+
 <% end %>
+
+<br>
+
+<%= button_to "Delete Post", "/blog/#{@post.id}", method: :delete, class: 'btn btn-danger' %>
 
 </div>

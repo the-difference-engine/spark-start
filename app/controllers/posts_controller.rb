@@ -36,7 +36,7 @@ class PostsController < ApplicationController
     # @options = Category.all.map { |category| [category.name, category.id] }
     # @tag_options = Tag.all.map { |tag| [tag.tag_name, tag.id] }
     @post = Post.new
-    
+
     @tags = Tag.all
     respond_to do |format|
       format.html
@@ -168,7 +168,6 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-
     redirect_to "/blogs/"
   end
 
