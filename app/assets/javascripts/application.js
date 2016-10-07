@@ -10,6 +10,9 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require vue
+//= require vue-router
+//= require vue-resource
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
@@ -37,5 +40,4 @@
 //= require versa
 //= require masterslider.min
 //= require jquery.cubeportfolio.min
-//= require vue
 //= require_tree .

@@ -1,45 +1,31 @@
-var app = new Vue({
-  el: '#app',
+var tags = new Vue({
+  el: '#tags',
   data: {
-    message: 'Hello Vue!'
+    show: false,
+    tags: [],
+    checkedTags: [],
+  },
+  ready: function() {
+    var that;
+    that = this;
+    $.ajax({
+      url: '/tags.json',
+      success: function(res) {
+        that.tags = res;
+      }
+    })
   }
-})
-
-new Vue ({
-  el: '#checkbox',
-  data: {
-    checkedNames: []
-  }
-})
+});
 
 // new Vue ({
-//   el: '#tags',
+//   el: '#showTags',
 //   data: {
-//     // tag: { tag_name: ''},
-//     tags: [    
-//     {"tag_name": "ruby"},
-//     {"tag_name": "js"},
-//     {"tag_name": "blue"}
-//     ]
+//     active: false,
+//     message: 'it works'
+//   }
+//   methods: {
+//     toggle: function() {
+//       this.active = !this.active;
+//     }
 //   }
 // })
-
-new Vue ({
-  el: '#tags',
-  ready: function() {
-    debugger
-    this.fetchTags()
-  },
-  methods: {
-    fetchTags: function() {
-      console.log("tetjetetta")
-      var tags = []
-    },
-    this.$http.get('/tags').success(function(tags) {
-      this.$set('tags', tags);
-    }).error(function(error) {
-      console.log(error);
-    });
-      }
-    }
-})

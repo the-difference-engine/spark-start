@@ -12,6 +12,7 @@ class PostsController < ApplicationController
     if @search_term.blank? == false
       @searched = @posts.where("title ILIKE ? OR author ILIKE ? OR body ILIKE ?", "%#{@search_term}%", "%#{@search_term}%", "%#{@search_term}%")
     end
+
   end
 
   def show
@@ -35,6 +36,12 @@ class PostsController < ApplicationController
     # @options = Category.all.map { |category| [category.name, category.id] }
     # @tag_options = Tag.all.map { |tag| [tag.tag_name, tag.id] }
     @post = Post.new
+    
+    @tags = Tag.all
+    respond_to do |format|
+      format.html
+      format.json { render :json => @tags }
+    end
   end
 
   def create
