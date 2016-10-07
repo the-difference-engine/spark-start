@@ -21,41 +21,44 @@
   <%= text_area_tag :body, nil, cols: 100, rows: 6 %></p>
 
   <p><div id="categories">
-  <button v-on:click="show = !show" @click.prevent>View Categories</button>
+    <button type="button" class="btn btn-info" v-on:click="show = !show" @click.prevent>View Categories</button>
 
-  <div class="row" v-if="show">
-    <div v-for="category in categories">
-      <div class="col-sm-6 col-md-4 col-lg-4">
-        <input type="checkbox" id="{{category.name}}" value=" {{category.name}}" v-model="checkedCategories">
-        <label for="{{category.name}}">{{category.name}}</label>
+    <div class="row" v-if="show">
+      <div v-for="category in categories">
+        <div class="col-sm-6 col-md-3 col-lg-3">
+          <input type="checkbox" id="{{category.name}}" value=" {{category.name}}" v-model="checkedCategories">
+          <label for="{{category.name}}">{{category.name}}</label>
+        </div>
       </div>
     </div>
-  </div>
 
-  <p><%= label_tag "Categories" %> (Separate by commas):<br>
-  <%=text_field_tag :category_string, '{{ checkedCategories }}', size: 50 %>
+    <p><%= label_tag "Categories" %> (Separate by commas):<br>
+    <%=text_field_tag :category_string, '{{ checkedCategories }}', size: 50 %>
 
   </div></p>
 
+  <br>
 
   <p><div id="tags">
-  <button v-on:click="show = !show" @click.prevent>View Tags</button>
+    <button type="button" class="btn btn-info" v-on:click="show = !show" @click.prevent>View Tags</button>
 
-  <div class="row" v-if="show">
-    <div v-for="tag in tags">
-      <div class="col-sm-6 col-md-4 col-lg-4">
-        <input type="checkbox" id="{{tag.tag_name}}" value=" {{tag.tag_name}}" v-model="checkedTags">
-        <label for="{{tag.tag_name}}">{{tag.tag_name}}</label>
+    <div class="row" v-if="show">
+      <div v-for="tag in tags">
+        <div class="col-sm-6 col-md-3 col-lg-3">
+          <input type="checkbox" id="{{tag.tag_name}}" value=" {{tag.tag_name}}" v-model="checkedTags">
+          <label for="{{tag.tag_name}}">{{tag.tag_name}}</label>
+        </div>
       </div>
     </div>
-  </div>
 
-  <p><%= label_tag "Tags" %> (Separate by commas):<br>
-  <%=text_field_tag :tag_string, '{{ checkedTags }}', size: 50 %>
-
+    <p><%= label_tag "Tags" %> (Separate by commas):<br>
+    <%=text_field_tag :tag_string, '{{ checkedTags }}', size: 50 %>
+    
   </div></p>
 
-  <%= submit_tag "Submit", class: "button" %>
+  <br>
+
+  <%= submit_tag "Submit", class: "btn btn-primary" %>
 <% end %>
 
 </div>
