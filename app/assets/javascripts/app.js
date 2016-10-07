@@ -3,7 +3,7 @@ var tags = new Vue({
   data: {
     show: false,
     tags: [],
-    checkedTags: [],
+    checkedTags: []
   },
   ready: function() {
     var that;
@@ -17,15 +17,21 @@ var tags = new Vue({
   }
 });
 
-// new Vue ({
-//   el: '#showTags',
-//   data: {
-//     active: false,
-//     message: 'it works'
-//   }
-//   methods: {
-//     toggle: function() {
-//       this.active = !this.active;
-//     }
-//   }
-// })
+var categories = new Vue ({
+  el: '#categories',
+  data: {
+    show: false,
+    categories: [],
+    checkedCategories: []
+  },
+  ready: function() {
+    var that;
+    that = this;
+    $.ajax({
+      url: '/category.json',
+      success: function(res) {
+        that.categories = res;
+      }
+    })
+  }
+});

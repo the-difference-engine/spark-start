@@ -20,8 +20,23 @@
   <p><%= label_tag :body %><br>
   <%= text_area_tag :body, nil, cols: 100, rows: 6 %></p>
 
+  <p><div id="categories">
+  <button v-on:click="show = !show" @click.prevent>View Categories</button>
+
+  <div class="row" v-if="show">
+    <div v-for="category in categories">
+      <div class="col-sm-6 col-md-4 col-lg-4">
+        <input type="checkbox" id="{{category.name}}" value=" {{category.name}}" v-model="checkedCategories">
+        <label for="{{category.name}}">{{category.name}}</label>
+      </div>
+    </div>
+  </div>
+
   <p><%= label_tag "Categories" %> (Separate by commas):<br>
-  <%= text_field_tag :category_string, nil, size: 50 %></p>
+  <%=text_field_tag :category_string, '{{ checkedCategories }}', size: 50 %>
+
+  </div></p>
+
 
   <p><div id="tags">
   <button v-on:click="show = !show" @click.prevent>View Tags</button>
