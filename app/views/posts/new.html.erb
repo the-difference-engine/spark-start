@@ -20,8 +20,12 @@
   <p><%= label_tag :body %><br>
   <%= text_area_tag :body, nil, cols: 100, rows: 6 %></p>
 
-  <p><div id="categories">
+  <template id="toggleButton">
     <button type="button" class="btn btn-info" v-on:click="show = !show" @click.prevent>View Categories</button>
+  </template>
+
+  <p><div id="tagsCategories">
+    <toggle></toggle>
 
     <div class="row" v-if="show">
       <div v-for="category in categories">
@@ -35,14 +39,14 @@
     <p><%= label_tag "Categories" %> (Separate by commas):<br>
     <%=text_field_tag :category_string, '{{ checkedCategories }}', size: 50 %>
 
-  </div></p>
+ </p>
 
   <br>
 
-  <p><div id="tags">
-    <button type="button" class="btn btn-info" v-on:click="show = !show" @click.prevent>View Tags</button>
+  <p>
+    <button type="button" class="btn btn-info" v-on:click="show2 = !show2" @click.prevent>View Tags</button>
 
-    <div class="row" v-if="show">
+    <div class="row" v-if="show2">
       <div v-for="tag in tags">
         <div class="col-sm-6 col-md-3 col-lg-3">
           <input type="checkbox" id="{{tag.tag_name}}" value=" {{tag.tag_name}}" v-model="checkedTags">
@@ -58,7 +62,8 @@
 
   <br>
 
-  <%= submit_tag "Submit", class: "btn btn-primary" %>
+
+  <child-component tags=postTags categories=postCategories><button @click="submitData">Submit</button></child-component>
 <% end %>
 
 </div>

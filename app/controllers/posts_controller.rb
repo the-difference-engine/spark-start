@@ -18,7 +18,7 @@ class PostsController < ApplicationController
   def show
     @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
     @post = Post.find(params[:id])
-    @comments = Comment.find_by(params[:post_id])
+    # @comments = Comment.find_by(params[:post_id])
 
     @category_list = @post.categories.collect { |category_name| category_name.name }
     @tag_list = @post.tags.collect { |tag| tag.tag_name }
@@ -57,11 +57,21 @@ class PostsController < ApplicationController
       @category_string_split = @category_string.split(", ")
       @category_string_split.each do |category|
         if !Category.find_by_name(category)
-          @new_category = Category.create(name: category)
+          @new_category = Category.new(name: category)
           CategorizedPost.create(
-          post_id: @post.id,
-          category_id: @new_category.id
+            post_id: @post.id,
+            category_id: @new_category.id
           )
+          respond_to do |format|
+            format.html
+            format.json do 
+              if @new_category.save
+                render :json => @new_category
+              else
+                render :json => { :errors => @category.errors.messages }, :status => 422
+              end
+            end
+          end
         else
           @category_id = Category.find_by_name(category)
           CategorizedPost.create(
@@ -75,11 +85,21 @@ class PostsController < ApplicationController
       @tag_string_split = @tag_string.split(", ")
       @tag_string_split.each do |tag|
         if !Tag.find_by(tag_name: tag)
-          @new_tag = Tag.create(tag_name: tag)
+          @new_tag = Tag.new(tag_name: tag)
           TaggedPost.create(
             post_id: @post.id,
             tag_id: @new_tag.id
             )
+          respond_to do |format|
+            format.html
+            format.json do 
+              if @new_tag.save
+                render :json => @new_tag
+              else
+                render :json => { :errors => @tag.errors.messages }, :status => 422
+              end
+            end
+          end
         else
           @tag_id = Tag.find_by(tag_name: tag)
           TaggedPost.create(
