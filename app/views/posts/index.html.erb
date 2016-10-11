@@ -6,7 +6,8 @@
   <div class="col-sm-12 col-md-6 col-lg-6">
     <h2>Blog</h2>
   </div>
-
+  <br>
+<% if @post.present? %>
   <div class="col-sm-12 col-md-6 col-lg-6">
     <%= form_tag '/blogs', method: :get do %>
       <%= text_field_tag :search, nil, placeholder: "Search blog" %>
@@ -39,7 +40,12 @@
         <% end %>
       </div>
     <% end %>
-
+    <% else %>
+    <p class="col-sm-12"> There are no posts yet! </p>
 </div>
+
+
+
+<% end %>
 
 </div>
