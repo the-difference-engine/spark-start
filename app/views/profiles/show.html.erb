@@ -22,10 +22,22 @@
     <hr>
   </div>
 
-  <div>Experience: <%= @profile.experience %></div>
+  <div class="text-center">
+    <h4 class="text-uppercase">about me</h4>
+    <em><q><%= @profile.bio %></q></em>
+    <hr>
+  </div>
 
-  <div>Bio: <%= @profile.bio %></div>
+  <div class="text-center">
+    <h4 class="text-uppercase">Experience</h4>
+    <em><%= @profile.experience %> years of experience in <%= @profile.career %></em>
+    <hr>
+  </div>
 
-  <div>Phone: <%= @profile.phone %></div>
+  <div class="text-center">
+    <h4 class="text-uppercase">Contact Information</h4>
+      Email: <%= @current_user.email %><br>
+      Phone: <%= @profile.phone %>
+  </div>
 
 </div>
