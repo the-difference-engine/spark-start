@@ -8,20 +8,44 @@
 
 <%= form_tag "/blog/#{@post.id}", method: :patch do %>
   <p><%= label_tag :title %><br>
-  <%= text_field_tag :title, @post.title %></p>
+  <%= text_field_tag :title, @post.title, size: 50 %></p>
 
   <p><%= label_tag :author %><br>
-  <%= text_field_tag :author, @post.author %></p>
+  <%= text_field_tag :author, @post.author, size: 50 %></p>
 
   <p><%= label_tag :body %><br>
   <%= text_area_tag :body, @post.body, cols: 100, rows: 6 %></p>
 
-  <p>Tags (Separate by commas): <br>
-  <%= text_field_tag :tag_string, @tag_string %></p>
+  <div id="categories">
+    <button type="button" class="btn btn-info" v-on:click="show = !show" @click.prevent>View Categories</button>
+    <div class="row" v-if="show">
+      <div v-for="category in categories">
+        <div class="col-sm-6 col-md-3 col-lg-3">
+          <input type="checkbox" id="{{category.name}}" value=" {{category.name}}" v-model="checkedCategories">
+          <label for="{{category.name}}">{{category.name}}</label>
+        </div>
+      </div>
+    </div>
+    <p><%= label_tag :categories, "Categories" %> (Separate by commas):<br>
+    <%= text_field_tag :category_string, "#{@category_string}, {{checkedCategories}}", size: 50 %></p>
+  </div>
+  <br>
 
-  <p>Categories (Separate by commas): <br>
-  <%= text_field_tag :category_string, @category_string %></p>
-
+  <div id="tags">
+    <button type="button" class="btn btn-info" v-on:click="show = !show" @click.prevent>View Tags</button>
+    <div class="row" v-if="show">
+      <div v-for="tag in tags">
+        <div class="col-sm-6 col-md-3 col-lg-3">
+          <input type="checkbox" id="{{tag.tag_name}}" value=" {{tag.tag_name}}" v-model="checkedTags">
+          <label for="{{tag.tag_name}}">{{tag.tag_name}}</label>
+        </div>
+      </div>
+    </div>
+    <p><%= label_tag :tags, "Tags" %> (Separate by commas):<br>
+    <%= text_field_tag :tag_string, "#{@tag_string}, {{checkedTags}}", size: 50 %></p>
+  </div>
+  <br>
+  
   <%= submit_tag "Save Edits", class: 'btn btn-primary' %>
 
 <% end %>

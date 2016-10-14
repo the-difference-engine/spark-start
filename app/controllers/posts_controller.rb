@@ -33,8 +33,6 @@ class PostsController < ApplicationController
 
   def new
     @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
-    # @options = Category.all.map { |category| [category.name, category.id] }
-    # @tag_options = Tag.all.map { |tag| [tag.tag_name, tag.id] }
     @post = Post.new
 
     @tags = Tag.all
@@ -54,24 +52,15 @@ class PostsController < ApplicationController
     )
     if @post.save
       @category_string = params[:category_string]
-      @category_string_split = @category_string.split(", ")
+      @category_string_split = @category_string.split(",")
       @category_string_split.each do |category|
+        category = category.strip
         if !Category.find_by_name(category)
-          @new_category = Category.new(name: category)
+          @new_category = Category.create(name: category)
           CategorizedPost.create(
             post_id: @post.id,
             category_id: @new_category.id
           )
-          respond_to do |format|
-            format.html
-            format.json do 
-              if @new_category.save
-                render :json => @new_category
-              else
-                render :json => { :errors => @category.errors.messages }, :status => 422
-              end
-            end
-          end
         else
           @category_id = Category.find_by_name(category)
           CategorizedPost.create(
@@ -82,24 +71,15 @@ class PostsController < ApplicationController
       end
 
       @tag_string = params[:tag_string]
-      @tag_string_split = @tag_string.split(", ")
+      @tag_string_split = @tag_string.split(",")
       @tag_string_split.each do |tag|
+        tag = tag.strip
         if !Tag.find_by(tag_name: tag)
-          @new_tag = Tag.new(tag_name: tag)
+          @new_tag = Tag.create(tag_name: tag)
           TaggedPost.create(
             post_id: @post.id,
             tag_id: @new_tag.id
             )
-          respond_to do |format|
-            format.html
-            format.json do 
-              if @new_tag.save
-                render :json => @new_tag
-              else
-                render :json => { :errors => @tag.errors.messages }, :status => 422
-              end
-            end
-          end
         else
           @tag_id = Tag.find_by(tag_name: tag)
           TaggedPost.create(
@@ -143,8 +123,9 @@ class PostsController < ApplicationController
     end
 
     @category_string = params[:category_string]
-    @category_string_split = @category_string.split(", ")
+    @category_string_split = @category_string.split(",")
     @category_string_split.each do |category|
+      category = category.strip
       if !Category.find_by_name(category)
         @new_category = Category.create(name: category)
         CategorizedPost.create(
@@ -165,8 +146,9 @@ class PostsController < ApplicationController
     end
 
     @tag_string = params[:tag_string]
-    @tag_string_split = @tag_string.split(", ")
+    @tag_string_split = @tag_string.split(",")
     @tag_string_split.each do |tag|
+      tag = tag.strip
       if !Tag.find_by(tag_name: tag)
         @new_tag = Tag.create(tag_name: tag)
         TaggedPost.create(
