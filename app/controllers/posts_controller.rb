@@ -57,21 +57,21 @@ class PostsController < ApplicationController
       @category_string_split = @category_string.split(", ")
       @category_string_split.each do |category|
         if !Category.find_by_name(category)
-          @new_category = Category.new(name: category)
+          @new_category = Category.create(name: category)
           CategorizedPost.create(
             post_id: @post.id,
             category_id: @new_category.id
           )
-          respond_to do |format|
-            format.html
-            format.json do 
-              if @new_category.save
-                render :json => @new_category
-              else
-                render :json => { :errors => @category.errors.messages }, :status => 422
-              end
-            end
-          end
+          # respond_to do |format|
+          #   format.html
+          #   format.json do 
+              # if @new_category.save
+                # render :json => @new_category
+              # else
+                # render :json => { :errors => @category.errors.messages }, :status => 422
+              # end
+          #   end
+          # end
         else
           @category_id = Category.find_by_name(category)
           CategorizedPost.create(
@@ -85,21 +85,21 @@ class PostsController < ApplicationController
       @tag_string_split = @tag_string.split(", ")
       @tag_string_split.each do |tag|
         if !Tag.find_by(tag_name: tag)
-          @new_tag = Tag.new(tag_name: tag)
+          @new_tag = Tag.create(tag_name: tag)
           TaggedPost.create(
             post_id: @post.id,
             tag_id: @new_tag.id
             )
-          respond_to do |format|
-            format.html
-            format.json do 
-              if @new_tag.save
-                render :json => @new_tag
-              else
-                render :json => { :errors => @tag.errors.messages }, :status => 422
-              end
-            end
-          end
+          # respond_to do |format|
+          #   format.html
+          #   format.json do 
+              # if @new_tag.save
+              #   render :json => @new_tag
+            #   else
+            #     render :json => { :errors => @tag.errors.messages }, :status => 422
+            #   end
+            # end
+          # end
         else
           @tag_id = Tag.find_by(tag_name: tag)
           TaggedPost.create(

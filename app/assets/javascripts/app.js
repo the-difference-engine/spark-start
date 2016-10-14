@@ -1,10 +1,10 @@
-var inputFields = new Vue({
-  el: '#inputFields',
-  data: {
-    title: '',
-    author: '',
-    body: ''
-  }
+// var inputFields = new Vue({
+//   el: '#inputFields',
+//   data: {
+//     title: '',
+//     author: '',
+//     body: ''
+//   }
   // methods: {
   //   postData: function(){
   //     var that = this;
@@ -22,17 +22,14 @@ var inputFields = new Vue({
   //     })
   //   }
   // }
-});
+// });
 
-var tagsCategories = new Vue({
-  el: '#tagsCategories',
+var tags =  new Vue({
+  el: '#tags',
   data: {
     show: false,
-    show2: false,
     tags: [],
-    checkedTags: [],
-    categories: [],
-    checkedCategories: []
+    checkedTags: []
   },
   ready: function() {
     var that;
@@ -44,16 +41,38 @@ var tagsCategories = new Vue({
       }
     })
   },
-  ready: function() {
-    var that;
-    that = this;
-    $.ajax({
-      url: '/category.json',
-      success: function(res) {
-        that.categories = res;
-      }
-    })
+});
+
+var tagsCategories = new Vue({
+  el: '#tagsCategories',
+  data: {
+    // show: false,
+    // show2: false,
+    tags: [],
+    checkedTags: [],
+    categories: [],
+    checkedCategories: []
   },
+  // ready: function() {
+  //   var that;
+  //   that = this;
+  //   $.ajax({
+  //     url: '/tags.json',
+  //     success: function(res) {
+  //       that.tags = res;
+  //     }
+  //   })
+  // },
+  // ready: function() {
+  //   var that;
+  //   that = this;
+  //   $.ajax({
+  //     url: '/category.json',
+  //     success: function(res) {
+  //       that.categories = res;
+  //     }
+  //   })
+  // },
   methods: {
     postTags: function(){
       var that = this;
@@ -82,55 +101,42 @@ var tagsCategories = new Vue({
           that.checkedCategories.push(res);
         }
       })
+    },
+    handler: function(){
+      this.postCategories;
+      this.postTags;
     }
   }
 });
 
-Vue.component('toggle', function(){
-  template: '#toggleButton',
+// Vue.component('toggle', function(){
+//   template: '#toggleButton'
   // methods: {
   //   toggleOn: function(){
   //     show != show
   //   }
   // }
-})
+// })
 
-// var categories = new Vue ({
-//   el: '#categories',
-//   data: {
-//     show: false,
-//     categories: [],
-//     checkedCategories: []
-//   },
-//   ready: function() {
-//     var that;
-//     that = this;
-//     $.ajax({
-//       url: '/category.json',
-//       success: function(res) {
-//         that.categories = res;
-//       }
-//     })
-//   }
-//   methods: {
-//     postCategories: function(){
-//       var that = this;
-//       $.ajax({
-//         method: 'POST',
-//         data: {
-//           checkedCategories: that.checkedCategories
-//         },
-//         url: '/category.json',
-//         success: function(res) {
-//           that.errors = {};
-//           that.checkedCategories.push(res);
-//         }
-//       })
-//     }
-//   }
-// });
+var categories = new Vue ({
+  el: '#categories',
+  data: {
+    show: false,
+    categories: [],
+    checkedCategories: []
+  },
+  ready: function() {
+    var that;
+    that = this;
+    $.ajax({
+      url: '/category.json',
+      success: function(res) {
+        that.categories = res;
+      }
+    })
+  }
+});
 
 // Vue.component ('child-component', function(){
 //   props: ['tags', 'categories']
 // });
-
