@@ -1,34 +1,42 @@
 <div class="container">
-    <h1>New Profile</h1>
+    <h1>Create Your New SparkStart Profile!</h1>
     <%= form_tag '/profile', method: :post do %>
     <div class="row">
         <div class="col-md-12">
-            <p><%= label_tag :first_name %>
-            <%= text_field_tag :first_name %></p>
+          <div class="row">
+            <div class="col-md-6">
+              <%= text_field_tag :first_name, nil, class: "form-control margin-b-20", :placeholder => 'First Name'%>
+            </div>
+            <div class="col-md-6">
+              <%= text_field_tag :last_name, nil, class: "form-control margin-b-20", :placeholder => 'Last Name' %>
+            </div>
+          </div>
+            <div class="row">
+              <div class="col-md-6">
+                <%= text_field_tag :experience, nil, class: "form-control margin-b-20", :placeholder => 'Experience In Years' %>
+              </div>
+              <div class="col-md-6">
+                <%= text_field_tag :career, nil, class: "form-control margin-b-20", :placeholder => 'Career/Major' %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <%= text_field_tag :city, nil, class: "form-control margin-b-20", :placeholder => 'City' %>
+              </div>
+              <div class="col-md-6">
+                <%= select_tag :state, options_for_select(@states), multiple: false, class: "form-control margin-b-20" %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <%= text_field_tag :phone, nil, class: "form-control margin-b-20", :placeholder => 'Phone Number' %>
+              </div>
+              <div class="col-md-6">
+                <%= text_field_tag :image, nil, class: "form-control margin-b-20", :placeholder => 'Upload Image' %>
+              </div>
+            </div>
 
-            <p><%= label_tag :last_name %>
-            <%= text_field_tag :last_name %></p>
-
-            <p><%= label_tag :experience %>
-            <%= text_field_tag :experience %></p>
-
-            <p><%= label_tag 'career/major' %>
-            <%= text_field_tag :career %></p>
-
-            <p><%= label_tag :bio %>
-            <%= text_field_tag :bio %></p>
-
-            <p><%= label_tag :city %>
-            <%= text_field_tag :city %></p>
-
-            <p><%= label_tag :state %>
-            <%= text_field_tag :state %></p>
-
-            <p><%= label_tag :phone %>
-            <%= text_field_tag :phone %></p>
-
-            <p><%= label_tag :image %>
-            <%= text_field_tag :image %></p>
+            <div><%= text_area_tag :bio, nil, rows: 10, class: "form-control margin-b-20", :placeholder => 'Bio' %></div>
 
             <%= submit_tag "Submit", class: 'btn btn-xl btn-skin pull-right' %>
 
