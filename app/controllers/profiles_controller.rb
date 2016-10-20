@@ -1,5 +1,7 @@
 class ProfilesController < ApplicationController
 
+  before_action :is_profile_created
+
 def index
 
 end
@@ -55,6 +57,15 @@ end
 def destroy
   @profile = Profile.find(params[:id])
   @profile.destroy
+end
+
+private
+
+def is_profile_created
+  @current_user = User.find_by_email(session[:userinfo]["extra"]["raw_info"]["email"])
+  if !@current_user.profile.present?
+    render "new"
+  end
 end
 
 end
