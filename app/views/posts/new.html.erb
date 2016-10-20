@@ -21,38 +21,49 @@
   <%= text_area_tag :body, nil, cols: 100, rows: 6 %></p>
 
   <div id="categories">
-    <button type="button" class="btn btn-info" v-on:click="show = !show" @click.prevent>View Categories</button>
+    <button type="button" class="btn btn-info" @click="show = !show" @click.prevent>View Categories</button>
     <div class="row" v-if="show">
       <div v-for="category in categories">
         <div class="col-sm-6 col-md-3 col-lg-3">
-          <input type="checkbox" id="{{category.name}}" value="{{category.name}}" v-model="checkedCategories">
+          <input type="checkbox" id="{{category.name}}" value=" {{category.name}}" v-model="checkedCategories">
           <label for="{{category.name}}">{{category.name}}</label>
         </div>
       </div>
     </div>
-
-    <p><%= label_tag "Categories" %> (Separate by commas):<br>
-    <%= text_field_tag :category_string, '{{checkedCategories}}', size: 50 %></p>
+    <p><%= label_tag :categories, "Categories" %> (Separate by commas):<br>
+    <%= text_field_tag :category_string, "{{checkedCategories}}", size: 50 %></p>
   </div>
   <br>
 
   <div id="tags">
-    <button type="button" class="btn btn-info" v-on:click="show = !show" @click.prevent>View Tags</button>
+    <button type="button" class="btn btn-info" @click="show = !show" @click.prevent>View Tags</button>
     <div class="row" v-if="show">
       <div v-for="tag in tags">
         <div class="col-sm-6 col-md-3 col-lg-3">
-          <input type="checkbox" id="{{tag.tag_name}}" value="{{tag.tag_name}}" v-model="checkedTags">
+          <input type="checkbox" id="{{tag.tag_name}}" value=" {{tag.tag_name}}" v-model="checkedTags">
           <label for="{{tag.tag_name}}">{{tag.tag_name}}</label>
         </div>
       </div>
     </div>
+    <p><%= label_tag :tags, "Tags" %> (Separate by commas):<br>
+    <%= text_field_tag :tag_string, '{{checkedTags}}', size: 50 %></p>
 
-    <p><%= label_tag "Tags" %> (Separate by commas):<br>
-    <%= text_field_tag :tag_string, '{{checkedTags}}', size: 50 %></p>   
+    <div v-for="checkedTag in checkedTags">
+      <input v-model="checkedTag.tag_name">
+      {{checkedTag.tag_name}}
+    </div>
+    <button @click="addTag" @click.prevent>New Tag</button>
+
+    <div v-for="checkedTag in checkedTags">
+      {{checkedTag["tag_name"]}}
+    </div>
+
+    {{ checkedTags }}
   </div>
   <br>
+
   <div id="tagsCategories">
-    <button @click="handler">Submit</button>
+    <%= submit_tag "Submit", class: 'btn btn-primary' %>
   </div>
 <% end %>
 

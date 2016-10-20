@@ -27,7 +27,7 @@ get '/blog/:id/edit' => 'posts#edit'
 patch '/blog/:id' => 'posts#update'
 delete '/blog/:id' => 'posts#destroy'
 
-get '/category' => 'categories#index'
+get '/categories' => 'categories#index'
 post '/category' => 'categories#create'
 patch '/category/:id' => 'categories#update'
 delete '/category/:id' => 'category#destroy'
