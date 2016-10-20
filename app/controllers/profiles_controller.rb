@@ -2,6 +2,8 @@ class ProfilesController < ApplicationController
 
   before_action :is_profile_created
 
+  include ProfilesHelper
+
 def index
 
 end
@@ -13,12 +15,14 @@ end
 
 def new
   @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
+  @states = us_states
 end
 
 def create
+
   current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
   params[:user_id] = current_user.id
-  @profile = Profile.create(
+  @profile = Profile.create!(
     experience: params[:experience],
     bio: params[:bio],
     phone: params[:phone],
