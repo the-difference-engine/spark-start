@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
 
-  before_action :is_profile_created
+  before_action :is_profile_created, only: [:index, :new, :show, :edit, :update, :destroy]
 
   include ProfilesHelper
 
@@ -10,34 +10,29 @@ end
 
 def show
   @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
-  @profile = Profile.find_by_user_id(params[:id])
+  @profile = Profile.find(@current_user.profile.id)
 end
 
 def new
   @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
-<<<<<<< f78bfed93a19636182eea51c73210ade2d3fac05
-  @states = us_states
-=======
->>>>>>> put in nil guards
 end
 
 def create
-
   current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
-  params[:user_id] = current_user.id
+  user_id = current_user.id
   @profile = Profile.create!(
     experience: params[:experience],
     bio: params[:bio],
     phone: params[:phone],
     career: params[:career],
     image: params[:image],
-    user_id: params[:user_id],
+    user_id: user_id,
     first_name: params[:first_name],
     last_name: params[:last_name],
     city: params[:city],
     state: params[:state]
     )
-  redirect_to "/profile/#{current_user.id}"
+  redirect_to "/profile/#{@profile.id}"
 end
 
 def edit
@@ -46,19 +41,22 @@ end
 
 def update
   @profile = Profile.find(params[:id])
-  @profile.update(
+  if @profile.update(
     experience: params[:experience],
     bio: params[:bio],
     phone: params[:phone],
     career: params[:career],
     image: params[:image],
-    user_id: params[:user_id],
     first_name: params[:first_name],
     last_name: params[:last_name],
     city: params[:city],
     state: params[:state]
     )
-  redirect_to "/profile/#{@profile.id}"
+    flash[:success]= "Profile updated!"
+    redirect_to "/profile/#{@profile.id}"
+  else
+    render :edit
+  end
 end
 
 def destroy
@@ -70,7 +68,7 @@ private
 
 def is_profile_created
   @current_user = User.find_by_email(session[:userinfo]["extra"]["raw_info"]["email"])
-  if !@current_user.profile.present?
+  if !@current_user.profile
     render "new"
   end
 end
