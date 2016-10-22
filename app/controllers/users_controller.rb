@@ -8,16 +8,13 @@ class UsersController < ApplicationController
 		@profiles = Profile.all
 	end
 
-<<<<<<< e1f8c1d12567e7581b7e301a425438e5cc10b7a0
 	private
 
 	def is_profile_created
 	  @current_user = User.find_by_email(session[:userinfo]["extra"]["raw_info"]["email"])
-	  if !@current_user.profile.present?
+	  if !@current_user.profile
 	    render "new"
 	  end
 	end
 
-=======
->>>>>>> attempt to add commenter user name
 end

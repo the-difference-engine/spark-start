@@ -6,7 +6,7 @@ def index
   end
 
   @user = session[:userinfo]
-  @posts = Post.all.sort_by(&:created_at).take(3)
+  @posts = Post.all.sort_by(&:created_at).reverse!.take(3)
 
 end
 
