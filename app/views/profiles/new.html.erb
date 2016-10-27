@@ -1,0 +1,53 @@
+<div class="container">
+  <h1>Create Your New SparkStart Profile!</h1>
+
+  <br>
+  <% @profile.errors.full_messages.each do |error| %>
+    <span style="color: red"><%= error %></span><br>
+  <% end %>
+  <br>
+
+  <%= form_tag '/profile', method: :post do %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-6">
+          <%= text_field_tag :first_name, nil, class: "form-control margin-b-20", :placeholder => 'First Name'%>
+        </div>
+        <div class="col-md-6">
+          <%= text_field_tag :last_name, nil, class: "form-control margin-b-20", :placeholder => 'Last Name' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <%= text_field_tag :experience, nil, class: "form-control margin-b-20", :placeholder => 'Experience In Years' %>
+        </div>
+        <div class="col-md-6">
+          <%= text_field_tag :career, nil, class: "form-control margin-b-20", :placeholder => 'Career/Major' %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <%= text_field_tag :city, nil, class: "form-control margin-b-20", :placeholder => 'City' %>
+        </div>
+        <div class="col-md-6">
+          <%= select_tag :state, options_for_select(us_states), multiple: false, class: "form-control margin-b-20" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <%= text_field_tag :phone, nil, class: "form-control margin-b-20", :placeholder => 'Phone Number' %>
+        </div>
+        <div class="col-md-6">
+          <%= text_field_tag :image, nil, class: "form-control margin-b-20", :placeholder => 'Upload Image' %>
+        </div>
+      </div>
+
+      <div><%= text_area_tag :bio, nil, rows: 10, class: "form-control margin-b-20", :placeholder => 'Bio' %></div>
+
+      <%= submit_tag "Submit", class: 'btn btn-xl btn-skin' %>
+
+    </div>
+  </div>
+  <% end %>
+</div>
