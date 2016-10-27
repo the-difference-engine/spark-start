@@ -21,7 +21,7 @@
   <%= text_area_tag :body, nil, cols: 100, rows: 6 %></p>
 
   <div id="categories">
-    <button type="button" class="btn btn-info" @click="show = !show" @click.prevent>View Categories</button>
+    <button type="button" class="btn btn-success" @click="show = !show" @click.prevent>Choose Categories</button>
     <div class="row" v-if="show">
       <div v-for="category in categories">
         <div class="col-sm-6 col-md-3 col-lg-3">
@@ -32,11 +32,16 @@
     </div>
     <p><%= label_tag :categories, "Categories" %> (Separate by commas):<br>
     <%= text_field_tag :category_string, "{{checkedCategories}}", size: 50 %></p>
+
+    <div v-for="checkedCategory in checkedCategories">
+      <input v-model="checkedCategory"> <button @click='deleteCategoryField(checkedCategory)' @click.prevent>delete</button> <br>
+    </div>
+    <button @click="addCategory" @click.prevent class="btn btn-info">Create New Category</button>
   </div>
   <br>
 
   <div id="tags">
-    <button type="button" class="btn btn-info" @click="show = !show" @click.prevent>View Tags</button>
+    <button type="button" class="btn btn-success" @click="show = !show" @click.prevent>Choose Tags</button>
     <div class="row" v-if="show">
       <div v-for="tag in tags">
         <div class="col-sm-6 col-md-3 col-lg-3">
@@ -49,16 +54,10 @@
     <%= text_field_tag :tag_string, '{{checkedTags}}', size: 50 %></p>
 
     <div v-for="checkedTag in checkedTags">
-      <input v-model="checkedTag.tag_name">
-      {{checkedTag.tag_name}}
+      <input v-model="checkedTag"> <button @click='deleteTagField(checkedTag)' @click.prevent>delete</button> <br>
     </div>
-    <button @click="addTag" @click.prevent>New Tag</button>
+    <button @click="addTag" @click.prevent class="btn btn-info">Create New Tag</button>
 
-    <div v-for="checkedTag in checkedTags">
-      {{checkedTag["tag_name"]}}
-    </div>
-
-    {{ checkedTags }}
   </div>
   <br>
 

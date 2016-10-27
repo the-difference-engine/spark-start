@@ -22,16 +22,15 @@ var tags =  new Vue({
       url: '/tags.json',
       success: function(res) {
         that.tags = res;
-        // console.log(that.tags)
       }
     })
   },
   methods: {
     addTag: function () {
-      this.checkedTags.push({ 
-        tag_name: '' 
-      });
-      console.log(this.checkedTags)
+      this.checkedTags.push('');
+    },
+    deleteTagField: function (checkedTag) {
+      this.checkedTags.$remove(checkedTag)
     }
   }
 });
@@ -53,6 +52,14 @@ var categories = new Vue ({
         that.categories = res;
       }
     })
+  },
+  methods: {
+    addCategory: function () {
+      this.checkedCategories.push('');
+    },
+    deleteCategoryField: function (checkedCategory) {
+      this.checkedCategories.$remove(checkedCategory)
+    }
   }
 });
 
