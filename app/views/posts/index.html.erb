@@ -1,0 +1,55 @@
+<div class="container">
+
+<br><br>
+
+<div class="row">
+  <div class="col-sm-12 col-md-6 col-lg-6">
+    <h2>Blog</h2>
+  </div>
+  <br>
+<% if @posts %>
+  <div class="col-sm-12 col-md-6 col-lg-6">
+    <%= form_tag '/blogs', method: :get do %>
+      <%= text_field_tag :search, nil, placeholder: "Search blog", size: 30 %>
+      <%= submit_tag "Submit", class: 'btn btn-xl btn-skin' %>
+    <% end %>
+  </div>
+</div>
+
+<%= link_to 'Add Post', '/blog/new' %>
+
+<br><br>
+
+  <% if !@searched %>
+    <% @sorted_posts.each do |post| %>
+      <div class="row">
+        <div class="col-md-2 col-lg-2"></div>
+        <div class="col-sm-12 col-md-8 col-lg-8">
+          <div class="blog-header"><%= link_to post.title, "/blog/#{post.id}" %></div>
+          <div class="blog-body"><%= post.body.first(500) %></div>
+          <div class="blog-author">By <%= post.author %>, <%= post.created_at.strftime("%m/%d/%Y") %></div><br>
+        </div>
+        <div class="col-md-3 col-lg-3"></div>
+      </div>
+    <% end %>
+
+  <% elsif @searched %>
+    <% @searched.each do |post| %>
+      <div class="row">
+        <div class="col-md-2 col-lg-2"></div>
+          <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="blog-header"><%= link_to post.title, "/blog/#{post.id}" %></div>
+            <div class="blog-body"><%= post.body.first(40) %></div>
+            <div class="blog-author">By <%= post.author %>, <%= post.created_at.strftime("%m/%d/%Y") %></div><br>
+          </div>
+        <div class="col-md-3 col-lg-3"></div>
+      </div>
+    <% end %>
+  <% else %>
+    <p class="col-sm-12">There are no posts yet!</p>
+  </div>
+  <% end %>
+
+<% end %>
+
+</div>

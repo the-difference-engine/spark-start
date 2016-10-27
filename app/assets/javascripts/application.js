@@ -10,7 +10,34 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require vue
+//= require vue-router
+//= require vue-resource
 //= require jquery
+//= require bootstrap-sprockets
 //= require jquery_ujs
-//= require turbolinks
+//= require jquery.min
+//= require jquery-migrate.min
+//= require jquery.easing.min
+//= require bootstrap.min
+//= require bootstrap-hover-dropdown.min
+//= require raphael-min
+//= require livicons-1.4.min
+//= require raphael-min
+//= require jquery.waypoints.min
+//= require jquery.counterup.min
+//= require owl.carousel.min
+//= require jquery.flexslider-min
+//= require jquery.appear
+//= require modernizr.custom.97074
+//= require jquery.stellar.min
+//= require jquery.BlackAndWhite
+//= require lightbox.min
+//= require jquery.hoverdir
+//= require jquery.sticky
+//= require wow.min
+//= require headroom
+//= require versa
+//= require masterslider.min
+//= require jquery.cubeportfolio.min
 //= require_tree .
