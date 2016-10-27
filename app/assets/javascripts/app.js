@@ -25,23 +25,28 @@ var tags =  new Vue({
       url: '/tags.json',
       success: function(res) {
         that.tags = res;
-        // console.log(that.tags)
       }
     })
   },
   methods: {
     addTag: function () {
+<<<<<<< 43b2648dca2eeeb4ae149c6ad5f3998900ae50b5
 <<<<<<< d01b303b692c08116b405fb00bfabc69961ce635
+=======
+>>>>>>> fix vue add new fields
       this.checkedTags.push('');
     },
     deleteTagField: function (checkedTag) {
       this.checkedTags.$remove(checkedTag)
+<<<<<<< 43b2648dca2eeeb4ae149c6ad5f3998900ae50b5
 =======
       this.checkedTags.push({ 
         tag_name: '' 
       });
       console.log(this.checkedTags)
 >>>>>>> started working on new tag submit
+=======
+>>>>>>> fix vue add new fields
     }
   }
 });
