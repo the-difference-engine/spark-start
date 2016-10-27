@@ -37,6 +37,7 @@
     
     <%= label_tag :categories, "Categories" %>:<br>
     <%= text_area_tag :category_string, "{{checkedCategories}}", disabled: "disabled", style: "border: none; width: 100%; resize: none" %>
+
   </div>
   <br>
 
@@ -50,14 +51,6 @@
         </div>
       </div>
     </div>
-    <p><%= label_tag :tags, "Tags" %> (Separate by commas):<br>
-    <%= text_field_tag :tag_string, '{{checkedTags}}', size: 50 %></p>
-
-    <div v-for="checkedTag in checkedTags">
-      <input v-model="checkedTag.tag_name">
-      {{checkedTag.tag_name}}
-    </div>
-    <button @click="addTag" @click.prevent>New Tag</button>
 
     <div v-for="checkedTag in checkedTags">
       <p><input v-model="checkedTag"> <button @click="deleteTagField(checkedTag)" @click.prevent class="btn btn-danger">delete</button></p>
