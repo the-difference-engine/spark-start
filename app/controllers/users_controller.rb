@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
 	def is_profile_created
 	  @current_user = User.find_by_email(session[:userinfo]["extra"]["raw_info"]["email"])
-	  if !@current_user.profile.present?
+	  if !@current_user.profile
 	    render "new"
 	  end
 	end

@@ -1,41 +1,66 @@
 <div class="container">
 
-<h1>Edit Profile</h1>
+  <h1>Edit Your SparkStart Profile!</h1>
+  
+  <br>
+  <% @profile.errors.full_messages.each do |error| %>
+    <span style="color: red"><%= error %></span><br>
+  <% end %>
+  <br>
 
-<%= form_tag "/profile/#{@profile.id}", method: :patch do %>
+  <%= form_tag "/profile/#{@profile.id}", method: :patch do %>
+  <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-6">
+            <%= label_tag :first_name %> <br>
+            <%= text_field_tag :first_name, @profile.first_name, class: "form-control margin-b-20" %>
+          </div>
+          <div class="col-md-6">
+            <%= label_tag :last_name %> <br>
+            <%= text_field_tag :last_name, @profile.last_name, class: "form-control margin-b-20" %>
+          </div>
+        </div>
+          <div class="row">
+            <div class="col-md-6">
+              <%= label_tag :experience %> <br>
+              <%= text_field_tag :experience, @profile.experience, class: "form-control margin-b-20" %>
+            </div>
+            <div class="col-md-6">
+              <%= label_tag :career %> <br>
+              <%= text_field_tag :career, @profile.career, class: "form-control margin-b-20" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <%= label_tag :city %> <br>
+              <%= text_field_tag :city, @profile.city, class: "form-control margin-b-20" %>
+            </div>
+            <div class="col-md-6">
+              <%= label_tag :state %> <br>
+              <%= select_tag :state, options_for_select(us_states), multiple: false, class: "form-control margin-b-20" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <%= label_tag :phone %> <br>
+              <%= text_field_tag :phone, @profile.phone, class: "form-control margin-b-20" %>
+            </div>
+            <div class="col-md-6">
+              <%= label_tag :image %> <br>
+              <%= text_field_tag :image, @profile.image, class: "form-control margin-b-20" %>
+            </div>
+          </div>
+            
+          <div>
+            <%= label_tag :bio %> <br>
+            <%= text_area_tag :bio, @profile.bio, rows: 10, class: "form-control margin-b-20" %>    
+          </div>
 
-  <p><%= label_tag :first_name %>
-  <%= text_field_tag :first_name, @profile.first_name %></p>
+          <%= submit_tag "Submit", class: 'btn btn-xl btn-skin' %>
 
-  <p><%= label_tag :last_name %>
-  <%= text_field_tag :last_name, @profile.last_name %></p>
-
-  <p><%= label_tag :user_id %>
-  <%= text_field_tag :user_id, @profile.user_id %></p>
-
-  <p><%= label_tag :experience %>
-  <%= text_field_tag :experience, @profile.experience %></p>
-
-  <p><%= label_tag 'career/major' %>
-  <%= text_field_tag :career, @profile.career %></p>
-
-  <p><%= label_tag :bio %>
-  <%= text_field_tag :bio, @profile.bio %></p>
-
-  <p><%= label_tag :city %>
-  <%= text_field_tag :city, @profile.city %></p>
-
-  <p><%= label_tag :state %>
-  <%= text_field_tag :state, @profile.state %></p>
-
-  <p><%= label_tag :phone %>
-  <%= text_field_tag :phone, @profile.phone %></p>
-
-  <p><%= label_tag :image %>
-  <%= text_field_tag :image, @profile.image %></p>
-
-  <%= submit_tag "Submit" %>
-
-<% end %>
+        </div>
+  </div>
+  <% end %>
 
 </div>
