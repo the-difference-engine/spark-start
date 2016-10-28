@@ -36,7 +36,7 @@
     <p><button @click="addCategory" @click.prevent class="btn btn-info">Create New Category</button></p>
     
     <%= label_tag :categories, "Categories" %>:<br>
-    <%= text_area_tag :category_string, "{{checkedCategories}}", disabled: "disabled", style: "border: none; width: 100%; resize: none" %>
+    <%= text_field_tag :category_string, "{{checkedCategories}}", style: "border: none; width: 100%; resize: none", readonly: "readonly" %>
 
   </div>
   <br>
@@ -58,7 +58,7 @@
     <p><button @click="addTag" @click.prevent class="btn btn-info">Create New Tag</button></p>
 
     <p><%= label_tag :tags, "Tags" %>:
-    <%= text_field_tag :tag_string, "{{checkedTags}}", disabled: "disabled", style: "border: none; width: 100%; resize: none" %></p>
+    <%= text_area_tag :tag_string, "{{checkedTags}}", style: "border: none; width: 100%; resize: none", readonly: "readonly" %></p>
 
   </div>
   <br>

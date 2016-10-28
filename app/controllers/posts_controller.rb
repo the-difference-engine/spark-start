@@ -33,12 +33,6 @@ class PostsController < ApplicationController
   def new
     @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
     @post = Post.new
-
-    @tags = Tag.all
-    respond_to do |format|
-      format.html
-      format.json { render :json => @tags }
-    end
   end
 
   def create
@@ -49,7 +43,6 @@ class PostsController < ApplicationController
       body: params[:body],
       user_id: @user["extra"]["raw_info"]["identities"][0]["user_id"]
     )
-    binding.pry
     if @post.save
       @category_string = params[:category_string]
       @category_string_split = @category_string.split(",")
