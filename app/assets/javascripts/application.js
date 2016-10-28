@@ -10,10 +10,12 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require vue
+//= require vue-router
+//= require vue-resource
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
-//= require turbolinks
 //= require jquery.min
 //= require jquery-migrate.min
 //= require jquery.easing.min

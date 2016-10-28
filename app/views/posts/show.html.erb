@@ -17,26 +17,22 @@
   <%= @category_list.join(", ") %>
 </p>
 
-<p><%= link_to "Edit Post", "/blog/#{@post.id}/edit" %></p>
+<p><%= button_to "Edit Post", "/blog/#{@post.id}/edit", method: :get, class: "btn btn-primary" %></p>
 
 <br><br>
 
-<% if @post.comments.count > 0 %>
-
-  <% @post.comments.each do |comment| %>
-    <p><b>Comment:</b> <%= comment.body %></p>
-  <% end %>
-
-  <br><br>
-
+<% @post.comments.each do |comment| %>
+  <p><b>Comment:</b> <%= comment.body %></p>
 <% end %>
+
+<br><br>
 
 <%= form_tag '/comment', method: :post do %>
   <p><%= label_tag "Post Comment:" %><br>
   <%= text_area_tag :body, nil, cols: 100, rows: 6 %></p>
   <%= hidden_field_tag :post_id, @post.id %>
 
-  <%= submit_tag "Submit" %>
+  <%= submit_tag "Submit", class: "btn btn-primary" %>
 <% end %>
 
 
