@@ -40,4 +40,5 @@
 //= require versa
 //= require masterslider.min
 //= require jquery.cubeportfolio.min
+//= require summernote
 //= require_tree .
