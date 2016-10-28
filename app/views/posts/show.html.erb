@@ -7,7 +7,7 @@
 
 <p><b>Author:</b> <%= @post.author %></p><br>
 
-<p><%= @post.body %></p><br>
+<p><%= @post.body.html_safe %></p><br>
 
 <p><b>Tags:</b>
   <%= @tag_list.join(", ") %>

@@ -17,7 +17,8 @@
   <%= text_field_tag :author, nil, class: "form-control" %></p>
 
   <p><%= label_tag :body %><br>
-  <%= text_area_tag :body, nil, rows: 10, class: "form-control" %></p>
+  <%= text_area_tag :body, nil, rows: 10, class: "form-control tinymce" %></p>
+  <%= tinymce %>
 
   <div id="categories">
     <p><button type="button" class="btn btn-primary" @click="show = !show" @click.prevent>Choose Categories</button></p>
@@ -58,7 +59,7 @@
     <p><button @click="addTag" @click.prevent class="btn btn-info">Create New Tag</button></p>
 
     <p><%= label_tag :tags, "Tags" %>:
-    <%= text_area_tag :tag_string, "{{checkedTags}}", style: "border: none; width: 100%; resize: none", readonly: "readonly" %></p>
+    <%= text_field_tag :tag_string, "{{checkedTags}}", style: "border: none; width: 100%; resize: none", readonly: "readonly" %></p>
 
   </div>
   <br>
