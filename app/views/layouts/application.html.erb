@@ -41,30 +41,10 @@
                 <div class="pull-right nav-header-right">
                 </div>
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
                     <a class="navbar-brand" href="/"><h1>Spark Start</h1></a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown active">
-                            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About</a>
-                            <ul class="dropdown-menu">
-                                <li class="dropdown-submenu">
-                                    <a tabindex="-1" href="#">Demos </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="demo-business.html"> Business</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">How It Works</a>
-                        </li>
                         <% if session[:userinfo].present? %>
                         <li class="dropdown">
                           <% if @current_user.profile %>
@@ -74,15 +54,17 @@
                           <% end %>
                         <% end %>
                         </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mission</a>
-                        </li>
+
                         <li class="dropdown">
                             <a href="/blogs" role="button">Blog</a>
                         </li>
+
                         <li class="dropdown">
-                            <a href="#">Free Videos</a>
+                        <% if @current_user.profile %>
+                          <%= link_to "Books", "/books" %>
+                        <% end %>
                         </li>
+
                         <li class="dropdown yamm-fw">
                           <!-- <a href="#" class onclick="lock.show();">Login / Register</a> -->
                           <% if session[:userinfo].present? %>
@@ -107,53 +89,8 @@
       <footer class="footer-v3">
           <div class="container">
               <div class="row">
-                  <div class="col-md-2 margin-b-30">
-                      <h3>Quick Links</h3>
-                      <ul class="list-unstyled">
-                          <li><a href="#">Home</a></li>
-                          <li><a href="#">About  </a></li>
-                          <li><a href="#"> Press</a></li>
-                          <li><a href="#">Terms</a></li>
-                          <li><a href="#">Privacy</a></li>
-                          <li><a href="#">Contact</a></li>
-                      </ul>
-                  </div>
 
-                  <div class="col-md-3 margin-b-30">
-                      <h3>Latest post</h3>
-                      <ul class="list-unstyled latest-post-footer">
-                          <li class="clearfix">
-                              <img src="assets/team-1.jpg" width="90" class="img-circle img-responsive media-object" alt="">
-                              <div class="post-body">
-                                  <h4 class="post-heading">
-                                      Versa multipurpose
-                                  </h4>
-                                  <span>Posted on 21 Dec.</span>
-                                  <a href="#">Read more <i class="fa fa-arrow-circle-o-right"></i></a>
-                              </div>
-                          </li>
-                          <li class="clearfix">
-                              <img src="assets/team-2.jpg" width="60" class="img-circle img-responsive media-object" alt="">
-                              <div class="post-body">
-                                  <h4 class="post-heading">
-                                      Complete set
-                                  </h4>
-                                  <span>Posted on 21 Dec.</span>
-                                  <a href="#">Read more <i class="fa fa-arrow-circle-o-right"></i></a>
-                              </div>
-                          </li>
-                          <li class="clearfix">
-                              <img src="assets/team-3.jpg" width="60" class="img-circle img-responsive media-object" alt="">
-                              <div class="post-body">
-                                  <h4 class="post-heading">
-                                      Fully responsive
-                                  </h4>
-                                  <span>Posted on 21 Dec.</span>
-                                  <a href="#">Read more <i class="fa fa-arrow-circle-o-right"></i></a>
-                              </div>
-                          </li>
-                      </ul>
-                  </div>
+
                   <div class="col-md-3 margin-b-30">
                       <h3>Visit us</h3>
                       <p>
@@ -171,31 +108,7 @@
                           <a class="social-icon social-dark social-sm si-pinterest" href="http://pinterest.com/melissagwilson/" data-toggle="tooltip" title="" data-original-title="pinterest"><i class="pinterest"></i></a>
                       </div>
                   </div>
-                  <div class="col-md-4 margin-b-30">
-                      <h3>Gallery</h3>
-                      <div class="xs-gallery clearfix">
-                          <a href="assets/box/img-1.jpg" data-lightbox="gallery">
-                              <img src="assets/box/img-1.jpg" alt="" class="img-responsive" width="100">
-                          </a>
-                          <a href="assets/box/img-2.jpg" data-lightbox="gallery">
-                              <img src="assets/box/img-2.jpg" alt="" class="img-responsive" width="100">
-                          </a>
-                          <a href="assets/box/img-3.jpg" data-lightbox="gallery">
-                              <img src="assets/box/img-3.jpg" alt="" class="img-responsive" width="100">
-                          </a>
-                          <a href="assets/box/img-4.jpg" data-lightbox="gallery">
-                              <img src="assets/box/img-4.jpg" alt="" class="img-responsive" width="100">
-                          </a>
-                          <a href="assets/box/img-5.jpg" data-lightbox="gallery">
-                              <img src="assets/box/img-5.jpg" alt="" class="img-responsive" width="100">
-                          </a>
-                          <a href="assets/box/img-6.jpg" data-lightbox="gallery">
-                              <img src="assets/box/img-6.jpg" alt="" class="img-responsive" width="100">
-                          </a>
-                      </div>
-                  </div>
               </div>
-              <div class="clearfix"></div>
           </div>
       </footer>
       <!--back to top-->

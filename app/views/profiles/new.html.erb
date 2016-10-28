@@ -2,8 +2,10 @@
   <h1>Create Your New SparkStart Profile!</h1>
 
   <br>
+  <% if @profile %>
   <% @profile.errors.full_messages.each do |error| %>
     <span style="color: red"><%= error %></span><br>
+  <% end %>
   <% end %>
   <br>
 
