@@ -11,6 +11,4 @@ class Post < ApplicationRecord
 	has_many :tags, through: :tagged_posts
   # belongs_to :user
 
-	belongs_to :category
-
 end
