@@ -65,13 +65,15 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle js-activated" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">How It Works</a>
                         </li>
-                        <% if session[:userinfo].present? %>
+                        <% if session[:userinfo] %>
                         <li class="dropdown">
                           <% if @current_user.profile %>
                             <%= link_to "Profile", "/profile/#{@current_user.profile.id}" %>
                           <% else %>
                             <%= link_to "Profile", "/profile/new" %>
                           <% end %>
+                        <% else %>
+                          
                         <% end %>
                         </li>
                         <li class="dropdown">
