@@ -9,7 +9,6 @@ gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
-gem 'bootstrap-sass'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -27,28 +26,13 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem "figaro"
-gem 'omniauth', '~> 1.3.1'
-gem 'omniauth-auth0', '~> 1.4.1'
-
-gem 'vuejs-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  gem "rspec-rails", "~> 3.5.1"
-  gem 'rails-controller-testing'
-  gem "factory_girl_rails", "~> 4.7.0"
-  gem 'shoulda-matchers', '~> 3.1'
-end
-
-group :test do
-  # gem "faker"
-  # gem "capybara", "~> 2.4.3"
-  # gem "database_cleaner", "1.3.0"
-  # gem "launchy", "~> 2.4.2"
-  # gem "selenium-webdriver", "~> 2.43.0"
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug', platform: :mri
 end
 
 group :development do
@@ -62,6 +46,3 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-# Custom Gems
-gem 'pry'
