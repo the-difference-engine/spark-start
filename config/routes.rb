@@ -9,7 +9,6 @@ root to: 'homes#index'
 get '/' => 'homes#index'
 get '/theme' => 'homes#theme'
 
-
 get '/profiles' => 'profiles#index'
 get '/profile/new' => 'profiles#new'
 post '/profile/' => 'profiles#create'
@@ -20,7 +19,7 @@ delete '/profile/:id' => 'profiles#destroy'
 
 get '/blogs' => 'posts#index'
 get '/blog/new' => 'posts#new'
-post '/blog/' => 'posts#create'
+post '/blog' => 'posts#create'
 get '/blog/dashboard' => 'posts#dashboard'
 get '/blog/:id' => 'posts#show'
 get '/blog/:id/edit' => 'posts#edit'

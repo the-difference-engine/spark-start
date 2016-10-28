@@ -1,16 +1,3 @@
-<<<<<<< d01b303b692c08116b405fb00bfabc69961ce635
-=======
-// var inputFields = new Vue({
-//   el: '#inputFields',
-//   data: {
-//     title: '',
-//     author: '',
-//     body: ''
-//   }
-// });
-
-
->>>>>>> started working on new tag submit
 var tags =  new Vue({
   el: '#tags',
   data: {
@@ -30,31 +17,14 @@ var tags =  new Vue({
   },
   methods: {
     addTag: function () {
-<<<<<<< 43b2648dca2eeeb4ae149c6ad5f3998900ae50b5
-<<<<<<< d01b303b692c08116b405fb00bfabc69961ce635
-=======
->>>>>>> fix vue add new fields
       this.checkedTags.push('');
     },
     deleteTagField: function (checkedTag) {
       this.checkedTags.$remove(checkedTag)
-<<<<<<< 43b2648dca2eeeb4ae149c6ad5f3998900ae50b5
-=======
-      this.checkedTags.push({ 
-        tag_name: '' 
-      });
-      console.log(this.checkedTags)
->>>>>>> started working on new tag submit
-=======
->>>>>>> fix vue add new fields
     }
   }
 });
 
-<<<<<<< d01b303b692c08116b405fb00bfabc69961ce635
-=======
-
->>>>>>> started working on new tag submit
 var categories = new Vue ({
   el: '#categories',
   data: {
@@ -80,74 +50,4 @@ var categories = new Vue ({
       this.checkedCategories.$remove(checkedCategory)
     }
   }
-<<<<<<< d01b303b692c08116b405fb00bfabc69961ce635
-=======
-});
-
-
-var tagsCategories = new Vue({
-  el: '#tagsCategories',
-  data: {
-    title: '',
-    author: '',
-    body: '',
-    tags: [],
-    checkedTags: [],
-    categories: [],
-    checkedCategories: []
-  },
-  methods: {
-    // postTags: function(){
-    //   var that = this;
-    //   $.ajax({
-    //     method: 'POST',
-    //     data: {
-    //       checkedTags: that.checkedTags
-    //     },
-    //     url: '/tags.json',
-    //     success: function(res) {
-    //       that.errors = {};
-    //       that.checkedTags.push(res);
-    //     }
-    //   })
-    // },
-    // postCategories: function(){
-    //   var that = this;
-    //   $.ajax({
-    //     method: 'POST',
-    //     data: {
-    //       checkedCategories: that.checkedCategories
-    //     },
-    //     url: '/categories.json',
-    //     success: function(res) {
-    //       that.errors = {};
-    //       that.checkedCategories.push(res);
-    //     }
-    //   })
-    // },
-    // postFields: function(){
-    //   var that = this;
-    //   $.ajax({
-    //     method: 'POST',
-    //     data: {
-    //       title: that.title,
-    //       author: that.author,
-    //       body: that.body
-    //     },
-    //     url: '/post.json',
-    //     success: function(res) {
-    //       that.errors = {};
-    //       that.title.push(res);
-    //       that.author.push(res);
-    //       that.body.push(res);
-    //     }
-    //   })
-    // },
-    // handler: function(){
-    //   this.postCategories;
-    //   this.postTags;
-    //   this.postFields;
-    // }
-  }
->>>>>>> started working on new tag submit
 });

@@ -12,7 +12,6 @@ class PostsController < ApplicationController
     if @search_term.blank? == false
       @searched = @posts.where("title ILIKE ? OR author ILIKE ? OR body ILIKE ?", "%#{@search_term}%", "%#{@search_term}%", "%#{@search_term}%")
     end
-
   end
 
   def show
@@ -50,6 +49,7 @@ class PostsController < ApplicationController
       body: params[:body],
       user_id: @user["extra"]["raw_info"]["identities"][0]["user_id"]
     )
+    binding.pry
     if @post.save
       @category_string = params[:category_string]
       @category_string_split = @category_string.split(",")
