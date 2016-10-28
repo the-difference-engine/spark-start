@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'company@sparkstart.org'
+  default from: 'from@example.com'
   layout 'mailer'
 end

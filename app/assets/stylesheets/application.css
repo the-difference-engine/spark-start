@@ -10,21 +10,6 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= bootstrap
- *= font-awesome
- *= et-line
- *= hover-min
- *= animate
- *= owl.carousel
- *= owl.theme
- *= owl.transitions
- *= lightbox
- *= flexslider
- *= masterslider
- *= style
- *= cubeportfolio
- *= cs.style
- *= custom_style
  *= require_tree .
  *= require_self
  */
