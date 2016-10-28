@@ -42,7 +42,12 @@ delete '/tag/:id' => 'tags#destroy'
 post '/comment/' => 'comments#create'
 
 get '/books' => 'books#index'
+get '/book/new' => 'books#new'
+post 'book/' => 'books#create'
 get '/book/:id' => 'books#show'
+get '/book/:id/edit' => 'books#edit'
+patch '/book/:id' => 'books#update'
+delete 'book/:id' => 'books#destroy'
 
 get '/logout' => 'auth0#logout'
 
