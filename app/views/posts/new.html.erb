@@ -5,9 +5,11 @@
 </div>
 <br>
 
-<% @post.errors.full_messages.each do |error| %>
-  <%= error %><br>
-<% end %>
+<p style="color: red; text-align: center">
+  <% @post.errors.full_messages.each do |error| %>
+    <%= error %><br>
+  <% end %>
+</p>
 
 <%= form_tag '/blog', method: :post do %>
   <p><%= label_tag :title %><br>

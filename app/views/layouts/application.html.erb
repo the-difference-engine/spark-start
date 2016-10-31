@@ -67,7 +67,7 @@
                         </li>
                         <% if session[:userinfo].present? %>
                         <li class="dropdown">
-                          <% if @current_user.profile %>
+                          <% if @current_user.profile.present? %>
                             <%= link_to "Profile", "/profile/#{@current_user.profile.id}" %>
                           <% else %>
                             <%= link_to "Profile", "/profile/new" %>
