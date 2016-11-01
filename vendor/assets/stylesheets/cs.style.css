@@ -3,6 +3,7 @@
 @import "https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700";
 html, body {
   height: 100%;
+
 }
 
 body {
@@ -4184,7 +4185,6 @@ FOOTER STYLES
 
 /**footer v3**/
 .footer-v3 {
-
   padding: 40px 0;
   padding-bottom: 0px;
   background-color: #222222;
