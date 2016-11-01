@@ -42,3 +42,4 @@
 //= require jquery.cubeportfolio.min
 //= require tinymce
 //= require_tree .
+//= require ckeditor/init

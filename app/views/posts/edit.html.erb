@@ -19,8 +19,7 @@
   <%= text_field_tag :author, @post.author, class: "form-control" %></p>
 
   <p><%= label_tag :body %><br>
-  <%= text_area_tag :body, @post.body, class: "form-control tinymce" %></p>
-  <%= tinymce %>
+  <%= cktext_area_tag :body, @post.body, cols: 100, rows: 6 %></p>
 
   <div id="categories">
     <button type="button" class="btn btn-info" @click="show = !show" @click.prevent>Add Categories</button>

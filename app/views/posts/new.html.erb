@@ -19,8 +19,8 @@
   <%= text_field_tag :author, nil, class: "form-control" %></p>
 
   <p><%= label_tag :body %><br>
-  <%= text_area_tag :body, nil, rows: 10, class: "form-control tinymce" %></p>
-  <%= tinymce %>
+
+  <%= cktext_area_tag :body, nil, class: "form-control" %></p>
 
   <div id="categories">
     <p><button type="button" class="btn btn-primary" @click="show = !show" @click.prevent>Choose Categories</button></p>
