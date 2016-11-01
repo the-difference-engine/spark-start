@@ -8,6 +8,8 @@
 
 <p><%= sanitize @post.body %></p><br>
 
+<p><%= image_tag @post.image.url %></p><br>
+
 <p><b>Tags:</b>
   <% @tag_list.each do |tag| %>
     <% if @tag_list.index(tag) < @tag_list.length - 1 %>

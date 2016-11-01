@@ -52,6 +52,7 @@ class PostsController < ApplicationController
       title: params[:title],
       author: params[:author],
       body: params[:body],
+      image: params[:image],
       user_id: @user["extra"]["raw_info"]["identities"][0]["user_id"]
     )
     if @post.save

@@ -32,7 +32,11 @@ gem 'omniauth', '~> 1.3.1'
 gem 'omniauth-auth0', '~> 1.4.1'
 
 gem 'vuejs-rails'
+<<<<<<< da155d75cc0af41066608cf2824ea0769af0a024
 gem 'tinymce-rails'
+=======
+gem "paperclip"
+>>>>>>> installed paperclip
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
