@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161101001635) do
+ActiveRecord::Schema.define(version: 20161101005141) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,9 +54,13 @@ ActiveRecord::Schema.define(version: 20161101001635) do
     t.string   "title"
     t.string   "author"
     t.text     "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.string   "user_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -64,14 +68,17 @@ ActiveRecord::Schema.define(version: 20161101001635) do
     t.text     "bio"
     t.string   "phone"
     t.string   "career"
-    t.string   "image"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "state"
     t.string   "city"
     t.integer  "user_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "tagged_posts", force: :cascade do |t|
