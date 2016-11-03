@@ -31,19 +31,23 @@
     <% end %>
 
   <% elsif @searched %>
-    <% @searched.each do |post| %>
-      <div class="row">
-        <div class="col-md-2 col-lg-2"></div>
-          <div class="col-sm-12 col-md-6 col-lg-6">
-            <div class="blog-header"><%= link_to post.title, "/blog/#{post.id}" %></div>
-            <div class="blog-body"><%= post.body.first(40) %></div>
-            <div class="blog-author">By <%= post.author %>, <%= post.created_at.strftime("%m/%d/%Y") %></div><br>
-          </div>
-        <div class="col-md-3 col-lg-3"></div>
-      </div>
+    <% if @searched.length > 0 %>
+      <% @searched.each do |post| %>
+        <div class="row">
+          <div class="col-md-2 col-lg-2"></div>
+            <div class="col-sm-12 col-md-6 col-lg-6">
+              <div class="blog-header"><%= link_to post.title, "/blog/#{post.id}" %></div>
+              <div class="blog-body"><%= post.body.first(40) %></div>
+              <div class="blog-author">By <%= post.author %>, <%= post.created_at.strftime("%m/%d/%Y") %></div><br>
+            </div>
+          <div class="col-md-3 col-lg-3"></div>
+        </div>
+      <% end %>
+    <% else %>
+      <p>No search results.</p>
     <% end %>
   <% else %>
-    <p class="col-sm-12">There are no posts yet!</p>
+    <p>There are no posts yet!</p>
   </div>
   <% end %>
 
