@@ -4,16 +4,28 @@
 
 <h2><%= @post.title %></h2>
 
-<p><b>Author:</b> <%= @post.author %></p><br>
+<p><b>Author:</b> <%= link_to @post.author, "/blogs/?search=#{@post.author}" %></p><br>
 
 <p><%= sanitize @post.body %></p><br>
 
 <p><b>Tags:</b>
-  <%= @tag_list.join(", ") %>
+  <% @tag_list.each do |tag| %>
+    <% if @tag_list.index(tag) < @tag_list.length - 1 %>
+      <%= link_to tag, "/blogs/?tag_search=#{tag}" %>,
+    <% else %>
+      <%= link_to tag, "/blogs/?tag_search=#{tag}" %>
+    <% end %>
+  <% end %>
 </p>
 
 <p><b>Categories:</b>
-  <%= @category_list.join(", ") %>
+  <% @category_list.each do |category| %>
+    <% if @category_list.index(category) < @category_list.length - 1 %>
+      <%= link_to category, "/blogs/?category_search=#{category}" %>,
+    <% else %>
+      <%= link_to category, "/blogs/?category_search=#{category}" %>
+    <% end %>
+  <% end %>
 </p>
 
 <p><%= button_to "Edit Post", "/blog/#{@post.id}/edit", method: :get, class: "btn btn-primary" %></p>
