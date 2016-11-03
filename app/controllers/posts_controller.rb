@@ -8,17 +8,26 @@ class PostsController < ApplicationController
     @posts = Post.all
     @sorted_posts = Post.all.sort_by(&:created_at).reverse!
 
-    @search_term = params[:search]
+    @search = params[:search]
+    @tag_search = params[:tag_search]
+    @category_search = params[:category_search]
 
-    if @search_term.blank? == false
-      @searched = @posts.where("title ILIKE ? OR author ILIKE ? OR body ILIKE ?", "%#{@search_term}%", "%#{@search_term}%", "%#{@search_term}%")
+    if @search.blank? == false
+      @searched = @posts.where("title ILIKE ? OR author ILIKE ? OR body ILIKE ?", "%#{@search}%", "%#{@search}%", "%#{@search}%")
+    end
+
+    if @tag_search.blank? == false
+      @searched = Tag.find_by_tag_name(@tag_search).posts
+    end
+
+    if @category_search.blank? == false
+      @searched = Category.find_by_name(@category_search).posts
     end
   end
 
   def show
     @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
     @post = Post.find(params[:id])
-    # @comments = Comment.find_by(params[:post_id])
 
     @category_list = @post.categories.collect { |category_name| category_name.name }
     @tag_list = @post.tags.collect { |tag| tag.tag_name }
@@ -100,8 +109,6 @@ class PostsController < ApplicationController
     @category_string = @post_categories.join(", ")
     @post_tags = @post.tags.collect { |tag| tag.tag_name }
     @tag_string = @post_tags.join(", ")
-    # @options = Category.all.map { |category| [category.name, category.id] }
-    # @tag_options = Tag.all.map { |tag| [tag.tag_name, tag.id] }
   end
 
   def update
