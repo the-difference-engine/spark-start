@@ -8,7 +8,9 @@
 
 <div style="text-align: center"><b>By:</b> <%= @post.author %>, <%= @post.created_at.strftime("%m/%d/%Y") %></div><br>
 
-<div style="text-align: center"><%= image_tag @post.image.url(:medium) %></div><br>
+<% if @post.image.present? %>
+  <div style="text-align: center"><%= image_tag @post.image.url(:medium) %></div><br>
+<% end %>
 
 <p><%= sanitize @post.body %></p><br>
 
