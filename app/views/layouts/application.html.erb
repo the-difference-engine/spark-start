@@ -70,7 +70,7 @@
                           <% if @current_user.profile.present? %>
                             <%= link_to "Profile", "/profile/#{@current_user.profile.id}" %>
                           <% else %>
-                            <%= link_to "Profile", "/profile/new" %>
+                            <%= link_to "Profile", profile_new_path %>
                           <% end %>
                         <% end %>
                         </li>

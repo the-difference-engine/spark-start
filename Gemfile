@@ -35,6 +35,7 @@ gem 'vuejs-rails'
 gem 'tinymce-rails'
 
 gem 'ckeditor', '~> 4.2'
+gem 'simple_form', '~> 3.3', '>= 3.3.1'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
