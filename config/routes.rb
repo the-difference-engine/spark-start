@@ -8,6 +8,9 @@ root to: 'homes#index'
 
 get '/' => 'homes#index'
 get '/theme' => 'homes#theme'
+get '/howitworks' => 'homes#how'
+get '/mission' => 'homes#mission'
+get '/freevideos' => 'homes#videos'
 
 get '/profiles' => 'profiles#index'
 get '/profile/new' => 'profiles#new'
