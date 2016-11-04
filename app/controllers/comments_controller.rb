@@ -7,7 +7,6 @@ class CommentsController < ApplicationController
     @comment = Comment.create(
       body: params[:body],
       post_id: @post.id,
-      user_id: @user_token
     )
 
     redirect_to request.referer
