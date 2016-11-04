@@ -60,7 +60,7 @@
                         </li>
 
                         <li class="dropdown">
-                        <% if @current_user.profile %>
+                        <% if @current_user.profile.present? %>
                           <%= link_to "Books", "/books" %>
                         <% end %>
                         </li>
