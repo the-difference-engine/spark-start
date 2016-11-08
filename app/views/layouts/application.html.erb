@@ -9,27 +9,32 @@
 
         <!-- Bootstrap -->
 
-        <!-- <link href="/assets/bootstrap.min.css" rel="stylesheet"> -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link href="/assets/custom_style.css" rel="stylesheet">
-        <link href="/assets/font-awesome.min.css" rel="stylesheet">
-        <link href="/assets/et-line.css" rel="stylesheet">
-        <link href="/assets/hover-min.css" rel="stylesheet">
-        <link href="/assets/animate.css" rel="stylesheet">
-        <link href="/assets/owl.carousel.css" rel="stylesheet">
-        <link href="/assets/owl.theme.css" rel="stylesheet">
-        <link href="/assets/owl.transitions.css" rel="stylesheet">
-        <link href="/assets/lightbox.css" rel="stylesheet">
-        <link href="/assets/flexslider.css" rel="stylesheet">
+        <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', integrity: 'sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin: 'anonymous' %>
+        
+        <%= stylesheet_link_tag 'bootstrap.min' %>
+        <%= stylesheet_link_tag 'custom_style' %>
+        <%= stylesheet_link_tag 'font-awesome.min' %>
+        <%= stylesheet_link_tag 'et-line' %>
+        <%= stylesheet_link_tag 'hover-min' %>
+        <%= stylesheet_link_tag 'animate' %>
+        <%= stylesheet_link_tag 'owl.carousel' %>
+        <%= stylesheet_link_tag 'owl.theme' %>
+        <%= stylesheet_link_tag 'owl.transitions' %>
+        <%= stylesheet_link_tag 'lightbox' %>
+        <%= stylesheet_link_tag 'flexslider' %>
+
         <!--master slider-->
-        <link rel="stylesheet" href="/assets/masterslider.css"/>
-        <link href="/assets/style.css" rel='stylesheet' type='text/css'>
-        <link href="/assets/main.scss" rel='stylesheet' type='text/css' %>
-        <!--cube portfolio-->
-        <link href="/assets/cubeportfolio.min.css" rel="stylesheet" type="text/css">
+        <%= stylesheet_link_tag 'masterslider' %>
+        <%= stylesheet_link_tag 'style' %>
+        <%= stylesheet_link_tag 'main' %>
+
+        <!--cube portfolio-->        
+        <%= stylesheet_link_tag 'cubeportfolio.min' %>
 
         <!--main css file-->
-        <link href="/assets/cs.style.css" rel="stylesheet">
+        <%= stylesheet_link_tag 'cs.style' %>
+
+        <%= stylesheet_link_tag 'application' %>
 
     </head>
     <body bgcolor="#ffffff">
@@ -55,7 +60,7 @@
                         </li>
 
                         <li class="dropdown">
-                            <a href="/blogs" role="button">Blog</a>
+                            <a href="/blog" role="button">Blog</a>
                         </li>
 
                         <li class="dropdown">
@@ -100,53 +105,56 @@
                         Chicago, IL 60606
                       </p>
                       <div class="clearfix">
-                          <a class="social-icon social-dark social-sm  si-facebook" href="http://www.facebook.com/NetworldingPublishing" data-toggle="tooltip" title="" data-original-title="Facebook"><img src="assets/facebook_square.png" height="25" width="25"></a>
-                          <a class="social-icon social-dark social-sm si-twitter" href="http://twitter.com/networlding" data-toggle="tooltip" title="" data-original-title="Twitter"><img src="assets/twitter_square.png" height="25" width="25"></a>
-                          <a class="social-icon social-dark social-sm si-linkedin" href="http://www.linkedin.com/in/melissagwilson" data-toggle="tooltip" title="" data-original-title="Linkedin"><img src="assets/linkedin_square.png" height="25" width="25"></a>
-                          <a class="social-icon social-dark social-sm si-g-plus" href="https://plus.google.com/116727844459701235557?prsrc=3" data-toggle="tooltip" title="" data-original-title="Google+"><img src="assets/googleplus_square.png" height="25" width="25"></a>
-                          <a class="social-icon social-dark social-sm si-pinterest" href="http://pinterest.com/melissagwilson/" data-toggle="tooltip" title="" data-original-title="pinterest"><img src="assets/pinterest_square.png" height="25" width="25"></a>
+                          <a class="social-icon social-dark social-sm  si-facebook" href="http://www.facebook.com/NetworldingPublishing" data-toggle="tooltip" title="" data-original-title="Facebook"><%= image_tag 'facebook_square.png', height: 25, width: 25 %></a>
+                          <a class="social-icon social-dark social-sm si-twitter" href="http://twitter.com/networlding" data-toggle="tooltip" title="" data-original-title="Twitter"><%= image_tag 'twitter_square.png', height: 25, width: 25 %></a>
+                          <a class="social-icon social-dark social-sm si-linkedin" href="http://www.linkedin.com/in/melissagwilson" data-toggle="tooltip" title="" data-original-title="Linkedin"><%= image_tag 'linkedin_square.png', height: 25, width: 25 %></a>
+                          <a class="social-icon social-dark social-sm si-g-plus" href="https://plus.google.com/116727844459701235557?prsrc=3" data-toggle="tooltip" title="" data-original-title="Google+"><%= image_tag 'googleplus_square.png', height: 25, width: 25 %></a>
+                          <a class="social-icon social-dark social-sm si-pinterest" href="http://pinterest.com/melissagwilson/" data-toggle="tooltip" title="" data-original-title="pinterest"><%= image_tag 'pinterest_square.png', height: 25, width: 25 %></a>
                       </div>
                   </div>
               </div>
           </div>
       </footer>
       <!--back to top-->
-      <a href="#" class="scrollToTop"><span class="livicon " data-size="32" data-name="angle-double-up" data-duration="1000"></span></a>
+      <a href="#" class="scrollToTop"><span class="livicon" data-size="32" data-name="angle-double-up" data-duration="1000"></span></a>
       <!--back to top end-->
       <!-- jQuery plugins-->
-      <script src="/assets/jquery.min.js"></script>
-      <script src="/assets/jquery-migrate.min.js"></script>
-      <script src="/assets/jquery.easing.min.js"></script>
-      <script src="/assets/bootstrap.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-      <script src="/assets/bootstrap-hover-dropdown.min.js"></script>
-      <script src="/assets/raphael-min.js"></script>
-      <script src="/assets/livicons-1.4.min.js"></script>
-      <script src="/assets/raphael-min.js"></script>
-      <script src="/assets/jquery.waypoints.min.js"></script>
-      <script src="/assets/jquery.counterup.min.js" type="text/javascript" ></script>
-      <script src="/assets/owl.carousel.min.js"></script>
-      <script src="/assets/jquery.flexslider-min.js"></script>
-      <script src="/assets/jquery.appear.js" type="text/javascript" ></script>
-      <script src="/assets/modernizr.custom.97074.js" type="text/javascript"></script>
-      <script src="/assets/jquery.stellar.min.js" type="text/javascript"></script>
-      <script src="/assets/jquery.BlackAndWhite.js"></script>
-      <script src="/assets/lightbox.min.js"></script>
-      <script src="/assets/jquery.hoverdir.js"></script>
-      <script src="/assets/jquery.sticky.js"></script>
-      <script src="/assets/wow.min.js"></script>
-      <script src="/assets/headroom.js"></script>
-      <script src="/assets/versa.js" type="text/javascript"></script>
-      <!--page template scripts-->
-      <script src="/assets/masterslider.min.js"></script>
-      <!--cube portfolio-->
-      <script src="/assets/jquery.cubeportfolio.min.js" type="text/javascript"></script>
+      <%= javascript_include_tag 'jquery.min' %>
+      <%= javascript_include_tag 'jquery-migrate.min' %>
+      <%= javascript_include_tag 'jquery.easing.min' %>
+      <%= javascript_include_tag 'bootstrap.min' %>
 
-      <script src="https://cdn.auth0.com/js/lock/10.0/lock.min.js"></script>
+      <% javascript_include_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js", integrity: "sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa", crossorigin: "anonymous" %>
+
+      <%= javascript_include_tag 'bootstrap-hover-dropdown.min' %>
+      <%= javascript_include_tag 'raphael-min' %>
+      <%= javascript_include_tag 'livicons-1.4.min' %>
+      <%= javascript_include_tag 'jquery.waypoints.min' %>
+      <%= javascript_include_tag 'jquery.counterup.min' %>
+      <%= javascript_include_tag 'owl.carousel.min' %>
+      <%= javascript_include_tag 'jquery.flexslider-min' %>
+      <%= javascript_include_tag 'jquery.appear' %>
+      <%= javascript_include_tag 'modernizr.custom.97074' %>
+      <%= javascript_include_tag 'jquery.stellar.min' %>
+      <%= javascript_include_tag 'jquery.BlackAndWhite' %>
+      <%= javascript_include_tag 'lightbox.min' %>
+      <%= javascript_include_tag 'jquery.hoverdir' %>
+      <%= javascript_include_tag 'jquery.sticky' %>
+      <%= javascript_include_tag 'wow.min' %>
+      <%= javascript_include_tag 'headroom' %>
+      <%= javascript_include_tag 'versa' %>
+
+      <!--page template scripts-->
+      <%= javascript_include_tag 'masterslider.min' %>
+
+      <!--cube portfolio-->
+      <%= javascript_include_tag 'jquery.cubeportfolio.min' %>
+
+      <%= javascript_include_tag 'https://cdn.auth0.com/js/lock/10.0/lock.min.js' %>
       <script type="text/javascript">
         var lock = new Auth0Lock('120SH91pK3Jo2SIUNxPW3PU688IcVu83', 'sparkstart.auth0.com', {
           auth: {
-            redirectUrl: 'http://localhost:3000/auth/auth0/callback',
+            redirectUrl: 'https://qa-spark-start.herokuapp.com/auth/auth0/callback',
             responseType: 'code',
             params: {
               scope: 'openid email' // Learn about scopes: https://auth0.com/docs/scopes

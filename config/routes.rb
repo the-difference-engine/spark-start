@@ -20,7 +20,7 @@ get '/profile/:id/edit' => 'profiles#edit'
 patch '/profile/:id' => 'profiles#update'
 delete '/profile/:id' => 'profiles#destroy'
 
-get '/blogs' => 'posts#index'
+get '/blog' => 'posts#index'
 get '/blog/new' => 'posts#new'
 post '/blog' => 'posts#create'
 get '/blog/dashboard' => 'posts#dashboard'
@@ -49,6 +49,5 @@ get '/book/:id' => 'books#show'
 get '/logout' => 'auth0#logout'
 
 get '/users' => 'users#index'
-
 
 end
