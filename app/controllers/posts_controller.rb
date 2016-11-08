@@ -55,6 +55,7 @@ class PostsController < ApplicationController
       image: params[:image],
       user_id: @user["extra"]["raw_info"]["identities"][0]["user_id"]
     )
+    #binding.pry
     if @post.save
       @category_string = params[:category_string]
       @category_string_split = @category_string.split(",")

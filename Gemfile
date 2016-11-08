@@ -33,7 +33,7 @@ gem 'omniauth-auth0', '~> 1.4.1'
 
 gem 'vuejs-rails'
 gem 'tinymce-rails'
-gem "paperclip"
+gem "paperclip", "~> 5.0.0"
 gem 'aws-sdk'
 
 # Use Capistrano for deployment
