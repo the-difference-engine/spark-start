@@ -45,6 +45,7 @@ post '/comment/' => 'comments#create'
 
 get '/books' => 'books#index'
 get '/book/:id' => 'books#show'
+get '/books/new' => 'books#new'
 
 get '/logout' => 'auth0#logout'
 

@@ -1,7 +1,9 @@
 <div class="container">
+<% if @book.present? %>
 <%= image_tag @book.book.url %>
 <%= image_tag @book.book.url(:medium) %>
 <%= image_tag @book.book.url(:thumb) %>
+<% end %>
 
 Here is where the list of books will beHere is where the list of books will be
 <br>
