@@ -7,7 +7,21 @@ def index
 	end
 end
 
+def new
+  @book.new
+end
+
+def create
+  @book = Book.create( book_params )
+end
+
 def show
 end
+
+private
+def book_params
+  params.require(:book).permit(:book)
+end
+
 
 end
