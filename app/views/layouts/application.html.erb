@@ -52,7 +52,6 @@
                           <% else %>
                             <%= link_to "Profile", "/profile/new" %>
                           <% end %>
-                        <% end %>
                         </li>
 
                         <li class="dropdown">
@@ -67,7 +66,6 @@
 
                         <li class="dropdown yamm-fw">
                           <!-- <a href="#" class onclick="lock.show();">Login / Register</a> -->
-                          <% if session[:userinfo].present? %>
                             <a href="/logout">Logout</a>
                             <% else %>
                             <a href="#" class onclick="lock.show();">Login / Register</a>
