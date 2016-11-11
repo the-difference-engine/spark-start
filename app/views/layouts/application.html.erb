@@ -124,7 +124,7 @@
       <%= javascript_include_tag 'jquery.easing.min' %>
       <%= javascript_include_tag 'bootstrap.min' %>
 
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+      <%= javascript_include_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js", integrity: "sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa", crossorigin: "anonymous" %>
 
       <%= javascript_include_tag 'bootstrap-hover-dropdown.min' %>
       <%= javascript_include_tag 'raphael-min' %>
@@ -150,7 +150,7 @@
       <!--cube portfolio-->
       <%= javascript_include_tag 'jquery.cubeportfolio.min' %>
 
-      <script src="https://cdn.auth0.com/js/lock/10.0/lock.min.js"></script>
+      <%= javascript_include_tag 'https://cdn.auth0.com/js/lock/10.0/lock.min.js' %>
       <script type="text/javascript">
         var lock = new Auth0Lock('120SH91pK3Jo2SIUNxPW3PU688IcVu83', 'sparkstart.auth0.com', {
           auth: {
