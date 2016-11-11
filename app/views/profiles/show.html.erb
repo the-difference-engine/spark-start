@@ -4,7 +4,7 @@
   <div class="row">
     <div class="text-center">
       <div class="team-style-2 image-box col-md-6 col-md-offset-3">
-        <%= image_tag "stefan.jpg", class: "profile-image img-responsive" %>
+        <%= image_tag @profile.image.url(:medium), class: "profile-image img-responsive" %>
         <div class="team-overlay profile-image">
           <p>
             <span><%= @profile.first_name %> <%= @profile.last_name %></span>
