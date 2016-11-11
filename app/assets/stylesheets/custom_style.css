@@ -1,4 +1,3 @@
-
 .footer-custom{
   width: 100%;
   bottom: 0;
@@ -15,8 +14,13 @@
   margin-bottom: 20px;
   color: #fff
 }
+
 .footer-custom p {
   color: #999;
+}
+
+.container-height {
+  min-height: 100vh;
 }
 
 @import "https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,700";
