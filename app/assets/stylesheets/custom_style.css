@@ -20,11 +20,11 @@
 }
 
 .container-height {
-  min-height: 80vh;
+  min-height: 70vh;
 }
 
 .container {
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 @import "https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,700";
