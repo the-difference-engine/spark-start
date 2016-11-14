@@ -1,6 +1,6 @@
 .footer-custom{
   width: 100%;
-  bottom: 0;
+  bottom: -50;
   position: sticky;
   padding: 40px 0;
   padding-bottom: 0px;
@@ -21,6 +21,10 @@
 
 .container-height {
   min-height: 80vh;
+}
+
+.container {
+  margin-top: 10px;
 }
 
 @import "https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,700";
