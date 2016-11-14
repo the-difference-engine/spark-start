@@ -47,8 +47,8 @@
               <%= text_field_tag :phone, @profile.phone, class: "form-control margin-b-20" %>
             </div>
             <div class="col-md-6">
-              <%= label_tag :image %> <br>
-              <%= text_field_tag :image, @profile.image, class: "form-control margin-b-20" %>
+              <%= label_tag :image, 'Change Image' %> <br>
+              <%= file_field_tag :image, accept: 'image/png,image/gif,image/jpeg' %>
             </div>
           </div>
             

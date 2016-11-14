@@ -43,6 +43,8 @@ class PostsController < ApplicationController
   def new
     @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
     @post = Post.new
+    @tags = Tag.all
+    @categories = Category.all
   end
 
   def create
