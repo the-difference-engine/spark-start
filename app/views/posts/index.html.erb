@@ -8,7 +8,7 @@
     <% end %>
   </div>
   <br>
-<% if @posts.length > 0 %>
+
   <div class="col-sm-12 col-md-6 col-lg-6">
     <%= form_tag '/blogs', method: :get do %>
       <%= text_field_tag :search, nil, placeholder: "Search blog", size: 30 %>
@@ -19,40 +19,38 @@
 
 <br><br>
 
-  <% if !@searched %>
-    <% @sorted_posts.each do |post| %>
-      <div class="row">
-        <div class="col-md-2 col-lg-2"></div>
-        <div class="col-sm-12 col-md-8 col-lg-8">
-          <div class="blog-header"><%= link_to post.title, "/blog/#{post.id}" %></div>
-          <div class="blog-body"><%= sanitize post.body.first(550) %> <% if post.body.length > 550 %> ... <% end %></div>
-          <div class="blog-author">By <%= post.author %>, <%= post.created_at.strftime("%m/%d/%Y") %></div><br>
-        </div>
-        <div class="col-md-2 col-lg-2"></div>
+<% if !@searched %>
+  <% @sorted_posts.each do |post| %>
+    <div class="row">
+      <div class="col-md-2 col-lg-2"></div>
+      <div class="col-sm-12 col-md-8 col-lg-8">
+        <div class="blog-header"><%= link_to post.title, "/blog/#{post.id}" %></div>
+        <div class="blog-body"><%= sanitize post.body.first(550) %> <% if post.body.length > 550 %> ... <% end %></div>
+        <div class="blog-author">By <%= post.author %>, <%= post.created_at.strftime("%m/%d/%Y") %></div><br>
       </div>
-    <% end %>
-
-  <% elsif @searched %>
-    <% if @searched.length > 0 %>
-      <% @searched.each do |post| %>
-        <div class="row">
-          <div class="col-md-2 col-lg-2"></div>
-            <div class="col-sm-12 col-md-6 col-lg-6">
-              <div class="blog-header"><%= link_to post.title, "/blog/#{post.id}" %></div>
-              <div class="blog-body"><%= post.body.first(40) %></div>
-              <div class="blog-author">By <%= post.author %>, <%= post.created_at.strftime("%m/%d/%Y") %></div><br>
-            </div>
-          <div class="col-md-3 col-lg-3"></div>
-        </div>
-      <% end %>
-    <% else %>
-      <p>No search results.</p>
-    <% end %>
-  <% else %>
-    <p>There are no posts yet!</p>
-  </div>
+      <div class="col-md-2 col-lg-2"></div>
+    </div>
   <% end %>
 
+<% elsif @searched %>
+  <% if @searched.length > 0 %>
+    <% @searched.each do |post| %>
+      <div class="row">
+        <div class="col-md-2 col-lg-2"></div>
+          <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="blog-header"><%= link_to post.title, "/blog/#{post.id}" %></div>
+            <div class="blog-body"><%= post.body.first(40) %></div>
+            <div class="blog-author">By <%= post.author %>, <%= post.created_at.strftime("%m/%d/%Y") %></div><br>
+          </div>
+        <div class="col-md-3 col-lg-3"></div>
+      </div>
+    <% end %>
+  <% else %>
+    <p>No search results.</p>
+  <% end %>
+<% else %>
+  <p>There are no posts yet!</p>
+</div>
 <% end %>
 
 </div>
