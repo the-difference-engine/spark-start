@@ -177,7 +177,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to "/blogs/"
+    redirect_to "/blog"
   end
 
   private
@@ -185,7 +185,7 @@ class PostsController < ApplicationController
   def authenticate_admin!
     current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
     unless current_user.role == 'admin'
-      redirect_to '/blogs'
+      redirect_to '/blog'
     end
   end
 

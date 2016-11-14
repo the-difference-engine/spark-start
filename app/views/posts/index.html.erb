@@ -4,13 +4,13 @@
   <div class="col-sm-12 col-md-6 col-lg-6">
     <p><h2>Blog</h2></p>
     <% if @current_user.role == 'admin' %>
-      <p><%= button_to 'Add Post', '/blog/new', class: 'btn btn-skin' %></p>
+      <p><%= link_to 'Add Post', '/blog/new', class: 'btn btn-skin' %></p>
     <% end %>
   </div>
   <br>
 
   <div class="col-sm-12 col-md-6 col-lg-6">
-    <%= form_tag '/blogs', method: :get do %>
+    <%= form_tag '/blog', method: :get do %>
       <%= text_field_tag :search, nil, placeholder: "Search blog", size: 30 %>
       <%= submit_tag "Submit", class: 'btn btn-xl btn-skin' %>
     <% end %>

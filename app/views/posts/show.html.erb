@@ -17,9 +17,9 @@
 <p><b>Tags:</b>
   <% @tag_list.each do |tag| %>
     <% if @tag_list.index(tag) < @tag_list.length - 1 %>
-      <%= link_to tag, "/blogs/?tag_search=#{tag}" %>,
+      <%= link_to tag, "/blog/?tag_search=#{tag}" %>,
     <% else %>
-      <%= link_to tag, "/blogs/?tag_search=#{tag}" %>
+      <%= link_to tag, "/blog/?tag_search=#{tag}" %>
     <% end %>
   <% end %>
 </p>
@@ -27,9 +27,9 @@
 <p><b>Categories:</b>
   <% @category_list.each do |category| %>
     <% if @category_list.index(category) < @category_list.length - 1 %>
-      <%= link_to category, "/blogs/?category_search=#{category}" %>,
+      <%= link_to category, "/blog/?category_search=#{category}" %>,
     <% else %>
-      <%= link_to category, "/blogs/?category_search=#{category}" %>
+      <%= link_to category, "/blog/?category_search=#{category}" %>
     <% end %>
   <% end %>
 </p>
