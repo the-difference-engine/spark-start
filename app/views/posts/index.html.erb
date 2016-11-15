@@ -1,14 +1,16 @@
-<div class="container">
+<div class="container container-height">
 
 <div class="row">
   <div class="col-sm-12 col-md-6 col-lg-6">
     <p><h2>Blog</h2></p>
-    <p><%= link_to 'Add Post', '/blog/new' %></p>
+    <% if @current_user.role == 'admin' %>
+      <p><%= link_to 'Add Post', '/blog/new', class: 'btn btn-skin' %></p>
+    <% end %>
   </div>
   <br>
-<% if @posts %>
+
   <div class="col-sm-12 col-md-6 col-lg-6">
-    <%= form_tag '/blogs', method: :get do %>
+    <%= form_tag '/blog', method: :get do %>
       <%= text_field_tag :search, nil, placeholder: "Search blog", size: 30 %>
       <%= submit_tag "Submit", class: 'btn btn-xl btn-skin' %>
     <% end %>
@@ -17,7 +19,8 @@
 
 <br><br>
 
-  <% if !@searched %>
+<% if !@searched %>
+  <% if @sorted_posts.length > 0 %>
     <% @sorted_posts.each do |post| %>
       <div class="row">
         <div class="col-md-2 col-lg-2"></div>
@@ -29,28 +32,27 @@
         <div class="col-md-2 col-lg-2"></div>
       </div>
     <% end %>
-
-  <% elsif @searched %>
-    <% if @searched.length > 0 %>
-      <% @searched.each do |post| %>
-        <div class="row">
-          <div class="col-md-2 col-lg-2"></div>
-            <div class="col-sm-12 col-md-6 col-lg-6">
-              <div class="blog-header"><%= link_to post.title, "/blog/#{post.id}" %></div>
-              <div class="blog-body"><%= post.body.first(40) %></div>
-              <div class="blog-author">By <%= post.author %>, <%= post.created_at.strftime("%m/%d/%Y") %></div><br>
-            </div>
-          <div class="col-md-3 col-lg-3"></div>
-        </div>
-      <% end %>
     <% else %>
-      <p>No search results.</p>
-    <% end %>
-  <% else %>
-    <p>There are no posts yet!</p>
-  </div>
+      There are no posts yet.
   <% end %>
 
+<% elsif @searched %>
+  <% if @searched.length > 0 %>
+    <% @searched.each do |post| %>
+      <div class="row">
+        <div class="col-md-2 col-lg-2"></div>
+          <div class="col-sm-12 col-md-6 col-lg-6">
+            <div class="blog-header"><%= link_to post.title, "/blog/#{post.id}" %></div>
+            <div class="blog-body"><%= post.body.first(40) %></div>
+            <div class="blog-author">By <%= post.author %>, <%= post.created_at.strftime("%m/%d/%Y") %></div><br>
+          </div>
+        <div class="col-md-3 col-lg-3"></div>
+      </div>
+    <% end %>
+  <% else %>
+    <p>No search results.</p>
+  <% end %>
+</div>
 <% end %>
 
 </div>
