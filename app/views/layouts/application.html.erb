@@ -60,7 +60,7 @@
                         </li>
 
                         <li class="dropdown">
-                        <% if @current_user.profile %>
+                        <% if session[:userinfo].present? %>
                           <%= link_to "Books", "/books" %>
                         <% end %>
                         </li>
@@ -113,7 +113,7 @@
           </div>
       </footer>
       <!--back to top-->
-      <a href="#" class="scrollToTop"><span class="livicon " data-size="32" data-name="angle-double-up" data-duration="1000"></span></a>
+      <!-- <a href="#" class="scrollToTop"><span class="livicon" data-size="32" data-name="angle-double-up" data-duration="1000"></span></a> -->
       <!--back to top end-->
       <!-- jQuery plugins-->
       <script src="/assets/jquery.min.js"></script>
@@ -280,6 +280,6 @@
 
       </script>
 
-    <% javascript_include_tag 'application' %>
+    <%= javascript_include_tag 'application' %>
     </body>
   </html>
