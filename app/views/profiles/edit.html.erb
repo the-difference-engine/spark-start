@@ -10,56 +10,56 @@
 
   <%= form_tag "/profile/#{@profile.id}", method: :patch do %>
   <div class="row">
-      <div class="col-md-12">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-6">
+          <%= label_tag :first_name %> <br>
+          <%= text_field_tag :first_name, @profile.first_name, class: "form-control margin-b-20" %>
+        </div>
+        <div class="col-md-6">
+          <%= label_tag :last_name %> <br>
+          <%= text_field_tag :last_name, @profile.last_name, class: "form-control margin-b-20" %>
+        </div>
+      </div>
         <div class="row">
           <div class="col-md-6">
-            <%= label_tag :first_name %> <br>
-            <%= text_field_tag :first_name, @profile.first_name, class: "form-control margin-b-20" %>
+            <%= label_tag :experience %> <br>
+            <%= text_field_tag :experience, @profile.experience, class: "form-control margin-b-20" %>
           </div>
           <div class="col-md-6">
-            <%= label_tag :last_name %> <br>
-            <%= text_field_tag :last_name, @profile.last_name, class: "form-control margin-b-20" %>
+            <%= label_tag :career %> <br>
+            <%= text_field_tag :career, @profile.career, class: "form-control margin-b-20" %>
           </div>
         </div>
-          <div class="row">
-            <div class="col-md-6">
-              <%= label_tag :experience %> <br>
-              <%= text_field_tag :experience, @profile.experience, class: "form-control margin-b-20" %>
-            </div>
-            <div class="col-md-6">
-              <%= label_tag :career %> <br>
-              <%= text_field_tag :career, @profile.career, class: "form-control margin-b-20" %>
-            </div>
+        <div class="row">
+          <div class="col-md-6">
+            <%= label_tag :city %> <br>
+            <%= text_field_tag :city, @profile.city, class: "form-control margin-b-20" %>
           </div>
-          <div class="row">
-            <div class="col-md-6">
-              <%= label_tag :city %> <br>
-              <%= text_field_tag :city, @profile.city, class: "form-control margin-b-20" %>
-            </div>
-            <div class="col-md-6">
-              <%= label_tag :state %> <br>
-              <%= select_tag :state, options_for_select(us_states), multiple: false, class: "form-control margin-b-20" %>
-            </div>
+          <div class="col-md-6">
+            <%= label_tag :state %> <br>
+            <%= select_tag :state, options_for_select(us_states), multiple: false, class: "form-control margin-b-20" %>
           </div>
-          <div class="row">
-            <div class="col-md-6">
-              <%= label_tag :phone %> <br>
-              <%= text_field_tag :phone, @profile.phone, class: "form-control margin-b-20" %>
-            </div>
-            <div class="col-md-6">
-              <%= label_tag :image, 'Change Image' %> <br>
-              <%= file_field_tag :image, accept: 'image/png,image/gif,image/jpeg' %>
-            </div>
-          </div>
-            
-          <div>
-            <%= label_tag :bio %> <br>
-            <%= text_area_tag :bio, @profile.bio, rows: 10, class: "form-control margin-b-20" %>    
-          </div>
-
-          <%= submit_tag "Submit", class: 'btn btn-xl btn-skin' %>
-
         </div>
+        <div class="row">
+          <div class="col-md-6">
+            <%= label_tag :phone %> <br>
+            <%= text_field_tag :phone, @profile.phone, class: "form-control margin-b-20" %>
+          </div>
+          <div class="col-md-6">
+            <%= label_tag :image, 'Change Image' %> <br>
+            <%= file_field_tag :image, accept: 'image/png,image/gif,image/jpeg' %>
+          </div>
+        </div>
+          
+        <div>
+          <%= label_tag :bio %> <br>
+          <%= text_area_tag :bio, @profile.bio, rows: 10, class: "form-control margin-b-20" %>    
+        </div>
+
+        <%= submit_tag "Submit", class: 'btn btn-xl btn-skin' %>
+
+      </div>
   </div>
   <% end %>
 
