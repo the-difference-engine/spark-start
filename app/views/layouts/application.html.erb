@@ -154,7 +154,7 @@
       <script type="text/javascript">
         var lock = new Auth0Lock('120SH91pK3Jo2SIUNxPW3PU688IcVu83', 'sparkstart.auth0.com', {
           auth: {
-            redirectUrl: 'https://qa-spark-start.herokuapp.com/auth/auth0/callback',
+            redirectUrl: "<%=ENV['REDIRECT_URL']%>",
             responseType: 'code',
             params: {
               scope: 'openid email' // Learn about scopes: https://auth0.com/docs/scopes
