@@ -1,6 +1,7 @@
 class Auth0Controller < ApplicationController
   def callback
 
+    binding.pry
     session[:userinfo] = request.env['omniauth.auth']
     user_info = session[:userinfo]
 
