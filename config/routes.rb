@@ -41,8 +41,8 @@ delete '/tag/:id' => 'tags#destroy'
 
 # get '/comments' => 'comments#index'
 # get '/comment/:id' => 'comments#show'
-post '/comment/' => 'comments#create'
-
+#post '/comment/' => 'comments#create'
+resources :comments
 get '/books' => 'books#index'
 get '/book/:id' => 'books#show'
 

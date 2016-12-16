@@ -48,12 +48,12 @@
 
 <br><br>
 
-<%= form_tag '/comment', method: :post do %>
-  <p><%= label_tag :body, "Post A Comment:" %><br>
-  <%= text_area_tag :body, nil, class: 'form-control', rows: 10 %></p>
-  <%= hidden_field_tag :post_id, @post.id %>
+<%= form_for @comment do |form| %>
+  <p><%= form.label :body, "Post A Comment:" %><br>
+  <%= form.text_field :body, class: 'form-control', rows: 10 %></p>
+  <%= form.hidden_field :post_id, :value => @post.id %>
 
-  <%= submit_tag "Submit", class: "btn btn-xl btn-skin" %>
+  <%= form.submit "Submit", class: "btn btn-xl btn-skin" %>
 <% end %>
 
 </div>

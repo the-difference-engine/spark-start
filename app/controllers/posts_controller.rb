@@ -31,6 +31,7 @@ class PostsController < ApplicationController
 
     @category_list = @post.categories.collect { |category_name| category_name.name }
     @tag_list = @post.tags.collect { |tag| tag.tag_name }
+    @comment = Comment.new
   end
 
   def dashboard
