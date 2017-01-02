@@ -16,7 +16,7 @@ class ProfilesController < ApplicationController
   def create
     current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
     user_id = current_user.id
-    @profile = Profile.create!(profile_params)
+    @profile = Profile.create(profile_params)
     redirect_to "/profile/#{@profile.id}"
   end
 
