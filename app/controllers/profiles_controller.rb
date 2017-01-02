@@ -16,18 +16,7 @@ class ProfilesController < ApplicationController
   def create
     current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
     user_id = current_user.id
-    @profile = Profile.create!(
-      experience: params[:experience],
-      bio: params[:bio],
-      phone: params[:phone],
-      career: params[:career],
-      image: params[:image],
-      user_id: user_id,
-      first_name: params[:first_name],
-      last_name: params[:last_name],
-      city: params[:city],
-      state: params[:state]
-      )
+    @profile = Profile.create!(profile_params)
     redirect_to "/profile/#{@profile.id}"
   end
 
@@ -37,17 +26,7 @@ class ProfilesController < ApplicationController
 
   def update
     @profile = Profile.find(params[:id])
-    if @profile.update(
-      experience: params[:experience],
-      bio: params[:bio],
-      phone: params[:phone],
-      career: params[:career],
-      image: params[:image],
-      first_name: params[:first_name],
-      last_name: params[:last_name],
-      city: params[:city],
-      state: params[:state]
-      )
+    if @profile.update(profile_params)
       flash[:success]= "Profile updated!"
       redirect_to "/profile/#{@profile.id}"
     else
@@ -73,5 +52,8 @@ class ProfilesController < ApplicationController
   def set_current_user
     @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
   end
-
+  
+  def profile_params
+    params.require(:profile).permit(:experience,:bio,:phone, :career, :image, :first_name, :last_name, :city, :state)
+  end
 end
