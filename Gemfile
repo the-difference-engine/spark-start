@@ -35,6 +35,7 @@ gem 'vuejs-rails'
 gem 'tinymce-rails'
 gem "paperclip"
 gem 'aws-sdk-v1'
+gem 'rollbar'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
