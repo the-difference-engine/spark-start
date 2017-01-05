@@ -1,0 +1,42 @@
+<%= form_for @book, :html => { :multipart => true } do |f| %>
+    <% @book.errors.full_messages.each do |error| %>
+      <span style="color: red"><%= error %></span><br>
+    <% end %>
+  <br>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-6">
+          <%= f.label :title%> <br>
+          <%= f.text_field :title, class: "form-control margin-b-20" %>
+        </div>
+        <div class="col-md-6">
+          <%= f.label :url %> <br>
+              <%= f.text_field :url, class: "form-control margin-b-20" %>
+        </div>
+          <div class="col-md-6">
+            <%= f.label :cover, 'Change Cover' %> <br>
+            <%= f.file_field :cover %>
+          </div>
+          <div class="col-md-6">
+            <%= f.label :ebook, 'Change Book' %> <br>
+            <%= f.file_field :ebook %>
+          </div>
+         <div>
+            <%= f.label :description %> <br>
+            <%= f.text_area :description, rows: 10, class: "form-control margin-b-20" %></p> 
+          </div>
+        <div class="field">
+          <%= hidden_field_tag "book[category_ids][]", nil %>
+          <% Category.all.each do |category| %>
+            <%= check_box_tag "book[category_ids][]", category.id, @book.category_ids.include?(category.id), id: dom_id(category) %>
+             <%= label_tag dom_id(category), category.name %><br>
+          <% end %>
+        </div>
+          <div class="actions">
+            <%= f.submit "Submit", class: 'btn btn-xl btn-skin' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

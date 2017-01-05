@@ -1,5 +1,16 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  describe '#admin?' do
+   it "expect the boolean true" do 
+	user = create(:user)
+	expect(user.admin?).to eq(true)
+   end
+   it "expect the boolean false" do
+   	user = create(:user,
+   		           admin: false)
+   	expect(user.admin?).to eq(false)
+   end
+  end
 end

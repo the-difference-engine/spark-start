@@ -1,6 +1,14 @@
-<div class="container container-height">
-
-Here is where the list of books will beHere is where the list of books will be
-
-
+<br>
+<br>
+<p><%= link_to 'Add Book', '/books/new', class: 'btn btn-skin' %></p>
+<br>
+<br>
+<div class="row">
+  <%@books.each do |book|%>
+    <div class="col-sm-6 col-md-3">
+      <div class="thumbnail">
+        <%= link_to (image_tag book.cover.url(:medium), class: 'image'), book %>
+      </div>
+    </div>
+  <%end%>
 </div>
