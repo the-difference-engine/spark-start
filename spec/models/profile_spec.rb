@@ -1,4 +1,5 @@
 require "rails_helper"
+include Auth0
 
 RSpec.describe Profile, type: :model do
 
@@ -12,4 +13,13 @@ RSpec.describe Profile, type: :model do
     it { should have_db_column(:image_file_size).of_type(:integer) }
     it { should have_db_column(:user_id).of_type(:integer) }
   end
+
+  describe '#full_name' do
+    it 'it returns a users full name' do
+       @user = create(:user)
+       create(:profile, user_id: @user.id)
+       expect(@user.profile.full_name).to eq('John Doe')
+    end
+  end
+
 end

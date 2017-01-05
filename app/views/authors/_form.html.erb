@@ -1,0 +1,27 @@
+<%= form_for([@book, @author]) do |f| %>
+  <% @author.errors.full_messages.each do |error| %>
+    <span style="color: red"><%= error %></span><br>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-6">
+        <div class="field">
+          <%= f.label "Author's Full Name" %><br>
+          <%= f.text_field :full_name, class: "form-control margin-b-20"%>
+        </div>
+        <div class="field">
+          <%= hidden_field_tag "author[category_ids][]", nil %>
+          <% Category.all.each do |category| %>
+            <%= check_box_tag "author[category_ids][]", category.id, @author.category_ids.include?(category.id), id: dom_id(category) %>
+            <%= label_tag dom_id(category), category.name %><br>
+          <% end %>
+        </div>
+        <div class="actions">
+          <%= f.submit "Submit", class: 'btn btn-xl btn-skin' %>
+          <%= link_to 'Back', book_path(@book), class: 'btn btn-xl btn-skin' %>
+        </div>
+      </div>
+    </div>
+  </div>  
+<%end%>
