@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
   before_action :is_profile_created, only: [:index, :new, :show, :edit, :update, :destroy]
   before_action :set_current_user
+  before_action :set_profile, only: [:show, :edit, :update, :destroy]
   include ProfilesHelper
 
   def index
@@ -16,27 +17,46 @@ class ProfilesController < ApplicationController
   def create
     current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
     user_id = current_user.id
-    @profile = Profile.build(profile_params)
-    redirect_to "/profile/#{@profile.id}"
+    @profile = Profile.create!(
+    experience: params[:experience],
+    bio: params[:bio],
+    phone: params[:phone],
+    career: params[:career],
+    image: params[:image],
+    user_id: user_id,
+    first_name: params[:first_name],
+    last_name: params[:last_name],
+    city: params[:city],
+    state: params[:state]
+    )
+    redirect_to @profile
   end
 
   def edit
-    @profile = Profile.find(params[:id])
   end
 
   def update
-    @profile = Profile.find(params[:id])
+    params[:profile]
     if @profile.update(profile_params)
+      #experience: params[:experience],
+      #bio: params[:bio],
+      #phone: params[:phone],
+      #career: params[:career],
+      #image: params[:image],
+      #first_name: params[:first_name],
+      #last_name: params[:last_name],
+      #city: params[:city],
+      #state: params[:state]
+      #)
       flash[:success]= "Profile updated!"
-      redirect_to "/profile/#{@profile.id}"
+      redirect_to "/profiles/#{@profile.id}"
     else
-      render :edit
+      render :edit 
     end
   end
 
   def destroy
   # What does this do? Where does this get called?
-    @profile = Profile.find(params[:id])
     @profile.destroy
   end
 
@@ -52,8 +72,12 @@ class ProfilesController < ApplicationController
   def set_current_user
     @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
   end
-  
+
+  def set_profile
+    @profile = Profile.find(@current_user.profile.id)
+  end
+
   def profile_params
-    params.require(:profile).permit(:experience, :bio, :phone, :career, :image, :first_name, :last_name, :city, state: [])
+    params.require(:profile).permit(:experience, :bio, :phone, :career, :image, :first_name, :last_name, :city, :state)
   end
 end
