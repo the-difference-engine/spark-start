@@ -13,7 +13,7 @@
 		<% @users.each do |user| %>
 		<tr>
 			<td><%= user.email %></td>
-			<td><%= user.role %></td>
+			<td><%= user.admin %></td>
 			<td><button onclick="changeRole()"">ADMIN?</button></td>
 		</tr>
 		<% end %>

@@ -1,5 +1,5 @@
 json.array! @users do |user|
   json.id user.id
-  json.role user.role
+  json.admin user.admin
   json.email user.email
 end
