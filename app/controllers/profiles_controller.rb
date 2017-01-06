@@ -16,18 +16,18 @@ class ProfilesController < ApplicationController
   def create
     current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
     user_id = current_user.id
-    @profile = Profile.create!(
-    experience: params[:experience],
-    bio: params[:bio],
-    phone: params[:phone],
-    career: params[:career],
-    image: params[:image],
-    user_id: user_id,
-    first_name: params[:first_name],
-    last_name: params[:last_name],
-    city: params[:city],
-    state: params[:state]
-    )
+    @profile = Profile.create!(profile_params)
+    #experience: params[:experience],
+    #bio: params[:bio],
+    #phone: params[:phone],
+    #career: params[:career],
+    #image: params[:image],
+    #user_id: user_id,
+    #first_name: params[:first_name],
+    #last_name: params[:last_name],
+    #city: params[:city],
+    #state: params[:state]
+    #)
     redirect_to @profile
   end
 
@@ -37,18 +37,8 @@ class ProfilesController < ApplicationController
   def update
     params[:profile]
     if @profile.update(profile_params)
-      #experience: params[:experience],
-      #bio: params[:bio],
-      #phone: params[:phone],
-      #career: params[:career],
-      #image: params[:image],
-      #first_name: params[:first_name],
-      #last_name: params[:last_name],
-      #city: params[:city],
-      #state: params[:state]
-      #)
       flash[:success]= "Profile updated!"
-      redirect_to "/profiles/#{@profile.id}"
+      redirect_to @profile
     else
       render :edit 
     end
