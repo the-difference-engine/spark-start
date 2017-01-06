@@ -14,7 +14,12 @@
 		<tr>
 			<td><%= user.email %></td>
 			<td><%= user.admin %></td>
-			<td><input type="checkbox" checked data-toggle="toggle" data-on="Ready" data-off="Not Ready" data-onstyle="success" data-offstyle="danger">
+			<% if user.admin == true %>
+				<% var = "checked" %>
+			<% else %>
+				<% var = "unchecked" %>
+			<% end %>
+			<td><input type="checkbox" <%= var %> data-toggle="toggle" data-on="Y" data-off="N" data-onstyle="success" data-offstyle="danger">
 </td>
 		</tr>
 		<% end %>
