@@ -50,9 +50,11 @@ Rails.application.routes.draw do
 
   get '/users' => 'users#index'
 
+
   namespace :api do 
     namespace :v1 do 
       get '/users' => 'users#index'
+      put '/users/:id' => 'users#update'
     end
   end
 
