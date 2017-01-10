@@ -15,11 +15,13 @@
 			<td><%= user.email %></td>
 			<td><%= user.admin %></td>
 			<% if user.admin == true %>
-				<% var = "checked" %>
+				<% checkbox = "yes" %>
+				<% button = "active" %>
 			<% else %>
-				<% var = "unchecked" %>
+				<% checkbox = "no" %>
+				<% button = "inactive" %>
 			<% end %>
-			<td><input type="checkbox" <%= var %> data-toggle="toggle" data-on="Y" data-off="N" data-onstyle="success" data-offstyle="danger">
+			<td> <button class="btn btn-rounded <%= button %>" onClick="colorChange"><%= checkbox %></button>
 </td>
 		</tr>
 		<% end %>

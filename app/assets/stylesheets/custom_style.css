@@ -4690,3 +4690,18 @@ FOOTER STYLES
     padding-bottom: 100px;
   }
 }
+
+/*admin section */
+
+.admin.inactive {
+  background-color: #800000;
+  color: white;
+}
+
+.admin.active {
+  background-color: #4DBD33;
+  color: white;
+}
+
+
+
