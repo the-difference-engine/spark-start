@@ -4693,12 +4693,12 @@ FOOTER STYLES
 
 /*admin section */
 
-.admin.inactive {
+.inactive {
   background-color: #800000;
   color: white;
 }
 
-.admin.active {
+.active {
   background-color: #4DBD33;
   color: white;
 }

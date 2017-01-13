@@ -21,7 +21,7 @@
 				<% checkbox = "no" %>
 				<% button = "inactive" %>
 			<% end %>
-			<td> <button class="btn btn-rounded <%= button %>" onClick="colorChange"><%= checkbox %></button>
+			<td> <button class="btn btn-rounded <%= button %>" onClick="changeRole(<%= user.id %>, <%= user.admin %>)"><%= checkbox %></button>
 </td>
 		</tr>
 		<% end %>
