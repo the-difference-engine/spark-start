@@ -1,0 +1,16 @@
+<%= form_for @category, :html => { :multipart => true } do |f| %>
+  <% @category.errors.full_messages.each do |error| %>
+    <span style="color: red"><%= error %></span><br>
+  <% end %>
+  <br>
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.label "Add a Category"%> <br>
+      <%= f.text_field :name, class: "form-control margin-b-20" %>
+      <div class="actions">
+       <%= f.submit "Submit", class: 'btn btn-xl btn-skin' %>
+       <%= link_to 'Back', root_path, class: 'btn btn-xl btn-skin' %>
+      </div>
+    </div>
+  </div>
+<% end %>

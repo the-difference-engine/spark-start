@@ -23,10 +23,7 @@ Rails.application.routes.draw do
 	patch '/blog/:id' => 'posts#update'
 	delete '/blog/:id' => 'posts#destroy'
 
-	get '/categories' => 'categories#index'
-	post '/category' => 'categories#create'
-	patch '/category/:id' => 'categories#update'
-	delete '/category/:id' => 'category#destroy'
+	resources :categories
 
 	get '/tags' => 'tags#index'
 	post '/tag' => 'tags#create'
