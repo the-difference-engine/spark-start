@@ -15,9 +15,7 @@ def index
   end
 
   def show
-    @author = Author.where(book_id: params[:id]) 
-    p @author
-    #@author_name = @author.full_name
+    @author = Author.where(book_id: params[:id])
   end
 
   def new
