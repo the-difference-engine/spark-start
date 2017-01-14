@@ -12,24 +12,17 @@ class ProfilesController < ApplicationController
   end
 
   def new
+    @profile= Profile.new
   end
 
   def create
     current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
     user_id = current_user.id
     @profile = Profile.create!(profile_params)
-    #experience: params[:experience],
-    #bio: params[:bio],
-    #phone: params[:phone],
-    #career: params[:career],
-    #image: params[:image],
-    #user_id: user_id,
-    #first_name: params[:first_name],
-    #last_name: params[:last_name],
-    #city: params[:city],
-    #state: params[:state]
-    #)
-    redirect_to @profile
+    if profile.save
+      flash[:success]= "Profile created!"
+      redirect_to @profile
+    end
   end
 
   def edit
@@ -46,8 +39,9 @@ class ProfilesController < ApplicationController
   end
 
   def destroy
-  # What does this do? Where does this get called?
     @profile.destroy
+    flash[:success]= "Profile was successfully destroyed."
+    redirect_to @profiles
   end
 
  private
@@ -55,7 +49,7 @@ class ProfilesController < ApplicationController
   def is_profile_created
     @current_user = User.find_by_email(session[:userinfo]["extra"]["raw_info"]["email"])
     if !@current_user.profile
-      render "new"
+      #redirect_to new_profile_path
     end
   end
 
