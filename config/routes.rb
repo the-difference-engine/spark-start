@@ -12,13 +12,6 @@ Rails.application.routes.draw do
   get '/mission' => 'homes#mission'
   get '/freevideos' => 'homes#videos'
 
-   #get '/profiles' => 'profiles#index'
-   #get '/profile/new' => 'profiles#new'
-   #post '/profile/' => 'profiles#create'
-   #get '/profile/:id' => 'profiles#show'
-   #get '/profile/:id/edit' => 'profiles#edit'
-   ##patch '/profile/:id' => 'profiles#update'
-   #delete '/profile/:id' => 'profiles#destroy'
    resources :profiles
 
 	get '/blog' => 'posts#index'
@@ -44,8 +37,11 @@ Rails.application.routes.draw do
 	# get '/comment/:id' => 'comments#show'
 	post '/comment/' => 'comments#create'
 
-	get '/books' => 'books#index'
-	get '/book/:id' => 'books#show'
+	resources :books do
+		get :download_pdf
+		resources :authors do
+	    end
+	end
 
 	get '/logout' => 'auth0#logout'
 
