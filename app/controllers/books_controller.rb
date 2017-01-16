@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
 	before_filter :logged_in_using_omniauth?
-	before_action :set_book, only: [:show, :edit, :update, :destroy]
+	before_action :set_book, only: [:show, :edit, :update, :destroy, :download_pdf]
   before_action :set_current_user
 def index
 	if session[:userinfo].present?
@@ -63,7 +63,7 @@ def index
   def download_pdf
     send_file(
       "#{Rails.root}/public/your_file.pdf",
-      filename: @book.pdf,
+      filename: @book.ebook.pdf,
       type: "application/pdf"
     )
   end
