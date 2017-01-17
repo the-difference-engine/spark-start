@@ -68,5 +68,10 @@ var search = new Vue({
           that.users = response;
         }
       });
-    }
+    },
+    methods: {
+         resetSearch: function() {
+           this.distributorFilter = ''
+         }
+       }
   })

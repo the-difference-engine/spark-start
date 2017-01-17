@@ -2,12 +2,21 @@
 
 	<h3>Spark Directory</h3>
 	<div id="search">
+		<div>
+		<h4>Search Users by Email:
+		  <input type="text" v-model="emailFilter" list="users">
+		</h4>
+		<datalist id="users">
+		    <option v-for="user in users">{{ user.email }}</option> 
+		</datalist> 	
+		</div>
+
 	  <table style="width:100%" id="users">
 		  <tr>
 		  	<th>User Email</th>
 		  	<th>User Admin (True/False)</th>
 		  </tr>
-		  <tr v-for="user in users">
+		  <tr v-for="user in users | filterBy emailFilter in 'email'">
 		  	<td> {{ user.email }}</td>
 		  	<td> <button class="btn btn-rounded {{ user.admin }}" onClick="changeRole({{ user.id }}, {{ user.admin }})">{{ user.admin }}</button></td>
 		  </tr>
