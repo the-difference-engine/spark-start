@@ -14,7 +14,7 @@ function changeRole(id, status) {
       contentType: 'application/json',
       processData: false,
       success: function(res){
-        window.location = window.location;
+        window.location = window.location
       },
       data: JSON.stringify({
           admin: data
