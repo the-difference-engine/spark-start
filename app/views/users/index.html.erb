@@ -17,7 +17,7 @@
 		  	<th>User Admin (True/False)</th>
 		  </tr>
 		  <tr v-for="user in users | filterBy emailFilter in 'email'">
-		  	<td> {{ user.email }}</td>
+		  	<td><a href="/profile/{{ user.profile_id }}" >{{ user.email }}</a> </td>
 		  	<td> <button class="btn btn-rounded {{ user.admin }}" onClick="changeRole({{ user.id }}, {{ user.admin }})">{{ user.admin }}</button></td>
 		  </tr>
 	  </table>
