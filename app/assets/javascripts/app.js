@@ -51,3 +51,22 @@ var categories = new Vue ({
     }
   }
 });
+
+
+var search = new Vue({
+    el: '#search',
+    data: {
+      users: [],
+      usersFilter: ''
+    },
+    ready: function() {
+      var that;
+      that = this;
+      $.ajax({
+        url: '/api/v1/users.json',
+        success: function(response) {
+          that.users = response;
+        }
+      });
+    }
+  })
