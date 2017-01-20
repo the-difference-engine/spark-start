@@ -12,14 +12,6 @@ RSpec.describe PostsController, type: :controller do
 
   describe "Post #create" do 
 
-    # it "expect new record to be created" do 
-      
-    #   binding.pry
-    #   post :create, session: mock_auth_hash
-      
-    #   expect(response).to redirect_to "/blog"
-    # end
-
     it "expect new record to be created with a new tag and category" do 
       params = {
         title: "Hello",
