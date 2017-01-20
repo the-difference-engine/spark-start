@@ -60,7 +60,6 @@ RSpec.describe ProfilesController, type: :controller do
 
   describe 'DELETE #destroy' do
     before(:each) do
-      binding.pry
       @profile = create(:profile,
                         user_id: @user.id)
       @profile = create(:profile,
@@ -68,7 +67,6 @@ RSpec.describe ProfilesController, type: :controller do
     end
 
     it "expect to delete a profile" do
-      binding.pry
       params = {id: @profile.id}
       delete :destroy, params: params, session: mock_auth_hash
       profiles = Profile.all

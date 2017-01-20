@@ -34,21 +34,21 @@ class PostsController < ApplicationController
   end
 
   def dashboard
-    @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
+    # @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
     @posts = Post.all.sort
     @categories = Category.all.sort
     @tags = Tag.all.sort
   end
 
   def new
-    @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
+    # @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
     @post = Post.new
     @tags = Tag.all
     @categories = Category.all
   end
 
   def create
-    @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
+    # @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
     @user = session[:userinfo]
     @post = Post.new(
       title: params[:title],
@@ -106,7 +106,7 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
+    # @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
     @post = Post.find(params[:id])
     @post_categories = @post.categories.collect { |category| category.name }
     @category_string = @post_categories.join(", ")
@@ -115,7 +115,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
+    # @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
     @post = Post.find(params[:id])
     @user = session[:userinfo]
     if @post.update(

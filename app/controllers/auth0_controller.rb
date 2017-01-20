@@ -8,7 +8,12 @@ class Auth0Controller < ApplicationController
     params[:email] = user_info.info["email"]
 
     users = User.all
-    if users.find_by_email(params[:email]).nil?
+    # if users.has_email?
+    #   redirect_to root_path
+    # else
+    #   new_user
+    # end
+    if users.has_email(params[:email])
       new_user
     else
       redirect_to root_path
