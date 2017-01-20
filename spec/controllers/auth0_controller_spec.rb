@@ -2,17 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Auth0Controller, type: :controller do
 
-
-  describe 'GET auth0#user' do
-    it "displays users email" do
-      get :user, params: auth0_payload
-
-      expect(email).to eq "justinviegelahn@gmail.com"
-    end
-  end
-
-  def auth0_payload
-    {"provider"=>"auth0",
+  before(:each) do
+    OmniAuth.config.mock_auth[:spark_start] = 
+    OmniAuth::AuthHash.new({"provider"=>"auth0",
      "uid"=>"auth0|57b2624b2de91ce71867bd58",
      "info"=>
       {"name"=>"justinviegelahn@gmail.com",
@@ -41,5 +33,26 @@ RSpec.describe Auth0Controller, type: :controller do
          "identities"=>[{"user_id"=>"57b2624b2de91ce71867bd58", "provider"=>"auth0", "connection"=>"Username-Password-Authentication", "isSocial"=>false}],
          "created_at"=>"2016-08-16T00:46:03.319Z",
          "sub"=>"auth0|57b2624b2de91ce71867bd58"}}}
+      )
+    OmniAuth.config.test_mode = true
+    request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:spark_start]
   end
+
+  describe 'GET auth0#callback' do
+    it "creates new user" do
+      get :callback, params: OmniAuth.config.mock_auth[:spark_start]
+      user = User.last
+      expect(user.email).to eq("justinviegelahn@gmail.com") 
+    end
+  end
+  describe 'GET auth0#callback' do
+    before(:each) do
+      @user = create(:user)
+    end
+    it "redirects to root path" do
+      get :callback, params: OmniAuth.config.mock_auth[:spark_start]
+      expect(response).to redirect_to(root_path)
+    end
+  end
+
 end

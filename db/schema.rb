@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161101005141) do
+ActiveRecord::Schema.define(version: 20161209010300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20161101005141) do
     t.string   "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "user_id"
+    t.integer  "user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -39,23 +39,7 @@ ActiveRecord::Schema.define(version: 20161101005141) do
     t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "user_id"
-  end
-
-  create_table "ckeditor_assets", force: :cascade do |t|
-    t.string   "data_file_name",               null: false
-    t.string   "data_content_type"
-    t.integer  "data_file_size"
-    t.string   "data_fingerprint"
-    t.integer  "assetable_id"
-    t.string   "assetable_type",    limit: 30
-    t.string   "type",              limit: 30
-    t.integer  "width"
-    t.integer  "height"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.index ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
-    t.index ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
+    t.integer  "user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -72,7 +56,7 @@ ActiveRecord::Schema.define(version: 20161101005141) do
     t.text     "body"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
-    t.string   "user_id"
+    t.integer  "user_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
