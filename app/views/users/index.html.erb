@@ -18,7 +18,9 @@
 		  </tr>
 		  <tr v-for="user in users | filterBy emailFilter in 'email'">
 		  	<td><a href="/profile/{{ user.profile_id }}" >{{ user.email }}</a> </td>
-		  	<td> <button class="btn btn-rounded {{ user.admin }}" onClick="changeRole({{ user.id }}, {{ user.admin }})">{{ user.admin }}</button></td>
+		  	<% if @current_user.admin == true %>
+			  	<td> <button class="btn btn-rounded {{ user.admin }}" onClick="changeRole({{ user.id }}, {{ user.admin }})">{{ user.admin }}</button></td>
+		  	<% end %>
 		  </tr>
 	  </table>
 	</div>
