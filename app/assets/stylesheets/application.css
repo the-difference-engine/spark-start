@@ -25,6 +25,7 @@
  *= cubeportfolio
  *= cs.style
  *= custom_style
+ *= bootstrap-toggle.min
  *= require_tree .
  *= require_self
  */
