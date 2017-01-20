@@ -15,10 +15,10 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
-    user_id = current_user.id
-    @profile = Profile.create!(profile_params)
-    if profile.save
+    @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
+    params[:profile][:user_id] = @current_user.id
+    @profile = Profile.new(profile_params)
+    if @profile.save!
       flash[:success]= "Profile created!"
       redirect_to @profile
     end
@@ -61,6 +61,6 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(:experience, :bio, :phone, :career, :image, :first_name, :last_name, :city, :state)
+    params.require(:profile).permit(:experience, :bio, :phone, :career, :image, :first_name, :last_name, :city, :user_id, :state)
   end
 end

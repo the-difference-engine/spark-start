@@ -32,7 +32,7 @@ def index
     #@user = session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"]
     params[:book][:category_ids] ||= []
     #@book.author =params[:book][:authors_ids]
-    @book.ebook = params[:book][:ebook]
+    @bookebook = params[:book][:ebook]
     @book = @current_user.books.build(book_params)
      if @book.save
       flash[:success]= "Book created!"
@@ -44,7 +44,7 @@ def index
   def update
     params[:book][:category_ids] ||= []
     #@book.author =params[:book][:authors_ids]
-    @book.ebook = params[:book][:ebook]
+    @bookebook = params[:book][:ebook]
    if @book.update(book_params)
       flash[:success]= "Book updated!"
       redirect_to @book
@@ -79,6 +79,6 @@ def index
     end
 
     def book_params
-      params.require(:book).permit(:title, :cover, :ebook, :description, user_id: :@current_user, category_ids: [])
+      params.require(:book).permit(:title, :cover, :url, :@bookebook, :description, user_id: :@current_user, category_ids: [])
     end
 end

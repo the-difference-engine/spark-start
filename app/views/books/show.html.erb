@@ -1,5 +1,6 @@
 <div class="container container-height">
 
+
   <div class="container">
 
     <h1 class="center-it"><%= @book.title%></h1>
@@ -14,7 +15,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> 
 
     <div class="text-center">
       <h4 class="text-uppercase">
@@ -36,7 +37,8 @@
       <em><q><%= @book.description %></q></em>
       <hr>
     </div>
-    <td><%= link_to "Download #{@book.title}", "/books/#{@book.id}/download_pdf", class: 'btn btn-xl btn-skin center'%></td>
+    <!--This is for the download link
+    <td><%= link_to "Download #{@book.title}", "/books/#{@book.id}/download_pdf", class: 'btn btn-xl btn-skin center'%></td>-->
     <%= link_to "Edit #{@book.title}", "/books/#{@book.id}/edit", class: 'btn btn-xl btn-skin center' %>
     <%= link_to "Add Author to #{@book.title}", new_book_author_path(@book), class: 'btn btn-xl btn-skin center'%>
   </div>

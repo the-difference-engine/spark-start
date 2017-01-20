@@ -69,6 +69,12 @@
                         <% end %>
                         </li>
 
+                        <li class="dropdown">
+                          <% if @current_user.profile.present? %>
+                           <%= link_to "Admin", "/admin" %>
+                          <%end%>
+                        </li>
+
                         <li class="dropdown yamm-fw">
                           <!-- <a href="#" class onclick="lock.show();">Login / Register</a> -->
                             <a href="/logout">Logout</a>
