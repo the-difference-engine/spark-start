@@ -37,8 +37,7 @@
       <em><q><%= @book.description %></q></em>
       <hr>
     </div>
-    <!--This is for the download link
-    <td><%= link_to "Download #{@book.title}", "/books/#{@book.id}/download_pdf", class: 'btn btn-xl btn-skin center'%></td>-->
+    <%= link_to "Download #{@book.title}", "#{@book.ebook.url}", :target => "_blank", class: 'btn btn-xl btn-skin center'%></td>
     <%= link_to "Edit #{@book.title}", "/books/#{@book.id}/edit", class: 'btn btn-xl btn-skin center' %>
     <%= link_to "Add Author to #{@book.title}", new_book_author_path(@book), class: 'btn btn-xl btn-skin center'%>
   </div>
