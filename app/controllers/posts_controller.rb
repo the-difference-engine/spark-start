@@ -186,7 +186,7 @@ class PostsController < ApplicationController
 
   def authenticate_admin!
     current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
-    unless current_user.role == 'admin'
+    unless current_user.admin == true
       redirect_to '/blog'
     end
   end

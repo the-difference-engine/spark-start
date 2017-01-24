@@ -41,4 +41,5 @@
 //= require masterslider.min
 //= require jquery.cubeportfolio.min
 //= require tinymce
+//= require bootstrap-toggle.min
 //= require_tree .
