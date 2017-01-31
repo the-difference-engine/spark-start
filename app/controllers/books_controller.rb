@@ -7,7 +7,6 @@ def index
 		@current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
 	end
     @books = Book.all
-    @last_book = Book.last.id
 
     if params[:search]
       @books= Book.where('title ILIKE ?', "%" + params[:search] + "%")
