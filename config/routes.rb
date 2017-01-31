@@ -35,16 +35,16 @@ Rails.application.routes.draw do
   delete '/category/:id' => 'category#destroy'
 
   get '/tags' => 'tags#index'
-  post '/tag' => 'tags#create'
-  patch '/tag' => 'tags#update'
-  delete '/tag/:id' => 'tags#destroy'
+  post '/tags' => 'tags#create'
+  patch '/tags' => 'tags#update'
+  delete '/tags/:id' => 'tags#destroy'
 
   # get '/comments' => 'comments#index'
-  # get '/comment/:id' => 'comments#show'
-  post '/comment/' => 'comments#create'
+  # get '/comments/:id' => 'comments#show'
+  post '/comments/' => 'comments#create'
 
   get '/books' => 'books#index'
-  get '/book/:id' => 'books#show'
+  get '/books/:id' => 'books#show'
 
   get '/logout' => 'auth0#logout'
 

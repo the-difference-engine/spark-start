@@ -1,5 +1,35 @@
 <div class="container container-height">
 
-Here is where an individual book will be.
-
+  <div class="col-xs-3">
+    <img src="https://placeholdit.imgix.net/~text?txtsize=23&bg=ffffff&txtclr=000000&txt=250%C3%97250&w=250&h=250" alt="">
+  </div>
+  <div class="col-xs-9">
+  <h1>
+  Brain Sparker 1: What did this book make you feel?  
+  </h1>
+  </div>
+  <div class="col-xs-9">
+  <h1>
+  Brain Sparker 2: What did this book make you hope for?  
+  </h1>
+  </div>
+  <div class="col-xs-9">
+  <h1>
+  Brain Sparker 3: What did this book make you think?  
+  </h1>
+  </div>
+  <% if @comments %>
+    <% @comments.each do |comment| %>
+    <div class="col-xs-12">
+      <h4><%= @comment.body %></h4>
+    </div>
+    <% end %>
+  <% end %>
+  <%= form_tag "/comments", method: :create do %>
+    <div>Enter comment here</div>
+    <%= label_tag :body %>
+    <%= text_field_tag :body %>
+    <%= hidden_field_tag :book_id, @book.id %>
+    <%= submit_tag "Enter Comment" %>
+  <% end %>
 </div>
