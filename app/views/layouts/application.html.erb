@@ -91,7 +91,7 @@
 
                          <li class="dropdown">
                           <% if @current_user.profile.present? %>
-                           <%= link_to "Profiles", "/" %>
+                           <%= link_to "Profiles", "/profiles" %>
                           <% else %>
                           <%= link_to "Profiles", "/profiles/new"%>
                           <%end%>
