@@ -65,7 +65,7 @@
 
                          <li class="dropdown">
                           <% if @current_user.profile.present? %>
-                           <%= link_to "The Book", "/" %>
+                           <%= link_to "The Book", "/books/#{@last_book}" %>
                           <% else %>
                             <%= link_to "The Book", "/profiles/new"%>
                           <%end%>
