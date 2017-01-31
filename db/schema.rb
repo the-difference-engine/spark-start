@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20170114043128) do
     t.string   "url"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
-    t.integer  "user_id"
+    t.string   "user_id"
     t.string   "cover_file_name"
     t.string   "cover_content_type"
     t.integer  "cover_file_size"
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 20170114043128) do
     t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "user_id"
+    t.string   "user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 20170114043128) do
     t.text     "body"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
-    t.integer  "user_id"
+    t.string   "user_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
