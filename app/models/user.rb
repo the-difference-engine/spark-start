@@ -9,4 +9,8 @@ class User < ApplicationRecord
     User.find_by_email(email).nil?
   end
 
+  def admin?
+  	self.admin
+  end
+
 end
