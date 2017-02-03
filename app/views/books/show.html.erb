@@ -21,7 +21,15 @@
   <% if @comments %>
     <% @comments.each do |comment| %>
     <div class="col-xs-12">
-      <h4><%= @comment.body %></h4>
+      <h4><%= comment.body %></h4>
+      <%= form_tag "/comments", method: :create do %>
+        <div>Enter comment here</div>
+        <%= label_tag :body %>
+        <%= text_field_tag :body %>
+        <%= hidden_field_tag :commentable_id, comment.id %>
+        <%= hidden_field_tag :commentable_type, "comment" %>
+        <%= submit_tag "Enter Comment" %>
+      <% end %>
     </div>
     <% end %>
   <% end %>
@@ -29,7 +37,8 @@
     <div>Enter comment here</div>
     <%= label_tag :body %>
     <%= text_field_tag :body %>
-    <%= hidden_field_tag :book_id, @book.id %>
+    <%= hidden_field_tag :commentable_id, @book.id %>
+    <%= hidden_field_tag :commentable_type, "book" %>
     <%= submit_tag "Enter Comment" %>
   <% end %>
 </div>

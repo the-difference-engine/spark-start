@@ -4702,6 +4702,10 @@ FOOTER STYLES
   background-color: #4DBD33;
   color: white;
 }
+/*replies*/
 
+.replies {
+  text-indent: 50px;
+}
 
 

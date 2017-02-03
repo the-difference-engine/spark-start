@@ -41,7 +41,7 @@ Rails.application.routes.draw do
 
   # get '/comments' => 'comments#index'
   # get '/comments/:id' => 'comments#show'
-  post '/comments/' => 'comments#create'
+  post '/comments' => 'comments#create'
 
   get '/books' => 'books#index'
   get '/books/:id' => 'books#show'

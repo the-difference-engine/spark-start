@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170131005354) do
+ActiveRecord::Schema.define(version: 20170203013957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,12 +81,12 @@ ActiveRecord::Schema.define(version: 20170131005354) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer  "post_id"
     t.text     "body"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.boolean  "approved",   default: false
-    t.integer  "book_id"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.boolean  "approved",         default: false
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -118,6 +118,13 @@ ActiveRecord::Schema.define(version: 20170131005354) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+  end
+
+  create_table "replies", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "comment_id"
+    t.text     "body"
   end
 
   create_table "tagged_posts", force: :cascade do |t|
