@@ -1,0 +1,22 @@
+<ul>
+<li><%= comment.body %><li>
+<% comment.comments.each do |sub_comment| %>
+  <ul><%= sub_comment.body %></ul>
+  <%= form_tag "/comments", method: :create do %>
+    <div>Enter comment here</div>
+    <%= label_tag :body %>
+    <%= text_field_tag :body %>
+    <%= hidden_field_tag :commentable_id, comment.id %>
+    <%= hidden_field_tag :commentable_type, "Comment" %>
+    <%= submit_tag "Enter Comment" %>
+  <% end %>
+<% end %>
+<%= form_tag "/comments", method: :create do %>
+  <div>Enter comment here</div>
+  <%= label_tag :body %>
+  <%= text_field_tag :body %>
+  <%= hidden_field_tag :commentable_id, comment.id %>
+  <%= hidden_field_tag :commentable_type, "Comment" %>
+  <%= submit_tag "Enter Comment" %>
+<% end %>
+</ul>

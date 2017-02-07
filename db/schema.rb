@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 20170203013957) do
     t.text     "body"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
-    t.boolean  "approved",         default: false
+    t.boolean  "approved",                         default: false
     t.integer  "commentable_id"
     t.string   "commentable_type"
   end

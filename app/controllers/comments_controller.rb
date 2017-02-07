@@ -1,26 +1,17 @@
 class CommentsController < ApplicationController
 
-  def new
-    @user_session = session[:userinfo]
-    @user_token = @user_session["extra"]["raw_info"]["identities"][0]["user_id"]
-    @comment = Comment.new
-    @book = Book.new
-  end
-
   def create
+    # @book = Book.find(params[:book_id])
     @user_session = session[:userinfo]
     @user_token = @user_session["extra"]["raw_info"]["identities"][0]["user_id"]
-    @comment = Comment.new(
-      body: params[:body],
-      commentable_id: params[:commentable_id],
-      commentable_type: params[:commentable_type]
-    )
+    @comment = Comment.new comment_params
+    @comment.save
 
-  if @comment.save
-      redirect_to request.referer
-  else
-    render 'new.html.erb'
-  end
+
+    redirect_to request.referer
   end
 
+  def comment_params
+    params.permit(:body, :commentable_id, :commentable_type, :approved)
+  end
 end
