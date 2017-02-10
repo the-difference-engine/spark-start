@@ -18,30 +18,16 @@
   Brain Sparker 3: What did this book make you think?  
   </h1>
   </div>
-  <% if @comments %>
-    <% @comments.each do |comment| %>
-    <div class="col-xs-12">
-      <h4><%= comment.body %></h4>
-      <% comment.comments.each do |sub_comment| %>
-        <h4><%= sub_comment.body %></h4>
-      <% end %>
-      <%= form_tag "/comments", method: :create do %>
-        <div>Enter comment here</div>
-        <%= label_tag :body %>
-        <%= text_field_tag :body %>
-        <%= hidden_field_tag :commentable_id, comment.id %>
-        <%= hidden_field_tag :commentable_type, "Comment" %>
-        <%= submit_tag "Enter Comment" %>
-      <% end %>
-    </div>
-    <% end %>
-  <% end %>
+    <ul>
+      <%= render partial: 'comments', collection: @book.comments %>
+    </ul>
   <%= form_tag "/comments", method: :create do %>
     <div>Enter comment here</div>
     <%= label_tag :body %>
     <%= text_field_tag :body %>
     <%= hidden_field_tag :commentable_id, @book.id %>
     <%= hidden_field_tag :commentable_type, "Book" %>
+    <%= hidden_field_tag :user_id, @current_user.id %>
     <%= submit_tag "Enter Comment" %>
   <% end %>
 </div>
