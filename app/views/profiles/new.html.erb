@@ -1,6 +1,8 @@
 <div class="container">
   <h1>Create Your New SparkStart Profile!</h1>
 
+<%= flash[:warning] = "Please set up a profile to view full content of Spark Start!" %>
+
   <br>
   <%= simple_form_for @profile, :html => { :multipart => true } do |f| %>
     <% @profile.errors.full_messages.each do |error| %>

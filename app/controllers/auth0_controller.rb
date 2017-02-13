@@ -27,7 +27,7 @@ class Auth0Controller < ApplicationController
         UserNotifierMailer.send_signup_email(@user).deliver
         flash[:success] = "Welcome To Spark Start"
 
-        redirect_to profiles_new_path
+        redirect_to new_profile_path
       else
         flash[:error] = "Try Again"
         render root

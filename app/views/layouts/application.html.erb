@@ -57,7 +57,7 @@
                           <% if @current_user.profile.present? %>
                             <%= link_to "Your Profile", "/profiles/#{@current_user.profile.id}" %>
                           <% else %>
-                            <%= link_to "Your Profile", "/profiles/new" %>
+                            <%= link_to "New Profile", "/profiles/new" %>
                           <% end %>
                         </li>
 
@@ -67,7 +67,7 @@
 
                          <li class="dropdown">
                           <% if @current_user.profile.present? %>
-                         <%= link_to "The Book", "/books/#{last_book.id}" %>
+                         <%= link_to "The Book", "/books/#{last_book}" %>
                           <% else %>
                             <%= link_to "The Book", "/profiles/new"%>
                           <%end%>

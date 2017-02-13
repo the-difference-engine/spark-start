@@ -1,4 +1,4 @@
-class BooksController < ApplicationController
+class BooksController < ApplicationController 
 	before_filter :logged_in_using_omniauth?
 	before_action :set_book, only: [:show, :edit, :update, :destroy, :download_pdf]
   before_action :set_current_user
