@@ -1,5 +1,6 @@
 <div class="container container-height">
 
+
   <div class="col-xs-3">
     <img src="https://placeholdit.imgix.net/~text?txtsize=23&bg=ffffff&txtclr=000000&txt=250%C3%97250&w=250&h=250" alt="">
   </div>
@@ -17,17 +18,24 @@
   <h1>
   Brain Sparker 3: What did this book make you think?  
   </h1>
+
   </div>
-    <ul>
-      <%= render partial: 'comments', collection: @book.comments %>
-    </ul>
-  <%= form_tag "/comments", method: :create do %>
-    <div>Enter comment here</div>
-    <%= label_tag :body %>
-    <%= text_field_tag :body %>
-    <%= hidden_field_tag :commentable_id, @book.id %>
-    <%= hidden_field_tag :commentable_type, "Book" %>
-    <%= hidden_field_tag :user_id, @current_user.id %>
-    <%= submit_tag "Enter Comment" %>
-  <% end %>
+  <div ng-app="app">
+    <div ng-controller="commentsController">
+      
+        <ul>
+          <%= render partial: 'comments', collection: @book.comments %>
+        </ul>
+      <button class="btn btn-success" ng-click="showFirst()">Comment</button>
+      <div ng-if="showFirstComment"> 
+        <%= form_tag "/comments", method: :create do %>
+          <%= text_field_tag :body %>
+          <%= hidden_field_tag :commentable_id, @book.id %>
+          <%= hidden_field_tag :commentable_type, "Book" %>
+          <%= hidden_field_tag :user_id, @current_user.id %>
+          <%= submit_tag "Enter Comment", class: "btn btn-warning" %>
+      <% end %>
+      </div>
+    </div>
+  </div>
 </div>

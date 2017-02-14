@@ -42,4 +42,6 @@
 //= require jquery.cubeportfolio.min
 //= require tinymce
 //= require bootstrap-toggle.min
+//=require angular
+//=require app2
 //= require_tree .

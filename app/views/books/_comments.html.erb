@@ -3,15 +3,17 @@
   <%= comments.body %>
   <small>Submitted <%= time_ago_in_words(comments.created_at) %> ago</small>
   <small><%= comments.user.email %></small>
-  <%= form_tag "/comments", method: :create do %>
-    <div>Enter comment here</div>
-    <%= label_tag :body %>
-    <%= text_field_tag :body %>
-    <%= hidden_field_tag :commentable_id, comments.id %>
-    <%= hidden_field_tag :commentable_type, "Comment" %>
-    <%= hidden_field_tag :user_id, @current_user.id %>
-    <%= submit_tag "Enter Comment" %>
-  <% end %>
+  <button class="btn btn-success" ng-click="showForm(<%= comments.id %>)" ng-if="showComment !== <%= comments.id %>">reply</button>
+  <div ng-if="showComment === <%= comments.id %>">
+    
+    <%= form_tag "/comments", method: :create do %>
+      <%= text_field_tag :body %>
+      <%= hidden_field_tag :commentable_id, comments.id %>
+      <%= hidden_field_tag :commentable_type, "Comment" %>
+      <%= hidden_field_tag :user_id, @current_user.id %>
+      <%= submit_tag "Enter Comment", class: "btn btn-warning" %>
+    <% end %>
+  </div>
     <ul>
       <%= render partial: 'comments', collection: comments.comments %>
     </ul>
