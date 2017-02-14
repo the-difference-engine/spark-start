@@ -1,0 +1,9 @@
+<div class="container">
+
+  <h1>Edit <%= @author.full_name%>!</h1>
+  
+  <br>
+
+  <%= render 'form' %>
+  <a href="/books/<%=@book.id%>/authors/<%=@author.id%>" data-method="delete" rel="nofollow" data-confirm="Are you sure?" class: 'btn btn-xl btn-skin' role="button">Delete</a>
+</div>

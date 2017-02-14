@@ -1,0 +1,37 @@
+# Add configuration values here, as shown below.
+#
+# pusher_app_id: "2954"
+# pusher_key: 7381a978f7dd7f9a1117
+# pusher_secret: abdc3b896a0ffb85d373
+# stripe_api_key: sk_test_2J0l093xOyW72XUYJHE4Dv2r
+# stripe_publishable_key: pk_test_ro9jV5SNwGb1yYlQfzG17LHK
+clientid: '120SH91pK3Jo2SIUNxPW3PU688IcVu83'
+clientsecret: 'FCMobloXpFRp3AsDp4cqPEXagOHnK9qpUmnHJydskaVbUHUvhBbGqs_9DgMY3dUe'
+domain: 'sparkstart.auth0.com'
+
+#sendgrid info
+user_name: 'sparkstart'
+password: 'BrainInject10'
+sendgrid_domain: 'http://sparkstart.org/'
+
+#
+# production:
+#   stripe_api_key: sk_live_EeHnL644i6zo4Iyq4v1KdV9H
+#   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
+
+development:
+ HOST_URL: "http://localhost:3000"
+ AWS_ACCESS_KEY_ID: AKIAJ6CKEFVO2L2W63GA
+ AWS_SECRET_ACCESS_KEY: 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
+ AWS_REGION: "us-west-2"
+ S3_BUCKET_NAME: "demo2twl"
+ REDIRECT_URL: "http://localhost:3000/auth/auth0/callback"
+
+qa:
+  REDIRECT_URL: "https://qa-spark-start.herokuapp.com/auth/auth0/callback"
+
+demo:
+  REDIRECT_URL: "https://demo-spark-start.herokuapp.com/auth/auth0/callback"
+
+prod:
+  REDIRECT_URL: "https://prod-spark-start.herokuapp.com/auth/auth0/callback"
