@@ -1,7 +1,8 @@
 class BooksController < ApplicationController 
 	before_filter :logged_in_using_omniauth?
-	before_action :set_book, only: [:show, :edit, :update, :destroy, :download_pdf]
   before_action :set_current_user
+  before_action :has_profile?
+  before_action :set_book, only: [:show, :edit, :update, :destroy, :download_pdf]
 def index
 	if session[:userinfo].present?
 		@current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
@@ -29,10 +30,7 @@ def index
 
  
   def create
-  	@current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
-    #@user = session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"]
     params[:book][:category_ids] ||= []
-    #@book.author =params[:book][:authors_ids]
     @bookebook = params[:book][:ebook]
     @book = @current_user.books.build(book_params)
      if @book.save
@@ -44,7 +42,6 @@ def index
  
   def update
     params[:book][:category_ids] ||= []
-    #@book.author =params[:book][:authors_ids]
     @bookebook = params[:book][:ebook]
    if @book.update(book_params)
       flash[:success]= "Book updated!"
@@ -70,9 +67,16 @@ def index
   end
 
   private
-    
     def set_current_user
        @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
+    end
+
+    def has_profile?
+      binding.pry
+       if @current_user.profile.nil?
+           flash[:warning] = "Please create a new profile first!"
+           redirect_to new_profile_path
+       end
     end
 
     def set_book

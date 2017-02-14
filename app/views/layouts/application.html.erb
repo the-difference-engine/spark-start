@@ -66,11 +66,7 @@
                         </li>
 
                          <li class="dropdown">
-                          <% if @current_user.profile.present? %>
-                         <%= link_to "The Book", "/books/#{last_book}" %>
-                          <% else %>
-                            <%= link_to "The Book", "/profiles/new"%>
-                          <%end%>
+                          <%= link_to "The Book", "/books/#{last_book}" %>
                         </li>
 
                         <li class="dropdown">
@@ -78,11 +74,8 @@
                         </li>
 
                          <li class="dropdown">
-                          <% if @current_user.profile.present? %>
                            <%= link_to "Library", "/books" %>
-                          <% else %> 
-                          <%= link_to "Library", "/profiles/new"%>
-                          <%end%>
+                          
                         </li>
 
                         <li class="dropdown">
@@ -90,11 +83,9 @@
                         </li>
 
                          <li class="dropdown">
-                          <% if @current_user.profile.present? %>
+                         
                            <%= link_to "Profiles", "/profiles" %>
-                          <% else %>
-                          <%= link_to "Profiles", "/profiles/new"%>
-                          <%end%>
+                         
                         </li>
 
                         <li class="dropdown">
@@ -117,6 +108,9 @@
         </header>
         <!-- header end -->
 
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
 
 
       <%= yield %>

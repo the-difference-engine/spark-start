@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
-  before_action :is_profile_created, only: [:index, :new, :show, :edit, :update, :destroy]
   before_action :set_current_user
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
+  before_action :has_profile?
   include ProfilesHelper
 
   def index
@@ -46,12 +46,12 @@ class ProfilesController < ApplicationController
 
  private
 
-  def is_profile_created
-    @current_user = User.find_by_email(session[:userinfo]["extra"]["raw_info"]["email"])
-    if !@current_user.profile
-      #redirect_to new_profile_path
+    def has_profile?
+       if @current_user.profile.nil?
+           flash[:warning] = "Please create a new profile first!"
+           redirect_to new_profile_path
+       end
     end
-  end
 
   def set_current_user
     @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
