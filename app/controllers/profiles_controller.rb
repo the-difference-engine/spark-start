@@ -1,10 +1,11 @@
 class ProfilesController < ApplicationController
   before_action :set_current_user
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
-  before_action :has_profile?
+  before_action :has_profile?, except: [:new, :create]
   include ProfilesHelper
 
   def index
+    @profiles = Profile.all
   end
 
   def show

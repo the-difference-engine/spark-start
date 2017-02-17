@@ -72,7 +72,6 @@ def index
     end
 
     def has_profile?
-      binding.pry
        if @current_user.profile.nil?
            flash[:warning] = "Please create a new profile first!"
            redirect_to new_profile_path

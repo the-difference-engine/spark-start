@@ -15,4 +15,9 @@ class Profile < ApplicationRecord
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
   validates_with AttachmentSizeValidator, attributes: :image, less_than: 1.megabytes
 
+def full_name
+  "#{first_name} #{last_name}"
+end
+
+
 end
