@@ -1,33 +1,27 @@
 <div class="container container-height">
 
-
+<div class="row">
   <div class="col-xs-3">
-    <img src="https://placeholdit.imgix.net/~text?txtsize=23&bg=ffffff&txtclr=000000&txt=250%C3%97250&w=250&h=250" alt="">
+     <%= image_tag "#{@book_image}", {class: "small_image" } %> 
   </div>
   <div class="col-xs-9">
-  <h1>
-  Brain Sparker 1: What did this book make you feel?  
-  </h1>
+    <h1>Sparks for the discussion below!</h1>
   </div>
-  <div class="col-xs-9">
-  <h1>
-  Brain Sparker 2: What did this book make you hope for?  
-  </h1>
+</div>
+  <div class="row">
+    <% @questions.each do |question| %>
+      <div class="col-xs-4">
+      <h3>
+      <%= question %> 
+      </h3>
+      </div>
+    <% end %>
   </div>
-  <div class="col-xs-9">
-  <h1>
-  Brain Sparker 3: What did this book make you think?  
-  </h1>
-
-  </div>
-  <div ng-app="app">
+  <div ng-app="app" class="col-xs-12">
     <div ng-controller="commentsController">
       
-        <ul>
-          <%= render partial: 'comments', collection: @book.comments %>
-        </ul>
-      <button class="btn btn-success" ng-click="showFirst()">Comment</button>
-      <div ng-if="showFirstComment"> 
+      <button class="btn btn-success" ng-click="showFirst()">Enter Your Thoughts Here:</button>
+      <div ng-if="showFirstComment" align="right"> 
         <%= form_tag "/comments", method: :create do %>
           <%= text_field_tag :body %>
           <%= hidden_field_tag :commentable_id, @book.id %>
@@ -36,6 +30,9 @@
           <%= submit_tag "Enter Comment", class: "btn btn-warning" %>
       <% end %>
       </div>
+        <ul>
+          <%= render partial: 'comments', collection: @book.comments %>
+        </ul>
     </div>
   </div>
 </div>

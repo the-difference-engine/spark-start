@@ -4708,4 +4708,15 @@ FOOTER STYLES
   text-indent: 50px;
 }
 
+/*books question list*/
+
+.center_list {
+  margin: 10px;
+  list-style-position: inside;
+}
+
+.small_image {
+  width: 250px;
+  height: 250px;
+}
 
