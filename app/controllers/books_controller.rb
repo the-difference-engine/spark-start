@@ -15,6 +15,7 @@ def show
   @book = Book.find(params[:id])
   @questions = ["What did this book do?", "What did this book?", "Are you there God? It's me Margaret."]
   @book_image = "travelas.png"
+  @book_download = "Click to Download"
 end
 
 end

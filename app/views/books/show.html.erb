@@ -3,9 +3,19 @@
 <div class="row">
   <div class="col-xs-3">
      <%= image_tag "#{@book_image}", {class: "small_image" } %> 
+     <button class="btn btn-success left_button_width"><%= @book_download %></button>
   </div>
-  <div class="col-xs-9">
-    <h1>Sparks for the discussion below!</h1>
+  <div class="col-xs-6">
+    <h1 class="center_text_header">Welcome to the Spark Tank!</h1>
+  </div>
+  <div class="col-xs-3">
+     <%= image_tag "#{@book_image}", {class: "small_image" } %> 
+     <button class="btn btn-success right_justify_text"><%= @book_download %></button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <h1 class="center_text_header">Spark Starter Questions:</h1>
   </div>
 </div>
   <div class="row">
@@ -20,15 +30,14 @@
   <div ng-app="app" class="col-xs-12">
     <div ng-controller="commentsController">
       
-      <button class="btn btn-success" ng-click="showFirst()">Enter Your Thoughts Here:</button>
-      <div ng-if="showFirstComment" align="right"> 
+      <div align="left"> 
         <%= form_tag "/comments", method: :create do %>
           <%= text_field_tag :body %>
           <%= hidden_field_tag :commentable_id, @book.id %>
           <%= hidden_field_tag :commentable_type, "Book" %>
           <%= hidden_field_tag :user_id, @current_user.id %>
           <%= submit_tag "Enter Comment", class: "btn btn-warning" %>
-      <% end %>
+        <% end %>
       </div>
         <ul>
           <%= render partial: 'comments', collection: @book.comments %>

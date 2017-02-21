@@ -1,9 +1,12 @@
 
 <li class="center_list">
   <%= comments.body %>
-  <small>Submitted <%= time_ago_in_words(comments.created_at) %> ago</small>
-  <small><%= comments.user.email %></small>
-  <button class="btn btn-success" ng-click="showForm(<%= comments.id %>)" ng-if="showComment !== <%= comments.id %>">reply</button>
+  <br>
+  <div>
+    <small>Submitted <%= time_ago_in_words(comments.created_at) %> ago</small>
+    <small><%= comments.user.email %></small>
+    <p class="red_reply_text" ng-click="showForm(<%= comments.id %>)" ng-if="showComment !== <%= comments.id %>">reply</p>
+  </div>
   <div ng-if="showComment === <%= comments.id %>">
     
     <%= form_tag "/comments", method: :create do %>
