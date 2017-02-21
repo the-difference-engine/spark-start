@@ -55,20 +55,43 @@
                         <% if session[:userinfo].present? %>
                         <li class="dropdown">
                           <% if @current_user.profile.present? %>
-                            <%= link_to "Profile", "/profile/#{@current_user.profile.id}" %>
+                            <%= link_to "Your Profile", "/profiles/#{@current_user.profile.id}" %>
                           <% else %>
-                            <%= link_to "Profile", "/profile/new" %>
+                            <%= link_to "New Profile", "/profiles/new" %>
                           <% end %>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="/" role="button">Home</a>
+                        </li>
+
+                         <li class="dropdown">
+                          <%= link_to "The Book", "/books/#{last_book}" %>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="/mission" role="button">About</a>
+                        </li>
+
+                         <li class="dropdown">
+                           <%= link_to "Library", "/books" %>
+                          
                         </li>
 
                         <li class="dropdown">
                             <a href="/blog" role="button">Blog</a>
                         </li>
 
+                         <li class="dropdown">
+                         
+                           <%= link_to "Profiles", "/profiles" %>
+                         
+                        </li>
+
                         <li class="dropdown">
-                        <% if @current_user.profile.present? %>
-                          <%= link_to "Books", "/books" %>
-                        <% end %>
+                          <% if @current_user.admin? %>
+                           <%= link_to "Admin", "/admin" %>
+                          <%end%>
                         </li>
 
                         <li class="dropdown yamm-fw">
@@ -85,6 +108,9 @@
         </header>
         <!-- header end -->
 
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
 
 
       <%= yield %>

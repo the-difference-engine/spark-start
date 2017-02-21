@@ -1,5 +1,45 @@
 <div class="container container-height">
 
-Here is where an individual book will be.
 
+  <div class="container">
+
+    <h1 class="center-it"><%= @book.title%></h1>
+    <div class="row">
+      <div class="text-center">
+        <div class="team-style-2 image-box col-md-6 col-md-offset-3">
+          <%= image_tag @book.cover.url(:medium), class: "profile-image img-responsive" %>
+          <div class="team-overlay profile-image">
+            <p>
+
+            </p>
+          </div>
+        </div>
+      </div>
+    </div> 
+
+    <div class="text-center">
+      <h4 class="text-uppercase">
+        <% if @author.present? %>
+         <% @author.each do |author|%>
+           <h2>By <%= author.full_name%></h2>
+          |<a href="/books/<%=@book.id%>/authors/<%=author.id%>/edit">edit</a>
+         <%end%>
+        <%end%>
+        <% @book.categories_author_books.each do |book_category| %>
+          <h3><%= book_category.category.name %></h3>
+        <%end%>
+      </h4>
+      <hr>
+    </div>
+
+    <div class="text-center">
+      <h4 class="text-uppercase"><%= @book.title%> description</h4>
+      <em><q><%= @book.description %></q></em>
+      <hr>
+    </div>
+    <%= link_to "Download #{@book.title}", "#{@book.ebook.url}", :target => "_blank", class: 'btn btn-xl btn-skin center'%></td>
+    <%= link_to "Edit #{@book.title}", "/books/#{@book.id}/edit", class: 'btn btn-xl btn-skin center' %>
+    <%= link_to "Add Author to #{@book.title}", new_book_author_path(@book), class: 'btn btn-xl btn-skin center'%>
+  </div>
 </div>
+
