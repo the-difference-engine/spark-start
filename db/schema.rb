@@ -10,23 +10,60 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20170106020658) do
+ActiveRecord::Schema.define(version: 20170114043128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "books", force: :cascade do |t|
-    t.string   "url"
+  create_table "author_categories", force: :cascade do |t|
+    t.integer  "author_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "authors", force: :cascade do |t|
+    t.string   "full_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "book_id"
+  end
+
+  create_table "authors_books", force: :cascade do |t|
+    t.integer  "author_id"
+    t.integer  "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "books", force: :cascade do |t|
+    t.string   "url"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "user_id"
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
+    t.string   "title"
+    t.text     "description"
+    t.string   "ebook_file_name"
+    t.string   "ebook_content_type"
+    t.integer  "ebook_file_size"
+    t.datetime "ebook_updated_at"
   end
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "categories_author_books", force: :cascade do |t|
+    t.integer  "book_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "categorized_posts", force: :cascade do |t|

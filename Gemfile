@@ -33,9 +33,12 @@ gem 'omniauth-auth0', '~> 1.4.1'
 
 gem 'vuejs-rails'
 gem 'tinymce-rails'
-gem "paperclip"
-gem 'aws-sdk-v1'
+gem 'paperclip', '< 5.0'
+gem 'simple_form', '~> 3.3', '>= 3.3.1'
+gem 'aws-sdk', '< 2.0'
 gem 'rollbar'
+gem 'rubyzip', '~> 1.2'
+gem 'rails_admin', '~> 1.1', '>= 1.1.1'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
