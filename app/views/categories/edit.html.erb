@@ -1,0 +1,10 @@
+<div class="container">
+
+  <h1>Edit Category <%= @category.name%>!</h1>
+  
+  <br>
+
+  <%= render 'form' %>
+
+  <a href="/categories/<%=@category.id%>/" data-method="delete" rel="nofollow" data-confirm="Are you sure?" class: 'btn btn-xl btn-skin' role="button">Delete</a>
+</div>

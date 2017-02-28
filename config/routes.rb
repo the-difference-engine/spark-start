@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get "/auth/auth0/callback" => "auth0#callback"
   get "/auth/auth0/user" => "auth0#user"
   get "/auth/failure" => "auth0#failure"
@@ -12,50 +13,43 @@ Rails.application.routes.draw do
   get '/mission' => 'homes#mission'
   get '/freevideos' => 'homes#videos'
 
-  get '/profiles' => 'profiles#index'
-  get '/profile/new' => 'profiles#new'
-  post '/profile/' => 'profiles#create'
-  get '/profile/:id' => 'profiles#show'
-  get '/profile/:id/edit' => 'profiles#edit'
-  patch '/profile/:id' => 'profiles#update'
-  delete '/profile/:id' => 'profiles#destroy'
+   resources :profiles
 
-  get '/blog' => 'posts#index'
-  get '/blog/new' => 'posts#new'
-  post '/blog' => 'posts#create'
-  get '/blog/dashboard' => 'posts#dashboard'
-  get '/blog/:id' => 'posts#show'
-  get '/blog/:id/edit' => 'posts#edit'
-  patch '/blog/:id' => 'posts#update'
-  delete '/blog/:id' => 'posts#destroy'
+	get '/blog' => 'posts#index'
+	get '/blog/new' => 'posts#new'
+	post '/blog' => 'posts#create'
+	get '/blog/dashboard' => 'posts#dashboard'
+	get '/blog/:id' => 'posts#show'
+	get '/blog/:id/edit' => 'posts#edit'
+	patch '/blog/:id' => 'posts#update'
+	delete '/blog/:id' => 'posts#destroy'
 
-  get '/categories' => 'categories#index'
-  post '/category' => 'categories#create'
-  patch '/category/:id' => 'categories#update'
-  delete '/category/:id' => 'category#destroy'
+	resources :categories
 
-  get '/tags' => 'tags#index'
-  post '/tags' => 'tags#create'
-  patch '/tags' => 'tags#update'
-  delete '/tags/:id' => 'tags#destroy'
+	get '/tags' => 'tags#index'
+	post '/tag' => 'tags#create'
+	patch '/tag' => 'tags#update'
+	delete '/tag/:id' => 'tags#destroy'
 
-  # get '/comments' => 'comments#index'
-  # get '/comments/:id' => 'comments#show'
-  post '/comments' => 'comments#create'
+	# get '/comments' => 'comments#index'
+	# get '/comment/:id' => 'comments#show'
+	post '/comment/' => 'comments#create'
 
-  get '/books' => 'books#index'
-  get '/books/:id' => 'books#show'
+	resources :books do
+		get :download_pdf
+		resources :authors do
+	    end
+	end
 
-  get '/logout' => 'auth0#logout'
+	get '/logout' => 'auth0#logout'
 
-  get '/users' => 'users#index'
+	get '/users' => 'users#index'
 
-  namespace :api do 
+ namespace :api do 
     namespace :v1 do 
       get '/users' => 'users#index'
       put '/users/:id' => 'users#update'
     end
   end
-
 
 end
