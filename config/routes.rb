@@ -33,7 +33,7 @@ Rails.application.routes.draw do
 
 	# get '/comments' => 'comments#index'
 	# get '/comment/:id' => 'comments#show'
-	post '/comment/' => 'comments#create'
+	post '/comments' => 'comments#create'
 
 	resources :books do
 		get :download_pdf
