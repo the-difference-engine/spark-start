@@ -3,6 +3,9 @@ include Auth0
 
 RSpec.describe BooksController, type: :controller do
 
+<<<<<<< HEAD
+  
+=======
 	before(:each) do
 		@user = create(:user)
 	end
@@ -30,4 +33,5 @@ describe "POST #create" do
     end
 
 end
+>>>>>>> 20d02de20edee6bcc44f09fed1dadd2b3136a8e2
 end
