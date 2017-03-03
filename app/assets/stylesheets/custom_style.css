@@ -4740,3 +4740,7 @@ FOOTER STYLES
   text-decoration: underline;
   font-weight: bold;
 }
+
+.black_text{
+  color: black;
+}
