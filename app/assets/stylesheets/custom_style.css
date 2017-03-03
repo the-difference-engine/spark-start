@@ -4702,6 +4702,41 @@ FOOTER STYLES
   background-color: #4DBD33;
   color: white;
 }
+/*replies*/
 
+.replies {
+  text-indent: 50px;
+}
 
+/*books question list*/
 
+.center_list {
+  margin: 10px;
+  list-style-position: inside;
+}
+
+.small_image {
+  width: 250px;
+  height: 250px;
+}
+
+.center_text_header {
+  text-align: center;
+}
+
+.right_justify_text{
+  position: relative;
+  float: right;
+  width: 250px;
+  margin-right: 12px;
+}
+
+.left_button_width{
+  width: 250px;
+}
+
+.red_reply_text{
+  color: green;
+  text-decoration: underline;
+  font-weight: bold;
+}
