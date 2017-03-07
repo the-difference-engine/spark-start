@@ -12,8 +12,10 @@ class Profile < ApplicationRecord
   belongs_to :user
 
   has_attached_file :image, styles: { medium: "500x500>", thumb: "100x100>" }
-  validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
-  validates_with AttachmentSizeValidator, attributes: :image, less_than: 1.megabytes
+  validates_attachment_content_type :image, :content_type => ['image/jpeg', 'image/png', 'image/gif']
+  validates_attachment :image, :size => { :in => 0..3.megabytes }
+  # validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+  # validates_with AttachmentSizeValidator, attributes: :image, less_than: 1.megabytes
 
 def full_name
   "#{first_name} #{last_name}"
