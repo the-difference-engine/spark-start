@@ -17,9 +17,11 @@ class ProfilesController < ApplicationController
   end
 
   def create
+    #TODO random code
     @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
     params[:profile][:user_id] = @current_user.id
     @profile = Profile.new(profile_params)
+
     if @profile.save!
       flash[:success]= "Profile created!"
       redirect_to @profile
