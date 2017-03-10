@@ -121,13 +121,6 @@ ActiveRecord::Schema.define(version: 20170210011952) do
     t.datetime "image_updated_at"
   end
 
-  create_table "replies", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "comment_id"
-    t.text     "body"
-  end
-
   create_table "tagged_posts", force: :cascade do |t|
     t.integer  "post_id"
     t.integer  "tag_id"
