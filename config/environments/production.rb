@@ -84,18 +84,18 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  # config.paperclip_defaults = {
-  #   :storage => :s3,
-  #   :path => "graymatter/:id/avatar/:style.:extension",
-  #   :bucket => "graymatterapplication",
-  #   :s3_host_name => "s3-us-west-2.amazonaws.com",
-  #   :default_url => "https://s3-us-west-2.amazonaws.com/graymatterapplication/default/generic-avatar.jpg",
-  #   :s3_region => "us-west-2",
-  #   :s3_credentials => {
-  #     :access_key_id => ENV["AWS_ACCESS_KEY_ID"],
-  #     :secret_access_key => ENV["AWS_SECRET_ACCESS_KEY"]
-  #   }
-  # }
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :path => "sparkstart/:id/avatar/:style.:extension",
+    :bucket => "graymatterapplication",
+    :s3_host_name => "s3-us-west-2.amazonaws.com",
+    :default_url => "https://s3-us-west-2.amazonaws.com/graymatterapplication/default/generic-avatar.jpg",
+    :s3_region => "us-west-2",
+    :s3_credentials => {
+      :access_key_id => ENV["AWS_ACCESS_KEY_ID"],
+      :secret_access_key => ENV["AWS_SECRET_ACCESS_KEY"]
+    }
+  }
 #   config.paperclip_defaults = {
 #   storage: :s3,
 #   :path => "sparkstart/:id/avatar/:style.:extension",
