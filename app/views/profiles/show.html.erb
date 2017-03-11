@@ -7,7 +7,7 @@
           <% if @profile.image.present? %>
               <%= image_tag @profile.image.url(:medium), class: "profile-image img-responsive" %>
           <% else %>
-              Add an image to your profile
+              <%= image_tag 'Generic_Avatar.jpg', class: "profile-image img-responsive" %>
           <% end %>
         <div class="team-overlay profile-image">
           <p>
