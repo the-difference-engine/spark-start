@@ -18,24 +18,24 @@ def index
 
   def show
     @author = Author.where(book_id: params[:id])
-    if session[:userinfo].present?
-      @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
-    end
+    # if session[:userinfo].present?
+    #   @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
+    # end
     @book = Book.find(params[:id])
-    @questions = ["What did this book do?", "What did this book?", "Are you there God? It's me Margaret."]
-    @book_image = "travelas.png"
-    @book_download = "Click to Download"
+    @book_information = book_payload
+    # TODO introduce serializing to bring all this over at once
+    # @questions = ["What did this book do?", "What did this book?", "Are you there God? It's me Margaret."]
+    # @book_image = "travelas.png"
+    # @book_download = "Click to Download" #this is not getting used?
   end
 
   def new
     @book = Book.new
   end
 
- 
   def edit
   end
 
- 
   def create
     params[:book][:category_ids] ||= []
     @bookebook = params[:book][:ebook]
@@ -74,6 +74,14 @@ def index
   end
 
   private
+
+  def book_payload
+    {
+      questions: ["Book question number one", "Book question number two", "Book question number three"],
+      image: 'travelas.png'
+    }
+  end
+
     def set_current_user
        @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
     end

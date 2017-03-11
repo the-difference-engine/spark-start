@@ -1,14 +1,14 @@
 <div class="container container-height">
 <div class="row">
   <div class="col-xs-3">
-     <%= image_tag "#{@book_image}", {class: "small_image" } %> 
+     <%= image_tag "#{@book_information[:image]}", {class: "small_image" } %> 
      <button class="btn btn-success left_button_width"><%= link_to "Download #{@book.title}", "#{@book.ebook.url}", :target => "_blank", class: "black_text"%></button>
   </div>
   <div class="col-xs-6">
     <h1 class="center_text_header">Welcome to the Spark Tank!</h1>
   </div>
   <div class="col-xs-3">
-     <%= image_tag "#{@book_image}", {class: "small_image" } %> 
+     <%= image_tag "#{@book_information[:image]}", {class: "small_image" } %> 
      <button class="btn btn-success right_justify_text"><%= link_to "Download #{@book.title}", "#{@book.ebook.url}", :target => "_blank", class: "black_text"%></button>
   </div>
 </div>
@@ -18,7 +18,7 @@
   </div>
 </div>
   <div class="row">
-    <% @questions.each do |question| %>
+    <% @book_information[:questions].each do |question| %>
       <div class="col-xs-4">
       <h3>
       <%= question %> 

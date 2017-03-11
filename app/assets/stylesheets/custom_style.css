@@ -4717,7 +4717,7 @@ FOOTER STYLES
 
 .small_image {
   width: 250px;
-  height: 250px;
+  height: auto;
 }
 
 .center_text_header {
