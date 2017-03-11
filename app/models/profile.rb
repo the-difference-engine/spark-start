@@ -1,5 +1,6 @@
 class Profile < ApplicationRecord
 
+  # TODO commented this all out trying to get paperclip to upload a pic
   # validates :experience, presence: true, numericality: true
   # validates :bio, presence: true
   # validates :phone, presence: true
@@ -13,7 +14,7 @@ class Profile < ApplicationRecord
 
   has_attached_file :image, styles: { medium: "500x500>", thumb: "100x100>" }
   validates_attachment_content_type :image, :content_type => ['image/jpeg', 'image/png', 'image/gif']
-  validates_attachment :image, :size => { :in => 0..3.megabytes }
+  # validates_attachment :image, :size => { :in => 0..3.megabytes }
   # validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
   # validates_with AttachmentSizeValidator, attributes: :image, less_than: 1.megabytes
 
