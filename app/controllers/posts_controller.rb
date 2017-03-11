@@ -29,8 +29,8 @@ class PostsController < ApplicationController
     @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
     @post = Post.find(params[:id])
 
-    @category_list = @post.categories.collect { |category_name| category_name.name }
-    @tag_list = @post.tags.collect { |tag| tag.tag_name }
+    # @category_list = @post.categories.collect { |category_name| category_name.name }
+    # @tag_list = @post.tags.collect { |tag| tag.tag_name }
   end
 
   def dashboard
