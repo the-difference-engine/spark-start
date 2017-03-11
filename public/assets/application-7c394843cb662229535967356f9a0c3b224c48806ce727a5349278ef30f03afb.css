@@ -13539,9 +13539,14 @@ FOOTER STYLES
   text-align: center;
 }
 
-/* line 5, /Users/troyleach/projects/spark-start/app/assets/stylesheets/main.scss */
+/* line 4, /Users/troyleach/projects/spark-start/app/assets/stylesheets/main.scss */
+.profile-image-container {
+  text-align: -webkit-center;
+}
+
+/* line 8, /Users/troyleach/projects/spark-start/app/assets/stylesheets/main.scss */
 .profile-image {
-  width: 100%;
+  width: 20%;
 }
 /* line 5, /Users/troyleach/projects/spark-start/app/assets/stylesheets/profiles.scss */
 .img__container {
