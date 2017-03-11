@@ -4,15 +4,15 @@
             <div class="col-sm-4 col-md-4">
                 <div class="thumbnail">
                     <div class="img__container", class="float-left">
-                        <%# if profile.image.url %>
-                            <%#= link_to (image_tag profile.image.url(:medium), class: ''), profile %>
-                        <%# end %>
+                        <% if profile.image.present? %>
+                            <%= link_to (image_tag profile.image.url(:medium), class: ''), profile %>
+                        <% end %>
                     </div>
                     <div class="float-right">
                         <h3><%= profile.full_name %></h3>
                         <h4><%= profile.career %></h4>
                         <h4><a href="mailto:<%= profile.user.email%>" target="_top"><%= profile.user.email%></a></h4>
-	       	          </div>
+                    </div>
 
                 </div>
             </div>

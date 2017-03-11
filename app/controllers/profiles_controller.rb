@@ -29,7 +29,6 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    binding.pry
     if @profile.update(profile_params)
       flash[:success]= "Profile updated!"
       redirect_to @profile
