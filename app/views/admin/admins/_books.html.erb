@@ -1,0 +1,16 @@
+<h2 class="page-header">Manage Books <a href="new.html" class="btn btn-success">Add New</a></h2>
+  <table class="table table-striped">
+    <tr>
+      <th>Book Title</th>
+      <th>Book Authors</th>
+      <th>Uploaded At</th>
+      <th>Actions</th>
+      <% @books.each do |book| %>
+    </tr>
+    <tr>
+          <td><%= book.title %></td>
+          <td><%= book.created_at.to_time.strftime('%B %e at %l:%M %p') %></td>
+          <td><a href ="#" class="btn btn-primary">Edit</a> <a href="#" class="btn btn-danger">Delete</a></td>
+      <% end %>
+    </tr>
+  </table>
