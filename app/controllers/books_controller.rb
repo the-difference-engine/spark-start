@@ -37,13 +37,13 @@ def index
   end
 
   def create
-    params[:book][:category_ids] ||= []
-    @bookebook = params[:book][:ebook]
-    @book = @current_user.books.build(book_params)
-     if @book.save
-      flash[:success]= "Book created!"
-      redirect_to @book
-    end
+    # params[:book][:category_ids] ||= []
+    # @bookebook = params[:book][:ebook]
+    # @book = @current_user.books.build(book_params)
+    #  if @book.save
+    #   flash[:success]= "Book created!"
+    #   redirect_to @book
+    # end
   end
 
  

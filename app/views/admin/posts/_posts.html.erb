@@ -1,0 +1,17 @@
+<h2 class="page-header">Manage Posts <%= link_to "New", new_admin_post_path, class: "btn btn-success" %> </h2>
+  <table class="table table-striped">
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Created At</th>
+      <th>Actions</th>
+      <% @posts.each do |post| %>
+    </tr>
+    <tr>
+        <td><%= post.title %></td>
+        <td><%= post.author %></td>
+        <td><%= post.created_at.to_time.strftime('%B %e at %l:%M %p') %></td>
+        <td><%= link_to "Edit", edit_admin_post_path(post), class: 'btn btn-primary' %> <%= link_to "Delete", admin_post_path(post), method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this post - it is a good one?' } %></td>
+      <% end %>
+    </tr>
+  </table>
