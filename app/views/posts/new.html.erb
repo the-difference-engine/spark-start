@@ -25,7 +25,7 @@
   <%= text_area_tag :body, nil, rows: 10, class: "form-control tinymce" %></p>
   <%= tinymce %>
 
-  <div id="categories">
+<!--   <div id="categories">
     <% if @categories.length > 0 %>
       <p><button type="button" class="btn btn-primary" @click="show = !show" @click.prevent>Choose Categories</button></p>
       <div class="row" v-if="show">
@@ -46,10 +46,10 @@
     <%= label_tag :categories, "Categories" %>:<br>
     <%= text_field_tag :category_string, "{{checkedCategories}}", style: "border: none; width: 100%; resize: none", readonly: "readonly" %>
 
-  </div>
+  </div> -->
   <br>
 
-  <div id="tags">
+<!--   <div id="tags">
     <% if @tags.length > 0 %>
       <p><button type="button" class="btn btn-primary" @click="show = !show" @click.prevent>Choose Tags</button></p>
       <div class="row" v-if="show">
@@ -70,7 +70,7 @@
     <p><%= label_tag :tags, "Tags" %>:
     <%= text_field_tag :tag_string, "{{checkedTags}}", style: "border: none; width: 100%; resize: none", readonly: "readonly" %></p>
 
-  </div>
+  </div> -->
   <br>
 
   <%= submit_tag "Submit", class: "btn btn-xl btn-skin" %>

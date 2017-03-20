@@ -22,7 +22,7 @@
   <%= text_area_tag :body, @post.body, class: "form-control tinymce" %></p>
   <%= tinymce %>
 
-  <div id="categories">
+<!--   <div id="categories">
     <button type="button" class="btn btn-info" @click="show = !show" @click.prevent>Add Categories</button>
     <div class="row" v-if="show">
       <div v-for="category in categories">
@@ -34,10 +34,10 @@
     </div>
     <p><%= label_tag :categories, "Categories" %> (Separate by commas):<br>
     <%= text_field_tag :category_string, "#{@category_string}, {{checkedCategories}}", class: "form-control" %></p>
-  </div>
+  </div> -->
   <br>
 
-  <div id="tags">
+ <!--  <div id="tags">
     <button type="button" class="btn btn-info" @click="show = !show" @click.prevent>Add Tags</button>
     <div class="row" v-if="show">
       <div v-for="tag in tags">
@@ -49,7 +49,7 @@
     </div>
     <p><%= label_tag :tags, "Tags" %> (Separate by commas):<br>
     <%= text_field_tag :tag_string, "#{@tag_string}, {{checkedTags}}", class: "form-control" %></p>
-  </div>
+  </div> -->
   <br>
   
   <%= submit_tag "Save Edits", class: 'btn btn-primary' %>
