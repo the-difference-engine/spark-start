@@ -50,6 +50,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'admins/show'
   end
+
   # mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get "/auth/auth0/callback" => "auth0#callback"
   get "/auth/auth0/user" => "auth0#user"
