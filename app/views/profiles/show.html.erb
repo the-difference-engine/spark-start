@@ -37,7 +37,8 @@
   <div class="text-center">
     <h4 class="text-uppercase">Contact Information</h4>
       Email: <%= @profile.user.email %><br>
-      Phone: <%= @profile.phone %>
+      Phone: <%= @profile.phone %><br>
+      Linkedin: <%= @profile.linkedin_url %>
   </div>
 
   <%= link_to 'Edit Profile', "/profiles/#{@profile.id}/edit", class: 'btn btn-xl btn-skin center' %>

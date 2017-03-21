@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Spark-Start Admin</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+    <li><a data-toggle="tab" href="#posts">Posts</a></li>
+    <li><a data-toggle="tab" href="#users">Users</a></li>
+    <li><a data-toggle="tab" href="#books">Books</a></li>
+  </ul>
+  
+  <div class="tab-content">
+    <div id="home" class="tab-pane fade in active">
+      <h3>HOME</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+    <div id="posts" class="tab-pane fade">
+      <h2 class="page-header">Manage Posts <a href="new.html" class="btn btn-success">Add New</a></h2>
+      
+      <table class="table table-striped">
+                  <tr>
+                    <th>Post Title</th>
+                    <th>Post Content</th>
+                    <th>Actions</th>
+                  </tr>
+                  <tr>
+                    <td>Title</td>
+                    <td>Blah blah blah</td>
+                    <td><a href ="#" class="btn btn-primary">Edit</a> <a href="#" class="btn btn-danger">Delete</a></td>
+                  </tr>
+      </table>
+
+    </div>
+    <div id="users" class="tab-pane fade">
+      <h2 class="page-header">Manage Users <a href="new.html" class="btn btn-success">Add New</a></h2>
+      
+        <table class="table table-striped">
+
+                  <tr>
+                    <th>User email</th>
+                    <th>Actions</th>
+                  </tr>
+                  <tr>
+                    <td>some@email.com</td>
+                    <td><a href ="#" class="btn btn-primary">Edit</a> <a href="#" class="btn btn-danger">Delete</a></td>
+                  </tr>
+        </table>
+
+    </div>
+    <div id="books" class="tab-pane fade">
+     <h2 class="page-header">Manage Books <a href="new.html" class="btn btn-success">Add New</a></h2>
+      
+      <table class="table table-striped">
+                  <tr>
+                    <th>Book Title</th>
+                    <th>Book Question 1</th>
+                    <th>Actions</th>
+                  </tr>
+                  <tr>
+                    <td>Book 1</td>
+                    <td>What did you think?</td>
+                    <td><a href ="#" class="btn btn-primary">Edit</a> <a href="#" class="btn btn-danger">Delete</a></td>
+                  </tr>
+      </table>
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

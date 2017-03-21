@@ -46,6 +46,7 @@ class Admin::BooksController < ApplicationController
   #   @book = Book.find_by_id(params[:id])
   # end
 
+
 private
   def book_params
     params.require(:book).permit(:title, :cover, :url, :description, :user_id)

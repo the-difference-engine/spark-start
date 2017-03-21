@@ -1,9 +1,11 @@
 require 'rails_helper'
 include Auth0
 
+
 RSpec.describe Admin::BooksController, type: :controller do
 
   describe "GET #new" do
+
       before(:each) do
         @user = create(:user)
       end
@@ -45,6 +47,7 @@ RSpec.describe Admin::BooksController, type: :controller do
       @user = create(:user)
       @book = create(:book, 
                       user_id: @user.id)
+
     end
 
       it "assigns the requested book to @book" do
@@ -60,6 +63,7 @@ RSpec.describe Admin::BooksController, type: :controller do
   end
 
   describe "PATCH #update" do
+
     before(:each) do
       @user = create(:user)
       @book = create(:book, 
@@ -89,6 +93,7 @@ RSpec.describe Admin::BooksController, type: :controller do
       @book = create(:book, 
                       user_id: @user.id)
     end
+
 
     it "returns http success" do
       delete :destroy, id: @book.id, session: mock_auth_hash
