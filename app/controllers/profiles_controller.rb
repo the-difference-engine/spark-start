@@ -19,7 +19,7 @@ class ProfilesController < ApplicationController
   def create
     params[:profile][:user_id] = @current_user.id
     @profile = Profile.new(profile_params)
-    if @profile.save!
+    if @profile.save
       flash[:success]= "Profile created!"
       redirect_to profiles_path
     end
@@ -61,6 +61,6 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(:experience, :bio, :phone, :career, :image, :first_name, :last_name, :city, :user_id, :state)
+    params.require(:profile).permit(:experience, :bio, :phone, :career, :image, :first_name, :last_name, :city, :user_id, :linkedin_url, :state)
   end
 end
