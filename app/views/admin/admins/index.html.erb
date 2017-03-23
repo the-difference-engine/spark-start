@@ -8,67 +8,19 @@
   
   <div class="tab-content">
     <div id="home" class="tab-pane fade in active">
-      <h3>HOME</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    	<%= render 'home' %>
     </div>
     <div id="posts" class="tab-pane fade">
-      <h2 class="page-header">Manage Posts <a href="new.html" class="btn btn-success">Add New</a></h2>
+      		
       
-      <table class="table table-striped">
-
-                  <tr>
-                  <th>Title</th>
-                  <th>Author</th>
-                  <th>Created At</th>
-                  	<% @posts.each do |post| %>
-	                    <th><Actions</th>
-	                  </tr>
-	                  <tr>
-	                    <td><%= post.title %></td>
-	                    <td><%= post.author %></td>
-	                    <td><%= post.created_at.to_time.strftime('%B %e at %l:%M %p') %></td>
-	                    <td><a href ="#" class="btn btn-primary">Edit</a> <a href="#" class="btn btn-danger">Delete</a></td>
-                    <% end %>
-                  </tr>
-
-      </table>
+      <%= render 'posts' %>
 
     </div>
     <div id="users" class="tab-pane fade">
-      <h2 class="page-header">Manage Users <a href="new.html" class="btn btn-success">Add New</a></h2>
-      
-        <table class="table table-striped">
-                  <tr>
-                    <th>User email</th>
-                    <th>Actions</th>
-                  </tr>
-                  <tr>
-                    <td>some@email.com</td>
-                    <td><a href ="#" class="btn btn-primary">Edit</a> <a href="#" class="btn btn-danger">Delete</a></td>
-                  </tr>
-        </table>
-
+      <%= render 'users' %>
     </div>
     <div id="books" class="tab-pane fade">
-     <h2 class="page-header">Manage Books <a href="new.html" class="btn btn-success">Add New</a></h2>
-      
-      <table class="table table-striped">
-
-                  <tr>
-                  <th>Book Title</th>
-                  <th>Book Author</th>
-                  <th>Uploaded At</th>
-                  	<% @books.each do |book| %> 
-	                    <th><Actions</th>
-	                  </tr>
-	                  <tr>
-	                    <td><%= book.title %></td>
-	                    <td><%= book.created_at.to_time.strftime('%B %e at %l:%M %p') %></td>
-	                    <td><a href ="#" class="btn btn-primary">Edit</a> <a href="#" class="btn btn-danger">Delete</a></td>
-                    <% end %>
-                  </tr>
-      </table>
-
+      <%= render 'books' %>
     </div>
   </div>
 </div>
