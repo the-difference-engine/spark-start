@@ -9,8 +9,15 @@
 #  book_id    :integer
 #
 
-require 'rails_helper'
+require "rails_helper"
 
-RSpec.describe Author, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe Book, type: :model do
+
+  describe 'Return an array of author names' do
+  	book = create(:book)
+  	author = create(:author, book_Id: book.id)
+
+  	expect()
+    
+  end
 end
