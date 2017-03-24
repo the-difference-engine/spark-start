@@ -1,33 +1,41 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'admins/create'
-  end
+  # namespace :admin do
+  #   get 'books/new'
+  # end
+
+  # namespace :admin do
+  #   get 'books/create'
+  # end
+
+  # namespace :admin do
+  #   get 'books/edit'
+  # end
+
+  # namespace :admin do
+  #   get 'books/update'
+  # end
+
+  # namespace :admin do
+  #   get 'books/destroy'
+  # end
+
+  # namespace :admin do
+  #   get 'books/index'
+  # end
+
+  # namespace :admin do
+  #   get 'books/show'
+  # end
 
   namespace :admin do
-    get 'admins/edit'
-  end
-
-  namespace :admin do
-    get 'admins/update'
-  end
-
-  namespace :admin do
-    get 'admins/destroy'
-  end
-
-  namespace :admin do
-    get 'admins/index'
-  end
-
-  namespace :admin do
-    get 'admins/show'
+   resources :books, :users, :posts
   end
 
   # mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get "/auth/auth0/callback" => "auth0#callback"
   get "/auth/auth0/user" => "auth0#user"
   get "/auth/failure" => "auth0#failure"
-  get '/admin' => 'admin#index'
+  # get '/admin' => 'admin#index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'homes#index'
