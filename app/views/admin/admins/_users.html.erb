@@ -1,12 +1,22 @@
+
 <h2 class="page-header">Manage Users <a href="new.html" class="btn btn-success">Add New</a></h2>
-  
-    <table class="table table-striped">
-              <tr>
-                <th>User email</th>
-                <th>Actions</th>
-              </tr>
-              <tr>
-                <td>some@email.com</td>
-                <td><a href ="#" class="btn btn-primary">Edit</a> <a href="#" class="btn btn-danger">Delete</a></td>
-              </tr>
-    </table>
+
+  <table class="table table-striped">
+
+    <tr>
+    <th>User Name</th>
+    <th>User Email</th>
+    <th>Admin?</th>
+    <th>Created At</th>
+    <th>Actions</th>
+        <% @users.each do |user| %>
+        </tr>
+        <tr>
+          <td><%= user.profile ? user.profile.full_name : "N/A" %></td>
+          <td><%= user.email %></td>
+          <td><%= user.admin %></td>
+          <td><%= user.created_at.to_time.strftime('%B %e at %l:%M %p') %></td>
+          <td><a href ="#" class="btn btn-primary">Edit</a> <a href="#" class="btn btn-danger">Delete</a></td>
+        <% end %>
+      </tr>
+  </table>

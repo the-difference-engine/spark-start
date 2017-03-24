@@ -14,6 +14,7 @@ class Admin::AdminsController < ApplicationController
   def index
     @posts = Post.all
     @books = Book.all
+    @users = User.all
   end
 
   def show
