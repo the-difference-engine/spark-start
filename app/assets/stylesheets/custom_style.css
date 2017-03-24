@@ -4746,9 +4746,31 @@ FOOTER STYLES
 }
 
 .yellow{
-  color: yellow;
+  color: #F9D176;
+  background-color: #3DB732;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  padding-left: 10px;
+
+}
+
+.blue{
+  color: #1A4E9B;
+  background-color: #3DB732;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  padding-right: 10px;
 }
 
 .green{
-  color: green;
+  color: #3DB535;
+}
+
+
+
+.logo{
+  width: 200px;
+  height: auto;
+  margin-left: -100px;
+  margin-top: -25px;
 }
