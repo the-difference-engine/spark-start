@@ -1,3 +1,25 @@
+# == Schema Information
+#
+# Table name: profiles
+#
+#  id                 :integer          not null, primary key
+#  experience         :integer
+#  bio                :text
+#  phone              :string
+#  career             :string
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  first_name         :string
+#  last_name          :string
+#  state              :string
+#  city               :string
+#  user_id            :integer
+#  image_file_name    :string
+#  image_content_type :string
+#  image_file_size    :integer
+#  image_updated_at   :datetime
+#
+
 require "rails_helper"
 include Auth0
 
