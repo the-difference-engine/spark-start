@@ -11,7 +11,6 @@
                   </tr>
                   <tr>
                     <td><%= book.title %></td>
-                    <td><%= book.author %></td>
                     <td><%= book.created_at.to_time.strftime('%B %e at %l:%M %p') %></td>
                     <td><a href ="#" class="btn btn-primary">Edit</a> <a href="#" class="btn btn-danger">Delete</a></td>
                   <% end %>
