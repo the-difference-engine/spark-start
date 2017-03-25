@@ -4,13 +4,14 @@
 
                 <tr>
                 <th>Book Title</th>
-                <th>Book Author</th>
+                <th>Book Authors </th>
                 <th>Uploaded At</th>
                 <th>Actions</th>
                 	<% @books.each do |book| %> 
                   </tr>
                   <tr>
                     <td><%= book.title %></td>
+                    <td><%= book.authors_names.to_sentence %></td>
                     <td><%= book.created_at.to_time.strftime('%B %e at %l:%M %p') %></td>
                     <td><a href ="#" class="btn btn-primary">Edit</a> <a href="#" class="btn btn-danger">Delete</a></td>
                   <% end %>
