@@ -1,3 +1,4 @@
+
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get "/auth/auth0/callback" => "auth0#callback"
