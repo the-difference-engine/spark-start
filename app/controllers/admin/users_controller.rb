@@ -20,6 +20,13 @@ class Admin::UsersController < ApplicationController
   end
 
   def destroy
+  @user = User.find_by_id(params[:id])
+   if @user.destroy
+      flash[:success]= ("User has been successfully deleted.")
+      redirect_to '/admin/admins/index'
+    else
+      flash[:failure]= "User info does not exist."
+    end
   end
 
   def index
