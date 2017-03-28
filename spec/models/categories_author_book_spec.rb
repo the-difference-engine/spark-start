@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: categories_author_books
+#
+#  id          :integer          not null, primary key
+#  book_id     :integer
+#  category_id :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
 require 'rails_helper'
 
 RSpec.describe CategoriesAuthorBook, type: :model do
