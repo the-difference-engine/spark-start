@@ -1,5 +1,33 @@
 Rails.application.routes.draw do
   namespace :admin do
+    get 'books/new'
+  end
+
+  namespace :admin do
+    get 'books/create'
+  end
+
+  namespace :admin do
+    get 'books/edit'
+  end
+
+  namespace :admin do
+    get 'books/update'
+  end
+
+  namespace :admin do
+    get 'books/destroy'
+  end
+
+  namespace :admin do
+    get 'books/index'
+  end
+
+  namespace :admin do
+    get 'books/show'
+  end
+
+  namespace :admin do
    resources :admins
   end
 
