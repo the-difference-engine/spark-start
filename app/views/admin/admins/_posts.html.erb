@@ -5,9 +5,9 @@
       <th>Author</th>
       <th>Created At</th>
       <th>Actions</th>
+      <% @posts.each do |post| %>
     </tr>
     <tr>
-      <% @posts.each do |post| %>
         <td><%= post.title %></td>
         <td><%= post.author %></td>
         <td><%= post.created_at.to_time.strftime('%B %e at %l:%M %p') %></td>
