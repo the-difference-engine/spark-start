@@ -4769,8 +4769,13 @@ FOOTER STYLES
 
 
 .logo{
-  width: 200px;
+  width: 300px;
   height: auto;
-  margin-left: -100px;
-  margin-top: -25px;
+  margin-left: -180px;
+  margin-top: -50px;
+}
+
+.black_outline_letters{
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
 }
