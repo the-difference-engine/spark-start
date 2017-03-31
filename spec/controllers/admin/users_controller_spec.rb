@@ -29,7 +29,7 @@ describe "GET #update" do
     end
 
     it "returns http success" do
-      get :update
+      get :update, id: @user.id
       expect(response).to have_http_status(:success)
     end
 

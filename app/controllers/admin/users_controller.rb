@@ -6,11 +6,11 @@ class Admin::UsersController < ApplicationController
   end
 
   def edit
+   @user = User.find_by_id(params[:id])
   end
 
   def update
-
-  @user = User.find_by_id(params[:id])
+    @user = User.find_by_id(params[:id])
    if @user.update(user_params)
       flash[:success]= ("User has been successfully updated.")
       redirect_to '/admin/admins/index'
