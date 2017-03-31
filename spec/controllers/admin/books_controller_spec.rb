@@ -29,19 +29,7 @@ RSpec.describe Admin::BooksController, type: :controller do
       @book = create(:book, 
                       user_id: @user.id)
     end
-
-    it "returns http success" do
-      params = {
-        title: "changed book title",
-        description: "changed book description", 
-        cover: nil, 
-        url: nil,
-        user_id: @user.id
-      }
-      get :update, id: @book.id, book: params
-      expect(response).to have_http_status(:success)
-    end
-
+    
     it "updates a book" do
       params = {
         title: "changed book title",
@@ -50,13 +38,12 @@ RSpec.describe Admin::BooksController, type: :controller do
         url: nil,
         user_id: @user.id
       }
-      get :update, id: @book.id, book: params
+      patch :update, id: @book.id, book: params
       changed_book = Book.last
       expect(changed_book.title).to eq("changed book title")
       expect(changed_book.description).to eq("changed book description")
-      expect(response).to redirect_to(admin_admins_path)
+      expect(response).to redirect_to(admin_book_path)
       expect(flash[:success]).to eq("Book has been successfully updated.")
-
     end
   end
 
