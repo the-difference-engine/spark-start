@@ -31,4 +31,16 @@ class Book < ApplicationRecord
   validates_attachment_content_type :cover, content_type: /\Aimage\/.*\z/ 
   has_attached_file :ebook, styles: {thumbnail: "60x60"}
   validates_attachment :ebook, content_type: { content_type: "application/pdf" }
+
+def authors_names
+  self.authors.map { |authors| authors.full_name }  
+
+  # authors = Author.where(book_id = book)
+
+  # authors.each do |author|
+    
+  # end
+end
+
+
 end
