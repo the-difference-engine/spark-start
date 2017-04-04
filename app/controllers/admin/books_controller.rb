@@ -19,12 +19,21 @@ class Admin::BooksController < ApplicationController
   end
 
   def destroy
+    @book = Book.find_by_id(params[:id])
+    if @book.destroy
+      flash[:success]= "Book has been successfully deleted."
+      redirect_to admin_book_path
+    else
+      render :index
+    end
   end
 
   def index
+    # @books = Book.all
   end
 
   def show
+    @book = Book.find_by_id(params[:id])
   end
 
 private

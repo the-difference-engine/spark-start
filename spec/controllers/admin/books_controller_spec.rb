@@ -48,23 +48,40 @@ RSpec.describe Admin::BooksController, type: :controller do
   end
 
   describe "GET #destroy" do
+    before(:each) do
+      @user = create(:user)
+      @book = create(:book, 
+                      user_id: @user.id)
+    end
+
     it "returns http success" do
-      get :destroy
-      expect(response).to have_http_status(:success)
+      get :destroy, id: @book.id
+      books = Book.all
+      expect(books.length).to eq(0)
+      expect(response).to redirect_to(admin_book_path)
+      expect(flash[:success]).to eq("Book has been successfully deleted.")
     end
   end
 
   describe "GET #index" do
-    it "returns http success" do
-      get :index
-      expect(response).to have_http_status(:success)
-    end
+
   end
 
   describe "GET #show" do
-    it "returns http success" do
-      get :show
-      expect(response).to have_http_status(:success)
+    before(:each) do
+      @user = create(:user)
+      @book = create(:book, 
+                      user_id: @user.id)
+    end
+
+    it "assigns the requested book to @book" do
+      get :show, id: @book.id
+      expect(assigns(:book)).to eq(@book)
+    end
+
+    it "renders the :show template" do
+      get :show, id: @book.id
+      expect(response).to render_template :show
     end
   end
 

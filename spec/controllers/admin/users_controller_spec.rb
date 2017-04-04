@@ -28,11 +28,6 @@ describe "GET #update" do
       @user = create(:user)
     end
 
-    it "returns http success" do
-      get :update, id: @user.id
-      expect(response).to have_http_status(:success)
-    end
-
     it "updates a user" do
       params = {
         email: "changed email",
@@ -42,9 +37,8 @@ describe "GET #update" do
       changed_user = User.last
       expect(changed_user.email).to eq("changed email")
       expect(changed_user.admin).to eq(false)
-      expect(response).to redirect_to(admin_admins_index_path)
+      expect(response).to redirect_to(admin_user_path)
       expect(flash[:success]).to eq("User has been successfully updated.")
-
     end
   end
 
@@ -54,19 +48,10 @@ describe "GET #update" do
     end
 
     it "returns http success" do
-      get :destroy
-      expect(response).to have_http_status(:success)
-    end
-
-    it "returns http success" do
-      user = create(:user)
-      user = create(:user)
-      user = create(:user)
-
       get :destroy, id: @user.id
       users = User.all
-      expect(users.length).to eq(3)
-      expect(response).to redirect_to(admin_admins_index_path)
+      expect(users.length).to eq(0)
+      expect(response).to redirect_to(admin_user_path)
       expect(flash[:success]).to eq("User has been successfully deleted.")
     end
   end

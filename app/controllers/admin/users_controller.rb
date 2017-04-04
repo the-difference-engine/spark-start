@@ -13,7 +13,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find_by_id(params[:id])
    if @user.update(user_params)
       flash[:success]= ("User has been successfully updated.")
-      redirect_to '/admin/admins/index'
+      redirect_to admin_user_path
     else
       flash[:failure]= "User info does not exist."
     end
@@ -23,7 +23,7 @@ class Admin::UsersController < ApplicationController
   @user = User.find_by_id(params[:id])
    if @user.destroy
       flash[:success]= ("User has been successfully deleted.")
-      redirect_to '/admin/admins/index'
+      redirect_to admin_user_path
     else
       flash[:failure]= "User info does not exist."
     end

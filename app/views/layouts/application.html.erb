@@ -90,7 +90,7 @@
 
                         <li class="dropdown">
                           <% if @current_user && @current_user.admin? %>
-                           <%= link_to "Admin", "/admin" %>
+                           <%= link_to "Admin", admin_path %>
                           <%end%>
                         </li>
 
