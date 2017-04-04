@@ -8,3 +8,14 @@
 .profile-image {
     width: 20%;
 }
+.main-logo {
+  margin-top: -28px;
+  margin-left: -20vh;
+  position: absolute;
+  width: 15vw;
+}
+@media screen and (max-width: 1001px) {
+  .main-logo {
+    display: none;
+  } 
+}
