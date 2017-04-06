@@ -92,7 +92,11 @@
 
                         <li class="dropdown">
                           <% if @current_user && @current_user.admin? %>
+<<<<<<< HEAD
                            <%= link_to "Admin", "/admin", style: "color: #3DB535; font-size: 20px" %>
+=======
+                           <%= link_to "Admin", admin_path %>
+>>>>>>> cc536642a84c322e292287986caf63e856cdf479
                           <%end%>
                         </li>
 
