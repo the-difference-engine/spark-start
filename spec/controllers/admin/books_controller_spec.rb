@@ -3,27 +3,48 @@ require 'rails_helper'
 RSpec.describe Admin::BooksController, type: :controller do
 
   describe "GET #new" do
-    it "returns http success" do
+    it "assigns a new book to @book" do
       get :new
-      expect(response).to have_http_status(:success)
+      expect(assigns(:book)).to be_a_new(Book) 
+    end
+
+    it "renders the :new template" do get :new
+      expect(response).to render_template :new 
     end
   end
 
-  describe "GET #create" do
-    it "returns http success" do
-      get :create
-      expect(response).to have_http_status(:success)
-    end
+  describe "POST #create" do
+      before(:each) do
+        @user = create(:user)
+        @book = create(:book, 
+                      user_id: @user.id)
+      end
+
+      context "with valid attributes" do
+        it "saves the new book in the database" do
+          expect{}
+      end
   end
 
   describe "GET #edit" do
-    it "returns http success" do
-      get :edit
-      expect(response).to have_http_status(:success)
+    before(:each) do
+      @user = create(:user)
+      @book = create(:book, 
+                      user_id: @user.id)
+    end
+
+      it "assigns the requested book to @book" do
+        get :edit, id: book
+        expect(assigns(:book)).to eq book
+      end
+
+  it "renders the :edit template" do book = create(:book)
+      get :edit, id: book
+      expect(response).to render_template :edit 
     end
   end
 
-  describe "GET #update" do
+  describe "PATCH #update" do
     before(:each) do
       @user = create(:user)
       @book = create(:book, 
