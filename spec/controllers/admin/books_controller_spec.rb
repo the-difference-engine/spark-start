@@ -8,7 +8,8 @@ RSpec.describe Admin::BooksController, type: :controller do
       expect(assigns(:book)).to be_a_new(Book) 
     end
 
-    it "renders the :new template" do get :new
+    it "renders the :new template" do 
+      get :new
       expect(response).to render_template :new 
     end
   end
@@ -22,7 +23,13 @@ RSpec.describe Admin::BooksController, type: :controller do
 
       context "with valid attributes" do
         it "saves the new book in the database" do
-          expect{}
+          expect{post :create, book: attributes_for(:book) 
+            }.to change(Book, :count).by (1)
+      end
+
+      it "redirects to admin" do
+        post :create, book: attributes_for(:book)
+        expect(response).to redirect_to admin_path
       end
   end
 
@@ -84,26 +91,26 @@ RSpec.describe Admin::BooksController, type: :controller do
     end
   end
 
-  describe "GET #index" do
+  # describe "GET #index" do
 
-  end
+  # end
 
-  describe "GET #show" do
-    before(:each) do
-      @user = create(:user)
-      @book = create(:book, 
-                      user_id: @user.id)
-    end
+  # describe "GET #show" do
+  #   before(:each) do
+  #     @user = create(:user)
+  #     @book = create(:book, 
+  #                     user_id: @user.id)
+  #   end
 
-    it "assigns the requested book to @book" do
-      get :show, id: @book.id
-      expect(assigns(:book)).to eq(@book)
-    end
+  #   it "assigns the requested book to @book" do
+  #     get :show, id: @book.id
+  #     expect(assigns(:book)).to eq(@book)
+  #   end
 
-    it "renders the :show template" do
-      get :show, id: @book.id
-      expect(response).to render_template :show
-    end
-  end
+  #   it "renders the :show template" do
+  #     get :show, id: @book.id
+  #     expect(response).to render_template :show
+  #   end
+  # end
 
 end

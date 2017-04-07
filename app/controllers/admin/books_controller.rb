@@ -4,6 +4,7 @@ class Admin::BooksController < ApplicationController
   end
 
   def create
+   
   end
 
   def edit
@@ -29,13 +30,13 @@ class Admin::BooksController < ApplicationController
     end
   end
 
-  def index
-    # @books = Book.all
-  end
+  # def index
+  #   # @books = Book.all
+  # end
 
-  def show
-    @book = Book.find_by_id(params[:id])
-  end
+  # def show
+  #   @book = Book.find_by_id(params[:id])
+  # end
 
 private
   def book_params
