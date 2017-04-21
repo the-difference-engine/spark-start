@@ -1,15 +1,20 @@
 require 'rails_helper'
+include Auth0
 
 RSpec.describe Admin::BooksController, type: :controller do
 
   describe "GET #new" do
+      before(:each) do
+        @user = create(:user)
+      end
+
     it "assigns a new book to @book" do
-      get :new
+      get :new, session: mock_auth_hash
       expect(assigns(:book)).to be_a_new(Book) 
     end
 
     it "renders the :new template" do 
-      get :new
+      get :new, session: mock_auth_hash
       expect(response).to render_template :new 
     end
   end
@@ -25,10 +30,12 @@ RSpec.describe Admin::BooksController, type: :controller do
         it "saves the new book in the database" do
           expect{post :create, book: attributes_for(:book) 
             }.to change(Book, :count).by (1)
+          end
       end
 
       it "redirects to admin" do
-        post :create, book: attributes_for(:book)
+        binding.pry
+        post :create, session: mock_auth_hash, book: attributes_for(:book)
         expect(response).to redirect_to admin_path
       end
   end
@@ -45,10 +52,11 @@ RSpec.describe Admin::BooksController, type: :controller do
         expect(assigns(:book)).to eq book
       end
 
-  it "renders the :edit template" do book = create(:book)
-      get :edit, id: book
-      expect(response).to render_template :edit 
-    end
+      it "renders the :edit template" do 
+        book = create(:book)
+        get :edit, id: book
+        expect(response).to render_template :edit 
+      end
   end
 
   describe "PATCH #update" do
@@ -83,7 +91,7 @@ RSpec.describe Admin::BooksController, type: :controller do
     end
 
     it "returns http success" do
-      get :destroy, id: @book.id
+      delete :destroy, id: @book.id, session: mock_auth_hash
       books = Book.all
       expect(books.length).to eq(0)
       expect(response).to redirect_to(admin_book_path)

@@ -1,6 +1,7 @@
 class Admin::BooksController < ApplicationController
   before_action :set_current_user 
   def new
+    
     @book = Book.new
   end
 
