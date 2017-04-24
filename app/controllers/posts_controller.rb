@@ -106,7 +106,7 @@ class PostsController < ApplicationController
   end
 
   # def edit
-    # @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
+    # # @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
     # @post = Post.find(params[:id])
     # @post_categories = @post.categories.collect { |category| category.name }
     # @category_string = @post_categories.join(", ")
@@ -114,67 +114,67 @@ class PostsController < ApplicationController
     # @tag_string = @post_tags.join(", ")
   # end
 
-  def update
-    # @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
-    @post = Post.find(params[:id])
-    @user = session[:userinfo]
-    if @post.update(
-      title: params[:title],
-      author: params[:author],
-      body: params[:body]
-      )
+  # def update
+  #   # @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
+  #   @post = Post.find(params[:id])
+  #   @user = session[:userinfo]
+  #   if @post.update(
+  #     title: params[:title],
+  #     author: params[:author],
+  #     body: params[:body]
+  #     )
 
-      @post.categorized_posts.each do |post|
-        post.delete
-      end
+  #     @post.categorized_posts.each do |post|
+  #       post.delete
+  #     end
 
-      @category_string = params[:category_string]
-      @category_string_split = @category_string.split(",")
-      @category_string_split.each do |category|
-        category = category.strip
-        if !Category.find_by_name(category)
-          @new_category = Category.create(name: category)
-          CategorizedPost.create(
-            post_id: @post.id,
-            category_id: @new_category.id
-          )
-        else
-          @category_id = Category.find_by_name(category)
-          CategorizedPost.create(
-            category_id: @category_id.id,
-            post_id: @post.id
-          )
-        end
-      end
+  #     @category_string = params[:category_string]
+  #     @category_string_split = @category_string.split(",")
+  #     @category_string_split.each do |category|
+  #       category = category.strip
+  #       if !Category.find_by_name(category)
+  #         @new_category = Category.create(name: category)
+  #         CategorizedPost.create(
+  #           post_id: @post.id,
+  #           category_id: @new_category.id
+  #         )
+  #       else
+  #         @category_id = Category.find_by_name(category)
+  #         CategorizedPost.create(
+  #           category_id: @category_id.id,
+  #           post_id: @post.id
+  #         )
+  #       end
+  #     end
 
-      @post.tagged_posts.each do |post|
-        post.delete
-      end
+  #     @post.tagged_posts.each do |post|
+  #       post.delete
+  #     end
 
-      @tag_string = params[:tag_string]
-      @tag_string_split = @tag_string.split(",")
-      @tag_string_split.each do |tag|
-        tag = tag.strip
-        if !Tag.find_by(tag_name: tag)
-          @new_tag = Tag.create(tag_name: tag)
-          TaggedPost.create(
-            post_id: @post.id,
-            tag_id: @new_tag.id
-            )
-        else
-          @tag_id = Tag.find_by(tag_name: tag)
-          TaggedPost.create(
-            tag_id: @tag_id.id,
-            post_id: @post.id
-            )
-        end
-      end
+  #     @tag_string = params[:tag_string]
+  #     @tag_string_split = @tag_string.split(",")
+  #     @tag_string_split.each do |tag|
+  #       tag = tag.strip
+  #       if !Tag.find_by(tag_name: tag)
+  #         @new_tag = Tag.create(tag_name: tag)
+  #         TaggedPost.create(
+  #           post_id: @post.id,
+  #           tag_id: @new_tag.id
+  #           )
+  #       else
+  #         @tag_id = Tag.find_by(tag_name: tag)
+  #         TaggedPost.create(
+  #           tag_id: @tag_id.id,
+  #           post_id: @post.id
+  #           )
+  #       end
+  #     end
 
-      redirect_to "/blog/#{@post.id}"
-    else
-      render :edit
-    end
-  end
+  #     redirect_to "/blog/#{@post.id}"
+  #   else
+  #     render :edit
+  #   end
+  # end
 
   def destroy
     @post = Post.find(params[:id])

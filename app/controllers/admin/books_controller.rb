@@ -24,7 +24,7 @@ class Admin::BooksController < ApplicationController
     @book = Book.find_by_id(params[:id])
     if @book.update(book_params)
       flash[:success]= "Book has been successfully updated."
-      redirect_to admin_book_path
+      redirect_to admin_path
     else
       render :edit 
     end

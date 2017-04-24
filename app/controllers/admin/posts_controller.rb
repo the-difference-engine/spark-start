@@ -7,14 +7,19 @@ def create
 end
 
 def edit
-	@post = Post.find(params[:id])
-    @post_categories = @post.categories.collect { |category| category.name }
-    @category_string = @post_categories.join(", ")
-    @post_tags = @post.tags.collect { |tag| tag.tag_name }
-    @tag_string = @post_tags.join(", ")
+	@post = Post.find_by_id(params[:id])
 end
 
 def update
+	@post = Post.find_by_id(params[:id])
+    # @user = session[:userinfo]
+    # binding.pry
+    if @post.update(post_params)
+      flash[:success]= "Post has been successfully updated."
+      redirect_to admin_path
+    else
+      render :edit
+    end
 end
 
 def destroy
