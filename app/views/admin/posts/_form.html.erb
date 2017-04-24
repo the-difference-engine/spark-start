@@ -1,0 +1,27 @@
+<%= form_for [:admin, @post], :html => { :multipart => true } do |f| %>
+    <% @post.errors.full_messages.each do |error| %>
+      <span style="color: red"><%= error %></span><br>
+    <% end %>
+  <br>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-6">
+          <%= f.label :title%> <br>
+          <%= f.text_field :title, class: "form-control margin-b-20" %>
+        </div>
+        <div class="col-md-6">
+          <%= f.label :author %> <br>
+              <%= f.text_field :author, class: "form-control margin-b-20" %>
+        </div>
+         <div>
+            <%= f.label :body %> <br>
+            <%= f.text_area :body, rows: 10, class: "form-control margin-b-20" %></p> 
+          </div>
+          <div class="actions">
+            <%= f.submit "Submit", class: 'btn btn-xl btn-skin' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -28,7 +28,7 @@ RSpec.describe Admin::BooksController, type: :controller do
 
       context "with valid attributes" do
         it "saves the new book in the database" do
-          expect{post :create, book: attributes_for(:book) 
+          expect{post :create, session: mock_auth_hash, book: attributes_for(:book) 
             }.to change(Book, :count).by (1)
           end
       end

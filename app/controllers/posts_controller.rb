@@ -105,14 +105,14 @@ class PostsController < ApplicationController
     
   end
 
-  def edit
+  # def edit
     # @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
-    @post = Post.find(params[:id])
-    @post_categories = @post.categories.collect { |category| category.name }
-    @category_string = @post_categories.join(", ")
-    @post_tags = @post.tags.collect { |tag| tag.tag_name }
-    @tag_string = @post_tags.join(", ")
-  end
+    # @post = Post.find(params[:id])
+    # @post_categories = @post.categories.collect { |category| category.name }
+    # @category_string = @post_categories.join(", ")
+    # @post_tags = @post.tags.collect { |tag| tag.tag_name }
+    # @tag_string = @post_tags.join(", ")
+  # end
 
   def update
     # @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
