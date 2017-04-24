@@ -13,7 +13,6 @@ end
 def update
 	@post = Post.find_by_id(params[:id])
     # @user = session[:userinfo]
-    # binding.pry
     if @post.update(post_params)
       flash[:success]= "Post has been successfully updated."
       redirect_to admin_path
@@ -27,6 +26,8 @@ end
 
 private
 
-
+def post_params
+	params.require(:post).permit(:title, :body, :author, :user_id)
+end
 
 end
