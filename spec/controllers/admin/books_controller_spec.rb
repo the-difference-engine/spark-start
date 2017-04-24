@@ -34,7 +34,7 @@ RSpec.describe Admin::BooksController, type: :controller do
       end
 
       it "redirects to admin" do
-        binding.pry
+        # binding.pry
         post :create, session: mock_auth_hash, book: attributes_for(:book)
         expect(response).to redirect_to admin_path
       end

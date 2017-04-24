@@ -1,11 +1,12 @@
 class Admin::BooksController < ApplicationController
   before_action :set_current_user 
   def new
-    
+
     @book = Book.new
   end
 
   def create
+    binding.pry
      params[:book][:category_ids] ||= []
     @bookebook = params[:book][:ebook]
     @book = @current_user.books.build(book_params)
