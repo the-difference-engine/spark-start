@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def create
-  end
+  end 
 
   def edit
    @user = User.find_by_id(params[:id])
@@ -23,16 +23,10 @@ class Admin::UsersController < ApplicationController
   @user = User.find_by_id(params[:id])
    if @user.destroy
       flash[:success]= ("User has been successfully deleted.")
-      redirect_to admin_user_path
+      redirect_to admin_path
     else
       flash[:failure]= "User info does not exist."
     end
-  end
-
-  def index
-  end
-
-  def show
   end
 
 

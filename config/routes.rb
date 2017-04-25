@@ -60,8 +60,8 @@ Rails.application.routes.draw do
   # end
 
   namespace :admin do
-   resources :books, :users, :posts
-   get "/" => "admins#index"
+    resources :books, :users, :posts
+    get "/" => "admins#index"
   end
 
   # mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
