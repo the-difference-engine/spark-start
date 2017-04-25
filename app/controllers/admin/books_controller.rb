@@ -6,11 +6,10 @@ class Admin::BooksController < ApplicationController
   end
 
   def create
-    # binding.pry
-     params[:book][:category_ids] ||= []
+    params[:book][:category_ids] ||= []
     @bookebook = params[:book][:ebook]
     @book = @current_user.books.build(book_params)
-     if @book.save
+    if @book.save
       flash[:success]= "Book created!"
       redirect_to @book
     end
