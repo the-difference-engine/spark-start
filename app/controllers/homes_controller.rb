@@ -27,7 +27,6 @@ def videos
 end
 
 def theme
-  # delete this code, only for review
 
 end
 
