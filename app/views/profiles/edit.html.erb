@@ -1,5 +1,4 @@
 <div class="container">
-
   <h1>Edit Your SparkStart Profile!</h1>
   
   <br>
@@ -37,7 +36,7 @@
             </div>
             <div class="col-md-6">
               <%= f.label :state %> <br>
-              <%= f.select :state, options_for_select(us_states), multiple: false, class: "form-control margin-b-20" %>
+              <%= f.select :state, options_for_select(us_states, @profile.state), multiple: false, class: "form-control margin-b-20" %>
             </div>
           </div>
           <div class="row">
@@ -47,7 +46,13 @@
             </div>
             <div class="col-md-6">
               <%= f.label :image, 'Change Image' %> <br>
+              <div>
+                <%= image_tag @profile.image.url(:thumb) %>
+              </div>
               <%= f.file_field :image %>
+              <% if @profile.image.exists? %>
+                <input type="checkbox" name="delete_image" value="1"> Delete Image <br>
+              <% end %>
             </div>
           </div>
             
@@ -62,4 +67,6 @@
       </div>
     </div>
   <% end %>
+
 </div>
+

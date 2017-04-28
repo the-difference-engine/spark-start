@@ -4,11 +4,7 @@
   <div class="row">
     <div class="text-center">
       <div class="col-md-12 profile-image-container">
-          <% if @profile.image.present? %>
-              <%= image_tag @profile.image.url(:medium), class: "profile-image img-responsive" %>
-          <% else %>
-              <%= image_tag 'Generic_Avatar.jpg', class: "profile-image img-responsive" %>
-          <% end %>
+          <%= image_tag @profile.image.url(:medium), class: "profile-image img-responsive" %>
         <div class="team-overlay profile-image">
           <p>
             <span><%= @profile.first_name %> <%= @profile.last_name %></span>
