@@ -44,5 +44,6 @@
 //= require bootstrap-toggle.min
 //=require angular
 //=require app2
+//= require ckeditor/init
 //= require_tree .
 

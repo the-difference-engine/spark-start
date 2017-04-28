@@ -39,6 +39,7 @@ gem 'aws-sdk', '< 2.0'
 gem 'rollbar'
 gem 'rubyzip', '~> 1.2'
 gem 'rails_admin', '~> 1.1', '>= 1.1.1'
+gem 'ckeditor'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
