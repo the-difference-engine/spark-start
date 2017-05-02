@@ -53,9 +53,8 @@ GEM
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
     builder (3.2.3)
-    ckeditor (4.2.2)
-      cocaine
-      orm_adapter (~> 0.5.0)
+    ckeditor_rails (4.6.2)
+      railties (>= 3.0)
     climate_control (0.1.0)
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
@@ -139,7 +138,6 @@ GEM
     omniauth-oauth2 (1.4.0)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
-    orm_adapter (0.5.0)
     paperclip (4.3.7)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -277,7 +275,7 @@ DEPENDENCIES
   annotate
   aws-sdk (< 2.0)
   bootstrap-sass
-  ckeditor
+  ckeditor_rails
   coffee-rails (~> 4.2)
   factory_girl_rails (~> 4.7.0)
   figaro

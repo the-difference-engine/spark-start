@@ -15,7 +15,8 @@
         </div>
          <div>
             <%= f.label :body %> <br>
-            <%= f.text_area :body, rows: 10, class: "form-control margin-b-20" %></p> 
+           
+            <%= f.text_area :body, :class => 'ckeditor' %>
           </div>
           <div class="actions">
             <%= f.submit "Submit", class: 'btn btn-xl btn-skin' %>
