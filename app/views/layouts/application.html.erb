@@ -52,6 +52,9 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="/" role="button">Home</a>
+                        </li>
                         <% if session[:userinfo].present? %>
                         <li class="dropdown">
                           <% if @current_user && @current_user.profile.present? %>
@@ -61,9 +64,6 @@
                           <% end %>
                         </li>
 
-                        <li class="dropdown">
-                            <a href="/" role="button">Home</a>
-                        </li>
 
                          <li class="dropdown">
                           <%= link_to "The Book", "/books/#{last_book}" %>
@@ -123,7 +123,7 @@
               <div class="row">
 
 
-                  <div class="col-md-3 margin-b-30">
+                  <div class="col-md-4 margin-b-30">
                       <h3>Visit us</h3>
                       <p>
                         (312) 560-0982
@@ -133,11 +133,13 @@
                         Chicago, IL 60606
                       </p>
                       <div class="clearfix">
-                          <a class="social-icon social-dark social-sm  si-facebook" href="http://www.facebook.com/NetworldingPublishing" data-toggle="tooltip" title="" data-original-title="Facebook"><%= image_tag 'facebook_square.png', height: 25, width: 25 %></a>
-                          <a class="social-icon social-dark social-sm si-twitter" href="http://twitter.com/networlding" data-toggle="tooltip" title="" data-original-title="Twitter"><%= image_tag 'twitter_square.png', height: 25, width: 25 %></a>
-                          <a class="social-icon social-dark social-sm si-linkedin" href="http://www.linkedin.com/in/melissagwilson" data-toggle="tooltip" title="" data-original-title="Linkedin"><%= image_tag 'linkedin_square.png', height: 25, width: 25 %></a>
-                          <a class="social-icon social-dark social-sm si-g-plus" href="https://plus.google.com/116727844459701235557?prsrc=3" data-toggle="tooltip" title="" data-original-title="Google+"><%= image_tag 'googleplus_square.png', height: 25, width: 25 %></a>
-                          <a class="social-icon social-dark social-sm si-pinterest" href="http://pinterest.com/melissagwilson/" data-toggle="tooltip" title="" data-original-title="pinterest"><%= image_tag 'pinterest_square.png', height: 25, width: 25 %></a>
+                      <div>
+                          <a class="social-icon social-dark social-sm  si-facebook" style="margin-right:20px" href="http://www.facebook.com/NetworldingPublishing" data-toggle="tooltip" title="" data-original-title="Facebook"><%= image_tag 'facebook_square.png', height: 50, width: 50 %></a>
+                          <a class="social-icon social-dark social-sm si-twitter" style="margin-right:20px" href="http://twitter.com/networlding" data-toggle="tooltip" title="" data-original-title="Twitter"><%= image_tag 'twitter_square.png', height: 50, width: 50 %></a>
+                          <a class="social-icon social-dark social-sm si-linkedin" style="margin-right:20px" href="http://www.linkedin.com/in/melissagwilson" data-toggle="tooltip" title="" data-original-title="Linkedin"><%= image_tag 'linkedin_square.png', height: 50, width: 50 %></a>
+                          <a class="social-icon social-dark social-sm si-g-plus" style="margin-right:20px" href="https://plus.google.com/116727844459701235557?prsrc=3" data-toggle="tooltip" title="" data-original-title="Google+"><%= image_tag 'googleplus_square.png', height: 50, width: 50 %></a>
+                          <a class="social-icon social-dark social-sm si-pinterest" style="margin-right:20px" href="http://pinterest.com/melissagwilson/" data-toggle="tooltip" title="" data-original-title="pinterest"><%= image_tag 'pinterest_square.png', height: 50, width: 50 %></a>
+                        </div>
                       </div>
                   </div>
               </div>
