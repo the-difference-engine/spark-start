@@ -43,62 +43,69 @@
 
         <div id="preloader"></div>
 
-        <header class="top-header navbar-default navbar navbar-static-top sticky-header yamm">
+        <header class="top-header navbar-default navbar navbar-static-top sticky-header yamm" style="background-color: black; height:absolute;%">
             <div class="container">
                 <div class="pull-right nav-header-right">
                 </div>
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="/"><h1>Spark Start</h1></a>
+              
+                <div class="header-logo">
+                    <a href="/"><%= image_tag "logo.png", class: "main-logo-2", style:"height:80px" %></a>
+                    <a href="/"><%= image_tag "logo.png", class: "main-logo", style:"margin:5px" %></a>
                 </div>
+           
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <% if session[:userinfo].present? %>
-                        <li class="dropdown">
+                        <li class="dropdown" \>
                           <% if @current_user && @current_user.profile.present? %>
-                            <%= link_to "Your Profile", "/profiles/#{@current_user.profile.id}" %>
+                            <%= link_to "Your Profile", "/profiles/#{@current_user.profile.id}", style: "color: #3DB535; font-size: 20px"%>
                           <% else %>
-                            <%= link_to "New Profile", "/profiles/new" %>
+                            <%= link_to "New Profile", "/profiles/new", style: "color: #3DB535; font-size: 20px"%>
                           <% end %>
                         </li>
 
                         <li class="dropdown">
-                            <a href="/" role="button">Home</a>
+                            <a href="/" role="button" style="color: #3DB535; font-size: 20px">Home</a>
                         </li>
 
                          <li class="dropdown">
-                          <%= link_to "The Book", "/books/#{last_book}" %>
+                          <%= link_to "The Book", "/books/#{last_book}", style: "color: #3DB535; font-size: 20px" %>
                         </li>
 
                         <li class="dropdown">
-                            <a href="/mission" role="button">About</a>
+                            <a href="/mission" role="button" style="color: #3DB535; font-size: 20px">About</a>
                         </li>
 
                          <li class="dropdown">
-                           <%= link_to "Library", "/books" %>
+                           <%= link_to "Library", "/books", style: "color: #3DB535; font-size: 20px" %>
                           
                         </li>
 
                         <li class="dropdown">
-                            <a href="/blog" role="button">Blog</a>
+                            <a href="/blog" role="button" style="color: #3DB535; font-size: 20px">Blog</a>
                         </li>
 
                          <li class="dropdown">
                          
-                           <%= link_to "Profiles", "/profiles" %>
+                           <%= link_to "Profiles", "/profiles", style: "color: #3DB535; font-size: 20px" %>
                          
                         </li>
 
                         <li class="dropdown">
                           <% if @current_user && @current_user.admin? %>
-                           <%= link_to "Admin", "/admin" %>
+<<<<<<< HEAD
+                           <%= link_to "Admin", "/admin", style: "color: #3DB535; font-size: 20px" %>
+=======
+                           <%= link_to "Admin", admin_path %>
+>>>>>>> cc536642a84c322e292287986caf63e856cdf479
                           <%end%>
                         </li>
 
                         <li class="dropdown yamm-fw">
                           <!-- <a href="#" class onclick="lock.show();">Login / Register</a> -->
-                            <a href="/logout">Logout</a>
+                            <a href="/logout" style="color: #3DB535; font-size: 20px">Logout</a>
                             <% else %>
-                            <a href="#" class onclick="lock.show();">Login / Register</a>
+                            <a href="#" style="color: #3DB535; font-size: 20px" class onclick="lock.show();">Login / Register</a>
                           <% end %>
                         </li>
 
@@ -192,7 +199,21 @@
           }
         });
       </script>
+      <script>
+      $(function() {
+        $(document).on("mousewheel", function() {
+          if ($(document).scrollTop() < 581) {
+            $('.main-logo').fadeIn();
+            $('.main-logo-2').fadeOut();
+          } else {
+            $('.main-logo').fadeOut();
+            $('.main-logo-2').fadeIn();
+        }
+        
+    });
+}); 
 
+      </script>
       <script type="text/javascript">
           (function ($) {
               "use strict";

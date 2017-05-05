@@ -4744,3 +4744,32 @@ FOOTER STYLES
 .black_text{
   color: black;
 }
+
+.yellow{
+  color: #F9D176;
+  background-color: #3DB732;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  padding-left: 10px;
+
+}
+
+.blue{
+  color: #1A4E9B;
+  background-color: #3DB732;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  padding-right: 10px;
+}
+
+.green{
+  color: #3DB535;
+}
+
+
+
+
+.black_outline_letters{
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
