@@ -43,13 +43,14 @@
 
         <div id="preloader"></div>
 
-        <header class="top-header navbar-default navbar navbar-static-top sticky-header yamm" style="background-color: black">
+        <header class="top-header navbar-default navbar navbar-static-top sticky-header yamm" style="background-color: black; height:absolute;%">
             <div class="container">
                 <div class="pull-right nav-header-right">
                 </div>
               
                 <div class="header-logo">
-                    <a href="/"><%= image_tag "logo.png", class: "main-logo" %></a>
+                    <a href="/"><%= image_tag "logo.png", class: "main-logo-2", style:"height:80px" %></a>
+                    <a href="/"><%= image_tag "logo.png", class: "main-logo", style:"margin:5px" %></a>
                 </div>
            
                 <div id="navbar" class="navbar-collapse collapse">
@@ -201,15 +202,17 @@
       <script>
       $(function() {
         $(document).on("mousewheel", function() {
-          if ($(document).scrollTop() > 100) {
-            $('.main-logo').hide();
+          if ($(document).scrollTop() < 581) {
+            $('.main-logo').fadeIn();
+            $('.main-logo-2').fadeOut();
           } else {
-            $('.main-logo').show();
-           
+            $('.main-logo').fadeOut();
+            $('.main-logo-2').fadeIn();
         }
         
     });
-});
+}); 
+
       </script>
       <script type="text/javascript">
           (function ($) {
