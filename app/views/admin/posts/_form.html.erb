@@ -13,14 +13,13 @@
           <%= f.label :author %> <br>
               <%= f.text_field :author, class: "form-control margin-b-20" %>
         </div>
-         <div>
-            <%= f.label :body %> <br>
-           
-            <%= f.text_area :body, :class => 'ckeditor' %>
-          </div>
-          <div class="actions">
-            <%= f.submit "Submit", class: 'btn btn-xl btn-skin' %>
-          </div>
+         <div class="margin-15">
+          <%= f.label :body %> <br>
+          <%= f.text_area :body, :class => 'ckeditor' %>
+        </div>
+        <div class="actions margin-15">
+          <%= f.submit "Submit", class: 'btn btn-xl btn-skin' %>
+        </div>
         </div>
       </div>
     </div>
