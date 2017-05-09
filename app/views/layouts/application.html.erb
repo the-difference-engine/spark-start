@@ -8,6 +8,7 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <title>Spark Start</title>
 
+
         <!-- Bootstrap -->
 
         <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', integrity: 'sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin: 'anonymous' %>
@@ -90,7 +91,7 @@
 
                         <li class="dropdown">
                           <% if @current_user && @current_user.admin? %>
-                           <%= link_to "Admin", "/admin" %>
+                           <%= link_to "Admin", admin_path %>
                           <%end%>
                         </li>
 
