@@ -1,0 +1,29 @@
+<%= form_for [:admin, @user], :html => { :multipart => true } do |f| %>
+    <% @user.errors.full_messages.each do |error| %>
+      <span style="color: red"><%= error %></span><br>
+    <% end %>
+  <br>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-6">
+          <%= f.label :email%> <br>
+          <%= f.text_field :email, class: "form-control margin-b-20" %>
+        </div>
+
+        <div class="col-md-6">
+          <%= f.label :admin %> <br>
+          <%= f.radio_button :admin, true %> Yes
+          <%= f.radio_button :admin, false %> No
+        </div>
+
+
+          <div class="col-md-12 pull-right">
+            <div class="actions">
+              <%= f.submit "Submit", class: 'btn btn-xl btn-skin' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
