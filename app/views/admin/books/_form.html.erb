@@ -1,0 +1,40 @@
+<%= form_for [:admin, @book], :html => { :multipart => true } do |f| %>
+  <% @book.errors.full_messages.each do |error| %>
+    <span style="color: red"><%= error %></span><br>
+  <% end %>
+  <br>
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="col-md-6">
+          <%= f.label :title%> <br>
+          <%= f.text_field :title, class: "form-control margin-b-20" %>
+        </div>
+
+        <div class="col-md-6">
+          <%= f.label :url %> <br>
+              <%= f.text_field :url, class: "form-control margin-b-20" %>
+        </div>
+
+        <div class="col-md-6">
+          <%= f.label :cover, 'Change Cover' %> <br>
+          <%= f.file_field :cover %>
+        </div>
+
+        <div class="col-md-6">
+          <%= f.label :ebook, 'Change Book' %> <br>
+          <%= f.file_field :ebook %>
+        </div>
+
+        <div class="margin-15">
+          <%= f.label :description, :style => "margin-top:15px" %> <br>
+          <%= f.text_area :description, :class => 'ckeditor' %>
+        </div>
+    
+        <div class="actions margin-15">
+          <%= f.submit "Submit", class: 'btn btn-xl btn-skin' %>
+        </div>
+      
+      </div>
+    </div>
+<% end %>
