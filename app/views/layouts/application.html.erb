@@ -59,52 +59,55 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <% if session[:userinfo].present? %>
+
+                        <li class="dropdown">
+                            <a href="/" role="button" style="color: #F9D176; font-size: 20px">Home</a>
+                        </li>
+                        
                         <li class="dropdown" \>
                           <% if @current_user && @current_user.profile.present? %>
-                            <%= link_to "Your Profile", "/profiles/#{@current_user.profile.id}", style: "color: #3DB535; font-size: 20px"%>
+                            <%= link_to "Your Profile", "/profiles/#{@current_user.profile.id}", style: "color: #F9D176; font-size: 20px"%>
                           <% else %>
-                            <%= link_to "New Profile", "/profiles/new", style: "color: #3DB535; font-size: 20px"%>
+                            <%= link_to "New Profile", "/profiles/new", style: "color: #F9D176; font-size: 20px"%>
                           <% end %>
                         </li>
 
-                        <li class="dropdown">
-                            <a href="/" role="button" style="color: #3DB535; font-size: 20px">Home</a>
-                        </li>
+                        
 
                          <li class="dropdown">
-                          <%= link_to "The Book", "/books/#{last_book}", style: "color: #3DB535; font-size: 20px" %>
+                          <%= link_to "The Book", "/books/#{last_book}", style: "color: #F9D176; font-size: 20px" %>
                         </li>
 
                         <li class="dropdown">
-                            <a href="/mission" role="button" style="color: #3DB535; font-size: 20px">About</a>
+                            <a href="/mission" role="button" style="color: #F9D176; font-size: 20px">About</a>
                         </li>
 
                          <li class="dropdown">
-                           <%= link_to "Library", "/books", style: "color: #3DB535; font-size: 20px" %>
+                           <%= link_to "Library", "/books", style: "color: #F9D176; font-size: 20px" %>
                           
                         </li>
 
                         <li class="dropdown">
-                            <a href="/blog" role="button" style="color: #3DB535; font-size: 20px">Blog</a>
+                            <a href="/blog" role="button" style="color: #F9D176; font-size: 20px">Blog</a>
                         </li>
 
                          <li class="dropdown">
                          
-                           <%= link_to "Profiles", "/profiles", style: "color: #3DB535; font-size: 20px" %>
+                           <%= link_to "Profiles", "/profiles", style: "color: #F9D176; font-size: 20px" %>
                          
                         </li>
 
                         <li class="dropdown">
                           <% if @current_user && @current_user.admin? %>
-                           <%= link_to "Admin", "/admin", style: "color: #3DB535; font-size: 20px" %>
+                           <%= link_to "Admin", "/admin", style: "color: #F9D176; font-size: 20px" %>
                           <%end%>
                         </li>
 
                         <li class="dropdown yamm-fw">
                           <!-- <a href="#" class onclick="lock.show();">Login / Register</a> -->
-                            <a href="/logout" style="color: #3DB535; font-size: 20px">Logout</a>
+                            <a href="/logout" style="color: #F9D176; font-size: 20px">Logout</a>
                             <% else %>
-                            <a href="#" style="color: #3DB535; font-size: 20px" class onclick="lock.show();">Login / Register</a>
+                            <a href="#" style="color: #F9D176; font-size: 20px" class onclick="lock.show();">Login / Register</a>
                           <% end %>
                         </li>
 
