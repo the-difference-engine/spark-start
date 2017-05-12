@@ -22,18 +22,20 @@
       </div>
     <% end %>
   </div>
-  <div ng-app="app" class="col-xs-12">
+  <div ng-app="app" class="col-sm-12 book-comment">
     <div ng-controller="commentsController">
-      
+    
       <div align="left"> 
         <%= form_tag "/comments", method: :create do %>
-          <%= text_field_tag :body %>
+          <%= text_field_tag :body, nil, class: "col-md-8" %>
           <%= hidden_field_tag :commentable_id, @book.id %>
           <%= hidden_field_tag :commentable_type, "Book" %>
           <%= hidden_field_tag :user_id, @current_user.id %>
+          <br/>
           <%= submit_tag "Enter Comment", class: "btn btn-warning" %>
         <% end %>
       </div>
+
         <ul>
           <%= render partial: 'comments', collection: @book.comments %>
         </ul>
