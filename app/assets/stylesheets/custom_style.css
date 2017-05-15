@@ -691,6 +691,7 @@ Top bar styles
 }
 
 /***sticky header**/
+
 .sticky-header {
   padding: 10px 0;
 }
@@ -4767,9 +4768,11 @@ FOOTER STYLES
 }
 
 
-
-
 .black_outline_letters{
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
+}
+
+.dropdown {
+  color: #F9D176;
 }
