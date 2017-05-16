@@ -15,7 +15,10 @@ private
   end
 
   def authenticate_admin!
-    redirect_to '/' unless @current_user && @current_user.admin
+    unless @current_user && @current_user.admin
+      flash[:error] = "You must be an admin to access that page"
+      redirect_to '/' 
+    end
   end
 
 
