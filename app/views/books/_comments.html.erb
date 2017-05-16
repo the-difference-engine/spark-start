@@ -4,7 +4,7 @@
   <br>
   <div>
     <small>Submitted <%= time_ago_in_words(comments.created_at) %> ago</small>
-    <small><%= comments.user.email %></small>
+    <small><%= mail_to comments.user.email, "#{comments.user.email}" %></small>
     <p class="red_reply_text" ng-click="showForm(<%= comments.id %>)" ng-if="showComment !== <%= comments.id %>">reply</p>
   </div>
   <div ng-if="showComment === <%= comments.id %>" class="alert alert-warning alert-dismissible fade in" role="alert" >
