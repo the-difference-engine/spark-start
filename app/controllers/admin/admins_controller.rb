@@ -1,4 +1,8 @@
 class Admin::AdminsController < ApplicationController
+  # before_filter :logged_in_using_omniauth?
+  before_action :set_current_user
+  before_action :authenticate_admin!
+
   def create
   end
 
@@ -19,4 +23,6 @@ class Admin::AdminsController < ApplicationController
 
   def show
   end
+
+
 end
