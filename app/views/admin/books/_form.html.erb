@@ -16,9 +16,14 @@
               <%= f.text_field :url, class: "form-control margin-b-20" %>
         </div>
 
-        <div class="col-md-6">
+        <div class="col-md-3">
           <%= f.label :cover, 'Change Cover' %> <br>
           <%= f.file_field :cover %>
+        </div>
+
+        <div class="col-md-3">
+          <%= f.label :max_downloads, 'Max Downloads' %> <br>
+          <%= f.text_field :max_downloads %>
         </div>
 
         <div class="col-md-6">

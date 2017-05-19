@@ -43,4 +43,13 @@ def authors_names
 end
 
 
+def check_downloads
+  if self.book_downloads == self.max_downloads
+    return false
+  else
+    return true
+  end
+end
+
+
 end

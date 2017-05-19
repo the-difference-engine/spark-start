@@ -73,6 +73,13 @@ def index
     )
   end
 
+  def download
+    @book = Book.find(params[:id])
+    @book.book_downloads += 1
+    @book.save
+    redirect_to @book.ebook.url
+  end
+
   private
 
   def book_payload

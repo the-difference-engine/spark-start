@@ -104,7 +104,8 @@ Rails.application.routes.draw do
 	post '/comments' => 'comments#create'
 
 	resources :books do
-		get :download_pdf
+		# get :download_pdf
+    get '/books/:id/download' => 'books#download'
 		resources :authors do
 	    end
 	end

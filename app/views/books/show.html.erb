@@ -5,7 +5,11 @@
   </div>
   <div class="col-xs-3">
      <%= image_tag "#{@book_information[:image]}", {class: "small_image" } %> 
-     <button class="btn btn-success right_justify_text"><%= link_to "Download #{@book.title}", @book.ebook.url, :target => "_blank", class: "black_text"%></button>
+     <% if @book.check_downloads == true %>
+        <button class="btn btn-success right_justify_text"> <%= link_to "Download #{@book.title}", "/books/#{@book.id}/download", :target => "_blank", class: "black_text"%></button>
+      <% else %>
+        <p>This book is no longer available</p>
+      <% end %>
   </div>
 </div>
 <div class="row">
