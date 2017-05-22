@@ -74,6 +74,7 @@ def index
   end
 
   def download
+    binding.pry
     @book = Book.find(params[:id])
     @book.book_downloads += 1
     @book.save
