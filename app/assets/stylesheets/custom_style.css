@@ -4339,6 +4339,7 @@ FOOTER STYLES
 
 .alert {
   background-color: transparent;
+  text-align: center;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   -ms-border-radius: 0px;
