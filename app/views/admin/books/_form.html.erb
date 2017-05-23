@@ -12,17 +12,19 @@
         </div>
 
         <div class="col-md-6">
-          <%= f.label :url %> <br>
+          <%= f.label :url, "Link To Book" %> <br>
               <%= f.text_field :url, class: "form-control margin-b-20" %>
         </div>
 
         <div class="col-md-6">
           <%= f.label :cover, 'Change Cover' %> <br>
+          <%= "Current Cover: #{@book.cover_file_name}" if @book.cover_file_name %>
           <%= f.file_field :cover %>
         </div>
 
         <div class="col-md-6">
           <%= f.label :ebook, 'Change Book' %> <br>
+          <%= "Current URL: #{@book.ebook.url}" if @book.ebook.url %>
           <%= f.file_field :ebook %>
         </div>
 
