@@ -92,8 +92,6 @@ Rails.application.routes.draw do
 	patch '/blog/:id' => 'posts#update'
 	delete '/blog/:id' => 'posts#destroy'
 
-	resources :categories
-
 	get '/tags' => 'tags#index'
 	post '/tag' => 'tags#create'
 	patch '/tag' => 'tags#update'
@@ -119,5 +117,8 @@ Rails.application.routes.draw do
       put '/users/:id' => 'users#update'
     end
   end
+
+  # get "*path" => redirect('/')
+  get '*a', :to => 'errors#routing'
 
 end
