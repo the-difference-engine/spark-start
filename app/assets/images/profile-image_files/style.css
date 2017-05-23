@@ -1917,9 +1917,9 @@ Social icons
   transition: all 0.2s;
 }
 .social-icon.social-sm {
-  width: 40px;
-  height: 40px;
-  line-height: 40px;
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
   text-align: center;
   font-size: 18px;
 }
