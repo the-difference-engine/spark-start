@@ -18,13 +18,14 @@
 
         <div class="col-md-6">
           <%= f.label :cover, 'Change Cover' %> <br>
-          <%= "Current Cover: #{@book.cover_file_name}" if @book.cover_file_name %>
+          <%= "Current Cover: #{@book.cover_file_name}" if @book.cover_file_name.present? %>
           <%= f.file_field :cover %>
         </div>
 
         <div class="col-md-6">
           <%= f.label :ebook, 'Change Book' %> <br>
-          <%= "Current URL: #{@book.ebook.url}" if @book.ebook.url %>
+          <%= "Current File: #{@book.ebook_file_name}" if @book.ebook_file_name.present? %>
+          <%= "Current URL: #{@book.ebook.url}" if @book.ebook.url.present? %>
           <%= f.file_field :ebook %>
         </div>
 
