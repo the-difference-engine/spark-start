@@ -22,6 +22,7 @@ def index
     #   @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
     # end
     @book = Book.find(params[:id])
+    puts @book.description
     @book_information = book_payload
     # TODO introduce serializing to bring all this over at once
     # @questions = ["What did this book do?", "What did this book?", "Are you there God? It's me Margaret."]

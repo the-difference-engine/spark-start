@@ -3,8 +3,11 @@
   <div class="col-xs-9">
     <h1 class="center_text_header">Welcome to the <span class="yellow">Spark</span><span class="blue">Tank</span>!</h1>
   </div>
+  <div class="col-xs-9">
+    <%= raw @book.description %>
+  </div>
   <div class="col-xs-3">
-     <%= image_tag "#{@book_information[:image]}", {class: "small_image" } %> 
+     <%= image_tag "#{@book.cover.url}", {class: "small_image right_justify_text" } %> 
      <button class="btn btn-success right_justify_text"><%= link_to "Download #{@book.title}", "#{@book.url}", :target => "_blank", class: "black_text"%></button>
   </div>
 </div>

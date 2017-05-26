@@ -61,7 +61,7 @@ Rails.application.routes.draw do
   # end
 
   namespace :admin do
-    resources :books, :users, :posts
+    resources :books, :users, :posts, except: [:index, :show]
     get "/" => "admins#index"
   end
 
@@ -119,5 +119,7 @@ Rails.application.routes.draw do
       put '/users/:id' => 'users#update'
     end
   end
+
+  # match get '*a' => redirect { |p, req| req.flash[:error] = "aaargh, you don't want to go to #{p[:a]}"; '/' }
 
 end

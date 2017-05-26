@@ -11,4 +11,5 @@ class CommentsController < ApplicationController
   def comment_params
     params.permit(:body, :commentable_id, :commentable_type, :approved, :user_id)
   end
+  
 end
