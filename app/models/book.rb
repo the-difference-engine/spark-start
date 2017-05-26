@@ -42,5 +42,12 @@ def authors_names
   # end
 end
 
+def missing?
+  if self.ebook.url == "/ebooks/original/missing.png"
+    return "Not Available."
+  else
+    return self.ebook.url
+  end
+end
 
 end
