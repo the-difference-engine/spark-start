@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170526014106) do
+ActiveRecord::Schema.define(version: 20170602004414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,9 +53,6 @@ ActiveRecord::Schema.define(version: 20170526014106) do
     t.datetime "ebook_updated_at"
     t.integer  "book_downloads",     default: 0
     t.integer  "max_downloads"
-    t.text     "question1"
-    t.text     "question2"
-    t.text     "question3"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -125,6 +122,13 @@ ActiveRecord::Schema.define(version: 20170526014106) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.string   "linkedin_url"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.integer  "book_id"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tagged_posts", force: :cascade do |t|

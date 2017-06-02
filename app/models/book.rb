@@ -21,6 +21,7 @@
 
 class Book < ApplicationRecord
   belongs_to :user
+  has_many :questions
   has_many :comments, as: :commentable
   #has_many :authors_books
   has_many :categories_author_books
