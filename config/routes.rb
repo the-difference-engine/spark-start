@@ -1,67 +1,8 @@
 
 Rails.application.routes.draw do
-  # namespace :admin do
-  #   get 'users/new'
-  # end
-
-  # namespace :admin do
-  #   get 'users/create'
-  # end
-
-  # namespace :admin do
-  #   get 'users/edit'
-  # end
-
-  # namespace :admin do
-  #   get 'users/update'
-  # end
-
-  # namespace :admin do
-  #   get 'users/destroy'
-  # end
-
-  # namespace :admin do
-  #   get 'users/index'
-  # end
-
-  # namespace :admin do
-  #   get 'users/show'
-  # end
-
-  # namespace :admin do
-  #   get 'admins/create'
-  # end
-
-  # namespace :admin do
-  #   get 'books/new'
-  # end
-
-  # namespace :admin do
-  #   get 'books/create'
-  # end
-
-  # namespace :admin do
-  #   get 'books/edit'
-  # end
-
-  # namespace :admin do
-  #   get 'books/update'
-  # end
-
-  # namespace :admin do
-  #   get 'books/destroy'
-  # end
-
-  # namespace :admin do
-  #   get 'books/index'
-  # end
-
-  # namespace :admin do
-  #   get 'books/show'
-  # end
 
   namespace :admin do
-    resources :books, :users, :posts
+    resources :books, :users, :posts, except: [:index, :show]
     get "/" => "admins#index"
   end
 
@@ -92,12 +33,6 @@ Rails.application.routes.draw do
 	patch '/blog/:id' => 'posts#update'
 	delete '/blog/:id' => 'posts#destroy'
 
-	resources :categories
-
-	get '/tags' => 'tags#index'
-	post '/tag' => 'tags#create'
-	patch '/tag' => 'tags#update'
-	delete '/tag/:id' => 'tags#destroy'
 
 	# get '/comments' => 'comments#index'
 	# get '/comment/:id' => 'comments#show'
@@ -119,5 +54,7 @@ Rails.application.routes.draw do
       put '/users/:id' => 'users#update'
     end
   end
+
+  get '*path', :to => 'errors#redirect_bad_url'
 
 end
