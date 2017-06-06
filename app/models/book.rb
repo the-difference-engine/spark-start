@@ -44,11 +44,7 @@ end
 
 
 def check_downloads
-  if self.book_downloads == self.max_downloads
-    return false
-  else
-    return true
-  end
+  self.book_downloads >= self.max_downloads
 end
 
 

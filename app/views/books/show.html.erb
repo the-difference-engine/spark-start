@@ -5,7 +5,7 @@
   </div>
   <div class="col-xs-3">
      <%= image_tag "#{@book_information[:image]}", {class: "small_image" } %> 
-     <% if @book.check_downloads == true %>
+     <% if !@book.check_downloads %>
         <button class="btn btn-success right_justify_text"> <%= link_to "Download #{@book.title}", "/books/#{@book.id}/download", :target => "_blank", class: "black_text"%></button>
       <% else %>
         <p>This book is no longer available</p>
