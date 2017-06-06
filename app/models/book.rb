@@ -43,4 +43,9 @@ def authors_names
 end
 
 
+def check_downloads
+  self.book_downloads >= self.max_downloads
+end
+
+
 end

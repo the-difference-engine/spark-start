@@ -73,6 +73,18 @@ def index
     )
   end
 
+  def download
+    @book = Book.find_by_id(params[:id])
+    if @book.book_downloads == @book.max_downloads
+      redirect_to @book
+      flash[:warning] = "This book is no longer available for download!"
+    else
+      @book.book_downloads += 1
+      @book.save
+      redirect_to @book.ebook.url
+    end
+  end
+
   private
 
   def book_payload
