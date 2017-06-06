@@ -27,4 +27,6 @@ RSpec.describe Book, type: :model do
     it { should have_db_column(:url).of_type(:string) }
     it { should have_db_column(:user_id).of_type(:integer) }
   end
+
+  
 end
