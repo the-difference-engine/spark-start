@@ -1,4 +1,7 @@
 class Admin::UsersController < ApplicationController
+  before_action :set_current_user 
+  before_action :authenticate_admin!
+  
   def new
     @user = User.new
   end

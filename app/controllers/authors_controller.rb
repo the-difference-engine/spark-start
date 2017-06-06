@@ -51,10 +51,6 @@ class AuthorsController < ApplicationController
   end
 
   private
-
-    def set_current_user
-       @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
-    end
     
     def set_book
       @book =Book.find(params[:book_id])

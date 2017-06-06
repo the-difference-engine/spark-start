@@ -1,4 +1,7 @@
 class Admin::PostsController < ApplicationController
+  before_action :set_current_user 
+  before_action :authenticate_admin!
+  
   def new
     @post = Post.new
   end

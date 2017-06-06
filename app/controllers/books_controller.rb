@@ -82,10 +82,6 @@ def index
     }
   end
 
-    def set_current_user
-       @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
-    end
-
     def has_profile?
        if @current_user.profile.nil?
            flash[:warning] = "Please create a new profile first!"
