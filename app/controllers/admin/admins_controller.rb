@@ -17,7 +17,7 @@ class Admin::AdminsController < ApplicationController
 
   def index
     @posts = Post.all
-    @books = Book.all
+    @books = Book.order(created_at: :desc)
     @users = User.all
   end
 

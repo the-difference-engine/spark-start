@@ -39,6 +39,16 @@ class Admin::BooksController < ApplicationController
     end
   end
 
+  def check_downloads
+    @book = Book.find_by_id(params[:id])
+    if @book.book_downloads == @book.max_downloads
+      redirect_to @book
+      flash[:warning] = "This book is no longer available for download!"
+    else
+      @book.book_downloads += 1
+    end
+  end
+
   # def index
   #   # @books = Book.all
   # end
@@ -50,7 +60,7 @@ class Admin::BooksController < ApplicationController
 
 private
   def book_params
-    params.require(:book).permit(:title, :cover, :url, :description, :user_id)
+    params.require(:book).permit(:title, :cover, :url, :description, :user_id, :ebook, :max_downloads)
   end
 
   def set_current_user

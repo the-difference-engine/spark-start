@@ -38,15 +38,15 @@ Rails.application.routes.draw do
 	# get '/comment/:id' => 'comments#show'
 	post '/comments' => 'comments#create'
 
-	resources :books do
-		get :download_pdf
-		resources :authors do
-	    end
-	end
+  resources :books do
+    # get :download_pdf
+    resources :authors do
+      end
+  end
 
-	get '/logout' => 'auth0#logout'
+  get '/logout' => 'auth0#logout'
 
-	get '/users' => 'users#index'
+  get '/users' => 'users#index'
 
  namespace :api do 
     namespace :v1 do 
@@ -54,6 +54,7 @@ Rails.application.routes.draw do
       put '/users/:id' => 'users#update'
     end
   end
+  get '/books/:id/download' => 'books#download'
 
   get '*path', :to => 'errors#redirect_bad_url'
 
