@@ -25,7 +25,8 @@
         <div class="col-md-6">
           <%= f.label :ebook, 'Change Book' %> <br>
           <%= "Current File: #{@book.ebook_file_name}" if @book.ebook_file_name.present? %>
-          <%= "Current URL: #{@book.missing?}" if @book.ebook.url.present? %>
+          </br>
+          <%= "Current URL: #{@book.pdf_exists?}" if @book.ebook.url.present? %>
           <%= f.file_field :ebook %>
         </div>
 
