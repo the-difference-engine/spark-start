@@ -42,6 +42,13 @@ def authors_names
   # end
 end
 
+def pdf_exists?
+  if self.ebook.url == "/ebooks/original/missing.png"
+    return "Not Available."
+  else
+    return self.ebook.url
+  end
+end
 
 def check_downloads
   self.book_downloads >= self.max_downloads
