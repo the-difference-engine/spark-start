@@ -4777,3 +4777,8 @@ FOOTER STYLES
 .dropdown {
   color: #F9D176;
 }
+
+
+#lightbox {
+  display: none;
+}
