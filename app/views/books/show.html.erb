@@ -1,8 +1,13 @@
-<div class="container container-height">
+<div class="container">
 <div class="row">
-  <div class="col-xs-9">
-    <h1 class="center_text_header">Welcome to the <span class="yellow">Spark</span><span class="blue">Tank</span>!</h1>
+  <div class="col-xs-3">
+     <p></p>
   </div>
+  <div class="col-xs-6" style="margin: 9vh 0vh">
+    <h1>Welcome to the <span class="yellow">Spark</span><span class="blue">Tank</span>!</h1>
+  </div>
+</div>
+<div class="row">
   <div class="col-xs-3">
      <%= image_tag "#{@book_information[:image]}", {class: "small_image" } %> 
      <% if @book.reached_max_downloads? %>
@@ -10,6 +15,15 @@
       <% else %>
         <p>This book is no longer available</p>
       <% end %>
+  </div>
+  <div class="col-xs-6">
+    <h3><%= @book.title %> </h3>  
+    <p><%= @book.description %></p>
+  </div>
+  <div class="col-xs-3">
+     <% @book_information[:questions].each do |question| %>
+        <div><%= question %></div>
+     <% end %>
   </div>
 </div>
 <div class="row">
