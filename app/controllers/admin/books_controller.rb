@@ -4,7 +4,6 @@ class Admin::BooksController < ApplicationController
 
   def new
     @book = Book.new
-    @book.errors.delete(:cover)
   end
 
   def create
