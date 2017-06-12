@@ -20,6 +20,16 @@ class Book < ApplicationRecord
     end
   end
 
+  def authors_names
+   self.authors.map { |authors| authors.full_name }  
+ 
+   # authors = Author.where(book_id = book)
+ 
+   # authors.each do |author|
+     
+   # end
+  end
+
   def check_downloads
     self.book_downloads >= self.max_downloads
   end
