@@ -20,11 +20,16 @@
     <h3><%= @book.title %> </h3>  
     <p><%= @book.description %></p>
   </div>
-  <div class="col-xs-3">
-     <% @book_information[:questions].each do |question| %>
-        <div><%= question %></div>
-     <% end %>
-  </div>
+
+  <div ng-app="app">
+    <div ng-controller="booksCtrl" class="col-xs-3">
+      <ul class="nav nav-pills nav-stacked">
+        <li role="presentation"><a href="#q1"><%= @book.question_1 %></a></li>
+        <li role="presentation"><a href="#q2"><%= @book.question_2 %></a></li>
+        <li role="presentation"><a href="#q3"><%= @book.question_3 %></a></li>
+      </ul>
+    </div>
+
 </div>
 <div class="row">
   <div class="col-xs-12">
