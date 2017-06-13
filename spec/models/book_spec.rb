@@ -28,5 +28,23 @@ RSpec.describe Book, type: :model do
     it { should have_db_column(:user_id).of_type(:integer) }
   end
 
+  describe '#reached_max_downloads?' do
+    it "expect to handle nils" do
+      user = create(:user)
+      book = create(:book, user_id: user.id)
+      expect(book.reached_max_downloads?).to eq(false)
+    end
+    it "expect to return false if book_downloads exceeds max_downloads" do
+      user = create(:user)
+      book = create(:book, user_id: user.id, book_downloads: 2, max_downloads: 1)
+      expect(book.reached_max_downloads?).to eq(false)
+    end
+    it "expect to return true if book_downloads is less than max_downloads" do
+      user = create(:user)
+      book = create(:book, user_id: user.id, book_downloads: 1, max_downloads: 2)
+      expect(book.reached_max_downloads?).to eq(true)
+    end
+  end
+
   
 end

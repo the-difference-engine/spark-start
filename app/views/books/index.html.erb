@@ -3,7 +3,8 @@
   <h1>Book Library</h1>
   <% @books.each do |book|%>
   <div class="col-xs-4">
-    <img src="https://placeholdit.imgix.net/~text?txtsize=23&bg=ffffff&txtclr=000000&txt=250%C3%97250&w=250&h=250" alt="">
+    <h2><%= book.title %></h2>
+    <%= image_tag book.cover.url(:thumb) %>
     <h3>buy it today!</h3>
     <h3><%= book.url %></h3>
   </div>
