@@ -1,3 +1,5 @@
+
+
 <div class="container">
   <div class="row">
     <div class="col-xs-3">
@@ -10,7 +12,7 @@
 
   <div class="row">
     <div class="col-xs-3">
-       <%= image_tag "#{@book_information[:image]}", {class: "small_image" } %> 
+       <%= image_tag "#{@book.cover.url}", {class: "small_image right_justify_text" } %> 
        <% if !@book.check_downloads %>
           <button class="btn btn-success right_justify_text"> <%= link_to "Download #{@book.title}", "/books/#{@book.id}/download", :target => "_blank", class: "black_text"%></button>
         <% else %>
@@ -19,29 +21,28 @@
     </div>
     <div class="col-xs-5">
       <h3><%= @book.title %> </h3>  
-      <p><%= @book.description %></p>
+      <p><%= raw @book.description %></p>
     </div>
 
-    <div ng-app="app">
-      <div ng-controller="booksCtrl" class="col-xs-4">
-        <h1><span class="yellow">Spark</span><span class="blue">Starter</span><h1 style="margin-left: 12%">Questions</span></h1>
+    <div>
+      <div class="col-xs-4">
+        <h1><span class="yellow">Spark</span><span class="blue">Starter</span><h1 style="margin-left: 12%">Questions</span></h1></h1>
         <ul class="nav nav-pills nav-stacked">
           <li role="presentation"><h4>∙<a href="#q1"><%= @book.question_1 %></a></h4></li>
           <li role="presentation"><h4>∙<a href="#q2"><%= @book.question_2 %></a></h4></li>
           <li role="presentation"><h4>∙<a href="#q3"><%= @book.question_3 %></a></h4></li>
         </ul>
-        <ul>
       </div>
     </div>
   </div>
 
-  <div ng-app="app" class="row">
-    <div id="tabs" ng-controller="booksCtrl" class="col-xs-12">
-            {{ 2 + 2 }}
+  <div class="row">
+    <div id="tabs" class="col-xs-12">
+            <!-- {{ 2 + 2 }} -->
       <ul>
-        <li ng-repeat="tab in tabs" 
+        <!-- <li ng-repeat="tab in tabs" 
             ng-class="{active:isActiveTab(tab.url)}" 
-            ng-click="onClickTab(tab)">{{tab.title}</li>
+            ng-click="onClickTab(tab)">{{tab.title}</li> -->
       </ul>
       <div id="comments-container">
         <div ng-include="currentTab"></div>
@@ -49,4 +50,8 @@
     </div>
   </div>
 </div>
+
+
+
+
 

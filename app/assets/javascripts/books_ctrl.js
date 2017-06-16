@@ -19,7 +19,7 @@
 
     $scope.currentTab = 'one.tpl.html';
 
-    $scope.onClickTab = function (tab) {
+    $scope.onClickTab = function(tab) {
         $scope.currentTab = tab.url;
     }
     
