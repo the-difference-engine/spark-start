@@ -106,6 +106,6 @@ def index
     end
 
     def book_params
-      params.require(:book).permit(:title, :cover, :url, :@bookebook, :description, user_id: :@current_user, category_ids: [])
+      params.require(:book).permit(:title, :cover, :url, :@bookebook, :description, :question_1, :question_2, :question_3, user_id: :@current_user, category_ids: [])
     end
 end
