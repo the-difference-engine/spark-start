@@ -31,7 +31,7 @@ class Book < ApplicationRecord
   end
 
   def reached_max_downloads?
-    self.max_downloads ? (self.book_downloads <= self.max_downloads) : false
+    (self.max_downloads && self.book_downloads) ? (self.book_downloads <= self.max_downloads) : false
   end
 
   def clean_paperclip_errors
