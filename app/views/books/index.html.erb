@@ -1,11 +1,19 @@
 
+<h1 class="text-center">Book Library</h1>
+
 <div class="container container-height">
-  <h1>Book Library</h1>
-  <% @books.each do |book|%>
-  <div class="col-xs-4">
-    <img src="https://placeholdit.imgix.net/~text?txtsize=23&bg=ffffff&txtclr=000000&txt=250%C3%97250&w=250&h=250" alt="">
-    <h3>buy it today!</h3>
-    <h3><%= book.url %></h3>
+  <div class="col-xs-offset-2">
+    <% @books.each do |book|%>
+      <a href="/books/<%= book.id %>">
+        <div class="col-xs-4 book-preview text-center">
+          <h4><%= book.title %></h4>
+          <% if book.cover.url(:thumb) == "/images/thumb/missing.png" %>
+            <%= image_tag "missing_cover.jpg" %>
+          <% else %>
+            <%= image_tag book.cover.url(:medium) %>
+          <% end %>
+        </div>
+      </a>
+    <% end %>
   </div>
-  <% end %>
 </div>
