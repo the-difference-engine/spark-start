@@ -1,17 +1,20 @@
 class Admin::BooksController < ApplicationController
   before_action :set_current_user 
   before_action :authenticate_admin!
+
   def new
     @book = Book.new
   end
 
   def create
-    params[:book][:category_ids] ||= []
     @bookebook = params[:book][:ebook]
     @book = @current_user.books.build(book_params)
     if @book.save
-      flash[:success]= "Book created!"
+      flash[:success] = "Book created!"
       redirect_to @book
+    else
+      flash[:error] = "Book failed to upload"
+      render :new
     end
   end
 
