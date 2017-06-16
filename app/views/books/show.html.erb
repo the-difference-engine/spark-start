@@ -21,45 +21,30 @@
     <p><%= @book.description %></p>
   </div>
 
-  <div ng-app="app">
-    <div ng-controller="booksCtrl" class="col-xs-3">
-      <ul class="nav nav-pills nav-stacked">
-        <li role="presentation"><a href="#q1"><%= @book.question_1 %></a></li>
-        <li role="presentation"><a href="#q2"><%= @book.question_2 %></a></li>
-        <li role="presentation"><a href="#q3"><%= @book.question_3 %></a></li>
-      </ul>
-    </div>
-
-</div>
-<div class="row">
-  <div class="col-xs-12">
-    <h1 class="center_text_header"><span class="yellow">Spark</span><span class="blue">Starter</span> Questions:</h1>
-  </div>
-</div>
-  <div class="row">
-    <% @book_information[:questions].each do |question| %>
-      <div class="col-xs-4">
-      <h3>
-      <%= question %> 
-      </h3>
-      </div>
-    <% end %>
-  </div>
-  <div ng-app="app" class="col-xs-12">
-    <div ng-controller="commentsController">
-      
-      <div align="left"> 
-        <%= form_tag "/comments", method: :create do %>
-          <%= text_field_tag :body %>
-          <%= hidden_field_tag :commentable_id, @book.id %>
-          <%= hidden_field_tag :commentable_type, "Book" %>
-          <%= hidden_field_tag :user_id, @current_user.id %>
-          <%= submit_tag "Enter Comment", class: "btn btn-warning" %>
-        <% end %>
-      </div>
-        <ul>
-          <%= render partial: 'comments', collection: @book.comments %>
+    <div ng-app="app">
+      <div ng-controller="booksCtrl" class="col-xs-4">
+        <h1><span class="yellow">Spark</span><span class="blue">Starter</span><h1 style="margin-left: 12%">Questions</span></h1>
+        <ul class="nav nav-pills nav-stacked">
+          <li role="presentation"><h4>∙<a href="#q1"><%= @book.question_1 %></a></h4></li>
+          <li role="presentation"><h4>∙<a href="#q2"><%= @book.question_2 %></a></h4></li>
+          <li role="presentation"><h4>∙<a href="#q3"><%= @book.question_3 %></a></h4></li>
         </ul>
+        <ul>
+      </div>
+    </div>
+  </div>
+
+  <div ng-app="app" class="row">
+    <div id="tabs" ng-controller="booksCtrl" class="col-xs-12">
+            {{ 2 + 2 }}
+      <ul>
+        <li ng-repeat="tab in tabs" 
+            ng-class="{active:isActiveTab(tab.url)}" 
+            ng-click="onClickTab(tab)">{{tab.title}</li>
+      </ul>
+      <div id="comments-container">
+        <div ng-include="currentTab"></div>
+      </div>
     </div>
   </div>
 </div>

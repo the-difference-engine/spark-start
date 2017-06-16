@@ -53,7 +53,7 @@ class Admin::BooksController < ApplicationController
 
 private
   def book_params
-    params.require(:book).permit(:title, :cover, :url, :description, :user_id, :ebook, :max_downloads)
+    params.require(:book).permit(:title, :cover, :url, :description, :question_1, :question_2, :question_3, :user_id, :ebook, :max_downloads)
   end
 
   def set_current_user

@@ -3,14 +3,10 @@
 
   angular.module("app").controller("booksCtrl", function($scope){
 
-    // function getQuestions() {
-    //   $http.get('/api/v1/books.json').then(function(response){
-    //     $scope.questions = response.data;
-    //   });
-    // }
 
-    $scope.tabs = [{
-            title: 'Question One',
+
+    $scope.tabs = [
+            {title: 'Question One',
             url: 'one.tpl.html'
         }, {
             title: 'Question Two',
@@ -18,7 +14,8 @@
         }, {
             title: 'Question Three',
             url: 'three.tpl.html'
-    }];
+        }
+            ];
 
     $scope.currentTab = 'one.tpl.html';
 
