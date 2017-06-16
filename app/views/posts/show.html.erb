@@ -36,7 +36,7 @@
 
         <!-- TODO the edit button doesn't go anywhere -->
         <% if @current_user.admin? %>
-            <p><%= button_to "Edit Post", "/blog/#{@post.id}/edit", method: :get, class: "btn btn-primary" %></p>
+            <p><%= button_to "Edit Post", "/admin/posts/#{@post.id}/edit", method: :get, class: "btn btn-primary" %></p>
         <% end %>
 
     </div>

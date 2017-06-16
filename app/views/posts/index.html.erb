@@ -4,7 +4,7 @@
   <div class="col-sm-12 col-md-6 col-lg-6">
     <p><h2>Blog</h2></p>
     <% if @current_user.admin == true %>
-      <p><%= link_to 'Add Post', '/blog/new', class: 'btn btn-skin' %></p>
+      <p><%= link_to 'Add Post', "/admin/posts/new", class: 'btn btn-skin' %></p>
     <% end %>
   </div>
   <br>
