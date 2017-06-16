@@ -49,10 +49,12 @@
                 <div class="pull-right nav-header-right">
                 </div>
               
-                <div class="header-logo">
-                    <a href="/"><%= image_tag "logo.png", class: "main-logo-2", style:"height:80px" %></a>
+                <div class="header-logo"> 
                     <% if request.path == '/' %>
+                      <a href="/"><%= image_tag "logo.png", class: "main-logo-2", style:"height:80px" %></a>
                       <a href="/"><%= image_tag "logo.png", class: "main-logo", style:"margin:5px" %></a>
+                    <% else %>
+                      <a href="/"><%= image_tag "logo.png", class: "main-logo-3", style:"height:80px" %></a>
                     <% end %>                   
                 </div>
            
