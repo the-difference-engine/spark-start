@@ -25,7 +25,7 @@ class AuthorsController < ApplicationController
   	@current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
     params[:author][:category_ids] ||= []
     @author = Author.new(author_params)
-    @author.book_id =@book.id
+    @author.book_id = @book.id
      if @author.save
       flash[:success]= "Author added to book!"
       redirect_to @book

@@ -4780,6 +4780,33 @@ FOOTER STYLES
   color: #F9D176;
 }
 
+.book-preview{
+  border: 1px solid black;
+  height: 55vh;
+  min-width: 250px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 2px #888888;
+  margin: 0px 20px 20px 20px;
+  overflow: scroll;
+}
+
+.book-preview:hover{
+  background: linear-gradient(
+      rgba(0, 0, 0, 0), 
+      rgba(249, 209, 118, 0.25));
+    transition:0.25s;
+}
+
+.book-preview img{
+  width: 75%;
+
+  padding: 10px;
+}
+
+.book-preview h4{
+  padding-top: 10px;
+}
+
 
 #lightbox {
   display: none;

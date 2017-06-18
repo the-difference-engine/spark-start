@@ -17,20 +17,25 @@
         </div>
 
         <div class="col-md-3">
-          <%= f.label :cover, 'Change Cover' %> <br>
+          <%= f.label :cover, 'Change Cover', style: "pointer-events: none;" %> <br>
           <%= "Current Cover: #{@book.cover_file_name}" if @book.cover_file_name.present? %>
           <%= f.file_field :cover %>
         </div>
 
         <div class="col-md-3">
-          <%= f.label :max_downloads, 'Max Downloads', class: "downloads-label" %> <br>
-          <%= f.text_field :max_downloads, class: "downloads-form" %>
+
+          <%= f.label :max_downloads, 'Max Downloads' %> <br>
+          <%= f.text_field :max_downloads, required: true %>
         </div>
 
         <div class="col-md-6">
-          <%= f.label :ebook, 'Change Book' %> <br>
-          <%= "Current File: #{@book.ebook_file_name}" if @book.ebook_file_name.present? %>
-          <%= "Current URL: #{@book.pdf_exists?}" if @book.ebook.url.present? %>
+          <%= f.label :ebook, 'Change eBook PDF', style: "pointer-events: none;" %> <br>
+          <% if @book.ebook_file_name.present? %>
+          <%= "Current File: #{@book.ebook_file_name}" %>
+          </br>
+          <%= link_to "Preview PDF", @book.ebook.url, :target => "_blank"%>
+          <% end %>
+
           <%= f.file_field :ebook %>
         </div>
 
