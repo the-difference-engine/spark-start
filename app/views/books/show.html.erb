@@ -1,47 +1,58 @@
-<div class="container container-height">
-<div class="row">
-  <div class="col-xs-9">
-    <h1 class="center_text_header">Welcome to the <span class="yellow">Spark</span><span class="blue">Tank</span>!</h1>
-  </div>
-  <div class="col-xs-3">
-     <%= image_tag "#{@book_information[:image]}", {class: "small_image" } %> 
-     <% if @book.reached_max_downloads? %>
-        <button class="btn btn-success right_justify_text"> <%= link_to "Download #{@book.title}", "/books/#{@book.id}/download", :target => "_blank", class: "black_text"%></button>
-      <% else %>
-        <p>This book is no longer available</p>
-      <% end %>
-  </div>
-</div>
-<div class="row">
-  <div class="col-xs-12">
-    <h1 class="center_text_header"><span class="yellow">Spark</span><span class="blue">Starter</span> Questions:</h1>
-  </div>
-</div>
+<!-- <div ng-app="app">
+<div ng-controller="booksCtrl"> -->
+
+<div class="container">
   <div class="row">
-    <% @book_information[:questions].each do |question| %>
-      <div class="col-xs-4">
-      <h3>
-      <%= question %> 
-      </h3>
-      </div>
-    <% end %>
+    <div class="col-xs-3">
+       <p></p>
+    </div>
+    <div class="col-xs-6" style="margin: 9vh 0vh">
+      <h1>Welcome to the <span class="yellow">Spark</span><span class="blue">Tank</span>!</h1>
+    </div>
   </div>
-  <div ng-app="app" class="col-xs-12">
-    <div ng-controller="commentsController">
-      
-      <div align="left"> 
-        <%= form_tag "/comments", method: :create do %>
-          <%= text_field_tag :body %>
-          <%= hidden_field_tag :commentable_id, @book.id %>
-          <%= hidden_field_tag :commentable_type, "Book" %>
-          <%= hidden_field_tag :user_id, @current_user.id %>
-          <%= submit_tag "Enter Comment", class: "btn btn-warning" %>
-        <% end %>
-      </div>
-        <ul>
-          <%= render partial: 'comments', collection: @book.comments %>
+
+  <div class="row">
+    <div class="col-xs-3">
+       <%= image_tag "#{@book.cover.url}", {class: "small_image right_justify_text" } %> 
+          <% if @book.reached_max_downloads? %>
+             <%= button_to "Download PDF", "/books/#{@book.id}/download", class: "btn btn-success right_justify_text black_text", :method => :get, form: {target: '_blank'} %>
+           <% else %>
+             <p>This book is no longer available</p>
+           <% end %>
+    </div>
+    <div class="col-xs-5">
+      <h3><%= @book.title %> </h3>  
+      <p><%= raw @book.description %></p>
+    </div>
+
+    <div>
+      <div class="col-xs-4">
+        <h1><span class="yellow">Spark</span><span class="blue">Starter</span><h1 style="margin-left: 12%">Questions</span></h1></h1>
+        <ul class="nav nav-pills nav-stacked">
+          <li role="presentation"><h4>∙<a href="#q1"><%= @book.question_1 %></a></h4></li>
+          <li role="presentation"><h4>∙<a href="#q2"><%= @book.question_2 %></a></h4></li>
+          <li role="presentation"><h4>∙<a href="#q3"><%= @book.question_3 %></a></h4></li>
         </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div id="tabs" class="col-xs-12">
+            <!-- {{ 2 + 2 }} -->
+      <ul>
+        <!-- <li ng-repeat="tab in tabs" 
+            ng-class="{active:isActiveTab(tab.url)}" 
+            ng-click="onClickTab(tab)">{{tab.title}</li> -->
+      </ul>
+      <div id="comments-container">
+        <div ng-include="currentTab"></div>
+      </div>
     </div>
   </div>
 </div>
+
+<!-- </div>
+</div> -->
+
 
