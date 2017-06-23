@@ -13,7 +13,7 @@
             url: 'two.tpl.html'
         }, {
             title: 'Question Three',
-            url: 'three.tpl.html'
+            url: 'q3.tpl.html'
         }
             ];
 
