@@ -7,6 +7,7 @@ class Admin::BooksController < ApplicationController
   end
 
   def create
+     # binding.pry
     @bookebook = params[:book][:ebook]
     @book = @current_user.books.build(book_params)
     if @book.save

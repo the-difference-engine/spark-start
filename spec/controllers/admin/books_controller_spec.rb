@@ -30,15 +30,92 @@ RSpec.describe Admin::BooksController, type: :controller do
 
       context "with valid attributes" do
         it "saves the new book in the database" do
-          expect{post :create, session: mock_auth_hash, book: attributes_for(:book) 
+          params = {
+                  book: {
+                    title: "sup book",
+                    user_id: @user.id,
+                    description: "blah blah blah",
+                    max_downloads: 20,
+                    ebook: {
+                      content_type: {
+                        content_type: "application/pdf",
+                        message: "file must be a pdf"
+                      }
+                    }
+                  }
+                }
+          expect{ post :create, params: params, session: mock_auth_hash 
             }.to change(Book, :count).by (1)
           end
       end
 
       it "redirects to admin" do
-        # binding.pry
-        post :create, session: mock_auth_hash, book: attributes_for(:book)
-        expect(response).to redirect_to admin_path
+        params = {
+                  book: {
+                    title: "sup book",
+                    user_id: @user.id,
+                    description: "blah blah blah",
+                    max_downloads: 20,
+                    ebook: {
+                      content_type: {
+                        content_type: "application/pdf",
+                        message: "file must be a pdf"
+                      }
+                    }
+                  }
+                }
+        post :create, params: params, session: mock_auth_hash 
+          book = Book.last
+          expect(flash[:success]).to eq("Book created!")
+        expect(response).to redirect_to "/books/#{book.id}"
+      end
+
+      it "expect to create a new record in question" do
+                params = {
+                  book: {
+                    title: "sup book",
+                    user_id: @user.id,
+                    description: "blah blah blah",
+                    question: {},
+                    max_downloads: 20,
+                    ebook: {
+                      content_type: {
+                        content_type: "application/pdf",
+                        message: "file must be a pdf"
+                      }
+                    }
+                  }
+                }
+        post :create, params: params, session: mock_auth_hash
+        question = Question.all
+        expect(question.length).to eq(1)
+      end
+
+      it "expect 3 questions" do
+        params = {
+                  book: {
+                    title: "sup book",
+                    user_id: @user.id,
+                    description: "blah blah blah",
+                    question: {
+                        question_one: "question one",
+                        question_two: "question two",
+                        question_three: "question three"
+                      },
+                    max_downloads: 20,
+                    ebook: {
+                      content_type: {
+                        content_type: "application/pdf",
+                        message: "file must be a pdf"
+                      }
+                    }
+                  }
+                }
+        post :create, params: params, session: mock_auth_hash
+        question = Question.all
+         expect(question["question_one"]).to eq("question one")
+        expect(question["question_two"]).to eq("question two")
+         expect(question["question_three"]).to eq("question three")
       end
   end
 

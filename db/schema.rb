@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170623012859) do
+ActiveRecord::Schema.define(version: 20170626233244) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -130,8 +130,10 @@ ActiveRecord::Schema.define(version: 20170623012859) do
   create_table "questions", force: :cascade do |t|
     t.text     "content"
     t.integer  "book_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.jsonb    "data",       default: {}, null: false
+    t.index ["data"], name: "index_questions_on_data", using: :gin
   end
 
   create_table "tagged_posts", force: :cascade do |t|

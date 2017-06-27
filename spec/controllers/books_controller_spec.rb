@@ -3,22 +3,26 @@ include Auth0
 
 RSpec.describe BooksController, type: :controller do
 
-    context "get all books" do
-        describe "GET #index" do
-            it "populates an array of all books" do
-                user = create(:user)
-                anna_karenina = create(:book, user_id: @user_id)
-                crime_punishment = create(:book, user_id: @user_id)
-                get :index
-                expect(assigns(:books)).to match_array([anna_karenina, crime_punishment])
-            end
-        end
 
-        it "renders the :index template" do
-            get :index
-            expect(response).to render_template :index
-        end
-    end
+
+
+
+    # context "get all books" do
+    #     describe "GET #index" do
+    #         it "populates an array of all books" do
+    #             user = create(:user)
+    #             anna_karenina = create(:book, user_id: @user_id)
+    #             crime_punishment = create(:book, user_id: @user_id)
+    #             get :index
+    #             expect(assigns(:books)).to match_array([anna_karenina, crime_punishment])
+    #         end
+    #     end
+
+    #     it "renders the :index template" do
+    #         get :index
+    #         expect(response).to render_template :index
+    #     end
+    # end
 
 
 

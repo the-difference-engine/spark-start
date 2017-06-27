@@ -2,7 +2,7 @@
   "use strict";
 
   angular.module("app").controller("booksCtrl", function($scope){
-
+$scope.test = "testing"
 
 
     $scope.tabs = [

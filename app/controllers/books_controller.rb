@@ -37,6 +37,7 @@ def index
   end
 
   def create
+    
     # params[:book][:category_ids] ||= []
     # @bookebook = params[:book][:ebook]
     # @book = @current_user.books.build(book_params)
@@ -106,6 +107,6 @@ def index
     end
 
     def book_params
-      params.require(:book).permit(:title, :cover, :url, :@bookebook, :description, :question_1, :question_2, :question_3, user_id: :@current_user, category_ids: [])
+      params.require(:book).permit(:title, :cover, :url, :@bookebook, :description, :question_1, :question_2, :question_3, user_id: :@current_user, category_ids: [], questions_attributes:[:id, :data])
     end
 end
