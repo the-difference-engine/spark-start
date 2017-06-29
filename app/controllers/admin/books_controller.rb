@@ -7,8 +7,8 @@ class Admin::BooksController < ApplicationController
   end
 
   def create
-     # binding.pry
-    @bookebook = params[:book][:ebook]
+    #binding.pry
+    # @bookebook = params[:book][:ebook]
     @book = @current_user.books.build(book_params)
     if @book.save
       flash[:success] = "Book created!"
@@ -54,7 +54,26 @@ class Admin::BooksController < ApplicationController
 
 private
   def book_params
-    params.require(:book).permit(:title, :cover, :url, :description, :question_1, :question_2, :question_3, :user_id, :ebook, :max_downloads)
+    params.require(:book).permit(
+      :title,
+      :cover,
+      :url,
+      :description,
+      :question_1,
+      :question_2,
+      :question_3,
+      :user_id,
+      :ebook,
+      :max_downloads,
+      question_attributes: [
+        :book_id,
+        :content,
+        data: [:question_one,
+         :question_two,
+         :question_three
+        ]
+      ]
+    )
   end
 
   def set_current_user
