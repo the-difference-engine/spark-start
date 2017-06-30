@@ -122,22 +122,22 @@ RSpec.describe Admin::BooksController, type: :controller do
       end
   end
 
-  xdescribe "GET #edit" do
+  describe "GET #edit" do
     before(:each) do
       @current_user = create(:user)
       @book = create(:book, 
                       user_id: @current_user.id)
+      @params = { id: @book.id }
 
     end
 
       it "assigns the requested book to @book" do
-        get :edit, id: @book.id, session: mock_auth_hash
-        expect(assigns(:book)).to eq book
+        get :edit, params: @params, session: mock_auth_hash
+        expect(assigns(:book)).to eq @book
       end
 
       it "renders the :edit template" do 
-        book = create(:book)
-        get :edit, id: book, session: mock_auth_hash
+        get :edit, params: @params, session: mock_auth_hash
         expect(response).to render_template :edit 
       end
   end
