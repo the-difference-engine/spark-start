@@ -152,27 +152,33 @@ RSpec.describe Admin::BooksController, type: :controller do
     
     it "updates a book" do
       params = {
+            id: @book.id,
             book: {
-              title: "sup book",
-              description: "blah blah blah",
+              title: "changed book title",
+              description: "changed book description",
               question_attributes: {
                   content: 'content stuff',
                   data: {
-                    question_one: "this is question one",
-                    question_two: "this is question two",
-                    question_three: "this is question three"
+                    question_one: "updated question one",
+                    question_two: "updated question two",
+                    question_three: "updated question three"
                   }
                 },
               max_downloads: 20
             }
           }
 
-      patch :update, id: @book, book: params, session: mock_auth_hash
+      patch :update, params: params, book: params, session: mock_auth_hash
+      questions = Question.all
+      question = questions.last
       changed_book = Book.last
       expect(changed_book.title).to eq("changed book title")
       expect(changed_book.description).to eq("changed book description")
-      expect(response).to redirect_to(admin_book_path)
+      expect(response).to redirect_to(admin_path)
       expect(flash[:success]).to eq("Book has been successfully updated.")
+      expect(question.data["question_one"]).to eq("updated question one")
+         expect(question.data["question_two"]).to eq("updated question two")
+         expect(question.data["question_three"]).to eq("updated question three")
     end
   end
 
@@ -185,10 +191,11 @@ RSpec.describe Admin::BooksController, type: :controller do
 
 
     it "returns http success" do
-      delete :destroy, id: @book.id, session: mock_auth_hash
+      params = {id: @book.id}
+      delete :destroy, params: params, session: mock_auth_hash
       books = Book.all
       expect(books.length).to eq(0)
-      expect(response).to redirect_to(admin_book_path)
+      expect(response).to redirect_to(admin_path)
       expect(flash[:success]).to eq("Book has been successfully deleted.")
     end
   end
