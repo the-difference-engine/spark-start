@@ -23,9 +23,9 @@ RSpec.describe Admin::BooksController, type: :controller do
 
   describe "POST #create" do
       before(:each) do
-        @user = create(:user)
+        @current_user = create(:user)
         @book = create(:book, 
-                      user_id: @user.id)
+                      user_id: @current_user.id)
       end
 
       context "with valid attributes" do
@@ -33,7 +33,7 @@ RSpec.describe Admin::BooksController, type: :controller do
           params = {
             book: {
               title: "sup book",
-              user_id: @user.id,
+              user_id: @current_user.id,
               description: "blah blah blah",
               question_attributes: {
                   content: 'content stuff',
@@ -43,13 +43,7 @@ RSpec.describe Admin::BooksController, type: :controller do
                     question_three: "this is question three"
                   }
                 },
-              max_downloads: 20,
-              ebook: {
-                content_type: {
-                  content_type: "application/pdf",
-                  message: "file must be a pdf"
-                }
-              }
+              max_downloads: 20
             }
           }
           expect{ post :create, params: params, session: mock_auth_hash 
@@ -61,7 +55,7 @@ RSpec.describe Admin::BooksController, type: :controller do
         params = {
             book: {
               title: "sup book",
-              user_id: @user.id,
+              user_id: @current_user.id,
               description: "blah blah blah",
               question_attributes: {
                   content: 'content stuff',
@@ -71,13 +65,7 @@ RSpec.describe Admin::BooksController, type: :controller do
                     question_three: "this is question three"
                   }
                 },
-              max_downloads: 20,
-              ebook: {
-                content_type: {
-                  content_type: "application/pdf",
-                  message: "file must be a pdf"
-                }
-              }
+              max_downloads: 20
             }
           }
         post :create, params: params, session: mock_auth_hash 
@@ -86,39 +74,11 @@ RSpec.describe Admin::BooksController, type: :controller do
         expect(response).to redirect_to "/books/#{book.id}"
       end
 
-      it "expect to create a new record in question" do
-        params = {
-            book: {
-              title: "sup book",
-              user_id: @user.id,
-              description: "blah blah blah",
-              question_attributes: {
-                  content: 'content stuff',
-                  data: {
-                    question_one: "this is question one",
-                    question_two: "this is question two",
-                    question_three: "this is question three"
-                  }
-                },
-              max_downloads: 20,
-              ebook: {
-                content_type: {
-                  content_type: "application/pdf",
-                  message: "file must be a pdf"
-                }
-              }
-            }
-          }
-        post :create, params: params, session: mock_auth_hash
-        question = Question.all
-        expect(question.length).to eq(1)
-      end
-
       it "expect 3 questions" do
         params = {
             book: {
               title: "sup book",
-              user_id: @user.id,
+              user_id: @current_user.id,
               description: "blah blah blah",
               question_attributes: {
                   content: 'content stuff',
@@ -128,39 +88,56 @@ RSpec.describe Admin::BooksController, type: :controller do
                     question_three: "this is question three"
                   }
                 },
-              max_downloads: 20,
-              ebook: {
-                content_type: {
-                  content_type: "application/pdf",
-                  message: "file must be a pdf"
-                }
-              }
+              max_downloads: 20
             }
           }
         post :create, params: params, session: mock_auth_hash
-        question = Question.all
-         expect(question["question_one"]).to eq("this is question one")
-         expect(question["question_two"]).to eq("this is question two")
-         expect(question["question_three"]).to eq("this is question three")
+        questions = Question.all
+        question = questions.last
+         expect(questions.length).to eq(1)
+         expect(question.data["question_one"]).to eq("this is question one")
+         expect(question.data["question_two"]).to eq("this is question two")
+         expect(question.data["question_three"]).to eq("this is question three")
+      end
+
+      it "expect book to belong to current_user" do
+        params = {
+            book: {
+              title: "sup book",
+              description: "blah blah blah",
+              question_attributes: {
+                  content: 'content stuff',
+                  data: {
+                    question_one: "this is question one",
+                    question_two: "this is question two",
+                    question_three: "this is question three"
+                  }
+                },
+              max_downloads: 20
+            }
+          }
+          post :create, params: params, session: mock_auth_hash
+          book = Book.last
+          expect(book.user).to eq(@current_user)
       end
   end
 
-  describe "GET #edit" do
+  xdescribe "GET #edit" do
     before(:each) do
-      @user = create(:user)
+      @current_user = create(:user)
       @book = create(:book, 
-                      user_id: @user.id)
+                      user_id: @current_user.id)
 
     end
 
       it "assigns the requested book to @book" do
-        get :edit, id: book
+        get :edit, id: @book.id, session: mock_auth_hash
         expect(assigns(:book)).to eq book
       end
 
       it "renders the :edit template" do 
         book = create(:book)
-        get :edit, id: book
+        get :edit, id: book, session: mock_auth_hash
         expect(response).to render_template :edit 
       end
   end
@@ -175,13 +152,22 @@ RSpec.describe Admin::BooksController, type: :controller do
     
     it "updates a book" do
       params = {
-        title: "changed book title",
-        description: "changed book description", 
-        cover: nil, 
-        url: nil,
-        user_id: @user.id
-      }
-      patch :update, id: @book.id, book: params
+            book: {
+              title: "sup book",
+              description: "blah blah blah",
+              question_attributes: {
+                  content: 'content stuff',
+                  data: {
+                    question_one: "this is question one",
+                    question_two: "this is question two",
+                    question_three: "this is question three"
+                  }
+                },
+              max_downloads: 20
+            }
+          }
+
+      patch :update, id: @book, book: params, session: mock_auth_hash
       changed_book = Book.last
       expect(changed_book.title).to eq("changed book title")
       expect(changed_book.description).to eq("changed book description")
