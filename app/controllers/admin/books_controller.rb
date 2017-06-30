@@ -4,11 +4,12 @@ class Admin::BooksController < ApplicationController
 
   def new
     @book = Book.new
+    @question = Question.new
   end
 
   def create
+    
     @book = @current_user.books.new(book_params)
-
     if @book.save!
       flash[:success] = "Book created!"
       redirect_to @book

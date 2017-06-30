@@ -43,21 +43,24 @@
           <%= f.label :description, :style => "margin-top:15px" %> <br>
           <%= f.text_area :description, :class => 'ckeditor' %>
         </div>
+      <%= f.fields_for :question_attributes do |q| %>
+        <%= q.fields_for :data do |d| %>
+          <div class="col-md-12">
+            <%= d.label :question_one, :style => "margin-top:35px" %> <br>
+            <%= d.text_field :question_one, class: "form-control margin-b-20" %>
+          </div>
+          
+          <div class="col-md-12">
+            <%= d.label :question_two %> <br>
+            <%= d.text_field :question_two, class: "form-control margin-b-20" %>
+          </div>
 
-        <div class="col-md-12">
-          <%= f.label :question_1, :style => "margin-top:35px"%> <br>
-          <%= f.text_field :question_1, class: "form-control margin-b-20" %>
-        </div>
-
-        <div class="col-md-12">
-          <%= f.label :question_2%> <br>
-          <%= f.text_field :question_2, class: "form-control margin-b-20" %>
-        </div>
-
-        <div class="col-md-12">
-          <%= f.label :question_3%> <br>
-          <%= f.text_field :question_3, class: "form-control margin-b-20" %>
-        </div>
+          <div class="col-md-12">
+            <%= d.label :question_three %> <br>
+            <%= d.text_field :question_three, class: "form-control margin-b-20" %>
+          </div>
+        <% end %>
+      <% end %>
     
         <div class="col-md-12 actions margin-15">
           <%= f.submit "Submit", class: 'btn btn-xl btn-skin' %>
