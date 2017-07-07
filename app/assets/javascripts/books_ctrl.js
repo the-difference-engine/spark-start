@@ -9,7 +9,7 @@
             method: "GET"
         }).then(function(data) {
             console.log(data.data);
-            $scope.question = data.data;
+            $scope.questions = data.data;
         })
     };
 
