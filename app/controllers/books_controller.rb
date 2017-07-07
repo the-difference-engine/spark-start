@@ -22,7 +22,7 @@ def index
     #   @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
     # end
     @book = Book.find(params[:id])
-    @book_information = book_payload
+    # @book_information = book_payload
     # TODO introduce serializing to bring all this over at once
     # @questions = ["What did this book do?", "What did this book?", "Are you there God? It's me Margaret."]
     # @book_image = "travelas.png"
@@ -86,14 +86,22 @@ def index
     end
   end
 
+  def book_information
+    # binding.pry
+    book = Book.find(params[:id])
+    payload = book.question.data
+
+    render json: payload
+  end
+
   private
 
-  def book_payload
-    {
-      questions: ["Book question number one", "Book question number two", "Book question number three"],
-      image: 'travelas.png'
-    }
-  end
+  # def book_payload
+  #   {
+  #     questions: ["Book question number one", "Book question number two", "Book question number three"],
+  #     image: 'travelas.png'
+  #   }
+  # end
 
     def has_profile?
        if @current_user.profile.nil?

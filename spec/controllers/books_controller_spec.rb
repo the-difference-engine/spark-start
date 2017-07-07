@@ -4,7 +4,25 @@ include Auth0
 RSpec.describe BooksController, type: :controller do
 
 
+    describe "book_information" do
+        it "returns the data of the question associated with the book" do 
+            current_user = create(:user)
+            book = create(:book, 
+                      user_id: current_user.id)
+            create(:question, 
+                    book_id: book.id,
+                    data: {
+                        question_one: "updated question one",
+                        question_two: "updated question two",
+                        question_three: "updated question three"
+                        })
+            # binding.pry
+            get :book_information, params: { id: 26 },session: mock_auth_hash
+            # expect(subject).to eq(nil)
 
+
+        end
+    end
 
 
     # context "get all books" do

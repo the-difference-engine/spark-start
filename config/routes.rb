@@ -38,6 +38,7 @@ Rails.application.routes.draw do
 	# get '/comment/:id' => 'comments#show'
 	post '/comments' => 'comments#create'
 
+  get '/book/:id' => 'books#book_information'
   resources :books do
     # get :download_pdf
     resources :authors do

@@ -1,7 +1,22 @@
 (function(){
   "use strict";
 
-  angular.module("app").controller("booksCtrl", function($scope){
+  angular.module("app").controller("booksCtrl", ["$scope", "$http", function($scope, $http){
+    $scope.book_id = window.book_id;
+    $scope.getBookData = function() {
+        $http({
+            url: "/book/" + $scope.book_id,
+            method: "GET"
+        }).then(function(data) {
+            console.log(data.data);
+            $scope.question = data.data;
+        })
+    };
+
+    $scope.getBookData();
+
+
+
     $scope.test = "testing"
 
     $scope.showQuestion = function(question) {
@@ -35,5 +50,5 @@
     // }
 
     window.scope = $scope;
-  });
+  }]);
 }());
