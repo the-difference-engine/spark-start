@@ -1,59 +1,49 @@
-<div>
 <div ng-controller="booksCtrl">
-
-<div class="container">
-<div class="row">
-  <div class="col-xs-3">
-     <p></p>
-  </div>
-  <div class="col-xs-6" style="margin: 9vh 0vh">
-    <h1>Welcome to the <span class="yellow">Spark</span><span class="blue">Tank</span>!</h1>
-  </div>
-</div>
-
-  <div class="row">
-    <div class="col-xs-3">
-       <%= image_tag "#{@book.cover.url}", {class: "small_image right_justify_text" } %> 
-          <% if @book.reached_max_downloads? %>
-             <%= button_to "Download PDF", "/books/#{@book.id}/download", class: "btn btn-success right_justify_text black_text", :method => :get, form: {target: '_blank'} %>
-           <% else %>
-             <p>This book is no longer available</p>
-             {{test}}
-           <% end %>
-    </div>
-    <div class="col-xs-5">
-      <h3><%= @book.title %> </h3>  
-      <p><%= raw @book.description %></p>
-    </div>
-
-    <div>
-      <div class="col-xs-4">
-        <h1><span class="yellow">Spark</span><span class="blue">Starter</span><h1 style="margin-left: 12%">Questions</span></h1></h1>
-        <ul class="nav nav-pills nav-stacked">
-          <li role="presentation"><h4>1<a href="#q1"><%= @book.question_1 %></a></h4></li>
-          <li role="presentation"><h4>2<a href="#q2"><%= @book.question_2 %></a></h4></li>
-          <li role="presentation"><h4>3<a href="#q3"><%= @book.question_3 %></a></h4></li>
-        </ul>
+  <div class="container" ng-cloak>
+    <div class="row">
+      <div class="col-xs-3">
+         <p></p>
+      </div>
+      <div class="col-xs-6" style="margin: 9vh 0vh">
+        <h1>Welcome to the <span class="yellow">Spark</span><span class="blue">Tank</span>!</h1>
       </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div id="tabs" class="col-xs-12">
-            <!-- {{ 2 + 2 }} -->
-      <ul>
-        <!-- <li ng-repeat="tab in tabs" 
-            ng-class="{active:isActiveTab(tab.url)}" 
-            ng-click="onClickTab(tab)">{{tab.title}</li> -->
-      </ul>
-      <div id="comments-container">
-        <div ng-include="currentTab"></div>
+    <div class="row">
+      <div class="col-xs-3">
+         <%= image_tag "#{@book.cover.url}", {class: "small_image right_justify_text" } %> 
+            <% if @book.reached_max_downloads? %>
+               <%= button_to "Download PDF", "/books/#{@book.id}/download", class: "btn btn-success right_justify_text black_text", :method => :get, form: {target: '_blank'} %>
+             <% else %>
+               <p>This book is no longer available</p>
+               {{test}}
+             <% end %>
+      </div>
+      <div class="col-xs-5">
+        <h3><%= @book.title %> </h3>  
+        <p><%= raw @book.description %></p>
+      </div>
+
+      <div>
+        <div class="col-xs-4">
+          <h1><span class="yellow">Spark</span><span class="blue">Starter</span><h1 style="margin-left: 12%">Questions</span></h1></h1>
+          <ul class="nav nav-pills nav-stacked">
+            <li role="presentation" ng-click="showQuestion('<%= @book.question.data["question_one"] %>')"><h4>Question 1: <a href="#q1"><%= @book.question.data["question_one"] %></a></h4></li>
+            <li role="presentation"><h4>Question 2: <a href="#q2"><%= @book.question.data["question_two"] %></a></h4></li>
+            <li role="presentation"><h4>Question 3: <a href="#q3"><%= @book.question.data["question_three"] %></a></h4></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div id="tabs" class="col-xs-12">
+        <div ng-if="questionSelected">
+          <%= render partial: "discussion" %>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
-    </div>
-    </div>
 
 

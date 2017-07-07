@@ -1,3 +1,8 @@
+/*this forces ng-cloak to hide angular components to flicker as page loads*/
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
 .footer-custom{
   width: 100%;
   bottom: -50;

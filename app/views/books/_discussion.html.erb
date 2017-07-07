@@ -1,0 +1,21 @@
+<div class="sparkQuestion">
+  texttt
+</div>
+
+<div class="col-xs-12" ng-cloak>
+    <div ng-controller="commentsController">
+      
+      <div align="left"> 
+        <%= form_tag "/comments", method: :create do %>
+          <%= text_field_tag :body %>
+          <%= hidden_field_tag :commentable_id, @book.id %>
+          <%= hidden_field_tag :commentable_type, "Book" %>
+          <%= hidden_field_tag :user_id, @current_user.id %>
+          <%= submit_tag "Enter Comment", class: "btn btn-warning" %>
+        <% end %>
+      </div>
+        <ul>
+          <%= render partial: 'comments', collection: @book.comments %>
+        </ul>
+    </div>
+</div>
