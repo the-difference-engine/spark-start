@@ -8,7 +8,6 @@
             url: "/book/" + $scope.book_id,
             method: "GET"
         }).then(function(data) {
-            console.log(data.data);
             $scope.questions = data.data;
         })
     };
@@ -21,7 +20,7 @@
 
     $scope.showQuestion = function(question) {
         $scope.questionSelected = true;
-        console.log(question);
+        $scope.activeQuestion = question;
     };
 
 
