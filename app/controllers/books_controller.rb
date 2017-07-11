@@ -27,6 +27,7 @@ def index
     # @questions = ["What did this book do?", "What did this book?", "Are you there God? It's me Margaret."]
     # @book_image = "travelas.png"
     # @book_download = "Click to Download" #this is not getting used?
+
   end
 
   def new
@@ -87,10 +88,8 @@ def index
   end
 
   def book_information
-    # binding.pry
     book = Book.find(params[:id])
-    payload = book.question.data
-
+    payload = book.questions.map { |question| { id: question.id, content: question.content} }
     render json: payload
   end
 

@@ -19,6 +19,8 @@
     $scope.test = "testing"
 
     $scope.showQuestion = function(question) {
+        console.log(question);
+        window.question_id = question.id;
         $scope.questionSelected = true;
         $scope.activeQuestion = question;
     };

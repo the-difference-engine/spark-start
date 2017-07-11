@@ -1,20 +1,24 @@
 <div class="col-xs-12" ng-cloak>
   <div class="sparkQuestion">
-    <h2>{{ activeQuestion }}</h2>
+    <h2>{{ activeQuestion.content }}</h2>
   </div>
     <div ng-controller="commentsController">
       
       <div align="left"> 
         <%= form_tag "/comments", method: :create do %>
           <%= text_field_tag :body %>
-          <%= hidden_field_tag :commentable_id, @book.id %>
-          <%= hidden_field_tag :commentable_type, "Book" %>
+          <%= hidden_field_tag :commentable_id, "{{ activeQuestion.id }}" %>
+          <%= hidden_field_tag :commentable_type, "Question" %>
           <%= hidden_field_tag :user_id, @current_user.id %>
           <%= submit_tag "Enter Comment", class: "btn btn-warning" %>
         <% end %>
       </div>
         <ul>
-          <%= render partial: 'comments', collection: @book.comments %>
+          <%= render partial: 'comments', collection: Question.find(26).comments %>
         </ul>
     </div>
 </div>
+
+<script>
+
+</script>
