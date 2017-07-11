@@ -8,9 +8,11 @@ class Admin::BooksController < ApplicationController
   end
 
   def create
-    
     @book = @current_user.books.new(book_params)
+    binding.pry
     if @book.save!
+      questions = params[:book][:questions]
+      questions.each { |question| @book.questions.create!(content: question["content"]) }
       flash[:success] = "Book created!"
       redirect_to @book
     else
@@ -64,15 +66,7 @@ private
       :question_3,
       :user_id,
       :ebook,
-      :max_downloads,
-      question_attributes: [
-        :book_id,
-        :content,
-        data: [:question_one,
-         :question_two,
-         :question_three
-        ]
-      ]
+      :max_downloads
     )
   end
 
