@@ -9,11 +9,11 @@
         <div class="col-md-12">
         <%#= f.text_field :questions %>
         <%= f.label :question_one, :style => "margin-top:15px" %> <br>
-        <%= text_field_tag "book[questions][][content]" %>
+        <%= text_field_tag "book[questions][][content]", @book.questions[0].content %>
         <%= f.label :question_two, :style => "margin-top:15px" %> <br>
-        <%= text_field_tag "book[questions][][content]" %>
+        <%= text_field_tag "book[questions][][content]", @book.questions[1].content %>
         <%= f.label :question_three, :style => "margin-top:15px" %> <br>
-        <%= text_field_tag "book[questions][][content]" %>
+        <%= text_field_tag "book[questions][][content]", @book.questions[2].content %>
         </div>
 
         <div class="col-md-6">
