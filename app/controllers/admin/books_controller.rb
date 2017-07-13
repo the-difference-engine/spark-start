@@ -9,7 +9,6 @@ class Admin::BooksController < ApplicationController
 
   def create
     @book = @current_user.books.new(book_params)
-    binding.pry
     if @book.save!
       questions = params[:book][:questions]
       questions.each { |question| @book.questions.create!(content: question["content"]) }

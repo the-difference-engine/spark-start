@@ -16,7 +16,6 @@ RSpec.describe BooksController, type: :controller do
                         question_two: "updated question two",
                         question_three: "updated question three"
                         })
-            # binding.pry
             get :book_information, params: { id: 26 },session: mock_auth_hash
             # expect(subject).to eq(nil)
 

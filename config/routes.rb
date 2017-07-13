@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   get '/mission' => 'homes#mission'
   get '/freevideos' => 'homes#videos'
 
+  get '/questions/:id' => 'questions#show'
+
    resources :profiles
 
 	get '/blog' => 'posts#index'

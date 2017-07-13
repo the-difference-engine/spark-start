@@ -1,0 +1,24 @@
+
+<li class="center_list">
+  <%= comments.body %>
+  <br>
+  <div>
+    <small>Submitted <%= time_ago_in_words(comments.created_at) %> ago</small>
+    <small><%= mail_to comments.user.email, "#{comments.user.email}" %></small>
+    <p class="red_reply_text" ng-click="showForm(<%= comments.id %>)" ng-if="showComment !== <%= comments.id %>">reply</p>
+  </div>
+  <div ng-if="showComment === <%= comments.id %>" class="alert alert-warning alert-dismissible fade in" role="alert" >
+    
+    <%= form_tag "/comments", method: :create do %>
+      <%= text_field_tag :body %>
+      <%= hidden_field_tag :commentable_id, comments.id %>
+      <%= hidden_field_tag :commentable_type, "Comment" %>
+      <%= hidden_field_tag :user_id, @current_user.id %>
+      <%= submit_tag "Enter Comment", class: "btn btn-warning" %>
+    <% end %>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close" ng-click="showForm(0)"><span aria-hidden="true">×</span></button>
+  </div>
+    <ul>
+      <%= render partial: 'comments', collection: comments.comments %>
+    </ul>
+</li>
