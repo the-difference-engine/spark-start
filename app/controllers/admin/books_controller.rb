@@ -26,7 +26,12 @@ class Admin::BooksController < ApplicationController
 
   def update
     @book = Book.find_by_id(params[:id])
+    @questions = @book.questions
     if @book.update(book_params)
+      questions = params[:book][:questions]
+      @book.questions[0].update(content: params[:book][:questions][0][:content])
+      @book.questions[1].update(content: params[:book][:questions][1][:content])
+      @book.questions[2].update(content: params[:book][:questions][2][:content])
       flash[:success]= "Book has been successfully updated."
       redirect_to admin_path
     else
