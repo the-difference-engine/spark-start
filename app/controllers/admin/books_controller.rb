@@ -22,6 +22,7 @@ class Admin::BooksController < ApplicationController
 
   def edit
     @book = Book.find_by_id(params[:id])
+    @questions = @book.questions
   end
 
   def update
