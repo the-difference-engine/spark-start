@@ -10,11 +10,11 @@
   <div ng-if="showComment === <%= comments.id %>" class="alert alert-warning alert-dismissible fade in" role="alert" >
     
     <%= form_tag "/comments", method: :create do %>
-      <%= text_field_tag :body %>
+      <%= text_area_tag :body, nil, style: "width: 100%" %>
       <%= hidden_field_tag :commentable_id, comments.id %>
       <%= hidden_field_tag :commentable_type, "Comment" %>
       <%= hidden_field_tag :user_id, @current_user.id %>
-      <%= submit_tag "Enter Comment", class: "btn btn-warning" %>
+      <%= submit_tag "Enter Comment", class: "btn btn-warning", style: "width: 100%" %>
     <% end %>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close" ng-click="showForm(0)"><span aria-hidden="true">×</span></button>
   </div>
