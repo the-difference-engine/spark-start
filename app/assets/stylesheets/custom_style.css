@@ -4774,6 +4774,10 @@ FOOTER STYLES
   -webkit-text-stroke-color: black;
 }
 
+.subheader {
+  font-size: 30px;
+}
+
 .dropdown {
   color: #F9D176;
 }
