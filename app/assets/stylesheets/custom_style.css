@@ -4806,11 +4806,28 @@ FOOTER STYLES
 }
 
 .blue-box {
-  background: #c4dcff;
+  background: #8CABC8;
+}
+
+.blue-box a{
+  color: black;
 }
 
 .green-box {
-  background: #d3ffce;
+  background: #AEE2A9;
+}
+
+.green-box a{
+  color: black;
+}
+
+.profiles-legend {
+  display: inline-block;
+  width: 100px;
+  padding: 5px;
+  text-align: center;
+  margin: 5px;
+  border-radius: 5px;
 }
 
 
