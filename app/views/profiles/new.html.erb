@@ -22,8 +22,8 @@
         </div>
           <div class="row">
             <div class="col-md-6">
-              <%= f.label :experience %> <br>
-              <%= f.text_field :experience, class: "form-control margin-b-20" %>
+              <%= f.label :years_of_experience %> <br>
+              <%= f.select :experience, options_for_select([["Select One", ""], "0-4", "5-9", "10+"]) %>
             </div>
             <div class="col-md-6">
               <%= f.label :career %> <br>
