@@ -4781,6 +4781,10 @@ FOOTER STYLES
   -webkit-text-stroke-color: black;
 }
 
+.subheader {
+  font-size: 2em;
+}
+
 .dropdown {
   color: #F9D176;
 }
@@ -4810,6 +4814,31 @@ FOOTER STYLES
 
 .book-preview h4{
   padding-top: 10px;
+}
+
+.blue-box {
+  background: #8CABC8;
+}
+
+.blue-box a{
+  color: black;
+}
+
+.green-box {
+  background: #AEE2A9;
+}
+
+.green-box a{
+  color: black;
+}
+
+.profiles-legend {
+  display: inline-block;
+  width: 100px;
+  padding: 5px;
+  text-align: center;
+  margin: 5px;
+  border-radius: 5px;
 }
 
 
