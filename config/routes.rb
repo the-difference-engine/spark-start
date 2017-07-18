@@ -59,6 +59,6 @@ Rails.application.routes.draw do
   end
   get '/books/:id/download' => 'books#download'
 
-  # get '*path', :to => 'errors#redirect_bad_url'
+  get '*path', :to => 'errors#redirect_bad_url'
 
 end
