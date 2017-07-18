@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170519012557) do
+ActiveRecord::Schema.define(version: 20170717194808) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,9 @@ ActiveRecord::Schema.define(version: 20170519012557) do
     t.datetime "ebook_updated_at"
     t.integer  "book_downloads",     default: 0
     t.integer  "max_downloads"
+    t.string   "question_1"
+    t.string   "question_2"
+    t.string   "question_3"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -106,7 +109,7 @@ ActiveRecord::Schema.define(version: 20170519012557) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.integer  "experience"
+    t.string   "experience"
     t.text     "bio"
     t.string   "phone"
     t.string   "career"
@@ -122,6 +125,15 @@ ActiveRecord::Schema.define(version: 20170519012557) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.string   "linkedin_url"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "book_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.jsonb    "data",       default: {}, null: false
+    t.index ["data"], name: "index_questions_on_data", using: :gin
   end
 
   create_table "tagged_posts", force: :cascade do |t|

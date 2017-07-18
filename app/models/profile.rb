@@ -23,7 +23,7 @@
 class Profile < ApplicationRecord
 
   # TODO commented this all out trying to get paperclip to upload a pic
-  validates :experience, presence: true, numericality: true
+  validates :experience, presence: true
   validates :bio, presence: true
   validates :phone, presence: true
   validates :career, presence: true
