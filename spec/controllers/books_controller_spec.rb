@@ -3,22 +3,43 @@ include Auth0
 
 RSpec.describe BooksController, type: :controller do
 
-    context "get all books" do
-        describe "GET #index" do
-            it "populates an array of all books" do
-                user = create(:user)
-                anna_karenina = create(:book, user_id: @user_id)
-                crime_punishment = create(:book, user_id: @user_id)
-                get :index
-                expect(assigns(:books)).to match_array([anna_karenina, crime_punishment])
-            end
-        end
 
-        it "renders the :index template" do
-            get :index
-            expect(response).to render_template :index
+    describe "book_information" do
+        it "returns the data of the question associated with the book" do 
+            current_user = create(:user)
+            book = create(:book, 
+                      user_id: current_user.id)
+            create(:question, 
+                    book_id: book.id,
+                    data: {
+                        question_one: "updated question one",
+                        question_two: "updated question two",
+                        question_three: "updated question three"
+                        })
+            get :book_information, params: { id: 26 },session: mock_auth_hash
+            # expect(subject).to eq(nil)
+
+
         end
     end
+
+
+    # context "get all books" do
+    #     describe "GET #index" do
+    #         it "populates an array of all books" do
+    #             user = create(:user)
+    #             anna_karenina = create(:book, user_id: @user_id)
+    #             crime_punishment = create(:book, user_id: @user_id)
+    #             get :index
+    #             expect(assigns(:books)).to match_array([anna_karenina, crime_punishment])
+    #         end
+    #     end
+
+    #     it "renders the :index template" do
+    #         get :index
+    #         expect(response).to render_template :index
+    #     end
+    # end
 
 
 

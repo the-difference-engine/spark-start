@@ -4,12 +4,14 @@ class Admin::BooksController < ApplicationController
 
   def new
     @book = Book.new
+    @question = Question.new
   end
 
   def create
-    @bookebook = params[:book][:ebook]
-    @book = @current_user.books.build(book_params)
-    if @book.save
+    @book = @current_user.books.new(book_params)
+    if @book.save!
+      questions = params[:book][:questions]
+      questions.each { |question| @book.questions.create!(content: question["content"]) }
       flash[:success] = "Book created!"
       redirect_to @book
     else
@@ -20,11 +22,20 @@ class Admin::BooksController < ApplicationController
 
   def edit
     @book = Book.find_by_id(params[:id])
+    @questions = @book.questions
   end
 
   def update
     @book = Book.find_by_id(params[:id])
+    @questions = @book.questions
+    question_one = @book.questions[0]
+    question_two = @book.questions[1]
+    question_three = @book.questions[2]
     if @book.update(book_params)
+      questions = params[:book][:questions]
+      question_one.update(content: params[:book][:questions][0][:content])
+      question_two.update(content: params[:book][:questions][1][:content])
+      question_three.update(content: params[:book][:questions][2][:content])
       flash[:success]= "Book has been successfully updated."
       redirect_to admin_path
     else
@@ -53,7 +64,18 @@ class Admin::BooksController < ApplicationController
 
 private
   def book_params
-    params.require(:book).permit(:title, :cover, :url, :description, :user_id, :ebook, :max_downloads)
+    params.require(:book).permit(
+      :title,
+      :cover,
+      :url,
+      :description,
+      :question_1,
+      :question_2,
+      :question_3,
+      :user_id,
+      :ebook,
+      :max_downloads
+    )
   end
 
   def set_current_user

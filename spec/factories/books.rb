@@ -23,5 +23,6 @@ FactoryGirl.define do
   factory :book do
     title 'The Book Title'
     description 'This is the description'
+    # ebook File.new(Rails.root + 'spec/factories/images/rails.png') 
   end
 end

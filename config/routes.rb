@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   get '/mission' => 'homes#mission'
   get '/freevideos' => 'homes#videos'
 
+  get '/questions/:id' => 'questions#show'
+
    resources :profiles
 
 	get '/blog' => 'posts#index'
@@ -38,6 +40,7 @@ Rails.application.routes.draw do
 	# get '/comment/:id' => 'comments#show'
 	post '/comments' => 'comments#create'
 
+  get '/book/:id' => 'books#book_information'
   resources :books do
     # get :download_pdf
     resources :authors do

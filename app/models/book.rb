@@ -5,6 +5,8 @@ class Book < ApplicationRecord
   has_many :categories_author_books
   has_many :authors
   has_many :categories, through: :categories_author_books
+  has_many :questions, inverse_of: :book, autosave: true
+  # accepts_nested_attributes_for :questions
   #has_many :authors, through: :authors_books
   has_attached_file :cover, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :cover, content_type: /\Aimage\/.*\z/, message: " must be an image file."
@@ -31,7 +33,7 @@ class Book < ApplicationRecord
   end
 
   def reached_max_downloads?
-    (self.max_downloads && self.book_downloads) ? (self.book_downloads <= self.max_downloads) : false
+    (self.max_downloads && self.book_downloads) ? (self.book_downloads < self.max_downloads) : false
   end
 
   def clean_paperclip_errors
