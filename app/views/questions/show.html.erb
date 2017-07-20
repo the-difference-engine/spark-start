@@ -31,7 +31,7 @@
               <% if @book.reached_max_downloads? %>
                  <%= button_to "Download PDF", "/books/#{@book.id}/download", class: "btn btn-success right_justify_text black_text", :method => :get, form: {target: '_blank'} %>
                <% else %>
-                 <p>This book is no longer available</p>
+                 <p class="right_justify_text">This book is no longer available for free download. Purchase it on <a href="<%= @book.url %>">Amazon.</a></p>
                <% end %>
     </div>
   </div>
