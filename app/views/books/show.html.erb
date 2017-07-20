@@ -1,40 +1,37 @@
     <div class="row">
-      <div class="col-xs-3">
-         <p></p>
-      </div>
-      <div class="col-xs-6" style="margin: 9vh 0vh">
+      <div class="col-xs-12 text-center" style="margin: 9vh 0vh">
         <h1>Welcome to the <span class="yellow">Spark</span><span class="blue">Tank</span>!</h1>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-xs-3">
+      <div class="col-md-3 col-xs-12">
         <h3 class="right_justify_text"><%= @book.title %> </h3>
          <%= image_tag "#{@book.cover.url}", {class: "small_image right_justify_text" } %> 
             <% if @book.reached_max_downloads? %>
                <%= button_to "Download PDF", "/books/#{@book.id}/download", class: "btn btn-success right_justify_text black_text", :method => :get, form: {target: '_blank'} %>
              <% else %>
-               <p>This book is no longer available</p>
-               {{test}}
+               <p class="right_justify_text">This book is no longer available</p>
              <% end %>
       </div>
-      <div class="col-xs-5">
+
+      <div class="col-md-5 col-xs-12">
         <h3>Description</h3>  
         <p><%= raw @book.description %></p>
       </div>
+      <br>
+      <br>
 
-      <div>
-        <div class="col-xs-4">
-          <h1><span class="yellow">Spark</span><span class="blue">Starter</span><h1 style="margin-left: 12%">Questions</span></h1></h1>
-          
-          <ol>
-            <% @book.questions.each do |question| %>
-              <li><%= link_to question.content, "/questions/#{question.id}" %>
-              </li>
-            <% end %>
-          </ol>
+      <div class="col-md-4 col-xs-12">
+        <h1><span class="yellow">Spark</span><span class="blue">Starter</span><h1 style="margin-left: 12%">Questions</span></h1></h1>
+        
+        <ol>
+          <% @book.questions.each do |question| %>
+            <li><%= link_to question.content, "/questions/#{question.id}" %>
+            </li>
+          <% end %>
+        </ol>
 
-        </div>
       </div>
     </div>
     <br>
