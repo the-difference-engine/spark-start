@@ -38,9 +38,9 @@
     <h4 class="text-uppercase">Contact Information</h4>
       Email: <%= @profile.user.email %><br>
       Phone: <%= @profile.phone %><br>
-      Linkedin: <%= @profile.linkedin_url %>
+    <%= link_to image_tag("linkedin-logo", class: "linkedin-tiny"), @profile.linkedin_url, target: "_blank" %>
   </div>
 
-  <%= link_to 'Edit Profile', "/profiles/#{@profile.id}/edit", class: 'btn btn-xl btn-skin center' %>
+  <%= link_to 'Edit Profile', "/profiles/#{@profile.id}/edit", class: 'btn btn-xl btn-skin text-center' %>
 
 </div>
