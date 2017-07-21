@@ -11,7 +11,13 @@
             <% if @book.reached_max_downloads? %>
                <%= button_to "Download PDF", "/books/#{@book.id}/download", class: "btn btn-success right_justify_text black_text", :method => :get, form: {target: '_blank'} %>
              <% else %>
-               <p class="right_justify_text">This book is no longer available for free download. Purchase it on <a href="<%= @book.url %>">Amazon.</a></p>
+               <p class="right_justify_text">This book is no longer available for free download.  <br> 
+                <% if @book.url.present? %>
+                  <%= link_to image_tag("amazon-logo_black", class: "amazon-logo-tiny"), @book.url, target: "_blank" %>
+                <% else %>
+                  Please contact <%= mail_to "melissa@networlding.com", "Melissa" %>.
+                <% end %>
+               </p>
              <% end %>
       </div>
 

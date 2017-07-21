@@ -1,6 +1,10 @@
 
 <h1 class="text-center">Book Library</h1>
 
+<% if @books.empty? %>
+  <h3 class="text-center">No books added yet.</h3>
+<% end %>
+
 <div class="container container-height">
   <div class="col-xs-offset-2">
     <% @books.each do |book|%>

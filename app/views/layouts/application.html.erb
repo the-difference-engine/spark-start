@@ -46,8 +46,8 @@
 
         <header class="top-header navbar-default navbar navbar-static-top sticky-header yamm" style="background-color: black; height:absolute;%">
         <div id='cssmenu'>
+          <%= image_tag "newlogo", class: "nav-logo" %>
           <ul class="nav navbar-nav navbar-right">
-            <li><%= image_tag "newlogo", class: "nav-logo" %></li>
             <% if session[:userinfo].present? %>
             <li class="">
                 <a href="/" role="button" style="color: #F9D176;">Home</a>
