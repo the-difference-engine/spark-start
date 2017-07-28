@@ -13727,14 +13727,14 @@ FOOTER STYLES
     display: none;
   }
 }
-/* line 1, /Users/troyleach/projects/spark-start/app/assets/stylesheets/menu.css.scss */
+/* line 1, /Users/troyleach/projects/spark-start/app/assets/stylesheets/menu.scss */
 .nav-logo {
   float: left;
   padding-left: 10px;
   height: 80px;
 }
 
-/* line 7, /Users/troyleach/projects/spark-start/app/assets/stylesheets/menu.css.scss */
+/* line 7, /Users/troyleach/projects/spark-start/app/assets/stylesheets/menu.scss */
 .navbar-brand,
 .navbar .nav > li > a {
   line-height: 80px;
@@ -13743,17 +13743,17 @@ FOOTER STYLES
   font-weight: bold;
 }
 
-/* line 15, /Users/troyleach/projects/spark-start/app/assets/stylesheets/menu.css.scss */
+/* line 15, /Users/troyleach/projects/spark-start/app/assets/stylesheets/menu.scss */
 .active {
   color: #70b64e;
 }
 
-/* line 19, /Users/troyleach/projects/spark-start/app/assets/stylesheets/menu.css.scss */
+/* line 19, /Users/troyleach/projects/spark-start/app/assets/stylesheets/menu.scss */
 .navbar-brand {
   padding: 0;
 }
 
-/* line 25, /Users/troyleach/projects/spark-start/app/assets/stylesheets/menu.css.scss */
+/* line 25, /Users/troyleach/projects/spark-start/app/assets/stylesheets/menu.scss */
 .navbar .nav {
   font-size: 1.25em;
   color: #283B81;
