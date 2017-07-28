@@ -54,7 +54,7 @@ Rails.application.configure do
 
   config.paperclip_defaults = {
     :storage => :s3,
-    :path => "sparkstart/:id/image/:style.:extension",
+    :path => "sparkstart/qa/:id/:style.:extension",
     :bucket => "sparkstartapp",
     :s3_host_name => "s3-us-east-2.amazonaws.com",
     :s3_region => "us-east-2",
