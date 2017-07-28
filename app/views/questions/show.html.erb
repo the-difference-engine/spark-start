@@ -26,7 +26,11 @@
     <div class="col-md-4 col-xs-12 order-3">
           <a href="/books/<%= @book.id %>">
           <h4 class="right_justify_text"><%= @book.title %> </h4>
-           <%= image_tag "#{@book.cover.url}", {class: "small_image right_justify_text" } %>
+           <% if @book.cover.url(:thumb) == "/images/thumb/missing.png" %>
+             <%= image_tag "missing_cover.jpg", {class: "small_image right_justify_text" } %>
+           <% else %>
+             <%= image_tag @book.cover.url(:medium), {class: "small_image right_justify_text" } %>
+           <% end %>
            </a>
               <% if @book.reached_max_downloads? %>
                  <%= button_to "Download PDF", "/books/#{@book.id}/download", class: "btn btn-success right_justify_text black_text", :method => :get, form: {target: '_blank'} %>
