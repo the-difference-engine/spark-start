@@ -13,7 +13,7 @@
              <% else %>
                <p class="right_justify_text">This book is no longer available for free download.  <br> 
                 <% if @book.url.present? %>
-                  <%= link_to image_tag("amazon-logo_black", class: "amazon-logo-tiny"), @book.url, target: "_blank" %>
+                  <%= link_to image_tag("amazon-logo_black.png", class: "amazon-logo-tiny"), @book.url, target: "_blank" %>
                 <% else %>
                   Please contact <%= mail_to "melissa@networlding.com", "Melissa" %>.
                 <% end %>
