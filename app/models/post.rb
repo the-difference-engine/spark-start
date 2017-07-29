@@ -27,7 +27,9 @@ class Post < ApplicationRecord
   has_many :tags, through: :tagged_posts
   # belongs_to :user
 
-  has_attached_file :image, styles: { medium: "500x500>", thumb: "100x100>" }
+  has_attached_file :image,
+                    styles: { medium: "500x500>", thumb: "100x100>" },
+                    :path => ENV["AWS_PATH"] + "/:id/blog/:style.:extension"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
   validates_with AttachmentSizeValidator, attributes: :image, less_than: 1.megabytes
 

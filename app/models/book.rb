@@ -8,9 +8,15 @@ class Book < ApplicationRecord
   has_many :questions, inverse_of: :book, autosave: true
   # accepts_nested_attributes_for :questions
   #has_many :authors, through: :authors_books
-  has_attached_file :cover, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  has_attached_file :cover,
+                    styles: { medium: "300x300>", thumb: "100x100>" },
+                    default_url: ActionController::Base.helpers.asset_path('assets/missing_cover_:style.png'),
+                    #default_url: "/images/:style/missing.png",
+                    :path => ENV["AWS_PATH"] + "/:id/book/cover/:style.:extension"
   validates_attachment_content_type :cover, content_type: /\Aimage\/.*\z/, message: " must be an image file."
-  has_attached_file :ebook, styles: {thumbnail: "60x60"}
+  has_attached_file :ebook,
+                    styles: {thumbnail: "60x60"},
+                    :path => ENV["AWS_PATH"] + "/:id/book/pdf/:style.:extension"
   validates_attachment :ebook, content_type: { content_type: "application/pdf", message: "file must be a pdf." }
   after_validation :clean_paperclip_errors
 

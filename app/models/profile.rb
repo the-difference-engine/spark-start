@@ -35,8 +35,12 @@ class Profile < ApplicationRecord
 
   belongs_to :user
 
-  has_attached_file :image, styles: { medium: "500x500>", thumb: "100x100>" }, default_url: ActionController::Base.helpers.asset_path('assets/Missing_photo_:style.jpeg')
-  validates_attachment_content_type :image, :content_type => ['image/jpeg', 'image/png', 'image/gif']
+  has_attached_file :image,
+                    styles: { medium: "500x500>", thumb: "100x100>" },
+                    default_url: ActionController::Base.helpers.asset_path('assets/Missing_photo_:style.jpeg'),
+                    :path => ENV["AWS_PATH"] + "/:id/profile/:style.:extension"
+  validates_attachment_content_type :image, 
+                                    :content_type => ['image/jpeg', 'image/png', 'image/gif']
   # validates_attachment :image, :size => { :in => 0..3.megabytes }
   # validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
   # validates_with AttachmentSizeValidator, attributes: :image, less_than: 1.megabytes

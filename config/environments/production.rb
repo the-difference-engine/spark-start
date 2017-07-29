@@ -23,7 +23,7 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  config.assets.compile = true
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
@@ -87,9 +87,9 @@ Rails.application.configure do
   config.paperclip_defaults = {
     :storage => :s3,
     :path => "sparkstart/production/:id/image/:style.:extension",
-    :bucket => "sparkstartleach",
-    :s3_host_name => "s3-us-west-2.amazonaws.com",
-    :s3_region => "us-west-2",
+    :bucket => "sparkstartapp",
+    :s3_host_name => "s3-us-east-2.amazonaws.com",
+    :s3_region => "us-east-2",
     :s3_credentials => {
       :access_key_id => ENV["AWS_ACCESS_KEY_ID"],
       :secret_access_key => ENV["AWS_SECRET_ACCESS_KEY"]

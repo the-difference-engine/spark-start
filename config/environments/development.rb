@@ -54,10 +54,10 @@ Rails.application.configure do
 
   config.paperclip_defaults = {
     :storage => :s3,
-    :path => "sparkstart/:id/image/:style.:extension",
-    :bucket => "sparkstartleach",
-    :s3_host_name => "s3-us-west-2.amazonaws.com",
-    :s3_region => "us-west-2",
+    :path => "sparkstart/qa/:id/:style.:extension",
+    :bucket => "sparkstartapp",
+    :s3_host_name => "s3-us-east-2.amazonaws.com",
+    :s3_region => "us-east-2",
     :s3_credentials => {
       :access_key_id => ENV["AWS_ACCESS_KEY_ID"],
       :secret_access_key => ENV["AWS_SECRET_ACCESS_KEY"]
