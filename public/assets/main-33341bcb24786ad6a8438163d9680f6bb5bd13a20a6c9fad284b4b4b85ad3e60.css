@@ -1,0 +1,91 @@
+/* line 1, /Users/troyleach/projects/spark-start/app/assets/stylesheets/main.scss */
+.center-it {
+  text-align: center;
+}
+
+/* line 4, /Users/troyleach/projects/spark-start/app/assets/stylesheets/main.scss */
+.profile-image-container {
+  text-align: -webkit-center;
+}
+
+/* line 7, /Users/troyleach/projects/spark-start/app/assets/stylesheets/main.scss */
+.spark-nav {
+  color: #F9D176 !important;
+  font-size: 6vw !important;
+}
+
+/* line 12, /Users/troyleach/projects/spark-start/app/assets/stylesheets/main.scss */
+.profile-image {
+  width: 20%;
+}
+
+/* line 15, /Users/troyleach/projects/spark-start/app/assets/stylesheets/main.scss */
+.main-logo {
+  margin-top: -28px;
+  margin-left: -20vh;
+  position: absolute;
+  width: 15vw;
+}
+
+/* line 22, /Users/troyleach/projects/spark-start/app/assets/stylesheets/main.scss */
+.main-logo-2 {
+  position: absolute;
+  top: -20px;
+  left: -35px;
+  display: none;
+}
+
+/* line 29, /Users/troyleach/projects/spark-start/app/assets/stylesheets/main.scss */
+.main-logo-3 {
+  position: absolute;
+  top: -20px;
+  left: -35px;
+}
+
+/* line 35, /Users/troyleach/projects/spark-start/app/assets/stylesheets/main.scss */
+.cartoon-social {
+  height: 55px !important;
+  width: 55px !important;
+  margin: 5px;
+  padding: 0px, 5px;
+}
+
+/* line 42, /Users/troyleach/projects/spark-start/app/assets/stylesheets/main.scss */
+.downloads-form {
+  margin-bottom: 20px;
+  margin-left: 100px;
+  padding-left: 20px;
+  width: 60%;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -ms-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  border-radius: 0;
+  font-size: 13px;
+  font-weight: 500;
+  background: #fff;
+  border: 1px solid #ddd;
+}
+
+/* line 61, /Users/troyleach/projects/spark-start/app/assets/stylesheets/main.scss */
+.downloads-label {
+  margin-left: 100px;
+}
+
+/* line 65, /Users/troyleach/projects/spark-start/app/assets/stylesheets/main.scss */
+#comments-container {
+  border: 1px solid black;
+  clear: both;
+  padding: 0 1em;
+  min-height: 200px;
+}
+
+@media screen and (max-width: 1001px) {
+  /* line 73, /Users/troyleach/projects/spark-start/app/assets/stylesheets/main.scss */
+  .main-logo {
+    display: none;
+  }
+}

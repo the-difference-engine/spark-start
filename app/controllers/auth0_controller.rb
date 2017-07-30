@@ -8,7 +8,12 @@ class Auth0Controller < ApplicationController
     params[:email] = user_info.info["email"]
 
     users = User.all
-    if users.find_by_email(params[:email]).nil?
+    # if users.has_email?
+    #   redirect_to root_path
+    # else
+    #   new_user
+    # end
+    if users.has_email(params[:email])
       new_user
     else
       redirect_to root_path
@@ -22,7 +27,7 @@ class Auth0Controller < ApplicationController
         UserNotifierMailer.send_signup_email(@user).deliver
         flash[:success] = "Welcome To Spark Start"
 
-        redirect_to profile_new_path
+        redirect_to new_profile_path
       else
         flash[:error] = "Try Again"
         render root

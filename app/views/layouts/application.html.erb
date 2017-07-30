@@ -1,17 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app">
     <head>
+        <%= csrf_meta_tags %>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <title>Spark Start</title>
 
+
         <!-- Bootstrap -->
 
         <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', integrity: 'sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin: 'anonymous' %>
         
         <%= stylesheet_link_tag 'bootstrap.min' %>
+        <%= stylesheet_link_tag 'bootstrap-toggle.min' %>
         <%= stylesheet_link_tag 'custom_style' %>
         <%= stylesheet_link_tag 'font-awesome.min' %>
         <%= stylesheet_link_tag 'et-line' %>
@@ -40,49 +43,85 @@
     <body bgcolor="#ffffff">
 
         <div id="preloader"></div>
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/"><%= image_tag "newlogo.png", class: "nav-logo" %></a>
+            </div>
 
-        <header class="top-header navbar-default navbar navbar-static-top sticky-header yamm">
-            <div class="container">
-                <div class="pull-right nav-header-right">
-                </div>
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="/"><h1>Spark Start</h1></a>
-                </div>
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <% if session[:userinfo].present? %>
-                        <li class="dropdown">
-                          <% if @current_user.profile.present? %>
-                            <%= link_to "Profile", "/profile/#{@current_user.profile.id}" %>
-                          <% else %>
-                            <%= link_to "Profile", "/profile/new" %>
-                          <% end %>
-                        </li>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right">
+                <% if session[:userinfo].present? %>
+                <li class="">
+                    <a href="/" role="button" style="color: #283B81;">Home</a>
+                </li>
+                
+                <li class="" \>
+                  <% if @current_user && @current_user.profile.present? %>
+                    <%= link_to "Your Profile", "/profiles/#{@current_user.profile.id}", style: "color: #283B81;"%>
+                  <% else %>
+                    <%= link_to "New Profile", "/profiles/new", style: "color: #283B81;"%>
+                  <% end %>
+                </li>
 
-                        <li class="dropdown">
-                            <a href="/blog" role="button">Blog</a>
-                        </li>
+                
 
-                        <li class="dropdown">
-                        <% if @current_user.profile.present? %>
-                          <%= link_to "Books", "/books" %>
-                        <% end %>
-                        </li>
+                 <li class="">
+                  <%= link_to "The Book", "/books/#{last_book}", style: "color: #283B81;" %>
+                </li>
 
-                        <li class="dropdown yamm-fw">
-                          <!-- <a href="#" class onclick="lock.show();">Login / Register</a> -->
-                            <a href="/logout">Logout</a>
-                            <% else %>
-                            <a href="#" class onclick="lock.show();">Login / Register</a>
-                          <% end %>
-                        </li>
+                <li class="">
+                    <a href="/mission" role="button" style="color: #283B81;">About</a>
+                </li>
 
-                    </ul>
-                </div><!--/.nav-collapse -->
-            </div><!--/.container-fluid -->
-        </header>
+                 <li class="">
+                   <%= link_to "Library", "/books", style: "color: #283B81;" %>
+                  
+                </li>
+
+                <li class="">
+                    <a href="/blog" role="button" style="color: #283B81;">Blog</a>
+                </li>
+
+                 <li class="">
+                 
+                   <%= link_to "Profiles", "/profiles", style: "color: #283B81;" %>
+                 
+                </li>
+
+                <li class="">
+                  <% if @current_user && @current_user.admin? %>
+                   <%= link_to "Admin", "/admin", style: "color: #283B81;" %>
+                  <%end%>
+                </li>
+
+                <li class="">
+                  <!-- <a href="#" class onclick="lock.show();">Login / Register</a> -->
+                    <a href="/logout" style="color: #283B81;">Logout</a>
+                    <% else %>
+                    <a href="#" style="color: #283B81;" onclick="lock.show();">Login / Register</a>
+                  <% end %>
+                </li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
+
+
+        
         <!-- header end -->
 
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
 
 
       <%= yield %>
@@ -95,7 +134,7 @@
               <div class="row">
 
 
-                  <div class="col-md-3 margin-b-30">
+                  <div class="col-md-6 margin-b-30">
                       <h3>Visit us</h3>
                       <p>
                         (312) 560-0982
@@ -105,11 +144,11 @@
                         Chicago, IL 60606
                       </p>
                       <div class="clearfix">
-                          <a class="social-icon social-dark social-sm  si-facebook" href="http://www.facebook.com/NetworldingPublishing" data-toggle="tooltip" title="" data-original-title="Facebook"><%= image_tag 'facebook_square.png', height: 25, width: 25 %></a>
-                          <a class="social-icon social-dark social-sm si-twitter" href="http://twitter.com/networlding" data-toggle="tooltip" title="" data-original-title="Twitter"><%= image_tag 'twitter_square.png', height: 25, width: 25 %></a>
-                          <a class="social-icon social-dark social-sm si-linkedin" href="http://www.linkedin.com/in/melissagwilson" data-toggle="tooltip" title="" data-original-title="Linkedin"><%= image_tag 'linkedin_square.png', height: 25, width: 25 %></a>
-                          <a class="social-icon social-dark social-sm si-g-plus" href="https://plus.google.com/116727844459701235557?prsrc=3" data-toggle="tooltip" title="" data-original-title="Google+"><%= image_tag 'googleplus_square.png', height: 25, width: 25 %></a>
-                          <a class="social-icon social-dark social-sm si-pinterest" href="http://pinterest.com/melissagwilson/" data-toggle="tooltip" title="" data-original-title="pinterest"><%= image_tag 'pinterest_square.png', height: 25, width: 25 %></a>
+                          <a class="cartoon-social social-icon social-dark social-sm  si-facebook" href="http://www.facebook.com/NetworldingPublishing" data-toggle="tooltip" title="" data-original-title="Facebook"><%= image_tag 'facebook_square.png', class: "cartoon-social" %></a>
+                          <a class="cartoon-social social-icon social-dark social-sm si-twitter" href="http://twitter.com/networlding" data-toggle="tooltip" title="" data-original-title="Twitter"><%= image_tag 'twitter_square.png', class: "cartoon-social" %></a>
+                          <a class="cartoon-social social-icon social-dark social-sm si-linkedin" href="http://www.linkedin.com/in/melissagwilson" data-toggle="tooltip" title="" data-original-title="Linkedin"><%= image_tag 'linkedin_square.png', class: "cartoon-social" %></a>
+                          <a class="cartoon-social social-icon social-dark social-sm si-g-plus" href="https://plus.google.com/116727844459701235557?prsrc=3" data-toggle="tooltip" title="" data-original-title="Google+"><%= image_tag 'googleplus_square.png', class: "cartoon-social" %></a>
+                          <a class="cartoon-social social-icon social-dark social-sm si-pinterest" href="http://pinterest.com/melissagwilson/" data-toggle="tooltip" title="" data-original-title="pinterest"><%= image_tag 'pinterest_square.png', class: "cartoon-social" %></a>
                       </div>
                   </div>
               </div>
@@ -123,6 +162,8 @@
       <%= javascript_include_tag 'jquery-migrate.min' %>
       <%= javascript_include_tag 'jquery.easing.min' %>
       <%= javascript_include_tag 'bootstrap.min' %>
+      <%= javascript_include_tag 'bootstrap-toggle.min' %>
+
 
       <% javascript_include_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js", integrity: "sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa", crossorigin: "anonymous" %>
 
@@ -162,7 +203,21 @@
           }
         });
       </script>
+      <script>
+      $(function() {
+        $(document).on("mousewheel", function() {
+          if ($(document).scrollTop() < 581) {
+            $('.main-logo').fadeIn();
+            $('.main-logo-2').fadeOut();
+          } else {
+            $('.main-logo').fadeOut();
+            $('.main-logo-2').fadeIn();
+        }
+        
+    });
+}); 
 
+      </script>
       <script type="text/javascript">
           (function ($) {
               "use strict";

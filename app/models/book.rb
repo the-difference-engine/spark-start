@@ -1,5 +1,52 @@
 class Book < ApplicationRecord
-
   belongs_to :user
-  
+  has_many :comments, as: :commentable
+  #has_many :authors_books
+  has_many :categories_author_books
+  has_many :authors
+  has_many :categories, through: :categories_author_books
+  has_many :questions, inverse_of: :book, autosave: true
+  # accepts_nested_attributes_for :questions
+  #has_many :authors, through: :authors_books
+  has_attached_file :cover,
+                    styles: { medium: "300x300>", thumb: "100x100>" },
+                    # TODO this does not work, logic in the view.
+                    #default_url: ActionController::Base.helpers.asset_path('assets/missing_cover_:style.png'),
+                    #default_url: "/images/:style/missing.png",
+                    :path => ENV["AWS_PATH"] + "/:id/book/cover/:style.:extension"
+  validates_attachment_content_type :cover, content_type: /\Aimage\/.*\z/, message: " must be an image file."
+  has_attached_file :ebook,
+                    styles: {thumbnail: "60x60"},
+                    :path => ENV["AWS_PATH"] + "/:id/book/pdf/:style.:extension"
+  validates_attachment :ebook, content_type: { content_type: "application/pdf", message: "file must be a pdf." }
+  after_validation :clean_paperclip_errors
+
+  def pdf_exists?
+    if self.ebook.url == "/ebooks/original/missing.png"
+      return "Not Available."
+    else
+      return self.ebook.url
+    end
+  end
+
+  def authors_names
+   self.authors.map { |authors| authors.full_name }  
+ 
+   # authors = Author.where(book_id = book)
+ 
+   # authors.each do |author|
+     
+   # end
+  end
+
+  def reached_max_downloads?
+    (self.max_downloads && self.book_downloads) ? (self.book_downloads < self.max_downloads) : false
+  end
+
+  def clean_paperclip_errors
+    errors.delete(:cover)
+    errors.delete(:ebook_content_type)
+  end
+
+
 end

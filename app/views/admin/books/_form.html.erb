@@ -1,0 +1,70 @@
+<%= form_for [:admin, @book], :html => { :multipart => true } do |f| %>
+  <% @book.errors.full_messages.each do |error| %>
+    <span style="color: red"><%= error %></span><br>
+  <% end %>
+  <br>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-6">
+          <%= f.label :title%> <br>
+          <%= f.text_field :title, class: "form-control margin-b-20" %>
+        </div>
+
+        <div class="col-md-6">
+          <%= f.label :url, "Link To Amazon Book Page i.e. https://www.amazon.com/dp/1234567890/" %>
+              <%= f.text_field :url, class: "form-control margin-b-20" %>
+        </div>
+
+        <div class="col-md-3">
+          <%= f.label :cover, 'Change Cover', style: "pointer-events: none;" %> <br>
+          <%= "Current Cover: #{@book.cover_file_name}" if @book.cover_file_name.present? %>
+          <%= f.file_field :cover %>
+        </div>
+
+        <div class="col-md-3">
+
+          <%= f.label :max_downloads, 'Max Downloads' %> <br>
+          <%= f.text_field :max_downloads, required: true %>
+        </div>
+
+        <div class="col-md-6">
+          <%= f.label :ebook, 'Change eBook PDF', style: "pointer-events: none;" %> <br>
+          <% if @book.ebook_file_name.present? %>
+          <%= "Current File: #{@book.ebook_file_name}" %>
+          </br>
+          <%= link_to "Preview PDF", @book.ebook.url, :target => "_blank"%>
+          <% end %>
+
+          <%= f.file_field :ebook %>
+        </div>
+
+        <div class="col-md-12">
+          <%= f.label :description, :style => "margin-top:15px" %> <br>
+          <%= f.text_area :description, :class => 'ckeditor' %>
+        </div>
+        <% i = 0 %>
+        <% if @questions %>
+          <% @questions.each do |question| %>
+          <div class="col-md-12">
+           <%= f.label "question #{i += 1}", :style => "margin-top:15px" %> <br>
+           <%= text_area_tag "book[questions][][content]", question.content, style: "width: 100%" %>
+          </div>
+          <% end %>
+        <% else %>
+          <% 3.times do %>
+            <div class="col-md-12">
+             <%= f.label "question #{i += 1}", :style => "margin-top:15px" %> <br>
+             <%= text_area_tag "book[questions][][content]", nil, style: "width: 100%" %>
+            </div>
+            <% end %>
+        <% end %>
+
+        
+    
+        <div class="col-md-12 actions margin-15">
+          <%= f.submit "Submit", class: 'btn btn-xl btn-skin' %>
+        </div>
+      
+      </div>
+    </div>
+<% end %>

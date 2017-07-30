@@ -1,0 +1,28 @@
+.sparkQuestion {
+  background: #f0eee1;
+  padding: 20px;
+  margin: 15px 0px 15px 0px;
+  position: relative;
+}
+
+
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .column-order {
+    display: flex;
+    flex-direction: column;
+  }
+  .order-1 {
+    order: 2;
+  }
+  .order-2 {
+    order: 3;
+  }
+  .order-3 {
+    order: 1;
+    text-align: center;
+  }
+  .nav-logo {
+  display: none;
+}
+}

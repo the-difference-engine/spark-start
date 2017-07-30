@@ -1,0 +1,20 @@
+<div class="container">
+	<ul class="nav nav-tabs">
+		
+		<li class="active"><a data-toggle="tab" href="#posts">Posts</a></li>
+		<li><a data-toggle="tab" href="#users">Users</a></li>
+		<li><a data-toggle="tab" href="#books">Books</a></li>
+	</ul>  
+	<div class="tab-content">
+		<div id="posts" class="tab-pane fade in active">
+			<%= render 'admin/posts/posts' %>
+		</div>
+		<div id="users" class="tab-pane fade">
+			<%= render 'admin/users/users' %>
+		</div>
+		<div id="books" class="tab-pane fade">
+			<%= render 'admin/books/books' %>
+		</div>
+	</div>
+
+</div>

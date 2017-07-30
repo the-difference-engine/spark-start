@@ -1,6 +1,20 @@
+<h1 class="text-center">Book Library</h1>
+<% if @books.empty? %>
+    <h3 class="text-center">No books added yet.</h3>
+<% end %>
 <div class="container container-height">
-
-Here is where the list of books will beHere is where the list of books will be
-
-
+    <div class="col-xs-offset-2">
+        <% @books.each do |book|%>
+            <a href="/books/<%= book.id %>">
+                <div class="col-xs-4 book-preview text-center">
+                    <h4><%= book.title %></h4>
+                    <% if book.cover.url(:thumb) == "/covers/thumb/missing.png" %>
+                        <%= image_tag "missing_cover_medium.jpg", {class: "small_image right_justify_text" } %>
+                    <% else %>
+                        <%= image_tag book.cover.url(:medium), {class: "small_image right_justify_text" } %>
+                    <% end %>
+                </div>
+            </a>
+        <% end %>
+    </div>
 </div>

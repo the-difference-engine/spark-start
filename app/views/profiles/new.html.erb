@@ -1,57 +1,76 @@
 <div class="container">
-  <h1>Create Your New SparkStart Profile!</h1>
+    <h1>Create Your New SparkStart Profile!</h1>
+    <br>
+    <%= simple_form_for @profile, :html => { :multipart => true } do |f| %>
+        <% @profile.errors.full_messages.each do |error| %>
+            <span style="color: red"><%= error %></span><br>
+        <% end %>
+        <br>
 
-  <br>
-  <% if @profile %>
-    <% @profile.errors.full_messages.each do |error| %>
-      <span style="color: red"><%= error %></span><br>
-    <% end %>
-  <% end %>
-  <br>
 
-  <%= form_tag '/profile', method: :post, multipart: true do %>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="row">
-        <div class="col-md-6">
-          <%= text_field_tag :first_name, nil, class: "form-control margin-b-20", :placeholder => 'First Name'%>
-        </div>
-        <div class="col-md-6">
-          <%= text_field_tag :last_name, nil, class: "form-control margin-b-20", :placeholder => 'Last Name' %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <%= text_field_tag :experience, nil, class: "form-control margin-b-20", :placeholder => 'Experience In Years' %>
-        </div>
-        <div class="col-md-6">
-          <%= text_field_tag :career, nil, class: "form-control margin-b-20", :placeholder => 'Career/Major' %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <%= text_field_tag :city, nil, class: "form-control margin-b-20", :placeholder => 'City' %>
-        </div>
-        <div class="col-md-6">
-          <%= select_tag :state, options_for_select(us_states), multiple: false, class: "form-control margin-b-20" %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <%= text_field_tag :phone, nil, class: "form-control margin-b-20", :placeholder => 'Phone Number' %>
-        </div>
-        <div class="col-md-6">
-          <%= text_field_tag :image, nil, class: "form-control margin-b-20", :placeholder => 'Upload Image' %>
-        </div>
-      </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-6">
+                        <%= f.label :first_name %> <br>
+                        <%= f.text_field :first_name, class: "form-control margin-b-20" %>
+                    </div>
+                    <div class="col-md-6">
+                        <%= f.label :last_name %> <br>
+                        <%= f.text_field :last_name, class: "form-control margin-b-20" %>
+                    </div>
+                </div>
 
-      <div><%= text_area_tag :bio, nil, rows: 10, class: "form-control margin-b-20", :placeholder => 'Bio' %></div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <%= f.label :years_of_experience %> <br>
+                        <%= f.select :experience, options_for_select([["Select One", ""], "0-4", "5-9", "10+"]) %>
+                    </div>
+                    <div class="col-md-6">
+                        <%= f.label :career %> <br>
+                        <%= f.text_field :career, class: "form-control margin-b-20" %>
+                    </div>
+                </div>
 
-      <div><%= file_field_tag :image, accept: 'image/png,image/gif,image/jpeg' %></div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <%= f.label :city %> <br>
+                        <%= f.text_field :city, class: "form-control margin-b-20" %>
+                    </div>
+                    <div class="col-md-6">
+                        <%= f.label :state %> <br>
+                        <%= f.select :state, options_for_select(us_states), multiple: false, class: "form-control margin-b-20" %>
+                    </div>
+                </div>
 
-      <%= submit_tag "Submit", class: 'btn btn-xl btn-skin' %>
+                <div class="row">
+                    <div class="col-md-6">
+                        <%= f.label :phone %> <br>
+                        <%= f.text_field :phone, class: "form-control margin-b-20" %>
+                    </div>
+                    <div class="col-md-6">
+                        <%= f.label :image, 'Change Image' %> <br>
+                        <%= f.file_field :image %>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <%= f.label :linkedin_url %> <br>
+                        <%= f.text_field :linkedin_url, class: "form-control margin-b-20" %>
+                    </div>
+                </div> 
+
+                <div>
+                    <%= f.label :bio %> <br>
+                    <%= f.text_area :bio, rows: 10, class: "form-control margin-b-20" %>    
+                </div>
+
+                <div class="actions">
+                    <%= f.submit "Submit", class: 'btn btn-xl btn-skin' %>
+                </div>
+            </div>
+        </div>
 
     </div>
-  </div>
-  <% end %>
-</div>
+<% end %>

@@ -10,22 +10,67 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161101005141) do
+
+ActiveRecord::Schema.define(version: 20170717194808) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "books", force: :cascade do |t|
-    t.string   "url"
+  create_table "author_categories", force: :cascade do |t|
+    t.integer  "author_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "authors", force: :cascade do |t|
+    t.string   "full_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "user_id"
+    t.integer  "book_id"
+  end
+
+  create_table "authors_books", force: :cascade do |t|
+    t.integer  "author_id"
+    t.integer  "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "books", force: :cascade do |t|
+    t.string   "url"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "user_id"
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
+    t.string   "title"
+    t.text     "description"
+    t.string   "ebook_file_name"
+    t.string   "ebook_content_type"
+    t.integer  "ebook_file_size"
+    t.datetime "ebook_updated_at"
+    t.integer  "book_downloads",     default: 0
+    t.integer  "max_downloads"
+    t.string   "question_1"
+    t.string   "question_2"
+    t.string   "question_3"
   end
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "categories_author_books", force: :cascade do |t|
+    t.integer  "book_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "categorized_posts", force: :cascade do |t|
@@ -39,31 +84,17 @@ ActiveRecord::Schema.define(version: 20161101005141) do
     t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "user_id"
-  end
-
-  create_table "ckeditor_assets", force: :cascade do |t|
-    t.string   "data_file_name",               null: false
-    t.string   "data_content_type"
-    t.integer  "data_file_size"
-    t.string   "data_fingerprint"
-    t.integer  "assetable_id"
-    t.string   "assetable_type",    limit: 30
-    t.string   "type",              limit: 30
-    t.integer  "width"
-    t.integer  "height"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.index ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable", using: :btree
-    t.index ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type", using: :btree
+    t.integer  "user_id"
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer  "post_id"
     t.text     "body"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.boolean  "approved",   default: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.boolean  "approved",         default: false
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.integer  "user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -72,7 +103,7 @@ ActiveRecord::Schema.define(version: 20161101005141) do
     t.text     "body"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
-    t.string   "user_id"
+    t.integer  "user_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -80,7 +111,7 @@ ActiveRecord::Schema.define(version: 20161101005141) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.integer  "experience"
+    t.string   "experience"
     t.text     "bio"
     t.string   "phone"
     t.string   "career"
@@ -95,6 +126,16 @@ ActiveRecord::Schema.define(version: 20161101005141) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "linkedin_url"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "book_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.jsonb    "data",       default: {}, null: false
+    t.index ["data"], name: "index_questions_on_data", using: :gin
   end
 
   create_table "tagged_posts", force: :cascade do |t|
@@ -111,11 +152,11 @@ ActiveRecord::Schema.define(version: 20161101005141) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "role"
     t.string   "token"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "email"
+    t.boolean  "admin",      default: false
   end
 
 end

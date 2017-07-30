@@ -1,5 +1,58 @@
-<div class="container container-height">
+<div class="row">
+    <div class="col-xs-12 text-center" style="margin: 9vh 0vh">
+        <h1>Welcome to the <span class="yellow">Spark</span><span class="blue">Tank</span>!</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3 col-xs-12">
+        <h3 class="right_justify_text"><%= @book.title %> </h3>
+        <% if @book.cover.url(:thumb) == "/covers/thumb/missing.png" %>
+            <%= image_tag "missing_cover_medium.jpg", {class: "small_image right_justify_text" } %>
+          <% else %>
+            <%= image_tag @book.cover.url(:medium), {class: "small_image right_justify_text" } %>
+          <% end %>
+        <%#= image_tag @book.cover.url(:medium), class: "small_image right_justify_text" %>
+        <% if @book.reached_max_downloads? %>
+            <%= button_to "Download PDF", "/books/#{@book.id}/download", class: "btn btn-success right_justify_text black_text", :method => :get, form: {target: '_blank'} %>
+        <% else %>
+            <p class="right_justify_text">This book is no longer available for free download.  <br> 
+                <% if @book.url.present? %>
+                    <%= link_to image_tag("amazon-logo_black.png", class: "amazon-logo-tiny"), @book.url, target: "_blank" %>
+                <% else %>
+                    Please contact <%= mail_to "melissa@networlding.com", "Melissa" %>.
+                <% end %>
+            </p>
+        <% end %>
+    </div>
 
-Here is where an individual book will be.
+    <div class="col-md-5 col-xs-12">
+        <h3>Description</h3>  
+        <p><%= raw @book.description %></p>
+    </div>
+    <br>
+    <br>
+
+    <div class="col-md-4 col-xs-12">
+        <h1><span class="yellow">Spark</span><span class="blue">Starter</span><h1 style="margin-left: 12%">Questions</span></h1></h1>
+
+    <ol>
+        <% @book.questions.each do |question| %>
+            <li><%= link_to question.content, "/questions/#{question.id}" %>
+            </li>
+        <% end %>
+    </ol>
 
 </div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+        <div id="tabs" class="col-xs-12">
+            <div ng-if="questionSelected">
+                <%= render partial: "discussion" %>
+            </div>
+        </div>
+    </div>
+
+
+

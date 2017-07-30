@@ -1,77 +1,65 @@
 class ProfilesController < ApplicationController
-  before_action :is_profile_created, only: [:index, :new, :show, :edit, :update, :destroy]
   before_action :set_current_user
+  before_action :set_profile, only: [:show, :edit, :update, :destroy]
+  before_action :has_profile?, except: [:new, :create]
   include ProfilesHelper
 
   def index
+    @profiles = Profile.all
   end
 
   def show
-    @profile = Profile.find(@current_user.profile.id)
+    @profile = Profile.find(params[:id])
   end
 
   def new
+    @profile= Profile.new
   end
 
   def create
-    current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
-    user_id = current_user.id
-    @profile = Profile.create!(
-      experience: params[:experience],
-      bio: params[:bio],
-      phone: params[:phone],
-      career: params[:career],
-      image: params[:image],
-      user_id: user_id,
-      first_name: params[:first_name],
-      last_name: params[:last_name],
-      city: params[:city],
-      state: params[:state]
-      )
-    redirect_to "/profile/#{@profile.id}"
+    params[:profile][:user_id] = @current_user.id
+    @profile = Profile.new(profile_params)
+    if @profile.save
+      flash[:success]= "Profile created!"
+      redirect_to profiles_path
+    else
+      render :edit
+    end
   end
 
   def edit
-    @profile = Profile.find(params[:id])
   end
 
   def update
-    @profile = Profile.find(params[:id])
-    if @profile.update(
-      experience: params[:experience],
-      bio: params[:bio],
-      phone: params[:phone],
-      career: params[:career],
-      image: params[:image],
-      first_name: params[:first_name],
-      last_name: params[:last_name],
-      city: params[:city],
-      state: params[:state]
-      )
+    @profile.image.destroy if params[:delete_image]
+    if @profile.update(profile_params)
       flash[:success]= "Profile updated!"
-      redirect_to "/profile/#{@profile.id}"
+      redirect_to @profile
     else
       render :edit
     end
   end
 
   def destroy
-  # What does this do? Where does this get called?
-    @profile = Profile.find(params[:id])
     @profile.destroy
+    flash[:success]= "Profile was successfully destroyed."
+    redirect_to @profiles
   end
 
  private
 
-  def is_profile_created
-    @current_user = User.find_by_email(session[:userinfo]["extra"]["raw_info"]["email"])
-    if !@current_user.profile
-      render "new"
+    def has_profile?
+       if @current_user.profile.nil?
+           flash[:warning] = "Please create a new profile first!"
+           redirect_to new_profile_path
+       end
     end
+
+  def set_profile
+    @profile = Profile.find(@current_user.profile.id)
   end
 
-  def set_current_user
-    @current_user = User.find_by_token(session[:userinfo]["extra"]["raw_info"]["identities"][0]["user_id"])
+  def profile_params
+    params.require(:profile).permit(:experience, :bio, :phone, :career, :image, :first_name, :last_name, :city, :user_id, :linkedin_url, :state)
   end
-
 end

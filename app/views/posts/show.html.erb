@@ -1,59 +1,63 @@
 <div class="container">
 
-<br>
+    <br>
 
-<div class="row" style="text-align: center">
-  <h2><%= @post.title %></h2>
-</div>
+    <div class="row" style="text-align: center">
+        <h2><%= @post.title %></h2>
+    </div>
+    <div class="container" style="width: 75%; text-align: justify">
+        <div style="text-align: center"><b>By:</b> <%= @post.author %>, <%= @post.created_at.strftime("%m/%d/%Y") %></div><br>
 
-<div style="text-align: center"><b>By:</b> <%= @post.author %>, <%= @post.created_at.strftime("%m/%d/%Y") %></div><br>
+        <% if @post.image.present? %>
+            <div style="text-align: center"><%= image_tag @post.image.url(:medium) %></div><br>
+        <% end %>
 
-<% if @post.image.present? %>
-  <div style="text-align: center"><%= image_tag @post.image.url(:medium) %></div><br>
-<% end %>
+        <p><%= sanitize @post.body %></p><br>
 
-<p><%= sanitize @post.body %></p><br>
+        <!-- <p><b>Tags:</b> -->
+        <%# @tag_list.each do |tag| %>
+        <%# if @tag_list.index(tag) < @tag_list.length - 1 %>
+        <%#= link_to tag, "/blog/?tag_search=#{tag}" %>
+        <%# else %>
+        <%#= link_to tag, "/blog/?tag_search=#{tag}" %>
+        <%# end %>
+        <%# end %>
+        <!-- </p> -->
 
-<p><b>Tags:</b>
-  <% @tag_list.each do |tag| %>
-    <% if @tag_list.index(tag) < @tag_list.length - 1 %>
-      <%= link_to tag, "/blog/?tag_search=#{tag}" %>,
-    <% else %>
-      <%= link_to tag, "/blog/?tag_search=#{tag}" %>
-    <% end %>
-  <% end %>
-</p>
+        <!-- <p><b>Categories:</b> -->
+        <%# @category_list.each do |category| %>
+        <%# if @category_list.index(category) < @category_list.length - 1 %>
+        <%#= link_to category, "/blog/?category_search=#{category}" %>
+        <%# else %>
+        <%#= link_to category, "/blog/?category_search=#{category}" %>
+        <%# end %>
+        <%# end %>
+        <!-- </p> -->
 
-<p><b>Categories:</b>
-  <% @category_list.each do |category| %>
-    <% if @category_list.index(category) < @category_list.length - 1 %>
-      <%= link_to category, "/blog/?category_search=#{category}" %>,
-    <% else %>
-      <%= link_to category, "/blog/?category_search=#{category}" %>
-    <% end %>
-  <% end %>
-</p>
+        <!-- TODO the edit button doesn't go anywhere -->
+        <% if @current_user.admin? %>
+            <p><%= button_to "Edit Post", "/admin/posts/#{@post.id}/edit", method: :get, class: "btn btn-primary" %></p>
+        <% end %>
 
-<p><%= button_to "Edit Post", "/blog/#{@post.id}/edit", method: :get, class: "btn btn-primary" %></p>
+    </div>
+    <br><br>
 
-<br><br>
+    <%# if @post.comments.length > 0 %>
+    <%# @post.comments.each do |comment| %>
+    <!-- <p><b>Comment:</b> <%#= comment.body %></p> -->
+    <%# end %>
+    <%# else %>
+    <!-- No Comments Yet.<br>
+    <%# end %>
 
-<% if @post.comments.length > 0 %>
-  <% @post.comments.each do |comment| %>
-    <p><b>Comment:</b> <%= comment.body %></p>
-  <% end %>
-<% else %>
-  No Comments Yet.<br>
-<% end %>
+    <br><br>
 
-<br><br>
+    <%#= form_tag '/comment', method: :post do %>
+    <%#= label_tag :body, "Post A Comment:" %>
+    <%#= text_area_tag :body, nil, class: 'form-control', rows: 10 %>
+    <%#= hidden_field_tag :post_id, @post.id %>
 
-<%= form_tag '/comment', method: :post do %>
-  <p><%= label_tag :body, "Post A Comment:" %><br>
-  <%= text_area_tag :body, nil, class: 'form-control', rows: 10 %></p>
-  <%= hidden_field_tag :post_id, @post.id %>
-
-  <%= submit_tag "Submit", class: "btn btn-xl btn-skin" %>
-<% end %>
+    <%#= submit_tag "Submit", class: "btn btn-xl btn-skin" %>
+    <%# end %>
 
 </div>
