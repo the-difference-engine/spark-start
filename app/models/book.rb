@@ -10,7 +10,8 @@ class Book < ApplicationRecord
   #has_many :authors, through: :authors_books
   has_attached_file :cover,
                     styles: { medium: "300x300>", thumb: "100x100>" },
-                    default_url: ActionController::Base.helpers.asset_path('assets/missing_cover_:style.png'),
+                    # TODO this does not work, logic in the view.
+                    #default_url: ActionController::Base.helpers.asset_path('assets/missing_cover_:style.png'),
                     #default_url: "/images/:style/missing.png",
                     :path => ENV["AWS_PATH"] + "/:id/book/cover/:style.:extension"
   validates_attachment_content_type :cover, content_type: /\Aimage\/.*\z/, message: " must be an image file."

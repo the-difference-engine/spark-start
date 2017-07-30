@@ -6,7 +6,12 @@
 <div class="row">
     <div class="col-md-3 col-xs-12">
         <h3 class="right_justify_text"><%= @book.title %> </h3>
-        <%= image_tag @book.cover.url(:medium), class: "small_image right_justify_text" %>
+        <% if @book.cover.url(:thumb) == "/covers/thumb/missing.png" %>
+            <%= image_tag "missing_cover_medium.jpg", {class: "small_image right_justify_text" } %>
+          <% else %>
+            <%= image_tag @book.cover.url(:medium), {class: "small_image right_justify_text" } %>
+          <% end %>
+        <%#= image_tag @book.cover.url(:medium), class: "small_image right_justify_text" %>
         <% if @book.reached_max_downloads? %>
             <%= button_to "Download PDF", "/books/#{@book.id}/download", class: "btn btn-success right_justify_text black_text", :method => :get, form: {target: '_blank'} %>
         <% else %>
