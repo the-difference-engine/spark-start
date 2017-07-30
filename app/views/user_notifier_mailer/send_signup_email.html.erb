@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
+    <head>
+        <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    </head>
+    <body>
 
-  <div style="text-align: center">
-    <%= image_tag "newlogo.png", style: "height: 150px" %>
-    <h1>Thanks for signing up, <%= @user.email %>!</h1>
-    <p>Welcome to the party! Enjoy great books and thoughtful discussion with the worlds leading thinkers.</p>
-  </div>
+        <div style="text-align: center">
+            <%= image_tag attachments['newlogo.png'].url, alt: 'Our Logo', style: 'width: 25%' -%>
+            <h1>Thanks for signing up, <%= @user.email %>!</h1>
+            <p>Welcome to the party! Enjoy great books and thoughtful discussion with the worlds leading thinkers.</p>
+            <div>
+                <h3>
+                  <%= link_to 'Click Here To Get Started', ENV['HOST_URL']  %>
+                </h3>
+            </div>
+        </div>
 
-  </body>
+    </body>
 </html>
