@@ -31,5 +31,6 @@ FactoryGirl.define do
     image nil
     city 'chicago'
     state 'il'
+    linkedin_url 'foo.bar'
   end
 end

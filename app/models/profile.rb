@@ -32,6 +32,7 @@ class Profile < ApplicationRecord
   validates :state, presence: true
   validates :state, length: {maximum: 2, message: "Must Be Valid"}
   validates :city, presence: true
+  validates :linkedin_url, presence: true 
 
   belongs_to :user
 
@@ -45,8 +46,8 @@ class Profile < ApplicationRecord
   # validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
   # validates_with AttachmentSizeValidator, attributes: :image, less_than: 1.megabytes
 
-def full_name
-  "#{first_name} #{last_name}"
-end
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 
 end
